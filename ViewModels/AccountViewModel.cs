@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EscapeRoom.ViewModels
 {
-    internal class AccountViewModel
+    class AccountViewModel
     {
     }
 }
