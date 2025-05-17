@@ -14,17 +14,12 @@ namespace EscapeRoom.Services
             _mainFrame = mainFrame ?? throw new ArgumentNullException(nameof(mainFrame));
         }
 
-        /// <summary>
-        /// Rejestracja widoku pod określoną nazwą
-        /// </summary>
         public void Register(string viewName, Func<UserControl> createView)
         {
             _pages[viewName] = createView;
         }
 
-        /// <summary>
-        /// Nawigacja do określonego widoku
-        /// </summary>
+//nawigacja do widoku
         public bool NavigateTo(string viewName)
         {
             if (_pages.TryGetValue(viewName, out var createView))
@@ -35,9 +30,7 @@ namespace EscapeRoom.Services
             return false;
         }
 
-        /// <summary>
-        /// Nawigacja wstecz
-        /// </summary>
+
         public bool GoBack()
         {
             if (_mainFrame.CanGoBack)
@@ -48,9 +41,6 @@ namespace EscapeRoom.Services
             return false;
         }
 
-        /// <summary>
-        /// Nawigacja do przodu
-        /// </summary>
         public bool GoForward()
         {
             if (_mainFrame.CanGoForward)
@@ -61,9 +51,7 @@ namespace EscapeRoom.Services
             return false;
         }
 
-        /// <summary>
-        /// Bieżąca strona/widok
-        /// </summary>
+//biezace widoki
         public object CurrentView => _mainFrame.Content;
     }
 }

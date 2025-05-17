@@ -41,9 +41,6 @@ namespace EscapeRoom.Helpers
         }
     }
 
-    /// <summary>
-    /// Implementacja generyczna RelayCommand
-    /// </summary>
     public class RelayCommand<T> : ICommand
     {
         private readonly Action<T> _execute;
