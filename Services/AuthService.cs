@@ -85,7 +85,7 @@ namespace EscapeRoom.Services
                     WHERE Username = @Username AND PasswordHash = @PasswordHash"
                 ;
 
-                using (var command = new MySqlCommand(query, connection))
+               // using (var command = new MySqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Username", username);
                     command.Parameters.AddWithValue("@PasswordHash", passwordHash);
