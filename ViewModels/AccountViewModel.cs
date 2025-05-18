@@ -1,5 +1,4 @@
-
-﻿using System;
+using System;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -11,6 +10,9 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Collections.Generic;
 using System.Windows;
+using System.Collections.ObjectModel;
+using System.Linq;
+
 
 //PYTANIE CZY ROBIMY PO ANGIELSKU
 namespace EscapeRoom.ViewModels
@@ -28,8 +30,6 @@ namespace EscapeRoom.ViewModels
         private string _statusMessage;
         private bool _isBusy;
 
-        // Services would be injected here
-        // private readonly UserService _userService;
 
         public AccountViewModel()
         {
@@ -194,10 +194,7 @@ namespace EscapeRoom.ViewModels
 
         private bool CanUpdateProfile()
         {
-<<<<<<< HEAD
-            // Validation logic for updating profile
-=======
->>>>>>> a705bdd0da5446524e6410f456501b681b6b4631
+
             return !IsBusy && !string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName) && !string.IsNullOrWhiteSpace(Email);
         }
 
@@ -208,8 +205,6 @@ namespace EscapeRoom.ViewModels
                 IsBusy = true;
                 StatusMessage = "Updating profile...";
 
-<<<<<<< HEAD
-                // Update user object with form values
 
                 if (CurrentUser != null)
                 {
@@ -217,13 +212,6 @@ namespace EscapeRoom.ViewModels
                     CurrentUser.LastName = LastName;
                     CurrentUser.Email = Email;
                     CurrentUser.PhoneNumber = PhoneNumber;
-<<<<<<< HEAD
-
-                    // Call service to update user
-=======
->>>>>>> a705bdd0da5446524e6410f456501b681b6b4631
-                    // await _userService.UpdateUserAsync(CurrentUser);
-
                     StatusMessage = "Profile updated successfully.";
                 }
             }
@@ -239,7 +227,6 @@ namespace EscapeRoom.ViewModels
 
         private bool CanChangePassword()
         {
-            // Validation logic for changing password
             return !IsBusy &&
                    !string.IsNullOrWhiteSpace(CurrentPassword) &&
                    !string.IsNullOrWhiteSpace(NewPassword) &&
@@ -254,12 +241,8 @@ namespace EscapeRoom.ViewModels
             {
                 IsBusy = true;
                 StatusMessage = "Changing password...";
-
-<<<<<<< HEAD
-                bool success = true; // Placeholder
-=======
-                bool success = true; // 
->>>>>>> a705bdd0da5446524e6410f456501b681b6b4631
+                bool success = true;
+                bool success = true; 
 
                 if (success)
                 {
@@ -288,13 +271,11 @@ namespace EscapeRoom.ViewModels
             try
             {
                 IsBusy = true;
-<<<<<<< HEAD
-                int userId = 1; //dozmiany 
-=======
-                int userId = 1; //do zmiany??? trzeba sie zastanowic jak to zgrac z bd
->>>>>>> a705bdd0da5446524e6410f456501b681b6b4631
 
             }
+                int userId = 1; //dozmiany 
+        }
+
             catch (Exception ex)
             {
                 StatusMessage = $"Error loading user data: {ex.Message}";
@@ -312,9 +293,3 @@ namespace EscapeRoom.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
-
-    
-<<<<<<< HEAD
-}
-=======
-}

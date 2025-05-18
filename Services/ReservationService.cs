@@ -1,11 +1,16 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
 using MySql.Data.MySqlClient;
 using EscapeRoom.Models;
+using EscapeRoom.Helpers;
+using System.Windows.Input;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
 
 namespace EscapeRoom.Services
 {
@@ -46,9 +51,6 @@ namespace EscapeRoom.Services
             return reservations;
         }
 
-        /// <summary>
-        /// Pobiera rezerwacje dla danego użytkownika
-        /// </summary>
         public async Task<List<Reservation>> GetReservationsByUserIdAsync(int userId)
         {
             var reservations = new List<Reservation>();
@@ -180,7 +182,7 @@ namespace EscapeRoom.Services
                     command.Parameters.AddWithValue("@CreatedAt", reservation.CreatedAt);
                     command.Parameters.AddWithValue("@IsPaid", reservation.IsPaid);
 
-                    // Zwraca ID nowo utworzonej rezerwacji
+                    //ID nowo utworzonej rezerwacji
                     var result = await command.ExecuteScalarAsync();
                     return Convert.ToInt32(result);
                 }
@@ -241,11 +243,10 @@ namespace EscapeRoom.Services
 
         public async Task<List<TimeSpan>> GetAvailableTimeSlotsAsync(int roomId, DateTime date)
         {
-            // Standardowe godziny otwarcia (np. 10:00 - 22:00)
+            //godziny otwarcia (np. 10:00 - 22:00)
             var openingTime = new TimeSpan(10, 0, 0);
             var closingTime = new TimeSpan(22, 0, 0);
 
-            // Pobierz czas trwania sesji dla danego pokoju
             int sessionDuration = 0;
             using (var connection = new MySqlConnection(_connectionString))
             {
@@ -259,17 +260,17 @@ namespace EscapeRoom.Services
                 }
             }
 
-            // Dodaj czas na przygotowanie pokoju między sesjami (np. 30 minut)
+            //dodatkowy czas na sprzatanie
             int sessionWithBreak = sessionDuration + 30;
 
-            // Generuj możliwe terminy
+            //możliwe terminy
             var potentialSlots = new List<TimeSpan>();
             for (TimeSpan time = openingTime; time.Add(TimeSpan.FromMinutes(sessionDuration)) <= closingTime; time = time.Add(TimeSpan.FromMinutes(sessionWithBreak)))
             {
                 potentialSlots.Add(time);
             }
 
-            // Pobierz zajęte terminy
+            //zajęte terminy
             var bookedSlots = new List<TimeSpan>();
             using (var connection = new MySqlConnection(_connectionString))
             {
@@ -296,7 +297,7 @@ namespace EscapeRoom.Services
                 }
             }
 
-            // Usuń zajęte terminy z potencjalnych terminów
+            //usuwa zajęte terminy z potencjalnych terminów
             return potentialSlots.Where(slot => !bookedSlots.Contains(slot)).ToList();
         }
 

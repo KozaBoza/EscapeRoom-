@@ -14,7 +14,7 @@ namespace EscapeRoom.Models
         private string _lastName;
         private string _phoneNumber;
         private bool _isAdmin;
-        private DateTime _registrationDate;
+        private DateTime _registrationDate; //data rejestracji ?? opcjonalnie
 
         public int Id
         {

@@ -8,10 +8,10 @@ namespace EscapeRoom.Models
 {
     public class Room : INotifyPropertyChanged
     {
-        private int _id;
+        private int _id; //-- do ustalenia
         private string _name;
         private string _description;
-        private int _difficulty; // 1-5
+        private int _difficulty; // 1-5 poziom trudnosci
         private int _maxParticipants;
         private int _durationMinutes;
         private decimal _price;
@@ -164,14 +164,14 @@ namespace EscapeRoom.Models
             }
         }
 
-        // Konstruktor
+        //konstruktor
         public Room()
         {
             Reviews = new ObservableCollection<Review>();
             IsActive = true;
         }
 
-        // Metoda do obliczania średniej oceny
+        //metoda do obliczania średniej oceny
         private void CalculateAverageRating()
         {
             if (Reviews == null || Reviews.Count == 0)
@@ -189,7 +189,6 @@ namespace EscapeRoom.Models
             AverageRating = sum / Reviews.Count;
         }
 
-        // Implementacja INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

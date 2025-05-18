@@ -13,11 +13,11 @@ namespace EscapeRoom.Models
         private string _comment;
         private DateTime _createdAt;
 
-        // Referencje
+        //referencje
         private User _user;
         private Room _room;
 
-        public int Id
+        public int Id //id recenzji
         {
             get => _id;
             set
@@ -30,7 +30,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public int UserId
+        public int UserId //id usera
         {
             get => _userId;
             set
@@ -43,7 +43,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public int RoomId
+        public int RoomId //id pokoju
         {
             get => _roomId;
             set
@@ -55,7 +55,7 @@ namespace EscapeRoom.Models
                 }
             }
         }
-
+        //ocena
         public int Rating
         {
             get => _rating;
@@ -68,7 +68,7 @@ namespace EscapeRoom.Models
                 }
             }
         }
-
+        //komentarz
         public string Comment
         {
             get => _comment;
@@ -81,7 +81,7 @@ namespace EscapeRoom.Models
                 }
             }
         }
-
+        //data
         public DateTime CreatedAt
         {
             get => _createdAt;

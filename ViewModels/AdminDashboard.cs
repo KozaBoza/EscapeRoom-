@@ -23,11 +23,6 @@ namespace EscapeRoom.ViewModels
         private bool _isBusy;
         private string _statusMessage;
 
-        // Services would be injected here
-        // private readonly RoomService _roomService;
-        // private readonly ReservationService _reservationService;
-        // private readonly UserService _userService;
-        // private readonly PaymentService _paymentService;
 
         public AdminDashboard()
         {
@@ -36,14 +31,6 @@ namespace EscapeRoom.ViewModels
             RecentReservations = new ObservableCollection<Reservation>();
             RecentUsers = new ObservableCollection<User>();
 
-            // Initialize services
-            // _roomService = new RoomService(connectionString);
-            // _reservationService = new ReservationService(connectionString);
-            // _userService = new UserService(connectionString);
-            // _paymentService = new PaymentService(connectionString);
-
-            // Load dashboard data
-            // LoadDashboardDataAsync();
         }
 
         public ObservableCollection<Room> Rooms
@@ -189,7 +176,6 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        // Commands
         private ICommand _refreshCommand;
         public ICommand RefreshCommand
         {
@@ -241,29 +227,6 @@ namespace EscapeRoom.ViewModels
             {
                 IsBusy = true;
                 StatusMessage = "Loading dashboard data...";
-
-                // Load rooms data
-                // var allRooms = await _roomService.GetAllRoomsAsync(includeInactive: true);
-                // Rooms = new ObservableCollection<Room>(allRooms);
-                // TotalRooms = allRooms.Count;
-                // ActiveRooms = allRooms.Count(r => r.IsActive);
-
-                // Load reservations data
-                // var reservationsStatus = await _reservationService.GetReservationStatusCountsAsync();
-                // PendingReservations = reservationsStatus.PendingCount;
-                // ConfirmedReservations = reservationsStatus.ConfirmedCount;
-                // var recent = await _reservationService.GetRecentReservationsAsync(5);
-                // RecentReservations = new ObservableCollection<Reservation>(recent);
-
-                // Load users data
-                // var users = await _userService.GetUsersCountAsync();
-                // TotalUsers = users;
-                // var recentUsers = await _userService.GetRecentUsersAsync(5);
-                // RecentUsers = new ObservableCollection<User>(recentUsers);
-
-                // Load revenue data
-                // TotalRevenue = await _paymentService.GetTotalRevenueAsync();
-
                 StatusMessage = "Dashboard data loaded successfully.";
             }
             catch (Exception ex)
@@ -278,31 +241,22 @@ namespace EscapeRoom.ViewModels
 
         private void NavigateToRooms()
         {
-            // Navigation logic here
-            // Could use a navigation service or event aggregator
             StatusMessage = "Navigating to Rooms...";
-            // NavigationService.Navigate(new Uri("/Views/AdminRoomsView.xaml", UriKind.Relative));
         }
 
         private void NavigateToReservations()
         {
-            // Navigation logic here
             StatusMessage = "Navigating to Reservations...";
-            // NavigationService.Navigate(new Uri("/Views/AdminReservationsView.xaml", UriKind.Relative));
-        }
+ }
 
         private void NavigateToUsers()
         {
-            // Navigation logic here
             StatusMessage = "Navigating to Users...";
-            // NavigationService.Navigate(new Uri("/Views/AdminUsersView.xaml", UriKind.Relative));
         }
 
         private void NavigateToPayments()
         {
-            // Navigation logic here
             StatusMessage = "Navigating to Payments...";
-            // NavigationService.Navigate(new Uri("/Views/AdminPaymentsView.xaml", UriKind.Relative));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -313,5 +267,4 @@ namespace EscapeRoom.ViewModels
         }
     }
 
-    // Note: The RelayCommand class should be in a separate file to avoid duplication across ViewModels
 }

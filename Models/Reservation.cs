@@ -14,7 +14,7 @@ namespace EscapeRoom.Models
 
     public class Reservation : INotifyPropertyChanged
     {
-        private int _id;
+        private int _id; //wlasnosci do negocjacji
         private int _userId;
         private int _roomId;
         private DateTime _date;

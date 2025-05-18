@@ -33,9 +33,9 @@ namespace EscapeRoom.Models
         private string _notes;
 
        
-        private Reservation _reservation;
+        private Reservation _reservation; //rezerwacja
 
-        public int Id
+        public int Id                      //id - do pogodzenia z bd
         {
             get => _id;
             set
@@ -48,7 +48,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public int ReservationId
+        public int ReservationId    //id rezerwacji
         {
             get => _reservationId;
             set
@@ -61,7 +61,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public decimal Amount
+        public decimal Amount //kwota   
         {
             get => _amount;
             set
@@ -74,7 +74,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public PaymentStatus Status
+        public PaymentStatus Status //status
         {
             get => _status;
             set
@@ -87,7 +87,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public PaymentMethod Method
+        public PaymentMethod Method //metoda --- musimy jeszcze zdecydować jaka
         {
             get => _method;
             set
@@ -100,7 +100,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public DateTime PaymentDate
+        public DateTime PaymentDate //czas, data
         {
             get => _paymentDate;
             set
@@ -126,7 +126,7 @@ namespace EscapeRoom.Models
             }
         }
 
-        public string Notes
+        public string Notes //opis
         {
             get => _notes;
             set

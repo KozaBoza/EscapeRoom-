@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data;
-using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient; //do zmiany
 using EscapeRoom.Models;
 using System.Data.SqlClient;
 
@@ -38,7 +38,7 @@ namespace EscapeRoom.Services
                 {
                     while (await reader.ReadAsync())
                     {
-                        rooms.Add(new Room
+                        rooms.Add(new Room //do zmiany
                         {
                             Id = reader.GetInt32("Id"),
                             Name = reader.GetString("Name"),
@@ -55,7 +55,7 @@ namespace EscapeRoom.Services
                 }
             }
 
-            // Pobierz recenzje dla każdego pokoju
+            //pobiera recenzje dla pokoju
             foreach (var room in rooms)
             {
                 room.Reviews = await GetReviewsForRoomAsync(room.Id);
@@ -240,9 +240,6 @@ namespace EscapeRoom.Services
             return reviews;
         }
 
-        /// <summary>
-        /// Sprawdza dostępność pokoju w danym terminie
-        /// </summary>
         public async Task<bool> CheckRoomAvailabilityAsync(int roomId, DateTime date, TimeSpan startTime)
         {
             using (var connection = new MySqlConnection(_connectionString))
@@ -265,7 +262,7 @@ namespace EscapeRoom.Services
                     command.Parameters.AddWithValue("@StartTime", startTime);
 
                     int count = Convert.ToInt32(await command.ExecuteScalarAsync());
-                    return count == 0; // Zwraca true jeśli nie ma kolizji z innymi rezerwacjami
+                    return count == 0; 
                 }
             }
         }

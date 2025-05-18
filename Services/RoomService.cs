@@ -18,9 +18,6 @@ namespace EscapeRoom.Services
             _connectionString = connectionString;
         }
 
-        /// <summary>
-        /// Pobiera wszystkie aktywne pokoje
-        /// </summary>
         public async Task<List<Room>> GetAllRoomsAsync(bool includeInactive = false)
         {
             var rooms = new List<Room>();
@@ -57,7 +54,6 @@ namespace EscapeRoom.Services
                 }
             }
 
-            // Pobierz recenzje dla każdego pokoju
             foreach (var room in rooms)
             {
                 room.Reviews = await GetReviewsForRoomAsync(room.Id);
@@ -66,9 +62,7 @@ namespace EscapeRoom.Services
             return rooms;
         }
 
-        /// <summary>
-        /// Pobiera pokój po ID
-        /// </summary>
+
         public async Task<Room> GetRoomByIdAsync(int roomId)
         {
             using (var connection = new MySqlConnection(_connectionString))
@@ -109,10 +103,7 @@ namespace EscapeRoom.Services
 
             return null;
         }
-
-        /// <summary>
-        /// Dodaje nowy pokój
-        /// </summary>
+//dodawanie pokoju
         public async Task<int> AddRoomAsync(Room room)
         {
             using (var connection = new MySqlConnection(_connectionString))
@@ -138,16 +129,13 @@ namespace EscapeRoom.Services
                     command.Parameters.AddWithValue("@ImageUrl", (object)room.ImageUrl ?? DBNull.Value);
                     command.Parameters.AddWithValue("@IsActive", room.IsActive);
 
-                    // Zwraca ID nowo utworzonego pokoju
+                    //ID nowo utworzonego pokoju
                     var result = await command.ExecuteScalarAsync();
                     return Convert.ToInt32(result);
                 }
             }
         }
 
-        /// <summary>
-        /// Aktualizuje istniejący pokój
-        /// </summary>
         public async Task<bool> UpdateRoomAsync(Room room)
         {
             using (var connection = new MySqlConnection(_connectionString))
@@ -184,10 +172,7 @@ namespace EscapeRoom.Services
                 }
             }
         }
-
-        /// <summary>
-        /// Usuwa pokój (ustawia flage IsActive na false)
-        /// </summary>
+//usuwa pokoj
         public async Task<bool> DeactivateRoomAsync(int roomId)
         {
             using (var connection = new MySqlConnection(_connectionString))
@@ -204,9 +189,7 @@ namespace EscapeRoom.Services
             }
         }
 
-        /// <summary>
-        /// Pobiera wszystkie recenzje dla danego pokoju
-        /// </summary>
+//recenzje
         private async Task<System.Collections.ObjectModel.ObservableCollection<Review>> GetReviewsForRoomAsync(int roomId)
         {
             var reviews = new System.Collections.ObjectModel.ObservableCollection<Review>();
@@ -256,9 +239,7 @@ namespace EscapeRoom.Services
             return reviews;
         }
 
-        /// <summary>
-        /// Sprawdza dostępność pokoju w danym terminie
-        /// </summary>
+//dostepnosc
         public async Task<bool> CheckRoomAvailabilityAsync(int roomId, DateTime date, TimeSpan startTime)
         {
             using (var connection = new MySqlConnection(_connectionString))
