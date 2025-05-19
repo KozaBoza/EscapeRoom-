@@ -15,7 +15,7 @@ using System.Windows.Controls;
 namespace EscapeRoom.ViewModels
 {
     internal class LoginViewModel : INotifyPropertyChanged
-    {
+    { //logowanie- sciagnelam z jakiego innego gith
         private string _username;
         private string _password;
         private string _errorMessage;

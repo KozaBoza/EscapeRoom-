@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EscapeRoom.ViewModels
 {
-    internal class ContactViewModel
+    class ContactViewModel
     {
+        ///???czy chcemy
     }
 }

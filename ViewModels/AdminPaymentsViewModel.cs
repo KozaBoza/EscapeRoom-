@@ -198,101 +198,10 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        private async void LoadPaymentsAsync()
-        {
-            try
-            {
-                IsBusy = true;
-                StatusMessage = "Loading payments...";
-                var payments = new Collection<Payment>();
-
-                Payments = new ObservableCollection<Payment>(payments);
-                decimal total = 0;
-                foreach (var payment in Payments)
-                {
-                    if (payment.Status == PaymentStatus.Completed)
-                    {
-                        total += payment.Amount;
-                    }
-                }
-                TotalAmount = total;
-
-                StatusMessage = $"Loaded {Payments.Count} payments.";
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = $"Error loading payments: {ex.Message}";
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
-        private async void UpdatePaymentStatus(PaymentStatus newStatus)
-        {
-            if (SelectedPayment == null) return;
-
-            try
-            {
-                IsBusy = true;
-                StatusMessage = $"Updating payment status to {newStatus}...";
-                bool success = true; 
-
-                if (success)
-                {
-                    SelectedPayment.Status = newStatus;
-                    StatusMessage = "Payment status updated successfully.";
-                    if (newStatus == PaymentStatus.Completed || newStatus == PaymentStatus.Refunded)
-                    {
-                        decimal total = 0;
-                        foreach (var payment in Payments)
-                        {
-                            if (payment.Status == PaymentStatus.Completed)
-                            {
-                                total += payment.Amount;
-                            }
-                        }
-                        TotalAmount = total;
-                    }
-                }
-                else
-                {
-                    StatusMessage = "Failed to update payment status.";
-                }
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = $"Error updating payment status: {ex.Message}";
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
-        private void ExportPaymentsReport()
-        {
-            try
-            {
-                IsBusy = true;
-                StatusMessage = "Exporting payments report...";
-                StatusMessage = "Payments report exported successfully.";
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = $"Error exporting payments report: {ex.Message}";
-            }
-            finally
-            {
-                IsBusy = false;
-            }
-        }
-
         private void ViewPaymentDetails()
         {
             if (SelectedPayment == null) return;
-            StatusMessage = $"Viewing details for payment #{SelectedPayment.Id}";
+            StatusMessage = $"details #{SelectedPayment.Id}";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

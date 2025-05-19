@@ -14,7 +14,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 
-//PYTANIE CZY ROBIMY PO ANGIELSKU
+//wstepnie
 namespace EscapeRoom.ViewModels
 {
     public class AccountViewModel : INotifyPropertyChanged
@@ -242,7 +242,7 @@ namespace EscapeRoom.ViewModels
                 IsBusy = true;
                 StatusMessage = "Changing password...";
                 bool success = true;
-                bool success = true; 
+                bool success = true;
 
                 if (success)
                 {
@@ -274,7 +274,7 @@ namespace EscapeRoom.ViewModels
 
             }
                 int userId = 1; //dozmiany 
-        }
+        
 
             catch (Exception ex)
             {
@@ -293,3 +293,4 @@ namespace EscapeRoom.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+}
