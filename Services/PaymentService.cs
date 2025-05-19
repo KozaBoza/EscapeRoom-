@@ -8,5 +8,6 @@ namespace EscapeRoom.Services
 {
     internal class PaymentService
     {
+        //platnosci
     }
 }
