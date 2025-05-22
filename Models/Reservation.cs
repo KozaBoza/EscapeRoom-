@@ -1,31 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
 namespace EscapeRoom.Models
 {
     public enum ReservationStatus
     {
-        Pending,
-        Confirmed,
-        Completed,
-        Cancelled
+        zarezerwowana,
+        odwolana,
+        zrealizowana
     }
 
+    [Table("Rezerwacje")]
     public class Reservation
     {
-        private int _id; //wlasnosci do negocjacji
-        private int _userId;
-        private int _roomId;
-        private DateTime _date;
-        private TimeSpan _startTime;
-        private int _participantsCount;
-        private ReservationStatus _status;
-        private DateTime _createdAt;
-        private bool _isPaid;
+        [Key]
+        [Column("rezerwacja_id")]
+        public int RezerwacjaId { get; set; }
 
-        private User _user;
-        private Room _room;
+        [Required]
+        [Column("uzytkownik_id")]
+        public int UzytkownikId { get; set; }
+
+        [Required]
+        [Column("pokoj_id")]
+        public int PokojId { get; set; }
+
+        [Required]
+        [Column("data_rozpoczecia")]
+        public DateTime DataRozpoczecia { get; set; }
+
+        [Required]
+        [Column("liczba_osob")]
+        public byte LiczbaOsob { get; set; }
+
+        [Required]
+        [Column("status")]
+        public ReservationStatus Status { get; set; } = ReservationStatus.zarezerwowana;
+
+        [Column("data_utworzenia")]
+        public DateTime DataUtworzenia { get; set; } = DateTime.Now;
+
+        [ForeignKey("UzytkownikId")]
+        public virtual User Uzytkownik { get; set; }
+
+        [ForeignKey("PokojId")]
+        public virtual Room Pokoj { get; set; }
 
     }
 }
