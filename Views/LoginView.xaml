@@ -3,22 +3,48 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:EscapeRoom.Helpers"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+
     <Grid Margin="40">
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
             <TextBlock Text="Logowanie" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
-            <TextBox PlaceholderText="Login" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
-            <PasswordBox Password="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+
+            <!-- Login TextBox -->
+            <StackPanel>
+                <TextBlock Text="Login" FontWeight="SemiBold"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,0,10"/>
+            </StackPanel>
+
+            <!-- PasswordBox workaround (no direct binding) -->
+            <StackPanel>
+                <TextBlock Text="Hasło" FontWeight="SemiBold"/>
+                <PasswordBox x:Name="PasswordInput" Margin="0,5,0,10"
+                             PasswordChanged="PasswordInput_PasswordChanged"/>
+            </StackPanel>
+
+            <!-- Error message -->
             <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,0,0,10"/>
+
+            <!-- Login button -->
             <Button Content="Zaloguj"
                     Command="{Binding LoginCommand}"
                     IsEnabled="{Binding CanLogin}"
                     Margin="0,0,0,10"/>
+
+            <!-- Additional links -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Rejestracja" Command="{Binding RegisterCommand}" Margin="0,0,10,0"/>
                 <Button Content="Nie pamiętam hasła" Command="{Binding ForgotPasswordCommand}"/>
             </StackPanel>
-            <ProgressBar IsIndeterminate="True" Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}" Height="4" Margin="0,10,0,0"/>
+
+            <!-- Loading progress -->
+            <ProgressBar IsIndeterminate="True"
+                         Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"
+                         Height="4" Margin="0,10,0,0"/>
         </StackPanel>
     </Grid>
 </UserControl>

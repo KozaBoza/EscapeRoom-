@@ -13,13 +13,11 @@ namespace EscapeRoom.Models
         private string _fullName;
         private string _email;
         private string _message;
-        private DateTime _submittedAt;
 
         public int Id => _id;
         public string FullName => _fullName;
         public string Email => _email;
         public string Message => _message;
-        public DateTime SubmittedAt => _submittedAt;
 
         public Contact(string fullName, string email, string message)
         {
@@ -27,7 +25,6 @@ namespace EscapeRoom.Models
             _fullName = fullName;
             _email = email;
             _message = message;
-            _submittedAt = DateTime.Now;
         }
 
         //konstruktor

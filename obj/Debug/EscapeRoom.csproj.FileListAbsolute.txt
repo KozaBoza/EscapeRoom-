@@ -9,3 +9,4 @@ C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom_MarkupCompile.lref
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\AdminDashboardView.baml
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\MainWindow.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\AdminDashboardView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ContactView.g.cs

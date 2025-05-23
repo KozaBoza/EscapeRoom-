@@ -6,41 +6,52 @@
         xmlns:vm="clr-namespace:EscapeRoom.ViewModels"
         xmlns:views="clr-namespace:EscapeRoom.Views"
         mc:Ignorable="d"
+        Title="Escape Room - Panel"
         Height="800" Width="1200"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanResize">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
     <DockPanel>
         <!-- Pasek nawigacyjny -->
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#EEE" HorizontalAlignment="Stretch">
-            <TextBlock Text="{Binding CurrentUserName}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,20,0"/>
-            <Button Content="Pokoje" Command="{Binding NavigateCommand}" CommandParameter="RoomView" Margin="0,0,10,0"/>
-            <Button Content="Rezerwacje" Command="{Binding NavigateCommand}" CommandParameter="ReservationView" Margin="0,0,10,0"/>
-            <Button Content="Płatności" Command="{Binding NavigateCommand}" CommandParameter="PaymentView" Margin="0,0,10,0"/>
-            <Button Content="Recenzje" Command="{Binding NavigateCommand}" CommandParameter="ReviewView" Margin="0,0,10,0"/>
-            <Button Content="Użytkownicy" Command="{Binding NavigateCommand}" CommandParameter="UserView" Margin="0,0,10,0"/>
-            <Button Content="Wyloguj" Command="{Binding LogoutCommand}" HorizontalAlignment="Right"/>
-        </StackPanel>
+        <Grid DockPanel.Dock="Top" Background="#EEE" Height="40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Obszar główny na wyświetlanie aktualnego widoku -->
+            <TextBlock Text="{Binding CurrentUserName}" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0" Grid.Column="0"/>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Pokoje" Command="{Binding NavigateCommand}" CommandParameter="RoomView" Margin="5,0"/>
+                <Button Content="Rezerwacje" Command="{Binding NavigateCommand}" CommandParameter="ReservationView" Margin="5,0"/>
+                <Button Content="Płatności" Command="{Binding NavigateCommand}" CommandParameter="PaymentView" Margin="5,0"/>
+                <Button Content="Recenzje" Command="{Binding NavigateCommand}" CommandParameter="ReviewView" Margin="5,0"/>
+                <Button Content="Użytkownicy" Command="{Binding NavigateCommand}" CommandParameter="UserView" Margin="5,0"/>
+            </StackPanel>
+
+            <Button Content="Wyloguj" Command="{Binding LogoutCommand}" Margin="10,0" Grid.Column="2" VerticalAlignment="Center"/>
+        </Grid>
+
+        <!-- Obszar główny na aktualny widok -->
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
-                <!-- DataTemplate dla RoomViewModel -->
                 <DataTemplate DataType="{x:Type vm:RoomViewModel}">
                     <views:RoomView/>
                 </DataTemplate>
-                <!-- DataTemplate dla ReservationViewModel -->
                 <DataTemplate DataType="{x:Type vm:ReservationViewModel}">
-                    <views:ReservationView/>
+                    <views:ReservationFormView/>
                 </DataTemplate>
-                <!-- DataTemplate dla PaymentViewModel -->
                 <DataTemplate DataType="{x:Type vm:PaymentViewModel}">
                     <views:PaymentView/>
                 </DataTemplate>
-                <!-- DataTemplate dla ReviewViewModel -->
                 <DataTemplate DataType="{x:Type vm:ReviewViewModel}">
                     <views:ReviewView/>
                 </DataTemplate>
-                <!-- DataTemplate dla UserViewModel -->
                 <DataTemplate DataType="{x:Type vm:UserViewModel}">
                     <views:UserView/>
                 </DataTemplate>

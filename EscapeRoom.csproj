@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
     <Compile Include="Helpers\EscapeRoomContext.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Services\AuthService.cs" />
