@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
-
 
 namespace EscapeRoom.ViewModels
 {
@@ -39,7 +27,14 @@ namespace EscapeRoom.ViewModels
         public int UzytkownikId
         {
             get => _user.UzytkownikId;
-            set => SetProperty(ref _user.UzytkownikId, value);
+            set
+            {
+                if (_user.UzytkownikId != value)
+                {
+                    _user.UzytkownikId = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public string Email
@@ -47,15 +42,26 @@ namespace EscapeRoom.ViewModels
             get => _user.Email;
             set
             {
-                if (SetProperty(ref _user.Email, value))
+                if (_user.Email != value)
+                {
+                    _user.Email = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
+                }
             }
         }
 
         public string HasloHash
         {
             get => _user.HasloHash;
-            set => SetProperty(ref _user.HasloHash, value);
+            set
+            {
+                if (_user.HasloHash != value)
+                {
+                    _user.HasloHash = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public string Imie
@@ -63,8 +69,12 @@ namespace EscapeRoom.ViewModels
             get => _user.Imie;
             set
             {
-                if (SetProperty(ref _user.Imie, value))
+                if (_user.Imie != value)
+                {
+                    _user.Imie = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
+                }
             }
         }
 
@@ -73,27 +83,52 @@ namespace EscapeRoom.ViewModels
             get => _user.Nazwisko;
             set
             {
-                if (SetProperty(ref _user.Nazwisko, value))
+                if (_user.Nazwisko != value)
+                {
+                    _user.Nazwisko = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
+                }
             }
         }
 
         public string Telefon
         {
             get => _user.Telefon;
-            set => SetProperty(ref _user.Telefon, value);
+            set
+            {
+                if (_user.Telefon != value)
+                {
+                    _user.Telefon = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public DateTime DataRejestracji
         {
             get => _user.DataRejestracji;
-            set => SetProperty(ref _user.DataRejestracji, value);
+            set
+            {
+                if (_user.DataRejestracji != value)
+                {
+                    _user.DataRejestracji = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public bool Admin
         {
             get => _user.Admin;
-            set => SetProperty(ref _user.Admin, value);
+            set
+            {
+                if (_user.Admin != value)
+                {
+                    _user.Admin = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public string PasswordConfirm
@@ -101,8 +136,12 @@ namespace EscapeRoom.ViewModels
             get => _passwordConfirm;
             set
             {
-                if (SetProperty(ref _passwordConfirm, value))
+                if (_passwordConfirm != value)
+                {
+                    _passwordConfirm = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
+                }
             }
         }
 
@@ -120,7 +159,7 @@ namespace EscapeRoom.ViewModels
 
         public User GetUser() => _user;
 
-        //komendy
+        // Komendy
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
         public ICommand EditCommand { get; }
@@ -130,7 +169,7 @@ namespace EscapeRoom.ViewModels
             if (IsValid)
             {
                 IsEditing = false;
-                //logika zapisu do bazy danych
+                // logika zapisu do bazy danych
             }
         }
 
@@ -146,7 +185,4 @@ namespace EscapeRoom.ViewModels
             IsEditing = true;
         }
     }
-
-
-}
 }

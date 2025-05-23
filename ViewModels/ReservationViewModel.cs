@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Windows;
 
 namespace EscapeRoom.ViewModels
 {
@@ -33,19 +26,40 @@ namespace EscapeRoom.ViewModels
         public int RezerwacjaId
         {
             get => _reservation.RezerwacjaId;
-            set => SetProperty(ref _reservation.RezerwacjaId, value);
+            set
+            {
+                if (_reservation.RezerwacjaId != value)
+                {
+                    _reservation.RezerwacjaId = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public int UzytkownikId
         {
             get => _reservation.UzytkownikId;
-            set => SetProperty(ref _reservation.UzytkownikId, value);
+            set
+            {
+                if (_reservation.UzytkownikId != value)
+                {
+                    _reservation.UzytkownikId = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public int PokojId
         {
             get => _reservation.PokojId;
-            set => SetProperty(ref _reservation.PokojId, value);
+            set
+            {
+                if (_reservation.PokojId != value)
+                {
+                    _reservation.PokojId = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public DateTime DataRozpoczecia
@@ -53,10 +67,13 @@ namespace EscapeRoom.ViewModels
             get => _reservation.DataRozpoczecia;
             set
             {
-                if (SetProperty(ref _reservation.DataRozpoczecia, value))
+                if (_reservation.DataRozpoczecia != value)
                 {
+                    _reservation.DataRozpoczecia = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
                     OnPropertyChanged(nameof(DataRozpoczeciaText));
+                    OnPropertyChanged(nameof(CanBeCancelled));
                 }
             }
         }
@@ -66,8 +83,12 @@ namespace EscapeRoom.ViewModels
             get => _reservation.LiczbaOsob;
             set
             {
-                if (SetProperty(ref _reservation.LiczbaOsob, value))
+                if (_reservation.LiczbaOsob != value)
+                {
+                    _reservation.LiczbaOsob = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
+                }
             }
         }
 
@@ -76,15 +97,27 @@ namespace EscapeRoom.ViewModels
             get => _reservation.Status;
             set
             {
-                if (SetProperty(ref _reservation.Status, value))
+                if (_reservation.Status != value)
+                {
+                    _reservation.Status = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(StatusText));
+                    OnPropertyChanged(nameof(CanBeCancelled));
+                }
             }
         }
 
         public DateTime DataUtworzenia
         {
             get => _reservation.DataUtworzenia;
-            set => SetProperty(ref _reservation.DataUtworzenia, value);
+            set
+            {
+                if (_reservation.DataUtworzenia != value)
+                {
+                    _reservation.DataUtworzenia = value;
+                    OnPropertyChanged();
+                }
+            }
         }
 
         public UserViewModel UserViewModel
@@ -96,7 +129,13 @@ namespace EscapeRoom.ViewModels
         public RoomViewModel RoomViewModel
         {
             get => _roomViewModel;
-            set => SetProperty(ref _roomViewModel, value);
+            set
+            {
+                if (SetProperty(ref _roomViewModel, value))
+                {
+                    OnPropertyChanged(nameof(IsValid));
+                }
+            }
         }
 
         // Obliczone właściwości
@@ -116,10 +155,11 @@ namespace EscapeRoom.ViewModels
         public string DataRozpoczeciaText => DataRozpoczecia.ToString("dd.MM.yyyy HH:mm");
 
         public bool CanBeCancelled => Status == ReservationStatus.zarezerwowana &&
-                                     DataRozpoczecia > DateTime.Now.AddHours(2);
+                                      DataRozpoczecia > DateTime.Now.AddHours(2);
 
         public Reservation GetReservation() => _reservation;
 
+        //komendy
         public ICommand ConfirmReservationCommand { get; }
         public ICommand CancelReservationCommand { get; }
 
@@ -128,7 +168,7 @@ namespace EscapeRoom.ViewModels
             if (IsValid)
             {
                 Status = ReservationStatus.zarezerwowana;
-                //logika
+                // logika potwierdzenia
             }
         }
 
@@ -137,10 +177,9 @@ namespace EscapeRoom.ViewModels
         private void CancelReservation(object parameter)
         {
             Status = ReservationStatus.odwolana;
-            //logika
+            // logika anulowania
         }
 
         private bool CanCancelReservation(object parameter) => CanBeCancelled;
     }
-}
 }

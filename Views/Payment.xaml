@@ -1,0 +1,29 @@
+<UserControl x:Class="EscapeRoom.Views.PaymentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="P³atnoœæ" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Text="Kwota:"/>
+            <TextBlock Text="{Binding AmountText}" FontWeight="Bold"/>
+            <TextBlock Text="Metoda:"/>
+            <TextBlock Text="{Binding MethodText}"/>
+            <TextBlock Text="Status:"/>
+            <TextBlock Text="{Binding StatusText}"/>
+            <TextBlock Text="Data p³atnoœci:"/>
+            <TextBlock Text="{Binding PaymentDateText}"/>
+            <TextBlock Text="Numer transakcji:"/>
+            <TextBlock Text="{Binding TransactionId}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button Content="Przetwórz p³atnoœæ"
+                        Command="{Binding ProcessPaymentCommand}"
+                        IsEnabled="{Binding CanBeProcessed}"
+                        Margin="0,0,10,0"/>
+                <Button Content="Zwrot"
+                        Command="{Binding RefundPaymentCommand}"
+                        IsEnabled="{Binding CanBeRefunded}"/>
+            </StackPanel>
+            <TextBlock Text="{Binding Notes}" Foreground="Gray" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

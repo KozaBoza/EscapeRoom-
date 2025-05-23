@@ -3,10 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:EscapeRoom"
+        xmlns:vm="clr-namespace:EscapeRoom.ViewModels"
+        xmlns:views="clr-namespace:EscapeRoom.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize">
+    <DockPanel>
+        <!-- Pasek nawigacyjny -->
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#EEE" HorizontalAlignment="Stretch">
+            <TextBlock Text="{Binding CurrentUserName}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,20,0"/>
+            <Button Content="Pokoje" Command="{Binding NavigateCommand}" CommandParameter="RoomView" Margin="0,0,10,0"/>
+            <Button Content="Rezerwacje" Command="{Binding NavigateCommand}" CommandParameter="ReservationView" Margin="0,0,10,0"/>
+            <Button Content="Płatności" Command="{Binding NavigateCommand}" CommandParameter="PaymentView" Margin="0,0,10,0"/>
+            <Button Content="Recenzje" Command="{Binding NavigateCommand}" CommandParameter="ReviewView" Margin="0,0,10,0"/>
+            <Button Content="Użytkownicy" Command="{Binding NavigateCommand}" CommandParameter="UserView" Margin="0,0,10,0"/>
+            <Button Content="Wyloguj" Command="{Binding LogoutCommand}" HorizontalAlignment="Right"/>
+        </StackPanel>
+
+        <!-- Obszar główny na wyświetlanie aktualnego widoku -->
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <!-- DataTemplate dla RoomViewModel -->
+                <DataTemplate DataType="{x:Type vm:RoomViewModel}">
+                    <views:RoomView/>
+                </DataTemplate>
+                <!-- DataTemplate dla ReservationViewModel -->
+                <DataTemplate DataType="{x:Type vm:ReservationViewModel}">
+                    <views:ReservationView/>
+                </DataTemplate>
+                <!-- DataTemplate dla PaymentViewModel -->
+                <DataTemplate DataType="{x:Type vm:PaymentViewModel}">
+                    <views:PaymentView/>
+                </DataTemplate>
+                <!-- DataTemplate dla ReviewViewModel -->
+                <DataTemplate DataType="{x:Type vm:ReviewViewModel}">
+                    <views:ReviewView/>
+                </DataTemplate>
+                <!-- DataTemplate dla UserViewModel -->
+                <DataTemplate DataType="{x:Type vm:UserViewModel}">
+                    <views:UserView/>
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </DockPanel>
 </Window>

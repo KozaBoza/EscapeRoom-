@@ -1,52 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
+using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Windows.Input;
-
 
 namespace EscapeRoom.ViewModels
 {
     public class PaymentViewModel : BaseViewModel
     {
-        private Payment _payment;
+        private int _id;
+        private int _reservationId;
+        private decimal _amount;
+        private PaymentStatus _status;
+        private PaymentMethod _method;
+        private DateTime _paymentDate;
+        private string _transactionId;
+        private string _notes;
 
         public PaymentViewModel()
         {
-            _payment = new Payment();
             ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
             RefundPaymentCommand = new RelayCommand(RefundPayment, CanRefundPayment);
         }
 
-        public PaymentViewModel(Payment payment) : this()
-        {
-            _payment = payment ?? new Payment();
-        }
-
         public int Id
         {
-            get => GetFieldValue<int>("_id");
-            set => SetFieldValue(value, "_id");
+            get => _id;
+            set => SetProperty(ref _id, value);
         }
 
         public int ReservationId
         {
-            get => GetFieldValue<int>("_reservationId");
-            set => SetFieldValue(value, "_reservationId");
+            get => _reservationId;
+            set => SetProperty(ref _reservationId, value);
         }
 
         public decimal Amount
         {
-            get => GetFieldValue<decimal>("_amount");
+            get => _amount;
             set
             {
-                if (SetFieldValue(value, "_amount"))
+                if (SetProperty(ref _amount, value))
                 {
                     OnPropertyChanged(nameof(AmountText));
                     OnPropertyChanged(nameof(IsValid));
@@ -56,66 +50,77 @@ namespace EscapeRoom.ViewModels
 
         public PaymentStatus Status
         {
-            get => GetFieldValue<PaymentStatus>("_status");
+            get => _status;
             set
             {
-                if (SetFieldValue(value, "_status"))
+                if (SetProperty(ref _status, value))
                     OnPropertyChanged(nameof(StatusText));
             }
         }
 
         public PaymentMethod Method
         {
-            get => GetFieldValue<PaymentMethod>("_method");
+            get => _method;
             set
             {
-                if (SetFieldValue(value, "_method"))
+                if (SetProperty(ref _method, value))
                     OnPropertyChanged(nameof(MethodText));
             }
         }
 
         public DateTime PaymentDate
         {
-            get => GetFieldValue<DateTime>("_paymentDate");
+            get => _paymentDate;
             set
             {
-                if (SetFieldValue(value, "_paymentDate"))
+                if (SetProperty(ref _paymentDate, value))
                     OnPropertyChanged(nameof(PaymentDateText));
             }
         }
 
         public string TransactionId
         {
-            get => GetFieldValue<string>("_transactionId");
-            set => SetFieldValue(value, "_transactionId");
+            get => _transactionId;
+            set => SetProperty(ref _transactionId, value);
         }
 
         public string Notes
         {
-            get => GetFieldValue<string>("_notes");
-            set => SetFieldValue(value, "_notes");
+            get => _notes;
+            set => SetProperty(ref _notes, value);
         }
 
-        // Obliczone właściwości
         public string AmountText => Amount.ToString("C");
 
-        public string StatusText => Status switch
+        public string StatusText
         {
-            PaymentStatus.Pending => "Oczekująca",
-            PaymentStatus.Completed => "Zakończona",
-            PaymentStatus.Failed => "Nieudana",
-            PaymentStatus.Refunded => "Zwrócona",
-            _ => "Nieznany"
-        };
+            get
+            {
+                switch (Status)
+                {
+                    case PaymentStatus.Pending: return "Oczekująca";
+                    case PaymentStatus.Completed: return "Zakończona";
+                    case PaymentStatus.Failed: return "Nieudana";
+                    case PaymentStatus.Refunded: return "Zwrócona";
+                    default: return "Nieznany";
+                }
+            }
+        }
 
-        public string MethodText => Method switch
+        public string MethodText
         {
-            PaymentMethod.CreditCard => "Karta kredytowa",
-            PaymentMethod.BankTransfer => "Przelew bankowy",
-            PaymentMethod.Cash => "Gotówka",
-            PaymentMethod.OnlinePayment => "Płatność online",
-            _ => "Nieznany"
-        };
+            get
+            {
+                switch (Method)
+                {
+                    case PaymentMethod.CreditCard: return "Karta kredytowa";
+                    case PaymentMethod.BankTransfer: return "Przelew bankowy";
+                    case PaymentMethod.Cash: return "Gotówka";
+                    case PaymentMethod.OnlinePayment: return "Płatność online";
+                    default: return "Nieznany";
+                }
+            }
+        }
 
         public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
 
@@ -124,7 +129,6 @@ namespace EscapeRoom.ViewModels
         public bool CanBeRefunded => Status == PaymentStatus.Completed;
         public bool CanBeProcessed => Status == PaymentStatus.Pending;
 
-        //komendy
         public ICommand ProcessPaymentCommand { get; }
         public ICommand RefundPaymentCommand { get; }
 
@@ -132,8 +136,7 @@ namespace EscapeRoom.ViewModels
         {
             Status = PaymentStatus.Completed;
             PaymentDate = DateTime.Now;
-            TransactionId = Guid.NewGuid().ToString("N")[..8].ToUpper();
-            //logika przetwarzania płatności
+            TransactionId = Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
         }
 
         private bool CanProcessPayment(object parameter) => CanBeProcessed && IsValid;
@@ -142,33 +145,37 @@ namespace EscapeRoom.ViewModels
         {
             Status = PaymentStatus.Refunded;
             Notes = $"Zwrot wykonany {DateTime.Now:dd.MM.yyyy HH:mm}";
-            //logika zwrotu płatności
         }
 
         private bool CanRefundPayment(object parameter) => CanBeRefunded;
 
-        //do pracy z prywatymi polami przez refleksję
-        private T GetFieldValue<T>(string fieldName)
+        public Payment GetPayment()
         {
-            var field = typeof(Payment).GetField(fieldName,
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            return field != null ? (T)field.GetValue(_payment) : default(T);
+            return new Payment
+            {
+                Id = this.Id,
+                ReservationId = this.ReservationId,
+                Amount = this.Amount,
+                Status = this.Status,
+                Method = this.Method,
+                PaymentDate = this.PaymentDate,
+                TransactionId = this.TransactionId,
+                Notes = this.Notes
+            };
         }
 
-        private bool SetFieldValue<T>(T value, string fieldName)
+        public void LoadFromPayment(Payment payment)
         {
-            var field = typeof(Payment).GetField(fieldName,
-                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
-            if (field != null)
-            {
-                var currentValue = (T)field.GetValue(_payment);
-                if (!Equals(currentValue, value))
-                {
-                    field.SetValue(_payment, value);
-                    return true;
-                }
-            }
-            return false;
+            if (payment == null) return;
+
+            Id = payment.Id;
+            ReservationId = payment.ReservationId;
+            Amount = payment.Amount;
+            Status = payment.Status;
+            Method = payment.Method;
+            PaymentDate = payment.PaymentDate;
+            TransactionId = payment.TransactionId;
+            Notes = payment.Notes;
         }
     }
 }

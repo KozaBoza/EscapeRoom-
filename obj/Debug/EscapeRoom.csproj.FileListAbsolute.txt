@@ -1,0 +1,11 @@
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom.csproj.AssemblyReference.cache
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\RoomView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\LoginView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\RoomView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\App.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom_MarkupCompile.cache
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom_MarkupCompile.lref
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\AdminDashboardView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\MainWindow.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\AdminDashboardView.g.cs

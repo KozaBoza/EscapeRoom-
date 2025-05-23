@@ -1,0 +1,25 @@
+<UserControl x:Class="EscapeRoom.Views.ReservationFormView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Rezerwacja pokoju" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBlock Text="Pokój:"/>
+            <TextBlock Text="{Binding RoomViewModel.Name}" FontWeight="Bold"/>
+            <TextBlock Text="Data rozpoczêcia:"/>
+            <DatePicker SelectedDate="{Binding DataRozpoczecia}" Margin="0,0,0,10"/>
+            <TextBlock Text="Liczba osób:"/>
+            <TextBox Text="{Binding LiczbaOsob}" Margin="0,0,0,10"/>
+            <TextBlock Text="Status:"/>
+            <TextBlock Text="{Binding StatusText}" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="PotwierdŸ"
+                        Command="{Binding ConfirmReservationCommand}"
+                        IsEnabled="{Binding IsValid}"
+                        Margin="0,0,10,0"/>
+                <Button Content="Anuluj"
+                        Command="{Binding CancelReservationCommand}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

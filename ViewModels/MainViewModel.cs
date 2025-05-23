@@ -160,9 +160,9 @@ namespace EscapeRoom.ViewModels
             //przykaldy
             //};
 
-            foreach (var room in sampleRooms)
+            //foreach (var room in sampleRooms)
             {
-                Rooms.Add(new RoomViewModel(room));
+            //    Rooms.Add(new RoomViewModel(room));
             }
         }
 

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using System.ComponentModel.DataAnnotations;
 
-//OBSŁUGA PŁATNOŚCI (potem wszystko opisze dokladniej) !!!BD MUSIALA TO POZMIENAIC BO TO SA VIEWMODELE
 namespace EscapeRoom.Models
 {
     public enum PaymentStatus
@@ -21,17 +19,28 @@ namespace EscapeRoom.Models
         OnlinePayment
     }
 
-    public class Payment 
+    public class Payment
     {
-        private int _id;
-        private int _reservationId;
-        private decimal _amount;
-        private PaymentStatus _status;
-        private PaymentMethod _method;
-        private DateTime _paymentDate;
-        private string _transactionId;
-        private string _notes;
-    }
+        [Key]
+        public int Id { get; set; }
 
-    //tutaj idk czy cos dodac jeszcze strukturalnie
+        [Required]
+        public int ReservationId { get; set; }
+
+        [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Kwota musi być większa od zera.")]
+        public decimal Amount { get; set; }
+
+        [Required]
+        public PaymentStatus Status { get; set; } = PaymentStatus.Pending;
+
+        [Required]
+        public PaymentMethod Method { get; set; }
+
+        public DateTime PaymentDate { get; set; } = DateTime.Now;
+
+        public string TransactionId { get; set; }
+
+        public string Notes { get; set; }
+    }
 }

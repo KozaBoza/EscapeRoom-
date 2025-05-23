@@ -60,25 +60,21 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\EscapeRoomContext.cs" />
+    <Compile Include="Models\Contact.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Services\PaymentService.cs" />
     <Compile Include="Services\ReservationService.cs" />
     <Compile Include="Services\RoomService.cs" />
-    <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\AdminDashboard.cs" />
-    <Compile Include="ViewModels\AdminPaymentsViewModel.cs" />
-    <Compile Include="ViewModels\AdminReservationsViewModel.cs" />
-    <Compile Include="ViewModels\AdminRooms.cs" />
-    <Compile Include="ViewModels\AdminUsersViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\PaymentViewModel.cs" />
     <Compile Include="ViewModels\ReservationViewModel.cs" />
-    <Compile Include="ViewModels\RoomDetailsViewModel.cs" />
-    <Compile Include="ViewModels\RoomListViewModel.cs" />
-    <Compile Include="ViewModels\SummaryViewModel.cs" />
+    <Compile Include="ViewModels\ReviewViewModel.cs" />
+    <Compile Include="ViewModels\RoomViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,49 +92,31 @@
     <Page Include="Resources\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Account.xaml">
+    <Page Include="Views\AdminDashboardView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Admin\Dashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\PaymentsAdmin.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\ReservationAdmin.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\RoomsAdmin.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Admin\UsersAdminPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Contact.xaml">
+    <Page Include="Views\ContactView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Homepage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Login.xaml">
+    <Page Include="Views\LoginView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Payment.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Register.xaml">
+    <Page Include="Views\ReservationFormView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Reservation.xaml">
+    <Page Include="Views\ReviewView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RoomDetails.xaml">
+    <Page Include="Views\RoomView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RoomsList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Summary.xaml">
+    <Page Include="Views\UserView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

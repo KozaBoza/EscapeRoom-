@@ -1,21 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using System.Collections.ObjectModel;
-using EscapeRoom.Models;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using EscapeRoom.Helpers;
-using EscapeRoom.Services;
-using System.Windows.Controls;
-
 
 namespace EscapeRoom.ViewModels
 {
-    internal class LoginViewModel : INotifyPropertyChanged
-    { //logowanie- sciagnelam z jakiego innego gith
+    public class LoginViewModel : BaseViewModel
+    {
         private string _username;
         private string _password;
         private string _errorMessage;
@@ -26,12 +19,8 @@ namespace EscapeRoom.ViewModels
             get => _username;
             set
             {
-                if (_username != value)
-                {
-                    _username = value;
-                    OnPropertyChanged();
+                if (SetProperty(ref _username, value))
                     OnPropertyChanged(nameof(CanLogin));
-                }
             }
         }
 
@@ -40,26 +29,15 @@ namespace EscapeRoom.ViewModels
             get => _password;
             set
             {
-                if (_password != value)
-                {
-                    _password = value;
-                    OnPropertyChanged();
+                if (SetProperty(ref _password, value))
                     OnPropertyChanged(nameof(CanLogin));
-                }
             }
         }
 
         public string ErrorMessage
         {
             get => _errorMessage;
-            set
-            {
-                if (_errorMessage != value)
-                {
-                    _errorMessage = value;
-                    OnPropertyChanged();
-                }
-            }
+            set => SetProperty(ref _errorMessage, value);
         }
 
         public bool IsLoading
@@ -67,27 +45,25 @@ namespace EscapeRoom.ViewModels
             get => _isLoading;
             set
             {
-                if (_isLoading != value)
-                {
-                    _isLoading = value;
-                    OnPropertyChanged();
+                if (SetProperty(ref _isLoading, value))
                     OnPropertyChanged(nameof(CanLogin));
-                }
             }
         }
 
-        public bool CanLogin => !string.IsNullOrWhiteSpace(Username) &&
-                                !string.IsNullOrWhiteSpace(Password) &&
-                                !IsLoading;
+        public bool CanLogin =>
+            !string.IsNullOrWhiteSpace(Username) &&
+            !string.IsNullOrWhiteSpace(Password) &&
+            !IsLoading;
 
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
         public ICommand ForgotPasswordCommand { get; }
+
         public event EventHandler<LoginEventArgs> LoginSuccessful;
 
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand(ExecuteLogin, param => CanLogin);
+            LoginCommand = new RelayCommand(ExecuteLogin, _ => CanLogin);
             RegisterCommand = new RelayCommand(ExecuteRegister);
             ForgotPasswordCommand = new RelayCommand(ExecuteForgotPassword);
         }
@@ -99,7 +75,8 @@ namespace EscapeRoom.ViewModels
 
             try
             {
-                await Task.Delay(1000);
+                await Task.Delay(1000); // symulacja autoryzacji
+
                 if (Username == "admin" && Password == "admin")
                 {
                     OnLoginSuccessful(new LoginEventArgs(Username, true));
@@ -110,12 +87,12 @@ namespace EscapeRoom.ViewModels
                 }
                 else
                 {
-                    ErrorMessage = "Invalid username or password";
+                    ErrorMessage = "Nieprawidłowa nazwa użytkownika lub hasło.";
                 }
             }
             catch (Exception ex)
             {
-                ErrorMessage = $"Login failed: {ex.Message}";
+                ErrorMessage = $"Błąd logowania: {ex.Message}";
             }
             finally
             {
@@ -125,22 +102,29 @@ namespace EscapeRoom.ViewModels
 
         private void ExecuteRegister(object parameter)
         {
+            // Możesz tutaj przekierować do widoku rejestracji
         }
 
         private void ExecuteForgotPassword(object parameter)
         {
+            //haslo przypomnienie
         }
 
         protected virtual void OnLoginSuccessful(LoginEventArgs e)
         {
             LoginSuccessful?.Invoke(this, e);
         }
+    }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+    public class LoginEventArgs : EventArgs
+    {
+        public string Username { get; }
+        public bool IsAdmin { get; }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        public LoginEventArgs(string username, bool isAdmin)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            Username = username;
+            IsAdmin = isAdmin;
         }
     }
 }
