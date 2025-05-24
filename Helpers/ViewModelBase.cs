@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
+using EscapeRoom.Helpers;
+using EscapeRoom.Models;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Data.Entity;
 
 namespace EscapeRoom.Helpers
 {
