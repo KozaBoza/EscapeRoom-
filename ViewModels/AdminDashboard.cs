@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+//using EscapeRoom.Models.Enums;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 {

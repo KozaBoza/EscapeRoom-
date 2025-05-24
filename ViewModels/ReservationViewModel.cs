@@ -144,13 +144,23 @@ namespace EscapeRoom.ViewModels
             LiczbaOsob > 0 &&
             (RoomViewModel?.MaxGraczy ?? 0) >= LiczbaOsob;
 
-        public string StatusText => Status switch
+        public string StatusText
         {
-            ReservationStatus.zarezerwowana => "Zarezerwowana",
-            ReservationStatus.odwolana => "Odwołana",
-            ReservationStatus.zrealizowana => "Zrealizowana",
-            _ => "Nieznany"
-        };
+            get
+            {
+                switch (Status)
+                {
+                    case ReservationStatus.zarezerwowana:
+                        return "Zarezerwowana";
+                    case ReservationStatus.odwolana:
+                        return "Odwołana";
+                    case ReservationStatus.zrealizowana:
+                        return "Zrealizowana";
+                    default:
+                        return "Nieznany";
+                }
+            }
+        }
 
         public string DataRozpoczeciaText => DataRozpoczecia.ToString("dd.MM.yyyy HH:mm");
 

@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Collections.Generic;
 
 
-namespace EscapeRoom.Helpers
+namespace EscapeRoom.Converters
 {
     public class BoolToVisibilityConverter : IValueConverter
     {

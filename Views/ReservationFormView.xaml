@@ -4,16 +4,16 @@
     <Grid Margin="20">
         <StackPanel>
             <TextBlock Text="Rezerwacja pokoju" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-            <TextBlock Text="Pokój:"/>
+            <TextBlock Text="Pokoj:"/>
             <TextBlock Text="{Binding RoomViewModel.Name}" FontWeight="Bold"/>
-            <TextBlock Text="Data rozpoczêcia:"/>
+            <TextBlock Text="Data rozpoczecia:"/>
             <DatePicker SelectedDate="{Binding DataRozpoczecia}" Margin="0,0,0,10"/>
-            <TextBlock Text="Liczba osób:"/>
+            <TextBlock Text="Liczba osob:"/>
             <TextBox Text="{Binding LiczbaOsob}" Margin="0,0,0,10"/>
             <TextBlock Text="Status:"/>
             <TextBlock Text="{Binding StatusText}" Margin="0,0,0,10"/>
             <StackPanel Orientation="Horizontal">
-                <Button Content="PotwierdŸ"
+                <Button Content="Potwierdz"
                         Command="{Binding ConfirmReservationCommand}"
                         IsEnabled="{Binding IsValid}"
                         Margin="0,0,10,0"/>

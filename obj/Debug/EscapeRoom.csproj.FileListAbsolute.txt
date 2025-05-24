@@ -10,3 +10,14 @@ C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\AdminDashboardView.baml
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\MainWindow.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\AdminDashboardView.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ContactView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\Homepage.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\Homepage.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\Payment.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\Payment.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReservationFormView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReservationFormView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReviewView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReviewView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\UserView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\UserView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Resources\Styles.baml

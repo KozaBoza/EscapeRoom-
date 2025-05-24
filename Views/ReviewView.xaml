@@ -8,11 +8,11 @@
             <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0"/>
             <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
             <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                <Button Content="Wyœlij recenzjê"
+                <Button Content="Wyslij"
                         Command="{Binding SubmitReviewCommand}"
                         IsEnabled="{Binding IsValid}"
                         Margin="0,0,8,0"/>
-                <Button Content="Usuñ"
+                <Button Content="Usun"
                         Command="{Binding DeleteReviewCommand}"
                         IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}"/>
             </StackPanel>

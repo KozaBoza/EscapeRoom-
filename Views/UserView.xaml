@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Grid Margin="24">
         <StackPanel>
-            <TextBlock Text="Dane u¿ytkownika" FontSize="18" FontWeight="Bold" Margin="0,0,0,14"/>
+            <TextBlock Text="Dane uzytkownika" FontSize="18" FontWeight="Bold" Margin="0,0,0,14"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
-                <TextBlock Text="Imiê:" Width="80"/>
+                <TextBlock Text="Imie:" Width="80"/>
                 <TextBox Text="{Binding Imie, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsEditing}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,6">

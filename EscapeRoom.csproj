@@ -59,14 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\BoolToVisibilityConverter.cs" />
+    <Compile Include="BoolToVisibilityConverter.cs" />
+    <Compile Include="GreaterThanZeroConverter.cs" />
     <Compile Include="Helpers\EscapeRoomContext.cs" />
+    <Compile Include="InverseBoolConverter.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Services\AuthService.cs" />
-    <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="Services\PaymentService.cs" />
-    <Compile Include="Services\ReservationService.cs" />
-    <Compile Include="Services\RoomService.cs" />
     <Compile Include="ViewModels\AdminDashboard.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -76,6 +73,15 @@
     <Compile Include="ViewModels\ReviewViewModel.cs" />
     <Compile Include="ViewModels\RoomViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="Views\ReviewView.xaml.cs">
+      <DependentUpon>ReviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoomView.xaml.cs">
+      <DependentUpon>RoomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -155,6 +161,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Converters\" />
     <Folder Include="Data\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
