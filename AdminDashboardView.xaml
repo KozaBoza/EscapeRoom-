@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
              xmlns:local="clr-namespace:EscapeRoom.Helpers"
-             Width="500" Height="300" Foreground="White">
+             Width="500" Height="300" Foreground="White"
+             Background="#5528c2"
+             FontFamily="Segoe UI Black">
     <UserControl.Resources>
         <controls:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>

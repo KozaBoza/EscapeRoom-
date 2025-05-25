@@ -1,21 +1,24 @@
 <UserControl x:Class="EscapeRoom.Views.ReviewView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Width="500" Height="300">
+             Width="500" Height="300"
+             Background="#5528c2"
+             FontFamily="Segoe UI Black"
+             Foreground="White" >
     <Border BorderBrush="LightGray" BorderThickness="1" Padding="12" Margin="8">
         <StackPanel>
             <TextBlock Text="{Binding UserViewModel.Imie}" FontWeight="Bold" />
             <TextBlock Text="{Binding RatingText}" Foreground="Goldenrod" Margin="0,2,0,0"/>
-            <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+            <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="129"/>
             <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
-            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
-                <Button Content="Wyslij"
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
+                <Button Content="WYŒLIJ"
                         Command="{Binding SubmitReviewCommand}"
                         IsEnabled="{Binding IsValid}"
-                        Margin="0,0,8,0"/>
-                <Button Content="Usun"
+                        Margin="0,0,8,0" Width="100" Height="38" BorderBrush="{x:Null}" Foreground="#FFFFF7F7" Background="#FF16A570"/>
+                <Button Content="USUÑ"
                         Command="{Binding DeleteReviewCommand}"
-                        IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}"/>
+                        IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}" Width="96" BorderBrush="{x:Null}" Foreground="#FFFFF0F0" Background="#FFF05541"/>
             </StackPanel>
         </StackPanel>
     </Border>

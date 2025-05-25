@@ -3,7 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 			 xmlns:local="clr-namespace:EscapeRoom.Views"
              xmlns:vm="clr-namespace:EscapeRoom.ViewModels"
-             Width="500" Height="300">
+             Width="500" Height="300"
+			 Background="#5528c2"
+             FontFamily="Segoe UI Black"
+             Foreground="White">
 	<Border BorderBrush="Gray" BorderThickness="1" Padding="16" Margin="8">
 		<StackPanel>
 			<TextBlock Text="{Binding Nazwa}" FontSize="18" FontWeight="Bold" Margin="0,0,0,6"/>

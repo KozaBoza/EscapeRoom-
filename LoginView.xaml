@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:EscapeRoom.Helpers"
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
              mc:Ignorable="d"
-             Width="500" Height="300" Foreground="White">
+             Width="500" Height="300" Foreground="White"
+             Background="#5528c2"
+             FontFamily="Segoe UI Black"
+>
     <UserControl.Resources>
         <controls:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>

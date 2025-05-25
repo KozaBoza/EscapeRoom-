@@ -37,10 +37,8 @@ namespace EscapeRoom.ViewModels
             NavigateCommand = new RelayCommand(Navigate);
             RefreshDataCommand = new RelayCommand(RefreshData);
 
-            // Ustawienie domyślnego widoku
             CurrentView = "Rooms";
 
-            // zaladowanie przykładowych danych
             LoadSampleData();
         }
 
@@ -118,6 +116,18 @@ namespace EscapeRoom.ViewModels
         }
 
         private bool CanLogout(object parameter) => IsLoggedIn;
+
+        private bool _isLogoutVisible = true;
+        public bool IsLogoutVisible
+        {
+            get => _isLogoutVisible;
+            set
+            {
+                _isLogoutVisible = value;
+                OnPropertyChanged(nameof(IsLogoutVisible));
+            }
+        }
+
 
         private void Register(object parameter)
         {

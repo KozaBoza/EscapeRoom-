@@ -1,7 +1,10 @@
 <UserControl x:Class="EscapeRoom.Views.Homepage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Width="500" Height="300">
+             Width="500" Height="300"
+             Background="#5528c2"
+             FontFamily="Segoe UI Black"
+             Foreground="White">
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Background="#EEE">
             <TextBlock Text="{Binding CurrentUserName}" FontWeight="Bold" Margin="0,0,20,0"/>
