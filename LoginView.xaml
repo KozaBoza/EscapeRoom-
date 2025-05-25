@@ -7,7 +7,7 @@
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
              mc:Ignorable="d"
              Width="500" Height="300" Foreground="White"
-             Background="#5528c2"
+             Background="#252525"
              FontFamily="Segoe UI Black"
 >
     <UserControl.Resources>
@@ -15,34 +15,31 @@
     </UserControl.Resources>
 
     <Grid Margin="40">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
-            <TextBlock Text="Logowanie" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="248" Height="220">
+            <TextBlock Text="LOGOWANIE" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center" Height="28"/>
 
             <!-- Login TextBox -->
             <StackPanel>
-                <TextBlock Text="Login" FontWeight="SemiBold"/>
-                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,0,10"/>
+                <TextBlock Text="LOGIN" FontWeight="SemiBold"/>
+                <TextBox Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" Margin="0,5,0,0" Height="18"/>
             </StackPanel>
-            
-            <StackPanel>
-                <TextBlock Text="Hasło" FontWeight="SemiBold"/>
-                <PasswordBox x:Name="PasswordInput" Margin="0,5,0,10"
+
+            <StackPanel Height="42">
+                <TextBlock Text="HASŁO" FontWeight="SemiBold"/>
+                <PasswordBox x:Name="PasswordInput" Margin="0,0,0,0"
                              PasswordChanged="PasswordInput_PasswordChanged"/>
             </StackPanel>
 
             <!-- Error message -->
-            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,0,0,10"/>
-
-            <Button Content="Zaloguj"
+            <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,0,0,0" Height="13"/>
+            <Button Content="ZALOGUJ"
                     Command="{Binding LoginCommand}"
                     IsEnabled="{Binding CanLogin}"
-                    Margin="0,0,0,10"/>
+                    Width="143" RenderTransformOrigin="0.525,0.626" Height="29" Foreground="#FF252525" BorderBrush="{x:Null}" Background="#FF16A470"
+                    />
+            <Button Content="REJESTRACJA" Command="{Binding RegisterCommand}" Width="143" Height="28" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF019CDF"/>
+            <Button Content="NIE PAMIĘTAM HASŁA" Command="{Binding ForgotPasswordCommand}" Height="31" Width="144" Foreground="#FF252525" Background="#FFF05541" BorderBrush="{x:Null}"/>
 
-            <!-- Additional links -->
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="Rejestracja" Command="{Binding RegisterCommand}" Margin="0,0,10,0"/>
-                <Button Content="Nie pamiętam hasła" Command="{Binding ForgotPasswordCommand}"/>
-            </StackPanel>
 
             <ProgressBar IsIndeterminate="True"
                          Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}"
