@@ -4,7 +4,7 @@ using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 
 namespace EscapeRoom.ViewModels
-{
+{ // podstrona dot. pojedynczego użytkownika
     public class UserViewModel : BaseViewModel
     {
         private User _user;
@@ -105,18 +105,6 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        public DateTime DataRejestracji
-        {
-            get => _user.DataRejestracji;
-            set
-            {
-                if (_user.DataRejestracji != value)
-                {
-                    _user.DataRejestracji = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
 
         public bool Admin
         {
@@ -159,7 +147,7 @@ namespace EscapeRoom.ViewModels
 
         public User GetUser() => _user;
 
-        // Komendy
+        // komendy
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
         public ICommand EditCommand { get; }

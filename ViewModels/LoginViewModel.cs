@@ -6,7 +6,7 @@ using System.Windows.Input;
 using EscapeRoom.Helpers;
 
 namespace EscapeRoom.ViewModels
-{
+{ //obsługa logowania
     public class LoginViewModel : BaseViewModel
     {
         private string _username;
@@ -102,7 +102,7 @@ namespace EscapeRoom.ViewModels
 
         private void ExecuteRegister(object parameter)
         {
-            // Możesz tutaj przekierować do widoku rejestracji
+            //opcja: przekierować do widoku rejestracji
         }
 
         private void ExecuteForgotPassword(object parameter)

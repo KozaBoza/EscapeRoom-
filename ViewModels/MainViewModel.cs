@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
 namespace EscapeRoom.ViewModels
-{
+{ //widok główny
     public class MainViewModel : BaseViewModel
     {
         private UserViewModel _currentUser;
@@ -38,7 +38,6 @@ namespace EscapeRoom.ViewModels
             RefreshDataCommand = new RelayCommand(RefreshData);
 
             CurrentView = "Rooms";
-
             LoadSampleData();
         }
 

@@ -7,7 +7,7 @@ using EscapeRoom.Models;
 
 
 namespace EscapeRoom.ViewModels
-{
+{ //opcjonalnie: social media
     public class ContactViewModel : BaseViewModel
     {
         private Contact _contact;
@@ -69,7 +69,7 @@ namespace EscapeRoom.ViewModels
         private void SubmitContact(object parameter)
         {
             SubmittedAt = DateTime.Now;
-            // tutaj można dodać logikę: zapis do bazy, wysyłka maila itd.
+            // tutaj można dodać logikę: zapis do bazy, wysyłanie maila...
         }
 
         private bool CanSubmitContact(object parameter) => CanSubmit;

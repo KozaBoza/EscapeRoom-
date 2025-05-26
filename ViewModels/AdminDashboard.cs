@@ -110,21 +110,18 @@ namespace EscapeRoom.ViewModels
 
         private async Task LoadDataAsync()
         {
-            try
+            try //symulator ładowania -- informacje dot. liczby pokoi etc.
             {
                 IsBusy = true;
                 StatusMessage = "Ładowanie danych...";
-
-                // Symulacja opóźnienia ładowania danych
                 await Task.Delay(1500);
 
-                // Tutaj powinna być logika pobierania danych z serwisów/bazy
-                // Poniżej przykładowe dane symulacyjne:
+                //przykładowe dane:
 
                 Rooms = new ObservableCollection<Room>
                 {
-                    new Room { PokojId = 1, Nazwa = "Pokój Tajemnic", MaxGraczy = 6 },
-                    new Room { PokojId = 2, Nazwa = "Pokój Detektywa", MaxGraczy = 4 }
+                    new Room { PokojId = 1, Nazwa = "Pokój 1", MaxGraczy = 6 },
+                    new Room { PokojId = 2, Nazwa = "Pokój 2", MaxGraczy = 4 }
                 };
                 TotalRooms = Rooms.Count;
                 ActiveRooms = 2;
@@ -143,7 +140,6 @@ namespace EscapeRoom.ViewModels
                     new User { UzytkownikId = 2, Imie = "Anna", Nazwisko = "Nowak" }
                 };
                 TotalUsers = 50;
-
                 TotalRevenue = 12345.67m;
 
                 StatusMessage = "Dane załadowane pomyślnie.";

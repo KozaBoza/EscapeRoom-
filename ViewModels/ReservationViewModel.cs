@@ -6,7 +6,7 @@ using EscapeRoom.Models;
 namespace EscapeRoom.ViewModels
 {
     public class ReservationViewModel : BaseViewModel
-    {
+    { //rezerwacja pokoju
         private Reservation _reservation;
         private UserViewModel _userViewModel;
         private RoomViewModel _roomViewModel;
@@ -58,22 +58,6 @@ namespace EscapeRoom.ViewModels
                 {
                     _reservation.PokojId = value;
                     OnPropertyChanged();
-                }
-            }
-        }
-
-        public DateTime DataRozpoczecia
-        {
-            get => _reservation.DataRozpoczecia;
-            set
-            {
-                if (_reservation.DataRozpoczecia != value)
-                {
-                    _reservation.DataRozpoczecia = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged(nameof(IsValid));
-                    OnPropertyChanged(nameof(DataRozpoczeciaText));
-                    OnPropertyChanged(nameof(CanBeCancelled));
                 }
             }
         }
@@ -140,7 +124,6 @@ namespace EscapeRoom.ViewModels
 
         // Obliczone właściwości
         public bool IsValid =>
-            DataRozpoczecia > DateTime.Now &&
             LiczbaOsob > 0 &&
             (RoomViewModel?.MaxGraczy ?? 0) >= LiczbaOsob;
 
@@ -162,11 +145,7 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        public string DataRozpoczeciaText => DataRozpoczecia.ToString("dd.MM.yyyy HH:mm");
-
-        public bool CanBeCancelled => Status == ReservationStatus.zarezerwowana &&
-                                      DataRozpoczecia > DateTime.Now.AddHours(2);
-
+        public bool CanBeCancelled => Status == ReservationStatus.zarezerwowana;
         public Reservation GetReservation() => _reservation;
 
         //komendy

@@ -4,7 +4,7 @@ using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 
 namespace EscapeRoom.ViewModels
-{
+{ //podstrona dot. pojedynczego pokoju
     public class RoomViewModel : BaseViewModel
     {
         private Room _room;
@@ -133,7 +133,7 @@ namespace EscapeRoom.ViewModels
 
         private void BookRoom(object parameter)
         {
-            // Logika rezerwacji pokoju
+            //rezerwacja
         }
 
         private bool CanBookRoom(object parameter) => true;
