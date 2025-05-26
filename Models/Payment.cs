@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-
+//obsługa płatności
 namespace EscapeRoom.Models
 {
     public enum PaymentStatus

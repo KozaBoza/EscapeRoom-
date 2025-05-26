@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace EscapeRoom.Models
 {
     public class Contact
-    {
+    { //dane do kontaktu mailowego etc
         private int _id;
         private string _fullName;
         private string _email;

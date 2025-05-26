@@ -28,8 +28,6 @@ namespace EscapeRoom.Helpers
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            // usuniece konwencji liczby mnogiej (np. "Users" => "User")
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             // tabela i kolumna

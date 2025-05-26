@@ -3,6 +3,50 @@
   "WorkspaceRootPath": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\users\\talia\\source\\repos\\escaperoom-\\admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -11,56 +55,12 @@
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:userview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\users\\talia\\source\\repos\\escaperoom-\\admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\greaterthanzeroconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:greaterthanzeroconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -250,7 +250,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 148,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -263,79 +263,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ReviewView.xaml",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReviewView.xaml",
-              "RelativeDocumentMoniker": "ReviewView.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReviewView.xaml*",
-              "RelativeToolTip": "ReviewView.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T16:47:22.516Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RoomView.xaml",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\RoomView.xaml",
-              "RelativeDocumentMoniker": "RoomView.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\RoomView.xaml",
-              "RelativeToolTip": "RoomView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T18:32:29.859Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserView.xaml",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml",
-              "RelativeDocumentMoniker": "UserView.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml*",
-              "RelativeToolTip": "UserView.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T17:15:29.661Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserView.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml.cs",
-              "RelativeDocumentMoniker": "UserView.xaml.cs",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml.cs*",
-              "RelativeToolTip": "UserView.xaml.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T16:47:03.214Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ReservationFormView.xaml",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml",
-              "RelativeDocumentMoniker": "ReservationFormView.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml*",
-              "RelativeToolTip": "ReservationFormView.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T16:59:22.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PaymentView.xaml",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\PaymentView.xaml",
-              "RelativeDocumentMoniker": "PaymentView.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\PaymentView.xaml",
-              "RelativeToolTip": "PaymentView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T16:45:29.999Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "Homepage.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Homepage.xaml",
               "RelativeDocumentMoniker": "Homepage.xaml",
@@ -347,19 +274,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 2,
               "Title": "ContactView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ContactView.xaml",
               "RelativeDocumentMoniker": "ContactView.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ContactView.xaml*",
-              "RelativeToolTip": "ContactView.xaml*",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ContactView.xaml",
+              "RelativeToolTip": "ContactView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T16:51:36.617Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
+              "Title": "BoolToVisibilityConverter.cs",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\BoolToVisibilityConverter.cs",
+              "RelativeDocumentMoniker": "BoolToVisibilityConverter.cs",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\BoolToVisibilityConverter.cs",
+              "RelativeToolTip": "BoolToVisibilityConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T12:22:00.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminDashboardView.xaml",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml",
+              "RelativeDocumentMoniker": "AdminDashboardView.xaml",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml",
+              "RelativeToolTip": "AdminDashboardView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T16:26:15.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "LoginView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\LoginView.xaml",
               "RelativeDocumentMoniker": "LoginView.xaml",
@@ -371,31 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AdminDashboardView.xaml",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml",
-              "RelativeDocumentMoniker": "AdminDashboardView.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml*",
-              "RelativeToolTip": "AdminDashboardView.xaml*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T16:26:15.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "GreaterThanZeroConverter.cs",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\GreaterThanZeroConverter.cs",
-              "RelativeDocumentMoniker": "GreaterThanZeroConverter.cs",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\GreaterThanZeroConverter.cs",
-              "RelativeToolTip": "GreaterThanZeroConverter.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAwwAoAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T12:21:49.923Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -407,19 +335,105 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "BoolToVisibilityConverter.cs",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\BoolToVisibilityConverter.cs",
-              "RelativeDocumentMoniker": "BoolToVisibilityConverter.cs",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\BoolToVisibilityConverter.cs",
-              "RelativeToolTip": "BoolToVisibilityConverter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T12:22:00.455Z"
+              "DocumentIndex": 6,
+              "Title": "PaymentView.xaml",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\PaymentView.xaml",
+              "RelativeDocumentMoniker": "PaymentView.xaml",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\PaymentView.xaml",
+              "RelativeToolTip": "PaymentView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T16:45:29.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ReservationFormView.xaml",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml",
+              "RelativeDocumentMoniker": "ReservationFormView.xaml",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml",
+              "RelativeToolTip": "ReservationFormView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T16:59:22.263Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\packages.config",
+              "RelativeDocumentMoniker": "packages.config",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\packages.config",
+              "RelativeToolTip": "packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-05-24T17:00:07.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReviewView.xaml",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReviewView.xaml",
+              "RelativeDocumentMoniker": "ReviewView.xaml",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ReviewView.xaml",
+              "RelativeToolTip": "ReviewView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T16:47:22.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RoomView.xaml",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\RoomView.xaml",
+              "RelativeDocumentMoniker": "RoomView.xaml",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\RoomView.xaml",
+              "RelativeToolTip": "RoomView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T18:32:29.859Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "UserView.xaml",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml",
+              "RelativeDocumentMoniker": "UserView.xaml",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml",
+              "RelativeToolTip": "UserView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T17:15:29.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml.cs",
+              "RelativeDocumentMoniker": "UserView.xaml.cs",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\UserView.xaml.cs",
+              "RelativeToolTip": "UserView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T16:47:03.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "GreaterThanZeroConverter.cs",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\GreaterThanZeroConverter.cs",
+              "RelativeDocumentMoniker": "GreaterThanZeroConverter.cs",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\GreaterThanZeroConverter.cs",
+              "RelativeToolTip": "GreaterThanZeroConverter.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAwwAoAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T12:21:49.923Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "App.config",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\App.config",
               "RelativeDocumentMoniker": "App.config",
@@ -429,18 +443,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2025-05-24T17:11:30.203Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "packages.config",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\packages.config",
-              "RelativeDocumentMoniker": "packages.config",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\packages.config",
-              "RelativeToolTip": "packages.config",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-05-24T17:00:07.021Z"
             },
             {
               "$type": "Document",

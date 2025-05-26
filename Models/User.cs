@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 //using Microsoft.EntityFrameworkCore;
 
 namespace EscapeRoom.Models
-{
+{ //obsługa konta, trzeba przemyśleć jeszcze jak to zrobić
     [Table("Uzytkownicy")]
     public class User
     {
