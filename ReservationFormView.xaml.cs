@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 
 namespace EscapeRoom.Views
-{
+{ //obsługa przycisków
     public partial class ReservationFormView
     {
         public ReservationFormView()
@@ -20,10 +20,7 @@ namespace EscapeRoom.Views
         }
         private void OnSubmitButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Logic to handle the submission of the reservation form
-            // This could involve validating input, saving data, etc.
-            // For now, we will just show a message box as a placeholder.
-            System.Windows.MessageBox.Show("Reservation submitted successfully!");
+            System.Windows.MessageBox.Show("Reservation submitted");
         }
     }
 }

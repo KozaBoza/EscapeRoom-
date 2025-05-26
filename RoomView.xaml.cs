@@ -4,7 +4,7 @@ using EscapeRoom.Models;
 using System.Windows.Media;
 
 namespace EscapeRoom.Views
-{
+{ //miejsce na zdjęcie + obłsuga przycisków
     public partial class RoomView : UserControl
     {
         public RoomView()

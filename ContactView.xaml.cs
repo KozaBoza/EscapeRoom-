@@ -9,7 +9,7 @@ using EscapeRoom.Models;
 using System.Windows.Media;
 
 namespace EscapeRoom.Views
-{
+{ //obsłużyc przyciski i poprawić errormessage etc
     public partial class ContactView : UserControl
     {
         public ContactView()
@@ -18,10 +18,8 @@ namespace EscapeRoom.Views
         }
         private void OnSendButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            // Logic to handle the sending of the contact form
-            // This could involve validating input, saving data, etc.
-            // For now, we will just show a message box as a placeholder.
-            System.Windows.MessageBox.Show("Message sent successfully!");
+
+            System.Windows.MessageBox.Show("Message sent");
         }
     }
 }

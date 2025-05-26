@@ -8,6 +8,7 @@ using System.Windows.Media;
 using EscapeRoom.ViewModels;
 using EscapeRoom.Models;
 
+//obsługa przycisków etc
 namespace EscapeRoom.Views
 {
     public partial class PaymentView:UserControl

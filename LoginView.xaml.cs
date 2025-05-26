@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows;
 
 namespace EscapeRoom.Views
-{
+{ //obsluga przycisków, error message
     public partial class LoginView : UserControl
     {
         public LoginView()
@@ -20,7 +20,7 @@ namespace EscapeRoom.Views
         private void OnLoginButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
 
-            System.Windows.MessageBox.Show("Login button clicked!");
+            System.Windows.MessageBox.Show("Login button");
         }
 
         private void PasswordInput_PasswordChanged(object sender, RoutedEventArgs e)

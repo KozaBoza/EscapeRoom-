@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 
 namespace EscapeRoom.Views
-{
+{ //trzeba obsłużyc jescze te przyciski
     public partial class AdminDashboardView : UserControl
     {
         public AdminDashboardView()
@@ -19,12 +19,12 @@ namespace EscapeRoom.Views
         }
         private void OnAddRoomButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show("Add Room button clicked!");
+            System.Windows.MessageBox.Show("Add Room");
         }
         private void OnViewReservationsButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
 
-            System.Windows.MessageBox.Show("View Reservations button clicked!");
+            System.Windows.MessageBox.Show("View Reservations");
         }
     }
 }

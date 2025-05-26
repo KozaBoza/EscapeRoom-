@@ -16,15 +16,15 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="  LICZBA POKOI: " FontWeight="Bold" Width="117"/>
-                <TextBlock Text="{Binding TotalRooms}" Margin="5,0"/>
-                <TextBlock Text="(AKTYWNYCH: " FontWeight="Bold"/>
+                <TextBlock Text="{Binding TotalRooms}" Margin="5,0,20,0"/>
+                <TextBlock Text="  AKTYWNYCH: " FontWeight="Bold"/>
                 <TextBlock Text="{Binding ActiveRooms}" Margin="2,0"/>
-                <TextBlock Text=")"/>
+                
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="2,0,0,10" Width="307" Background="#FF1D1D1E">
-                <TextBlock Text="REZERWACJE: " FontWeight="Bold" Margin="5,8,0,8" Width="84"/>
-                <TextBlock Text="OCZEKUJĄCE: " Margin="8,8,0,8" Width="88"/>
+            <StackPanel Orientation="Horizontal" Margin="2,0,0,10" Width="320" Background="#FF1D1D1E">
+                <TextBlock Text="REZERWACJE: "  Margin="5,8,6,8" Width="84"/>
+                <TextBlock Text="OCZEKUJĄCE: " Margin="8,8,6,8" Width="88"/>
                 <TextBlock Text="{Binding PendingReservations}" Margin="2,0"/>
                 <TextBlock Text="ZATWIERDZONE: " Margin="0,8,20,8" Width="111" />
                 <TextBlock Text="{Binding ConfirmedReservations}" Margin="2,0"/>
