@@ -13,11 +13,11 @@
             <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="129" Width="203" Background="#FF1E1D1D"/>
             <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
-                <Button Content="WYŒLIJ"
+                <Button Content="WYSLIJ"
                         Command="{Binding SubmitReviewCommand}"
                         IsEnabled="{Binding IsValid}"
                         Margin="0,0,8,0" Width="100" Height="38" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF16A570"/>
-                <Button Content="USUÑ"
+                <Button Content="USUN"
                         Command="{Binding DeleteReviewCommand}"
                         IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}" Width="96" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFF05541"/>
             </StackPanel>

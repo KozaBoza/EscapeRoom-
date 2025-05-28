@@ -78,14 +78,12 @@
     </Compile>
     <Compile Include="GreaterThanZeroConverter.cs" />
     <Compile Include="Helpers\EscapeRoomContext.cs" />
-    <Compile Include="Homepage.xaml.cs">
-      <DependentUpon>Homepage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="InverseBoolConverter.cs" />
     <Compile Include="LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="NavigationService.cs" />
     <Compile Include="PaymentView.xaml.cs">
       <DependentUpon>PaymentView.xaml</DependentUpon>
     </Compile>
@@ -131,9 +129,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ContactView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Homepage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginView.xaml">

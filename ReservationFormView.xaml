@@ -17,7 +17,7 @@
             <TextBlock Text="STATUS:"/>
             <TextBlock Text="{Binding StatusText}" Margin="0,0,0,10"/>
             <StackPanel Orientation="Horizontal">
-                <Button Content="POTWIERD"
+                <Button Content="POTWIERDZ"
                         Command="{Binding ConfirmReservationCommand}"
                         IsEnabled="{Binding IsValid}"
                         Margin="0,0,5,0" Width="97" Height="34" BorderBrush="{x:Null}" Background="#FF16A570" Foreground="#FFF4EAEA"/>

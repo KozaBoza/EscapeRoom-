@@ -6,14 +6,14 @@
              Foreground="White">
     <Grid Margin="20">
         <StackPanel Margin="103,0,88,0" >
-            <TextBlock Text="P£ATNOŒÆ" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Width="260" Foreground="#FF1F1F1F" Background="#FFF96297" Height="28"/>
+            <TextBlock Text="PLATNOSC" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Width="260" Foreground="#FF1F1F1F" Background="#FFF96297" Height="28"/>
             <TextBlock Text="KWOTA:"/>
             <TextBlock Text="{Binding AmountText}" FontWeight="Bold"/>
             <TextBlock Text="METODA:"/>
             <TextBlock Text="{Binding MethodText}"/>
             <TextBlock Text="STATUS:"/>
             <TextBlock Text="{Binding StatusText}"/>
-            <TextBlock Text="DATA P£ATNOŒCI:"/>
+            <TextBlock Text="DATA PLATNOSCI:"/>
             <TextBlock Text="{Binding PaymentDateText}"/>
             <TextBlock Text="NUMER TRANSAKCJI:"/>
             <TextBlock Text="{Binding TransactionId}"/>
