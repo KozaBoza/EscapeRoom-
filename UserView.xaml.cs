@@ -69,7 +69,7 @@ namespace EscapeRoom.Views
 
             if (result == System.Windows.MessageBoxResult.Yes)
             {
-                NavigationService.Instance.NavigateTo(ViewType.Homepage);
+                ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
             }
         }
 

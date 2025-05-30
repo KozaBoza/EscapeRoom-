@@ -16,10 +16,10 @@ namespace EscapeRoom.Services
         User
     }
 
-    public class NavigationService : INotifyPropertyChanged
+    public class ViewNavigationService : INotifyPropertyChanged
     {
-        private static NavigationService _instance;
-        public static NavigationService Instance => _instance =new NavigationService();
+        private static ViewNavigationService _instance;
+        public static ViewNavigationService Instance => _instance ?? (_instance = new ViewNavigationService());
 
         private ViewType _currentView = ViewType.Homepage;
         public ViewType CurrentView
@@ -41,6 +41,12 @@ namespace EscapeRoom.Services
 
         public void NavigateTo(ViewType viewType)
         {
+    if (viewType == ViewType.Homepage)
+            {
+                CurrentView = ViewType.Homepage;
+                return;
+            }
+
             CurrentView = viewType;
         }
 

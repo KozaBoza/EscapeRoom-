@@ -22,7 +22,7 @@ namespace EscapeRoom.Views
 
         private void OnReserveRoomButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.ReservationForm);
+            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm);
         }
 
         private void OnViewDetailsButtonClick(object sender, System.Windows.RoutedEventArgs e)
@@ -36,7 +36,7 @@ namespace EscapeRoom.Views
 
         private void OnBackButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Homepage);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private void OnFilterButtonClick(object sender, System.Windows.RoutedEventArgs e)

@@ -45,13 +45,13 @@ namespace EscapeRoom.Views
                     {
                         System.Windows.MessageBox.Show("Zalogowano jako administrator!",
                             "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-                        NavigationService.Instance.NavigateTo(ViewType.AdminDashboard);
+                        ViewNavigationService.Instance.NavigateTo(ViewType.AdminDashboard);
                     }
                     else
                     {
                         System.Windows.MessageBox.Show("Zalogowano pomyślnie!",
                             "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-                        NavigationService.Instance.NavigateTo(ViewType.User);
+                        ViewNavigationService.Instance.NavigateTo(ViewType.User);
                     }
                 }
                 else
@@ -74,7 +74,7 @@ namespace EscapeRoom.Views
 
         private void OnBackButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Homepage);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private void PasswordInput_PasswordChanged(object sender, RoutedEventArgs e)

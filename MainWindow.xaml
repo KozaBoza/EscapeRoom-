@@ -41,7 +41,7 @@
             </StackPanel>
 
             <Button Content="WYLOGUJ" Command="{Binding LogoutCommand}" Margin="273,54,91,0" Grid.Column="1" VerticalAlignment="Top" Height="82" RenderTransformOrigin="-2.387,2.77"
-                     Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FFFBBE53" Foreground="#252525" Click="Button_Click"/>
+                     Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FFFBBE53" Foreground="#252525" />
         </Grid>
 
         <ContentControl Content="{Binding CurrentViewModel}">

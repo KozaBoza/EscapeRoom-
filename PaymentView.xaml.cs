@@ -46,7 +46,7 @@ namespace EscapeRoom.Views
 
         private void OnBackButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.ReservationForm);
+            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm);
         }
 
         private bool ValidatePaymentForm()
@@ -90,7 +90,7 @@ namespace EscapeRoom.Views
                 "Sukces",
                 System.Windows.MessageBoxButton.OK,
                 System.Windows.MessageBoxImage.Information);
-            NavigationService.Instance.NavigateTo(ViewType.Homepage);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private string GetTextBoxValue(string textBoxName)

@@ -42,7 +42,7 @@ namespace EscapeRoom.Views
 
                     if (result == System.Windows.MessageBoxResult.Yes)
                     {
-                        NavigationService.Instance.NavigateTo(ViewType.Payment);
+                        ViewNavigationService.Instance.NavigateTo(ViewType.Payment);
                     }
                 }
             }
@@ -54,7 +54,7 @@ namespace EscapeRoom.Views
 
         private void OnBackButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Homepage);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private bool ValidateReservationForm()

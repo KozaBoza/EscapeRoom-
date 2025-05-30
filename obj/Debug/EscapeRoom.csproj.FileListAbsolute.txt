@@ -8,7 +8,6 @@ C:\Users\talia\Source\Repos\EscapeRoom-\bin\Debug\EntityFramework.xml
 C:\Users\talia\Source\Repos\EscapeRoom-\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom.csproj.AssemblyReference.cache
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Resources\Styles.baml
-C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Homepage.baml
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\PaymentView.baml
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\ReservationFormView.baml
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\ReviewView.baml
@@ -16,7 +15,6 @@ C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\UserView.baml
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\MainWindow.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\AdminDashboardView.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\ContactView.g.cs
-C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Homepage.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\LoginView.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\PaymentView.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\ReservationFormView.g.cs

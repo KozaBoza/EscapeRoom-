@@ -48,12 +48,12 @@ namespace EscapeRoom.Views
 
         private void OnManageRoomsButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Room);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Room);
         }
 
         private void OnViewUsersButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.User);
+            ViewNavigationService.Instance.NavigateTo(ViewType.User);
         }
 
     }

@@ -28,7 +28,7 @@ namespace EscapeRoom.Views
 
         private void InitializeNavigation()
         {
-            NavigationService.Instance.ViewChanged += OnViewChanged;
+            ViewNavigationService.Instance.ViewChanged += OnViewChanged;
         }
 
         private void OnViewChanged(ViewType newView)
@@ -67,27 +67,27 @@ namespace EscapeRoom.Views
 
         private void OnContactButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Contact);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Contact);
         }
 
         private void OnReservationButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.ReservationForm);
+            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm);
         }
 
         private void OnLoginButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Login);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Login);
         }
 
         private void OnRoomsButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Room);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Room);
         }
 
         private void OnReviewsButtonClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Review);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Review);
         }
 
         private void OnAboutButtonClick(object sender, RoutedEventArgs e)
@@ -193,7 +193,7 @@ namespace EscapeRoom.Views
 
         protected override void OnClosed(EventArgs e)
         {
-            NavigationService.Instance.ViewChanged -= OnViewChanged;
+            ViewNavigationService.Instance.ViewChanged -= OnViewChanged;
             base.OnClosed(e);
         }
 

@@ -56,7 +56,7 @@ namespace EscapeRoom.Views
 
         private void OnBackButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Instance.NavigateTo(ViewType.Homepage);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private string GetTextBoxValue(string textBoxName)
