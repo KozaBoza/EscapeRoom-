@@ -17,13 +17,15 @@ using EscapeRoom.Models;
 using EscapeRoom.Services;
 
 namespace EscapeRoom.Views
-{ //do poprawy
+{
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
             InitializeNavigation();
+            // Initially navigate to the Homepage or LoginView as needed
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private void InitializeNavigation()
@@ -33,35 +35,50 @@ namespace EscapeRoom.Views
 
         private void OnViewChanged(ViewType newView)
         {
+            UserControl newViewControl = null;
             switch (newView)
             {
                 case ViewType.Homepage:
                     this.Title = "Escape Room - Strona główna";
+                    
                     break;
                 case ViewType.Login:
                     this.Title = "Escape Room - Logowanie";
+                    newViewControl = new LoginView();
                     break;
                 case ViewType.AdminDashboard:
                     this.Title = "Escape Room - Panel administratora";
+                    newViewControl = new AdminDashboardView();
                     break;
                 case ViewType.ReservationForm:
                     this.Title = "Escape Room - Rezerwacja";
+                    newViewControl = new ReservationFormView(); 
                     break;
                 case ViewType.Contact:
                     this.Title = "Escape Room - Kontakt";
+                    newViewControl = new ContactView();
                     break;
                 case ViewType.Payment:
                     this.Title = "Escape Room - Płatność";
+                    newViewControl = new PaymentView();
                     break;
                 case ViewType.Room:
                     this.Title = "Escape Room - Pokoje";
+                    newViewControl = new RoomView();
                     break;
                 case ViewType.Review:
                     this.Title = "Escape Room - Opinie";
+                    newViewControl = new ReviewView();
                     break;
                 case ViewType.User:
                     this.Title = "Escape Room - Panel użytkownika";
+                    newViewControl = new UserView();
                     break;
+            }
+
+            if (newViewControl != null)
+            {
+                MainContentControl.Content = newViewControl;
             }
         }
 
@@ -93,11 +110,7 @@ namespace EscapeRoom.Views
         private void OnAboutButtonClick(object sender, RoutedEventArgs e)
         {
             System.Windows.MessageBox.Show(
-                "Escape Room - Najlepsze pokoje zagadek w mieście!\n\n" +
-                "Oferujemy różnorodne tematyczne pokoje z zagadkami,\n" +
-                "które sprawdzą Twoje umiejętności logicznego myślenia\n" +
-                "i pracy w zespole.\n\n" +
-                "Zapraszamy na niezapomnianą przygodę!",
+                "",
                 "O nas",
                 MessageBoxButton.OK,
                 MessageBoxImage.Information);
@@ -105,7 +118,7 @@ namespace EscapeRoom.Views
 
         private void OnHomeButtonClick(object sender, RoutedEventArgs e)
         {
-            this.Title = "Escape Room - Strona główna";
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -162,7 +175,7 @@ namespace EscapeRoom.Views
                 "• Aby dokonać rezerwacji, kliknij 'Rezerwacja'\n" +
                 "• Aby zobaczyć nasze pokoje, kliknij 'Pokoje'\n" +
                 "• Aby się zalogować, kliknij 'Logowanie'\n" +
-                "• W razie pytań, skontaktuj się z nami\n\n" +
+                "• W razie pytań, skontaktuj się\n\n" +
                 "Życzymy udanej gry!",
                 "Pomoc",
                 MessageBoxButton.OK,

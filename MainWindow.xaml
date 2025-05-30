@@ -11,8 +11,8 @@
         WindowStartupLocation="CenterScreen"
         Background="#252525"
         Foreground="White"
-        FontFamily="Segoe UI Black">
-
+        FontFamily="Segoe UI Black"
+        Closing="Window_Closing">
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
@@ -20,6 +20,21 @@
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </Window.Resources>
     <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="#333333" Foreground="White">
+            <MenuItem Header="_Plik">
+                <MenuItem Header="_Wyjście" Click="OnMenuFileExitClick"/>
+            </MenuItem>
+            <MenuItem Header="_Widok">
+                <MenuItem Header="_Pełny ekran" Click="OnMenuViewFullScreenClick"/>
+            </MenuItem>
+            <MenuItem Header="_Pomoc">
+                <MenuItem Header="_O programie" Click="OnMenuHelpAboutClick"/>
+            </MenuItem>
+        </Menu>
+
+        <ContentControl x:Name="MainContentControl" DockPanel.Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        </ContentControl>
+
         <Grid DockPanel.Dock="Bottom" Background="#252525" Height="146" Width="501">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" MinWidth="46.907"/>
@@ -31,37 +46,17 @@
                        RenderTransformOrigin="1.189,0.9" Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}"/>
 
             <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" Height="40" Margin="93,0,99,0" RenderTransformOrigin="0.499,1.214" >
-                <Button Content="POKOJE" Command="{Binding NavigateCommand}" CommandParameter="RoomView" Width="81" Height="43" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Background="#FFF8568D" Foreground="#252525"/>
-                <Button Content="REZERWACJE" Command="{Binding NavigateCommand}" CommandParameter="ReservationView" Margin="0" Width="86" BorderBrush="{x:Null}" Background="#FF602DC8" FontFamily="Segoe UI Black" Foreground="#252525"/>
-
+                <Button Content="POKOJE" Click="OnRoomsButtonClick" Width="81" Height="43" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Background="#FFF8568D" Foreground="#252525"/>
+                <Button Content="REZERWACJE" Click="OnReservationButtonClick" Margin="0" Width="86" BorderBrush="{x:Null}" Background="#FF602DC8" FontFamily="Segoe UI Black" Foreground="#252525"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="1" RenderTransformOrigin="0.482,9.153" Margin="93,92,0,10" HorizontalAlignment="Left" Width="175" >
-                <Button Content="RECENZJE" Command="{Binding NavigateCommand}" CommandParameter="ReviewView" Margin="0" Width="81" Background="#FFF05541" BorderBrush="{x:Null}" Foreground="#252525" FontFamily="Segoe UI Black" Height="42"/>
-                <Button Content="PŁATNOŚCI" Command="{Binding NavigateCommand}" CommandParameter="PaymentView" Margin="0" Width="86" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Foreground="#252525" Background="#FF16A570" Height="41"/>
+                <Button Content="RECENZJE" Click="OnReviewsButtonClick" Margin="0" Width="81" Background="#FFF05541" BorderBrush="{x:Null}" Foreground="#252525" FontFamily="Segoe UI Black" Height="42"/>
+                <Button Content="PŁATNOŚCI" Click="OnLoginButtonClick" Margin="0" Width="86" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Foreground="#252525" Background="#FF16A570" Height="41"/>
             </StackPanel>
 
-            <Button Content="WYLOGUJ" Command="{Binding LogoutCommand}" Margin="273,54,91,0" Grid.Column="1" VerticalAlignment="Top" Height="82" RenderTransformOrigin="-2.387,2.77"
-                     Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FFFBBE53" Foreground="#252525" />
-        </Grid>
+            <Button Content="LOGOWANIE" Click="OnLoginButtonClick" Margin="273,54,91,0" Grid.Column="1" VerticalAlignment="Top" Height="82" RenderTransformOrigin="-2.387,2.77"
+                    Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FFFBBE53" Foreground="#252525" />
 
-        <ContentControl Content="{Binding CurrentViewModel}">
-            <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type vm:RoomViewModel}">
-                    <views:RoomView/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:ReservationViewModel}">
-                    <views:ReservationFormView/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:PaymentViewModel}">
-                    <views:PaymentView/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:ReviewViewModel}">
-                    <views:ReviewView/>
-                </DataTemplate>
-                <DataTemplate DataType="{x:Type vm:UserViewModel}">
-                    <views:UserView/>
-                </DataTemplate>
-            </ContentControl.Resources>
-        </ContentControl>
+        </Grid>
     </DockPanel>
 </Window>
