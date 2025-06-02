@@ -35,14 +35,14 @@
                 <Button Content="EDYTUJ"
                         Command="{Binding EditCommand}"
                         IsEnabled="{Binding IsEditing, Converter={StaticResource InverseBoolConverter}}"
-                        Margin="0,0,8,0" Width="66" Height="28" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF2788DF"/>
+                        Margin="0,0,8,0" Width="103" Height="28" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF2788DF"/>
                 <Button Content="ZAPISZ"
                         Command="{Binding SaveCommand}"
                         IsEnabled="{Binding IsValid}"
-                        Margin="0,0,8,0" Width="62" Background="#FF46EB4D" BorderBrush="{x:Null}" Foreground="#FF252525"/>
+                        Margin="0,0,8,0" Width="84" Background="#FF46EB4D" BorderBrush="{x:Null}" Foreground="#FF252525"/>
                 <Button Content="ANULUJ"
                         Command="{Binding CancelCommand}"
-                        IsEnabled="{Binding IsEditing}" Width="62" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFE1E364"/>
+                        IsEnabled="{Binding IsEditing}" Width="100" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFE1E364"/>
             </StackPanel>
         </StackPanel>
     </Grid>

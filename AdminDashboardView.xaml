@@ -40,7 +40,7 @@
                 <TextBlock Text="{Binding TotalRevenue, StringFormat=C}" Margin="0,0"/>
             </StackPanel>
             <TextBlock Text=" OSTATNIE REZERWACJE:" FontWeight="Bold" Margin="5" Width="302" Height="14"/>
-            <ListBox ItemsSource="{Binding RecentReservations}" Height="49" Width="300" Background="#FF1D1D1E" BorderBrush="{x:Null}">
+            <ListBox ItemsSource="{Binding RecentReservations}" Height="49" Width="292" Background="#FF1D1D1E" BorderBrush="{x:Null}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Description}" />
