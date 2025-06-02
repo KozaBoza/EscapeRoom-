@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:EscapeRoom.Views"
         mc:Ignorable="d"
         Title="Escape Room - Panel"
-        Width="500" Height="300"
+        Width="600" Height="400"
         WindowStartupLocation="CenterScreen"
         Background="#252525"
         Foreground="White"

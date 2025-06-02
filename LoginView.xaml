@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:EscapeRoom.Helpers"
              xmlns:controls="clr-namespace:System.Windows.Controls;assembly=PresentationFramework"
              mc:Ignorable="d"
-             Width="500" Height="300" Foreground="White"
+             Width="600" Height="400" Foreground="White"
              Background="#252525"
              FontFamily="Segoe UI Black"
 >
