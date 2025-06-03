@@ -7,7 +7,7 @@ using System.Windows;
 using System;
 
 namespace EscapeRoom.Views
-{ 
+{  //można wkleić do xaml jakieś themowe elementy + do tego opis 
     public partial class RoomView : UserControl
     {
         public RoomView()
@@ -17,7 +17,7 @@ namespace EscapeRoom.Views
         }
         private void LoadRooms()
         {
-///
+
         }
 
         private void OnReserveRoomButtonClick(object sender, System.Windows.RoutedEventArgs e)

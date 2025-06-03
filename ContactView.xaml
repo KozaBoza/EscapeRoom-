@@ -6,7 +6,7 @@
              Background="#252525"
              FontFamily="Segoe UI Black"
              Foreground="White">
-	<Grid Margin="40,40,213,40">
+	<Grid Margin="40,10,213,40">
 		<StackPanel Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" Height="220">
 			<TextBlock Text="KONTAKT" FontSize="20" FontWeight="Bold" Margin="0,0,0,5" TextAlignment="Center" Background="#FFECDA3C" Foreground="#FF252525"/>
 

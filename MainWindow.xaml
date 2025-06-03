@@ -51,7 +51,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="1" RenderTransformOrigin="0.482,9.153" Margin="93,92,0,10" HorizontalAlignment="Left" Width="175" >
                 <Button Content="RECENZJE" Click="OnReviewsButtonClick" Margin="0" Width="81" Background="#FFF05541" BorderBrush="{x:Null}" Foreground="#252525" FontFamily="Segoe UI Black" Height="42"/>
-                <Button Content="PŁATNOŚCI" Click="OnLoginButtonClick" Margin="0" Width="86" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Foreground="#252525" Background="#FF16A570" Height="41"/>
+                <Button Content="PŁATNOŚCI" Click="OnLoginButtonClick" Margin="0" Width="88" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Foreground="#252525" Background="#FF16A570" Height="40"/>
             </StackPanel>
 
             <Button Content="LOGOWANIE" Click="OnLoginButtonClick" Margin="273,54,91,0" Grid.Column="1" VerticalAlignment="Top" Height="82" RenderTransformOrigin="-2.387,2.77"

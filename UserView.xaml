@@ -9,7 +9,7 @@
              FontFamily="Segoe UI Black"
              Foreground="White">
     <Grid Margin="24,49,59,24">
-        <StackPanel Margin="131,0,83,0">
+        <StackPanel Margin="131,35,83,0">
             <TextBlock Text="USTAWIENIA" FontSize="18" FontWeight="Bold" Margin="0,0,0,14" TextAlignment="Center" Background="#FF2788DF"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,0,6">
                 <TextBlock Text="IMIE:" Width="80"/>

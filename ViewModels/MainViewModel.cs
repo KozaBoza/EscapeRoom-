@@ -84,7 +84,7 @@ namespace EscapeRoom.ViewModels
         }
 
         public string CurrentUserName => CurrentUser != null ?
-            $"{CurrentUser.Imie} {CurrentUser.Nazwisko}" : "Gość";
+            $"{CurrentUser.Imie} {CurrentUser.Nazwisko}" : "GOŚĆ";
 
         // komendy
         public ICommand LoginCommand { get; }
