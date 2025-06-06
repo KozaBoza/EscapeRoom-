@@ -5,7 +5,7 @@
              Background="#252525"
              FontFamily="Segoe UI Black"
              Foreground="White" >
-    <Border BorderBrush="LightGray" BorderThickness="1" Padding="12" Margin="8">
+    <Border   Padding="12" Margin="8">
         <StackPanel Margin="0,85,-3,0">
             <TextBlock Text="OPINIA" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="46" Width="232" Foreground="#FF1F1F1F" Background="#FFF8F5F1" />
             <TextBlock Text="{Binding UserViewModel.Imie}" FontWeight="Bold" />
