@@ -5,8 +5,8 @@
              FontFamily="Segoe UI Black"
              Foreground="White">
     <Grid Margin="20">
-        <StackPanel Margin="103,0,88,0" >
-            <TextBlock Text="PLATNOSC" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Width="260" Foreground="#FF1F1F1F" Background="#FFF96297" Height="28"/>
+        <StackPanel Margin="92,72,88,0" >
+            <TextBlock Text="PLATNOSC" FontSize="30" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Width="260" Foreground="#FF1F1F1F" Background="#FFF96297" Height="43"/>
             <TextBlock Text="KWOTA:"/>
             <TextBlock Text="{Binding AmountText}" FontWeight="Bold"/>
             <TextBlock Text="METODA:"/>

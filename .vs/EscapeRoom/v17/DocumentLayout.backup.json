@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\talia\\source\\repos\\EscapeRoom-\\admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -250,7 +250,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 148,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -262,15 +262,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ViewModels\\MainViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ViewModels\\MainViewModel.cs",
-              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAAAFoAAAAuAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-23T13:51:03.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T16:28:40.285Z",
+              "WhenOpened": "2025-05-24T16:54:46.641Z",
               "EditorCaption": ""
             },
             {
@@ -287,18 +299,6 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-23T13:51:03.303Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
               "Title": "RoomView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\RoomView.xaml",
@@ -307,6 +307,19 @@
               "RelativeToolTip": "RoomView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T18:32:29.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ViewModels\\MainViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\ViewModels\\MainViewModel.cs",
+              "RelativeToolTip": "ViewModels\\MainViewModel.cs",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAFoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-24T16:28:40.285Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -331,19 +344,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T17:07:32.121Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\MainWindow.xaml.cs",
-              "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAgwBsAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T16:54:46.641Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
