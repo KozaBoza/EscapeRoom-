@@ -24,8 +24,12 @@ namespace EscapeRoom.Views
         {
             InitializeComponent();
             InitializeNavigation();
-            // Initially navigate to the Homepage or LoginView as needed
+            //typ homepage
             ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
+            this.ResizeMode = ResizeMode.NoResize;
+            this.WindowState = WindowState.Maximized;
+            this.Topmost = true;
+
         }
 
         private void InitializeNavigation()
