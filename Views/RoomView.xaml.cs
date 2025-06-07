@@ -14,6 +14,7 @@ namespace EscapeRoom.Views
         {
             InitializeComponent();
             LoadRooms();
+            DataContext = new RoomViewModel();
         }
         private void LoadRooms()
         {

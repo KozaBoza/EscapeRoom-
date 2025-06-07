@@ -111,3 +111,5 @@ E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\ContactView.baml
 E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\LoginView.baml
 E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\RoomView.baml
 E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom_Content.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\MySql.Data.Entity.EF6.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\MySql.Data.Entity.EF6.xml

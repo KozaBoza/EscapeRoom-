@@ -1,19 +1,49 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 
 namespace EscapeRoom.ViewModels
-{ //podstrona dot. pojedynczego pokoju
+{
+    // podstrona dot. pojedynczego pokoju
     public class RoomViewModel : BaseViewModel
     {
         private Room _room;
         private bool _isSelected;
 
+        public ObservableCollection<Room> Rooms { get; set; }
+
         public RoomViewModel()
         {
             _room = new Room();
             BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
+
+            try
+            {
+                using (var context = new EscapeRoomContext())
+                {
+                    var pokoje = context.Pokoje.ToList();
+
+                    if (pokoje.Count == 0)
+                    {
+                        MessageBox.Show("Połączenie z bazą danych udane, ale brak pokoi do wyświetlenia.", "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Wczytano {pokoje.Count} pokoi z bazy danych.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+
+                    Rooms = new ObservableCollection<Room>(pokoje);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd połączenia z bazą danych:\n{ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                Rooms = new ObservableCollection<Room>();
+            }
         }
 
         public RoomViewModel(Room room) : this()
@@ -133,7 +163,7 @@ namespace EscapeRoom.ViewModels
 
         private void BookRoom(object parameter)
         {
-            //rezerwacja
+            // rezerwacja
         }
 
         private bool CanBookRoom(object parameter) => true;
