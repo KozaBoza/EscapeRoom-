@@ -1,185 +1,185 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\",
+  "WorkspaceRootPath": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|e:\\studia\\studia\\sem4\\prog_obj_i_graf\\er\\admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\users\\luna\\source\\repos\\escaperoom-\\admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:booltovisibilityconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\mainviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\roomview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\roomview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:roomview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\helpers\\escaperoomcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\helpers\\escaperoomcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:helpers\\escaperoomcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\greaterthanzeroconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\greaterthanzeroconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:greaterthanzeroconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\admindashboardview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\admindashboardview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:admindashboardview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\paymentview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\paymentview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:paymentview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:loginview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\contactview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\contactview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:contactview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:models\\review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\admindashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\helpers\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\helpers\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:helpers\\viewmodelbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\helpers\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\helpers\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:helpers\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\reservationformview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\reservationformview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reservationformview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\userview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\userview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:userview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\reviewview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\reviewview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:reviewview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\inverseboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\inverseboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:inverseboolconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\roomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\roomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\roomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\reviewviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\reviewviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\reviewviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\reservationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\reservationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\reservationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\paymentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\paymentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\paymentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\viewmodels\\contactviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\viewmodels\\contactviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\contactviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\resources\\styles.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\resources\\styles.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:resources\\styles.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\models\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\models\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:models\\roomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\models\\rooms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\models\\rooms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:models\\rooms.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:models\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\models\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\models\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:models\\contact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
@@ -235,8 +235,12 @@
       "DocumentGroups": [
         {
           "DockedHeight": 148,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -246,45 +250,62 @@
               "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\LoginView.xaml",
-              "RelativeDocumentMoniker": "LoginView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\LoginView.xaml",
-              "RelativeToolTip": "LoginView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T16:27:48.109Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "PaymentView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\PaymentView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\PaymentView.xaml",
               "RelativeDocumentMoniker": "PaymentView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\PaymentView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\PaymentView.xaml",
               "RelativeToolTip": "PaymentView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T16:45:29.999Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-23T13:51:03.303Z"
+              "WhenOpened": "2025-05-23T13:51:03.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminDashboardView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml",
+              "RelativeDocumentMoniker": "AdminDashboardView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml",
+              "RelativeToolTip": "AdminDashboardView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T16:26:15.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoginView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\LoginView.xaml",
+              "RelativeDocumentMoniker": "LoginView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\LoginView.xaml",
+              "RelativeToolTip": "LoginView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-24T16:27:48.109Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "ReservationFormView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReservationFormView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml",
               "RelativeDocumentMoniker": "ReservationFormView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReservationFormView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml",
               "RelativeToolTip": "ReservationFormView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T16:59:22.263Z"
@@ -293,9 +314,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "NavigationService.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\NavigationService.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\NavigationService.cs",
               "RelativeDocumentMoniker": "NavigationService.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\NavigationService.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\NavigationService.cs",
               "RelativeToolTip": "NavigationService.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAAADgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -303,34 +324,22 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ContactView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ContactView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ContactView.xaml",
               "RelativeDocumentMoniker": "ContactView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ContactView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ContactView.xaml",
               "RelativeToolTip": "ContactView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T16:51:36.617Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AdminDashboardView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\AdminDashboardView.xaml",
-              "RelativeDocumentMoniker": "AdminDashboardView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\AdminDashboardView.xaml",
-              "RelativeToolTip": "AdminDashboardView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-24T16:26:15.315Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
               "Title": "ReviewView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReviewView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReviewView.xaml",
               "RelativeDocumentMoniker": "ReviewView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReviewView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReviewView.xaml",
               "RelativeToolTip": "ReviewView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T16:47:22.516Z"
@@ -339,9 +348,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "RoomView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\RoomView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\RoomView.xaml",
               "RelativeDocumentMoniker": "RoomView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\RoomView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\RoomView.xaml",
               "RelativeToolTip": "RoomView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T18:32:29.859Z"
@@ -350,9 +359,9 @@
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "UserView.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\UserView.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\UserView.xaml",
               "RelativeDocumentMoniker": "UserView.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\UserView.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\UserView.xaml",
               "RelativeToolTip": "UserView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T17:15:29.661Z"
@@ -361,9 +370,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "BoolToVisibilityConverter.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\BoolToVisibilityConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\BoolToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "BoolToVisibilityConverter.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\BoolToVisibilityConverter.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\BoolToVisibilityConverter.cs",
               "RelativeToolTip": "BoolToVisibilityConverter.cs",
               "ViewState": "AgIAABUAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -373,9 +382,9 @@
               "$type": "Document",
               "DocumentIndex": 40,
               "Title": "Rooms.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Rooms.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Rooms.cs",
               "RelativeDocumentMoniker": "Models\\Rooms.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Rooms.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Rooms.cs",
               "RelativeToolTip": "Models\\Rooms.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -385,9 +394,9 @@
               "$type": "Document",
               "DocumentIndex": 25,
               "Title": "RelayCommand.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Helpers\\RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Helpers\\RelayCommand.cs",
               "RelativeDocumentMoniker": "Helpers\\RelayCommand.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Helpers\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Helpers\\RelayCommand.cs",
               "RelativeToolTip": "Helpers\\RelayCommand.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -397,9 +406,9 @@
               "$type": "Document",
               "DocumentIndex": 23,
               "Title": "AdminDashboard.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\AdminDashboard.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\AdminDashboard.cs",
               "RelativeDocumentMoniker": "ViewModels\\AdminDashboard.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\AdminDashboard.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\AdminDashboard.cs",
               "RelativeToolTip": "ViewModels\\AdminDashboard.cs",
               "ViewState": "AgIAAHgAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -409,9 +418,9 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "UserViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\UserViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\UserViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\UserViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\UserViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\UserViewModel.cs",
               "RelativeToolTip": "ViewModels\\UserViewModel.cs",
               "ViewState": "AgIAAGMAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -421,9 +430,9 @@
               "$type": "Document",
               "DocumentIndex": 20,
               "Title": "LoginView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\LoginView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\LoginView.xaml.cs",
               "RelativeDocumentMoniker": "LoginView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\LoginView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\LoginView.xaml.cs",
               "RelativeToolTip": "LoginView.xaml.cs",
               "ViewState": "AgIAAEAAAAAAAAAAAADwv1AAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -433,9 +442,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "MainViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\MainViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\MainViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\MainViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\MainViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\MainViewModel.cs",
               "RelativeToolTip": "ViewModels\\MainViewModel.cs",
               "ViewState": "AgIAAJwAAAAAAAAAAAAAAFoAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -445,9 +454,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "RoomView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\RoomView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\RoomView.xaml.cs",
               "RelativeDocumentMoniker": "RoomView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\RoomView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\RoomView.xaml.cs",
               "RelativeToolTip": "RoomView.xaml.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAkAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -457,9 +466,9 @@
               "$type": "Document",
               "DocumentIndex": 16,
               "Title": "App.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\App.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\App.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T12:20:34.595Z",
@@ -469,9 +478,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "EscapeRoomContext.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Helpers\\EscapeRoomContext.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Helpers\\EscapeRoomContext.cs",
               "RelativeDocumentMoniker": "Helpers\\EscapeRoomContext.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Helpers\\EscapeRoomContext.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Helpers\\EscapeRoomContext.cs",
               "RelativeToolTip": "Helpers\\EscapeRoomContext.cs",
               "ViewState": "AgIAACoAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -481,9 +490,9 @@
               "$type": "Document",
               "DocumentIndex": 11,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAgwB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -493,9 +502,9 @@
               "$type": "Document",
               "DocumentIndex": 17,
               "Title": "GreaterThanZeroConverter.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\GreaterThanZeroConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\GreaterThanZeroConverter.cs",
               "RelativeDocumentMoniker": "GreaterThanZeroConverter.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\GreaterThanZeroConverter.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\GreaterThanZeroConverter.cs",
               "RelativeToolTip": "GreaterThanZeroConverter.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAwwAoAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -505,9 +514,9 @@
               "$type": "Document",
               "DocumentIndex": 21,
               "Title": "ContactView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ContactView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ContactView.xaml.cs",
               "RelativeDocumentMoniker": "ContactView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ContactView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ContactView.xaml.cs",
               "RelativeToolTip": "ContactView.xaml.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAADwvzoAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -517,9 +526,9 @@
               "$type": "Document",
               "DocumentIndex": 42,
               "Title": "Payment.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Payment.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Payment.cs",
               "RelativeDocumentMoniker": "Models\\Payment.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Payment.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Payment.cs",
               "RelativeToolTip": "Models\\Payment.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -529,9 +538,9 @@
               "$type": "Document",
               "DocumentIndex": 43,
               "Title": "Contact.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Contact.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Contact.cs",
               "RelativeDocumentMoniker": "Models\\Contact.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Contact.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Contact.cs",
               "RelativeToolTip": "Models\\Contact.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -541,9 +550,9 @@
               "$type": "Document",
               "DocumentIndex": 24,
               "Title": "ViewModelBase.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Helpers\\ViewModelBase.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Helpers\\ViewModelBase.cs",
               "RelativeDocumentMoniker": "Helpers\\ViewModelBase.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Helpers\\ViewModelBase.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Helpers\\ViewModelBase.cs",
               "RelativeToolTip": "Helpers\\ViewModelBase.cs",
               "ViewState": "AgIAACEAAAAAAAAAAAAAAA4AAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -553,9 +562,9 @@
               "$type": "Document",
               "DocumentIndex": 34,
               "Title": "ReservationViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\ReservationViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\ReservationViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ReservationViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\ReservationViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\ReservationViewModel.cs",
               "RelativeToolTip": "ViewModels\\ReservationViewModel.cs",
               "ViewState": "AgIAAIgAAAAAAAAAAAAhwJkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -565,9 +574,9 @@
               "$type": "Document",
               "DocumentIndex": 29,
               "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\LoginViewModel.cs",
               "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -577,9 +586,9 @@
               "$type": "Document",
               "DocumentIndex": 41,
               "Title": "Reservation.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Reservation.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Reservation.cs",
               "RelativeDocumentMoniker": "Models\\Reservation.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Reservation.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Reservation.cs",
               "RelativeToolTip": "Models\\Reservation.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -589,9 +598,9 @@
               "$type": "Document",
               "DocumentIndex": 33,
               "Title": "ReviewViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\ReviewViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\ReviewViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ReviewViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\ReviewViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\ReviewViewModel.cs",
               "RelativeToolTip": "ViewModels\\ReviewViewModel.cs",
               "ViewState": "AgIAAIQAAAAAAAAAAAAAAIwAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -601,9 +610,9 @@
               "$type": "Document",
               "DocumentIndex": 18,
               "Title": "AdminDashboardView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\AdminDashboardView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml.cs",
               "RelativeDocumentMoniker": "AdminDashboardView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\AdminDashboardView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\AdminDashboardView.xaml.cs",
               "RelativeToolTip": "AdminDashboardView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -613,9 +622,9 @@
               "$type": "Document",
               "DocumentIndex": 22,
               "Title": "Review.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Review.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Review.cs",
               "RelativeDocumentMoniker": "Models\\Review.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\Review.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\Review.cs",
               "RelativeToolTip": "Models\\Review.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -625,9 +634,9 @@
               "$type": "Document",
               "DocumentIndex": 26,
               "Title": "ReservationFormView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReservationFormView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml.cs",
               "RelativeDocumentMoniker": "ReservationFormView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReservationFormView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReservationFormView.xaml.cs",
               "RelativeToolTip": "ReservationFormView.xaml.cs",
               "ViewState": "AgIAAHIAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -637,9 +646,9 @@
               "$type": "Document",
               "DocumentIndex": 27,
               "Title": "UserView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\UserView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\UserView.xaml.cs",
               "RelativeDocumentMoniker": "UserView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\UserView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\UserView.xaml.cs",
               "RelativeToolTip": "UserView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -649,9 +658,9 @@
               "$type": "Document",
               "DocumentIndex": 28,
               "Title": "ReviewView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReviewView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReviewView.xaml.cs",
               "RelativeDocumentMoniker": "ReviewView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ReviewView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ReviewView.xaml.cs",
               "RelativeToolTip": "ReviewView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -661,9 +670,9 @@
               "$type": "Document",
               "DocumentIndex": 39,
               "Title": "RoomService.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\RoomService.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\RoomService.cs",
               "RelativeDocumentMoniker": "Models\\RoomService.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\RoomService.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\RoomService.cs",
               "RelativeToolTip": "Models\\RoomService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -673,9 +682,9 @@
               "$type": "Document",
               "DocumentIndex": 19,
               "Title": "PaymentView.xaml.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\PaymentView.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\PaymentView.xaml.cs",
               "RelativeDocumentMoniker": "PaymentView.xaml.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\PaymentView.xaml.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\PaymentView.xaml.cs",
               "RelativeToolTip": "PaymentView.xaml.cs",
               "ViewState": "AgIAAFkAAAAAAAAAAAAYwGQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -685,9 +694,9 @@
               "$type": "Document",
               "DocumentIndex": 35,
               "Title": "PaymentViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\PaymentViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\PaymentViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\PaymentViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\PaymentViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\PaymentViewModel.cs",
               "RelativeToolTip": "ViewModels\\PaymentViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -697,9 +706,9 @@
               "$type": "Document",
               "DocumentIndex": 36,
               "Title": "ContactViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\ContactViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\ContactViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ContactViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\ContactViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\ContactViewModel.cs",
               "RelativeToolTip": "ViewModels\\ContactViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -709,9 +718,9 @@
               "$type": "Document",
               "DocumentIndex": 44,
               "Title": "packages.config",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\packages.config",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\packages.config",
               "RelativeDocumentMoniker": "packages.config",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\packages.config",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\packages.config",
               "RelativeToolTip": "packages.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
@@ -721,9 +730,9 @@
               "$type": "Document",
               "DocumentIndex": 30,
               "Title": "InverseBoolConverter.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\InverseBoolConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\InverseBoolConverter.cs",
               "RelativeDocumentMoniker": "InverseBoolConverter.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\InverseBoolConverter.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\InverseBoolConverter.cs",
               "RelativeToolTip": "InverseBoolConverter.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -733,9 +742,9 @@
               "$type": "Document",
               "DocumentIndex": 37,
               "Title": "Styles.xaml",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Resources\\Styles.xaml",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Resources\\Styles.xaml",
               "RelativeDocumentMoniker": "Resources\\Styles.xaml",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Resources\\Styles.xaml",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Resources\\Styles.xaml",
               "RelativeToolTip": "Resources\\Styles.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
@@ -745,9 +754,9 @@
               "$type": "Document",
               "DocumentIndex": 31,
               "Title": "App.config",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\App.config",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\App.config",
               "RelativeDocumentMoniker": "App.config",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\App.config",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\App.config",
               "RelativeToolTip": "App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
@@ -757,9 +766,9 @@
               "$type": "Document",
               "DocumentIndex": 32,
               "Title": "RoomViewModel.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\RoomViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\RoomViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\RoomViewModel.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\ViewModels\\RoomViewModel.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\ViewModels\\RoomViewModel.cs",
               "RelativeToolTip": "ViewModels\\RoomViewModel.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -769,9 +778,9 @@
               "$type": "Document",
               "DocumentIndex": 38,
               "Title": "User.cs",
-              "DocumentMoniker": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\User.cs",
+              "DocumentMoniker": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
-              "ToolTip": "E:\\Studia\\Studia\\Sem4\\Prog_obj_i_graf\\ER\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Luna\\source\\repos\\EscapeRoom-\\Models\\User.cs",
               "RelativeToolTip": "Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -782,7 +791,9 @@
               "DocumentIndex": 56,
               "Title": "UserView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml.cs",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T12:36:05.556Z"
@@ -792,7 +803,9 @@
               "DocumentIndex": 58,
               "Title": "RoomView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T12:30:06.699Z"
             },
@@ -801,7 +814,9 @@
               "DocumentIndex": 57,
               "Title": "UserView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\UserView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T12:23:26.05Z"
             },
@@ -810,7 +825,9 @@
               "DocumentIndex": 45,
               "Title": "AdminDashboardView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\AdminDashboardView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\AdminDashboardView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\AdminDashboardView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\AdminDashboardView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:18:01.077Z"
             },
@@ -819,7 +836,9 @@
               "DocumentIndex": 49,
               "Title": "Homepage.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\Homepage.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\Homepage.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\Homepage.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\Homepage.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:00:41.718Z"
             },
@@ -828,7 +847,9 @@
               "DocumentIndex": 48,
               "Title": "ContactView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ContactView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ContactView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ContactView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ContactView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T12:34:20.353Z"
             },
@@ -837,7 +858,9 @@
               "DocumentIndex": 50,
               "Title": "LoginView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:04:57.096Z"
             },
@@ -846,7 +869,9 @@
               "DocumentIndex": 51,
               "Title": "Payment.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\Payment.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\Payment.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\Payment.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\Payment.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:05:41.33Z"
             },
@@ -855,7 +880,9 @@
               "DocumentIndex": 52,
               "Title": "ReservationFormView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ReservationFormView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ReservationFormView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ReservationFormView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ReservationFormView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:09:01.337Z"
             },
@@ -864,7 +891,9 @@
               "DocumentIndex": 53,
               "Title": "LoginView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\LoginView.xaml",
               "ViewState": "AgIAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:03:30.588Z"
@@ -874,7 +903,9 @@
               "DocumentIndex": 47,
               "Title": "RoomsListView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:03:24.55Z"
@@ -884,7 +915,9 @@
               "DocumentIndex": 46,
               "Title": "RoomsListView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomsListView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-23T14:04:40.585Z"
             },
@@ -893,7 +926,9 @@
               "DocumentIndex": 54,
               "Title": "ReviewView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml.cs",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T12:38:21.261Z"
@@ -903,7 +938,9 @@
               "DocumentIndex": 55,
               "Title": "RoomView.xaml.cs",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml.cs",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\RoomView.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-24T12:37:50.497Z"
@@ -913,19 +950,11 @@
               "DocumentIndex": 59,
               "Title": "ReviewView.xaml",
               "DocumentMoniker": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml",
               "ToolTip": "C:\\Users\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml",
+              "RelativeToolTip": "..\\..\\..\\..\\talia\\source\\repos\\EscapeRoom-\\Views\\ReviewView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-05-24T12:28:13.63Z"
-            }
-          ]
-        },
-        {
-          "DockedHeight": 83,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             }
           ]
         }
