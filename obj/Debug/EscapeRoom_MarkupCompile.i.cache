@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\talia\source\repos\EscapeRoom-\obj\Debug\
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\
 EscapeRoom
 none
 false
 DEBUG;TRACE
-C:\Users\talia\source\repos\EscapeRoom-\App.xaml
-101300133902
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\App.xaml
+10-1555877682
 
-37-2021345267
-171368565305
-MainWindow.xaml;Resources\Styles.xaml;AdminDashboardView.xaml;ContactView.xaml;LoginView.xaml;PaymentView.xaml;ReservationFormView.xaml;ReviewView.xaml;RoomView.xaml;UserView.xaml;
+372079406964
+37169519350
+MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\ReservationFormView.xaml;Views\ReviewView.xaml;Views\RoomView.xaml;Views\UserView.xaml;
 
-True
+False
 
