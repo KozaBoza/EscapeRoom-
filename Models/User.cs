@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EscapeRoom.Models
 { //obsługa konta, trzeba przemyśleć jeszcze jak to zrobić
+    // again, moze byc tak ze inaczej bedzie to wygladac po integracji
     [Table("Uzytkownicy")]
     public class User
     {
