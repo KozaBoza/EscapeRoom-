@@ -14,7 +14,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 
 namespace EscapeRoom.Helpers
-{
+{ //nie wiem czy jest to koniecznie, natomiast wstepnie przy probie integracji z bd
     public class EscapeRoomContext : DbContext
     {
         public EscapeRoomContext() : base("name=EscapeRoomDb")
