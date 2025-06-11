@@ -19,7 +19,7 @@ namespace EscapeRoom.ViewModels
 
         public RoomViewModel()
         {
-            _room = new Room(); // ← bez tego bindingi rzucają wyjątki!
+            _room = new Room();
             Rooms = new ObservableCollection<Room>();
             LoadRoomsAsync();
         }
