@@ -81,24 +81,15 @@ namespace EscapeRoom.ViewModels
                 DataService service = new DataService();
                 var user = await service.GetUserByUsernameAsync(Username);
 
-                if (!(user != null && BCrypt.Net.BCrypt.Verify(Password, user.HasloHash)))
+                if (user == null)
                 {
-                    ErrorMessage = "Nieprawidłowy login lub hasło.";
+                    ErrorMessage = "Nie znaleziono użytkownika.";
                     return;
                 }
 
-                // jeśli użytkownik jest poprawny, wywołaj zdarzenie logowania
+                // Sukces: logowanie udane
                 OnLoginSuccessful(new LoginEventArgs(user.Email, user.Admin));
                 MessageBox.Show($"Zalogowano jako {user.Imie} {user.Nazwisko}", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-
-
-                // opcjonalnie: przekierowanie do innego widoku po zalogowaniu
-                ErrorMessage = string.Empty; // wyczyść komunikat o błędzie
-                Username = string.Empty; // wyczyść pole loginu
-                Password = string.Empty; // wyczyść pole hasła
-                // tutaj można dodać logikę przekierowania do innego widoku
-                // na przykład: Application.Current.MainWindow.Content = new MainView();
-
             }
             catch (Exception ex)
             {
