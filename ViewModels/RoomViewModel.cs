@@ -1,19 +1,24 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 
 namespace EscapeRoom.ViewModels
-{ //podstrona dot. pojedynczego pokoju
+{
+    // podstrona dot. pojedynczego pokoju
     public class RoomViewModel : BaseViewModel
     {
         private Room _room;
         private bool _isSelected;
 
+        public ObservableCollection<Room> Rooms { get; set; }
+
         public RoomViewModel()
         {
-            _room = new Room();
-            BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
+
         }
 
         public RoomViewModel(Room room) : this()
@@ -133,7 +138,7 @@ namespace EscapeRoom.ViewModels
 
         private void BookRoom(object parameter)
         {
-            //rezerwacja
+            // rezerwacja
         }
 
         private bool CanBookRoom(object parameter) => true;

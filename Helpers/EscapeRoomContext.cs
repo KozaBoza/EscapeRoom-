@@ -19,6 +19,8 @@ namespace EscapeRoom.Helpers
     {
         public EscapeRoomContext() : base("name=EscapeRoomDb")
         {
+            this.Configuration.LazyLoadingEnabled = true;
+            this.Configuration.ProxyCreationEnabled = true;
         }
 
         public DbSet<User> Uzytkownicy { get; set; }
@@ -30,14 +32,13 @@ namespace EscapeRoom.Helpers
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
-            // tabela i kolumna
             modelBuilder.Entity<User>().ToTable("Uzytkownicy");
             modelBuilder.Entity<Room>().ToTable("Pokoje");
             modelBuilder.Entity<Reservation>().ToTable("Rezerwacje");
 
             modelBuilder.Entity<User>()
                 .Property(u => u.DataRejestracji)
-                .HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Computed);
+                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Computed);
 
             modelBuilder.Entity<User>()
                 .Property(u => u.Admin)
@@ -53,7 +54,7 @@ namespace EscapeRoom.Helpers
 
             modelBuilder.Entity<Reservation>()
                 .Property(r => r.Status)
-                .HasColumnType("nvarchar");
+                .HasColumnType("varchar"); // MariaDB uses varchar, not nvarchar
 
             modelBuilder.Entity<Reservation>()
                 .HasRequired(r => r.Uzytkownik)
@@ -68,5 +69,4 @@ namespace EscapeRoom.Helpers
                 .WillCascadeOnDelete(false);
         }
     }
-
 }
