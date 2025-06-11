@@ -1,25 +1,67 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
+using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 
 namespace EscapeRoom.ViewModels
-{ //podstrona dot. pojedynczego pokoju
+{
+    // podstrona dot. pojedynczego pokoju
     public class RoomViewModel : BaseViewModel
     {
         private Room _room;
         private bool _isSelected;
 
+        public ObservableCollection<Room> Rooms { get; set; }
+
         public RoomViewModel()
         {
-            _room = new Room();
-            BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
+            _room = new Room(); // ← bez tego bindingi rzucają wyjątki!
+            Rooms = new ObservableCollection<Room>();
+            LoadRoomsAsync();
         }
 
         public RoomViewModel(Room room) : this()
         {
             _room = room ?? new Room();
         }
+
+        private async void LoadRoomsAsync()
+        {
+            try
+            {
+                DataService service = new DataService();
+                var rooms = await service.GetRoomsAsync();
+
+                if (rooms == null || rooms.Count == 0)
+                {
+                    MessageBox.Show("Nie wczytano danych z bazy!", "Błąd!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                foreach (var room in rooms)
+                {
+                    Rooms.Add(room);
+                }
+
+                _room = Rooms.FirstOrDefault(r => r.PokojId == 1) ?? new Room();
+
+                OnPropertyChanged(nameof(Nazwa));
+                OnPropertyChanged(nameof(Opis));
+                OnPropertyChanged(nameof(Trudnosc));
+                OnPropertyChanged(nameof(Cena));
+                OnPropertyChanged(nameof(MaxGraczy));
+                OnPropertyChanged(nameof(CzasMinut));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas ładowania pokoi: {ex.Message}", "Błąd krytyczny", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
 
         public int PokojId
         {
@@ -133,7 +175,7 @@ namespace EscapeRoom.ViewModels
 
         private void BookRoom(object parameter)
         {
-            //rezerwacja
+            // rezerwacja
         }
 
         private bool CanBookRoom(object parameter) => true;

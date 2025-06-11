@@ -38,3 +38,153 @@ C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom.csproj.CoreCompileI
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom.csproj.Up2Date
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom.exe
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom.pdb
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\EscapeRoom.exe.config
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\EscapeRoom.exe
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\EscapeRoom.pdb
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\EntityFramework.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\EntityFramework.SqlServer.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.ComponentModel.Annotations.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\EntityFramework.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\EntityFramework.SqlServer.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.csproj.AssemblyReference.cache
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Resources\Styles.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\MainWindow.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\App.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom_MarkupCompile.cache
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom_MarkupCompile.lref
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\App.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\MainWindow.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.g.resources
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.Properties.Resources.resources
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.csproj.GenerateResource.cache
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.csproj.CoreCompileInputs.cache
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.csproj.Up2Date
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.exe
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom.pdb
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\BouncyCastle.Cryptography.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\Google.Protobuf.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\K4os.Compression.LZ4.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\K4os.Compression.LZ4.Streams.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\K4os.Hash.xxHash.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\MySql.Data.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Buffers.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Configuration.ConfigurationManager.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.IO.Pipelines.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Memory.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Numerics.Vectors.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\ZstdSharp.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\BouncyCastle.Cryptography.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\Google.Protobuf.pdb
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\Google.Protobuf.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\K4os.Compression.LZ4.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\K4os.Compression.LZ4.Streams.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\K4os.Hash.xxHash.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\MySql.Data.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Buffers.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Configuration.ConfigurationManager.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.IO.Pipelines.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Memory.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Numerics.Vectors.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\PaymentView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\ReservationFormView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\ReviewView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\UserView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\AdminDashboardView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\ContactView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\LoginView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\PaymentView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\ReservationFormView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\ReviewView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\RoomView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\UserView.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\AdminDashboardView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\ContactView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\LoginView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\Views\RoomView.baml
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\obj\Debug\EscapeRoom_Content.g.cs
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\MySql.Data.Entity.EF6.dll
+E:\Studia\Studia\Sem4\Prog_obj_i_graf\ER\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\EscapeRoom.exe.config
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\EscapeRoom.exe
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\EscapeRoom.pdb
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\EntityFramework.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\Google.Protobuf.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\MySql.Data.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Buffers.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.ComponentModel.Annotations.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.IO.Pipelines.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Memory.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\ZstdSharp.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\EntityFramework.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\Google.Protobuf.pdb
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\Google.Protobuf.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\MySql.Data.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\MySql.Data.Entity.EF6.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Buffers.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.IO.Pipelines.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Memory.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.csproj.AssemblyReference.cache
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Resources\Styles.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\PaymentView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ReservationFormView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ReviewView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\UserView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\MainWindow.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\AdminDashboardView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ContactView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\LoginView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\PaymentView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ReservationFormView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ReviewView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\RoomView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\UserView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\App.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom_Content.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom_MarkupCompile.cache
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom_MarkupCompile.lref
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\App.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\MainWindow.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\AdminDashboardView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ContactView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\LoginView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\RoomView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.g.resources
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.Properties.Resources.resources
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.csproj.GenerateResource.cache
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.csproj.CoreCompileInputs.cache
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.csproj.Up2Date
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.exe
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\EscapeRoom.pdb
