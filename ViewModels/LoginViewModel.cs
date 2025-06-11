@@ -2,8 +2,11 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using EscapeRoom.Data;
 using EscapeRoom.Helpers;
+using Org.BouncyCastle.Crypto.Generators;
 
 namespace EscapeRoom.ViewModels
 { //obsługa logowania
@@ -52,8 +55,8 @@ namespace EscapeRoom.ViewModels
 
         public bool CanLogin =>
             !string.IsNullOrWhiteSpace(Username) &&
-            !string.IsNullOrWhiteSpace(Password) &&
-            !IsLoading;
+            !string.IsNullOrWhiteSpace(Password); /*&&
+            !IsLoading;*/
 
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
@@ -75,20 +78,27 @@ namespace EscapeRoom.ViewModels
 
             try
             {
-                await Task.Delay(1000); // symulacja autoryzacji
+                DataService service = new DataService();
+                var user = await service.GetUserByUsernameAsync(Username);
 
-                if (Username == "admin" && Password == "admin")
+                if (!(user != null && BCrypt.Net.BCrypt.Verify(Password, user.HasloHash)))
                 {
-                    OnLoginSuccessful(new LoginEventArgs(Username, true));
+                    ErrorMessage = "Nieprawidłowy login lub hasło.";
+                    return;
                 }
-                else if (Username == "user" && Password == "user")
-                {
-                    OnLoginSuccessful(new LoginEventArgs(Username, false));
-                }
-                else
-                {
-                    ErrorMessage = "Nieprawidłowa nazwa użytkownika lub hasło.";
-                }
+
+                // jeśli użytkownik jest poprawny, wywołaj zdarzenie logowania
+                OnLoginSuccessful(new LoginEventArgs(user.Email, user.Admin));
+                MessageBox.Show($"Zalogowano jako {user.Imie} {user.Nazwisko}", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
+                // opcjonalnie: przekierowanie do innego widoku po zalogowaniu
+                ErrorMessage = string.Empty; // wyczyść komunikat o błędzie
+                Username = string.Empty; // wyczyść pole loginu
+                Password = string.Empty; // wyczyść pole hasła
+                // tutaj można dodać logikę przekierowania do innego widoku
+                // na przykład: Application.Current.MainWindow.Content = new MainView();
+
             }
             catch (Exception ex)
             {
