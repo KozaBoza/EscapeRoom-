@@ -2,8 +2,10 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 { //obsługa logowania
@@ -13,6 +15,7 @@ namespace EscapeRoom.ViewModels
         private string _password;
         private string _errorMessage;
         private bool _isLoading;
+        private readonly AuthService _authService = new AuthService();
 
         public string Username
         {
@@ -77,17 +80,16 @@ namespace EscapeRoom.ViewModels
             {
                 await Task.Delay(1000); // symulacja autoryzacji
 
-                if (Username == "admin" && Password == "admin")
+                bool success = _authService.Login(Username, Password);
+                if (success)
                 {
-                    OnLoginSuccessful(new LoginEventArgs(Username, true));
-                }
-                else if (Username == "user" && Password == "user")
-                {
-                    OnLoginSuccessful(new LoginEventArgs(Username, false));
+                    MessageBox.Show("Zalogowano pomyślnie!");
+                    // przejdź do kolejnego widoku, np:
+                    ViewNavigationService.Instance.NavigateTo(ViewType.User);
                 }
                 else
                 {
-                    ErrorMessage = "Nieprawidłowa nazwa użytkownika lub hasło.";
+                    MessageBox.Show("Nieprawidłowy login lub hasło.");
                 }
             }
             catch (Exception ex)
