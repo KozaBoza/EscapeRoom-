@@ -2,8 +2,15 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
+using EscapeRoom.Data;
 using EscapeRoom.Helpers;
+using Org.BouncyCastle.Crypto.Generators;
+using System.Security.Cryptography;
+using System.Text;
+using System.Linq;
+using EscapeRoom.Views;
 
 namespace EscapeRoom.ViewModels
 { //obsługa logowania
@@ -52,8 +59,8 @@ namespace EscapeRoom.ViewModels
 
         public bool CanLogin =>
             !string.IsNullOrWhiteSpace(Username) &&
-            !string.IsNullOrWhiteSpace(Password) &&
-            !IsLoading;
+            !string.IsNullOrWhiteSpace(Password); /*&&
+            !IsLoading;*/
 
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
@@ -75,19 +82,64 @@ namespace EscapeRoom.ViewModels
 
             try
             {
-                await Task.Delay(1000); // symulacja autoryzacji
+                DataService service = new DataService();
+                var user = await service.GetUserByUsernameAsync(Username);
 
-                if (Username == "admin" && Password == "admin")
+                if (user == null)
                 {
-                    OnLoginSuccessful(new LoginEventArgs(Username, true));
+                    ErrorMessage = "Nie znaleziono użytkownika.";
+                    return;
                 }
-                else if (Username == "user" && Password == "user")
+
+                // Sprawdź hash hasła
+                if (!VerifyPBKDF2Hash(Password, user.HasloHash))
                 {
-                    OnLoginSuccessful(new LoginEventArgs(Username, false));
+                    ErrorMessage = "Nieprawidłowe hasło.";
+                    return;
                 }
+
+                // Sukces: logowanie udane
+                OnLoginSuccessful(new LoginEventArgs(user.Email, user.Admin));
+                MessageBox.Show($"Zalogowano jako {user.Imie} {user.Nazwisko}", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                //Admin
+                if (user.Admin)
+                {
+                    // Znajdź główne okno
+                    var mainWindow = Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w is MainWindow) as MainWindow;
+
+                    if (mainWindow != null)
+                    {
+                        mainWindow.MainContentControl.Content = new AdminDashboardView();
+                    }
+
+                    // Zamknij okno logowania, jeśli jest osobne
+                    Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w != mainWindow && w.IsActive)
+                        ?.Close();
+                }
+                // Użytkownik
                 else
                 {
-                    ErrorMessage = "Nieprawidłowa nazwa użytkownika lub hasło.";
+                    // Znajdź główne okno
+                    var mainWindow = Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w is MainWindow) as MainWindow;
+
+                    if (mainWindow != null)
+                    {
+                        mainWindow.MainContentControl.Content = new UserView();
+                    }
+
+                    // Zamknij okno logowania, jeśli jest osobne
+                    Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w != mainWindow && w.IsActive)
+                        ?.Close();
+
                 }
             }
             catch (Exception ex)
@@ -113,6 +165,30 @@ namespace EscapeRoom.ViewModels
         protected virtual void OnLoginSuccessful(LoginEventArgs e)
         {
             LoginSuccessful?.Invoke(this, e);
+        }
+
+        //Hashowanie hasła przy logowaniu
+        private string GeneratePBKDF2Hash(string password)
+        {
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, 16, 10000))
+            {
+                byte[] salt = deriveBytes.Salt;
+                byte[] key = deriveBytes.GetBytes(32);
+                return $"{Convert.ToBase64String(salt)}:{Convert.ToBase64String(key)}";
+            }
+        }
+
+        private bool VerifyPBKDF2Hash(string password, string hash)
+        {
+            var parts = hash.Split(':');
+            if (parts.Length != 2) return false;
+            byte[] salt = Convert.FromBase64String(parts[0]);
+            byte[] key = Convert.FromBase64String(parts[1]);
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, salt, 10000))
+            {
+                byte[] testKey = deriveBytes.GetBytes(32);
+                return testKey.SequenceEqual(key);
+            }
         }
     }
 

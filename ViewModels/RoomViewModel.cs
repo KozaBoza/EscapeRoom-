@@ -27,7 +27,7 @@ namespace EscapeRoom.ViewModels
         public RoomViewModel(Room room) : this()
         {
             _room = room ?? new Room();
-        }
+            }
 
         private async void LoadRoomsAsync()
         {

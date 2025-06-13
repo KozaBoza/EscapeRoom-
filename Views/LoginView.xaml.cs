@@ -17,54 +17,56 @@ namespace EscapeRoom.Views
         public LoginView()
         {
             InitializeComponent();
+            // Zarejestruj zdarzenia przycisków
+            DataContext = new LoginViewModel();
         }
 
-        private void OnLoginButtonClick(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
-            {
-                string username = GetTextBoxValue("UsernameTextBox");
-                string password = GetPasswordBoxValue("PasswordInput");
+//        private void OnLoginButtonClick(object sender, System.Windows.RoutedEventArgs e)
+//        {
+//            try
+//            {
+//                string username = GetTextBoxValue("UsernameTextBox");
+//                string password = GetPasswordBoxValue("PasswordInput");
 
-                if (string.IsNullOrWhiteSpace(username))
-                {
-                    ShowErrorMessage("Proszę podać nazwę użytkownika.");
-                    return;
-                }
+//                if (string.IsNullOrWhiteSpace(username))
+//                {
+//                    ShowErrorMessage("Proszę podać nazwę użytkownika.");
+//                    return;
+//                }
 
-                if (string.IsNullOrWhiteSpace(password))
-                {
-                    ShowErrorMessage("Proszę podać hasło.");
-                    return;
-                }
+//                if (string.IsNullOrWhiteSpace(password))
+//                {
+//                    ShowErrorMessage("Proszę podać hasło.");
+//                    return;
+//                }
 
-//
-                if (ValidateCredentials(username, password))
-                {
-                    if (username.ToLower() == username)
-                    {
-                        System.Windows.MessageBox.Show("Zalogowano jako administrator!",
-                            "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-                        ViewNavigationService.Instance.NavigateTo(ViewType.AdminDashboard);
-                    }
-                    else
-                    {
-                        System.Windows.MessageBox.Show("Zalogowano pomyślnie!",
-                            "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-                        ViewNavigationService.Instance.NavigateTo(ViewType.User);
-                    }
-                }
-                else
-                {
-                    ShowErrorMessage("Nieprawidłowa nazwa użytkownika lub hasło.");
-                    ClearPassword();
-                }
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage($"Błąd podczas logowania: {ex.Message}");
-            }
-        }
+////
+//                if (ValidateCredentials(username, password))
+//                {
+//                    if (username.ToLower() == username)
+//                    {
+//                        System.Windows.MessageBox.Show("Zalogowano jako administrator!",
+//                            "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+//                        ViewNavigationService.Instance.NavigateTo(ViewType.AdminDashboard);
+//                    }
+//                    else
+//                    {
+//                        System.Windows.MessageBox.Show("Zalogowano pomyślnie!",
+//                            "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+//                        ViewNavigationService.Instance.NavigateTo(ViewType.User);
+//                    }
+//                }
+//                else
+//                {
+//                    ShowErrorMessage("Nieprawidłowa nazwa użytkownika lub hasło.");
+//                    ClearPassword();
+//                }
+//            }
+//            catch (Exception ex)
+//            {
+//                ShowErrorMessage($"Błąd podczas logowania: {ex.Message}");
+//            }
+//        }
 
         private void OnRegisterButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -80,19 +82,24 @@ namespace EscapeRoom.Views
         private void PasswordInput_PasswordChanged(object sender, RoutedEventArgs e)
         {
             // Możesz tutaj dodać walidację hasła w czasie rzeczywistym
+            //var passwordBox = sender as PasswordBox;
+            //if (passwordBox != null)
+            //{
+            //    // Przykład: zmiana koloru obramowania w zależności od długości hasła
+            //    if (passwordBox.Password.Length < 4)
+            //    {
+            //        passwordBox.BorderBrush = Brushes.Red;
+            //    }
+            //    else
+            //    {
+            //        passwordBox.BorderBrush = Brushes.Green;
+            //    }
+            //}
+
             var passwordBox = sender as PasswordBox;
-            if (passwordBox != null)
-            {
-                // Przykład: zmiana koloru obramowania w zależności od długości hasła
-                if (passwordBox.Password.Length < 4)
-                {
-                    passwordBox.BorderBrush = Brushes.Red;
-                }
-                else
-                {
-                    passwordBox.BorderBrush = Brushes.Green;
-                }
-            }
+            var vm = DataContext as LoginViewModel;
+            if (vm != null && passwordBox != null)
+                vm.Password = passwordBox.Password;
         }
 
         private bool ValidateCredentials(string username, string password)

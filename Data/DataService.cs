@@ -41,5 +41,30 @@ namespace EscapeRoom.Data
 
             return rooms;
         }
+
+        public async Task<User> GetUserByUsernameAsync(string email)
+        {
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            await conn.OpenAsync();
+            MySqlCommand cmd = new MySqlCommand("SELECT uzytkownik_id, email, haslo_hash, imie, nazwisko, telefon, admin FROM uzytkownicy WHERE email = @email", conn);
+            cmd.Parameters.AddWithValue("@email", email);
+            MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
+            User user = null;
+            if (await reader.ReadAsync())
+            {
+                user = new User
+                {
+                    UzytkownikId = reader.GetInt32("uzytkownik_id"),
+                    Imie = reader.GetString("imie"),
+                    Nazwisko = reader.GetString("nazwisko"),
+                    Telefon = reader.GetString("telefon"),
+                    Email = reader.GetString("email"),
+                    HasloHash = reader.GetString("haslo_hash"),
+                    Admin = reader.GetBoolean("admin")
+                };
+            }
+            await conn.CloseAsync();
+            return user;
+        }
     }
 }
