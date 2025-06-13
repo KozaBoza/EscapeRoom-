@@ -10,6 +10,7 @@ using Org.BouncyCastle.Crypto.Generators;
 using System.Security.Cryptography;
 using System.Text;
 using System.Linq;
+using EscapeRoom.Views;
 
 namespace EscapeRoom.ViewModels
 { //obsługa logowania
@@ -100,6 +101,46 @@ namespace EscapeRoom.ViewModels
                 // Sukces: logowanie udane
                 OnLoginSuccessful(new LoginEventArgs(user.Email, user.Admin));
                 MessageBox.Show($"Zalogowano jako {user.Imie} {user.Nazwisko}", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                //Admin
+                if (user.Admin)
+                {
+                    // Znajdź główne okno
+                    var mainWindow = Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w is MainWindow) as MainWindow;
+
+                    if (mainWindow != null)
+                    {
+                        mainWindow.MainContentControl.Content = new AdminDashboardView();
+                    }
+
+                    // Zamknij okno logowania, jeśli jest osobne
+                    Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w != mainWindow && w.IsActive)
+                        ?.Close();
+                }
+                // Użytkownik
+                else
+                {
+                    // Znajdź główne okno
+                    var mainWindow = Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w is MainWindow) as MainWindow;
+
+                    if (mainWindow != null)
+                    {
+                        mainWindow.MainContentControl.Content = new UserView();
+                    }
+
+                    // Zamknij okno logowania, jeśli jest osobne
+                    Application.Current.Windows
+                        .OfType<Window>()
+                        .FirstOrDefault(w => w != mainWindow && w.IsActive)
+                        ?.Close();
+
+                }
             }
             catch (Exception ex)
             {
@@ -114,10 +155,6 @@ namespace EscapeRoom.ViewModels
         private void ExecuteRegister(object parameter)
         {
             //opcja: przekierować do widoku rejestracji
-
-            // Przy rejestracji:
-            //string hash = GeneratePBKDF2Hash(password);
-            // Zapisz hash do bazy w polu haslo_hash
         }
 
         private void ExecuteForgotPassword(object parameter)
