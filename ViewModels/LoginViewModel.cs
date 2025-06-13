@@ -7,6 +7,9 @@ using System.Windows.Input;
 using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using Org.BouncyCastle.Crypto.Generators;
+using System.Security.Cryptography;
+using System.Text;
+using System.Linq;
 
 namespace EscapeRoom.ViewModels
 { //obsługa logowania
@@ -87,6 +90,13 @@ namespace EscapeRoom.ViewModels
                     return;
                 }
 
+                // Sprawdź hash hasła
+                if (!VerifyPBKDF2Hash(Password, user.HasloHash))
+                {
+                    ErrorMessage = "Nieprawidłowe hasło.";
+                    return;
+                }
+
                 // Sukces: logowanie udane
                 OnLoginSuccessful(new LoginEventArgs(user.Email, user.Admin));
                 MessageBox.Show($"Zalogowano jako {user.Imie} {user.Nazwisko}", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -104,6 +114,10 @@ namespace EscapeRoom.ViewModels
         private void ExecuteRegister(object parameter)
         {
             //opcja: przekierować do widoku rejestracji
+
+            // Przy rejestracji:
+            //string hash = GeneratePBKDF2Hash(password);
+            // Zapisz hash do bazy w polu haslo_hash
         }
 
         private void ExecuteForgotPassword(object parameter)
@@ -114,6 +128,30 @@ namespace EscapeRoom.ViewModels
         protected virtual void OnLoginSuccessful(LoginEventArgs e)
         {
             LoginSuccessful?.Invoke(this, e);
+        }
+
+        //Hashowanie hasła przy logowaniu
+        private string GeneratePBKDF2Hash(string password)
+        {
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, 16, 10000))
+            {
+                byte[] salt = deriveBytes.Salt;
+                byte[] key = deriveBytes.GetBytes(32);
+                return $"{Convert.ToBase64String(salt)}:{Convert.ToBase64String(key)}";
+            }
+        }
+
+        private bool VerifyPBKDF2Hash(string password, string hash)
+        {
+            var parts = hash.Split(':');
+            if (parts.Length != 2) return false;
+            byte[] salt = Convert.FromBase64String(parts[0]);
+            byte[] key = Convert.FromBase64String(parts[1]);
+            using (var deriveBytes = new Rfc2898DeriveBytes(password, salt, 10000))
+            {
+                byte[] testKey = deriveBytes.GetBytes(32);
+                return testKey.SequenceEqual(key);
+            }
         }
     }
 

@@ -265,3 +265,4 @@ C:\Martyna_C\Studia\POIG\Escape_Room_2\obj\Debug\EscapeRoom.exe
 C:\Martyna_C\Studia\POIG\Escape_Room_2\obj\Debug\EscapeRoom.pdb
 C:\Martyna_C\Studia\POIG\Escape_Room_2\bin\Debug\BCrypt.Net-Next.dll
 C:\Martyna_C\Studia\POIG\Escape_Room_2\bin\Debug\BCrypt.Net-Next.xml
+C:\Martyna_C\Studia\POIG\Escape_Room_2\obj\Debug\EscapeRoom.exe.config
