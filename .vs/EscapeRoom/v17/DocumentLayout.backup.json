@@ -3,11 +3,47 @@
   "WorkspaceRootPath": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\admindashboardview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\views\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\views\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\viewmodels\\paymentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\paymentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\views\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\viewmodels\\roomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\roomviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\data\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:data\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\views\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
@@ -15,44 +51,16 @@
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\loginview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\roomview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\views\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\userview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\paymentview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\reservationformview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\reviewview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\admindashboardview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\admindashboardview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\views\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:views\\contactview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|c:\\martyna_c\\studia\\poig\\escape_room_2\\viewmodels\\reservationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\viewmodels\\reservationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:viewmodels\\reservationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:properties\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\data\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|solutionrelative:data\\dataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B6886D63-F075-49B2-864B-90850BE9F7D6}|EscapeRoom.csproj|C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -69,8 +77,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 174,
-          "SelectedChildIndex": 4,
+          "DockedWidth": 123,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -85,69 +93,59 @@
               "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
+              "Title": "AdminDashboardView.xaml",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\AdminDashboardView.xaml",
+              "RelativeDocumentMoniker": "Views\\AdminDashboardView.xaml",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\AdminDashboardView.xaml",
+              "RelativeToolTip": "Views\\AdminDashboardView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-13T10:53:30.087Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAowIoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-11T18:12:21.395Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginView.xaml",
-              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\LoginView.xaml",
-              "RelativeDocumentMoniker": "Views\\LoginView.xaml",
-              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\LoginView.xaml",
-              "RelativeToolTip": "Views\\LoginView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-11T18:05:30.831Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RoomView.xaml",
-              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\RoomView.xaml",
-              "RelativeDocumentMoniker": "Views\\RoomView.xaml",
-              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\RoomView.xaml",
-              "RelativeToolTip": "Views\\RoomView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-13T10:29:06.441Z",
+              "WhenOpened": "2025-06-13T13:34:44.151Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "PaymentViewModel.cs",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\PaymentViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\PaymentViewModel.cs",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\PaymentViewModel.cs",
+              "RelativeToolTip": "ViewModels\\PaymentViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T13:32:37.046Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "UserView.xaml",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\UserView.xaml",
               "RelativeDocumentMoniker": "Views\\UserView.xaml",
               "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\UserView.xaml",
               "RelativeToolTip": "Views\\UserView.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-13T10:29:07.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T10:29:07.54Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
+              "Title": "ReviewView.xaml",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\ReviewView.xaml",
+              "RelativeDocumentMoniker": "Views\\ReviewView.xaml",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\ReviewView.xaml",
+              "RelativeToolTip": "Views\\ReviewView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-13T10:29:04.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "PaymentView.xaml",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\PaymentView.xaml",
               "RelativeDocumentMoniker": "Views\\PaymentView.xaml",
@@ -159,7 +157,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAA0wGIAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T18:12:21.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LoginView.xaml",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\LoginView.xaml",
+              "RelativeDocumentMoniker": "Views\\LoginView.xaml",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\LoginView.xaml",
+              "RelativeToolTip": "Views\\LoginView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-11T18:05:30.831Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DataService.cs",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Data\\DataService.cs",
+              "RelativeDocumentMoniker": "Data\\DataService.cs",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Data\\DataService.cs",
+              "RelativeToolTip": "Data\\DataService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAYwDgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T09:47:00.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ReservationFormView.xaml",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\ReservationFormView.xaml",
               "RelativeDocumentMoniker": "Views\\ReservationFormView.xaml",
@@ -171,19 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ReviewView.xaml",
-              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\ReviewView.xaml",
-              "RelativeDocumentMoniker": "Views\\ReviewView.xaml",
-              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\ReviewView.xaml",
-              "RelativeToolTip": "Views\\ReviewView.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-13T10:29:04.955Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 3,
               "Title": "ContactView.xaml",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\ContactView.xaml",
               "RelativeDocumentMoniker": "Views\\ContactView.xaml",
@@ -194,12 +217,44 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RoomViewModel.cs",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\RoomViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\RoomViewModel.cs",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\RoomViewModel.cs",
+              "RelativeToolTip": "ViewModels\\RoomViewModel.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-13T13:24:50.619Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-13T10:53:30.087Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RoomView.xaml",
+              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\RoomView.xaml",
+              "RelativeDocumentMoniker": "Views\\RoomView.xaml",
+              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\RoomView.xaml",
+              "RelativeToolTip": "Views\\RoomView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-13T10:29:06.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "ReservationViewModel.cs",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\ReservationViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\ReservationViewModel.cs",
@@ -207,12 +262,11 @@
               "RelativeToolTip": "ViewModels\\ReservationViewModel.cs",
               "ViewState": "AgIAAB0AAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T10:28:25.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T10:28:25.079Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "AssemblyInfo.cs",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Properties\\AssemblyInfo.cs",
               "RelativeDocumentMoniker": "Properties\\AssemblyInfo.cs",
@@ -224,19 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DataService.cs",
-              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Data\\DataService.cs",
-              "RelativeDocumentMoniker": "Data\\DataService.cs",
-              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Data\\DataService.cs",
-              "RelativeToolTip": "Data\\DataService.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAYwDgAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T09:47:00.042Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "UserViewModel.cs",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\ViewModels\\UserViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\UserViewModel.cs",
@@ -244,12 +286,11 @@
               "RelativeToolTip": "ViewModels\\UserViewModel.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T09:45:41.5Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-13T09:45:41.5Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Models\\User.cs",
               "RelativeDocumentMoniker": "Models\\User.cs",
@@ -258,25 +299,6 @@
               "ViewState": "AgIAAAkAAAAAAAAAAAAAABcAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-11T18:06:46.784Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 6,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AdminDashboardView.xaml.cs",
-              "DocumentMoniker": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\AdminDashboardView.xaml.cs",
-              "RelativeDocumentMoniker": "Views\\AdminDashboardView.xaml.cs",
-              "ToolTip": "C:\\Martyna_C\\Studia\\POIG\\Escape_Room_2\\Views\\AdminDashboardView.xaml.cs",
-              "RelativeToolTip": "Views\\AdminDashboardView.xaml.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwCYAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T10:39:18.279Z",
-              "EditorCaption": ""
             }
           ]
         }
