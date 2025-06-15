@@ -98,14 +98,17 @@ namespace EscapeRoom.ViewModels
                     return;
                 }
 
-                // Sukces: logowanie udane
+                // Sukces: logowanie udane - zapisz dane użytkownika globalnie
+                UserSession.CurrentUser = user;
+                UserSession.IsLoggedIn = true;
+
                 OnLoginSuccessful(new LoginEventArgs(user.Email, user.Admin));
                 MessageBox.Show($"Zalogowano jako {user.Imie} {user.Nazwisko}", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 //Admin
                 if (user.Admin)
                 {
-                    // Znajdź główne okno
+                    //  główne okno
                     var mainWindow = Application.Current.Windows
                         .OfType<Window>()
                         .FirstOrDefault(w => w is MainWindow) as MainWindow;
@@ -115,7 +118,6 @@ namespace EscapeRoom.ViewModels
                         mainWindow.MainContentControl.Content = new AdminDashboardView();
                     }
 
-                    // Zamknij okno logowania, jeśli jest osobne
                     Application.Current.Windows
                         .OfType<Window>()
                         .FirstOrDefault(w => w != mainWindow && w.IsActive)
@@ -157,9 +159,45 @@ namespace EscapeRoom.ViewModels
             //opcja: przekierować do widoku rejestracji
         }
 
-        private void ExecuteForgotPassword(object parameter)
+        private async void ExecuteForgotPassword(object parameter)
         {
-            //haslo przypomnienie
+            // pytanie o numer telefonu
+            string phoneNumber = Microsoft.VisualBasic.Interaction.InputBox(
+                "Podaj swój numer telefonu:",
+                "Przypomnienie hasła",
+                "");
+
+            if (string.IsNullOrWhiteSpace(phoneNumber))
+            {
+                return; //  anulowanie
+            }
+
+            try
+            {
+                DataService service = new DataService();
+                var user = await service.GetUserByPhoneAsync(phoneNumber);
+
+                if (user == null)
+                {
+                    MessageBox.Show("Nie znaleziono użytkownika z podanym numerem telefonu.",
+                        "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Tutaj możesz dodać logikę wysyłania nowego hasła SMS/email
+                MessageBox.Show($"Nowe hasło zostało wysłane na numer {phoneNumber}",
+                    "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                // Przykład: wygeneruj tymczasowe hasło i zaktualizuj w bazie
+                // string tempPassword = GenerateTemporaryPassword();
+                // await service.UpdateUserPasswordAsync(user.UzytkownikId, GeneratePBKDF2Hash(tempPassword));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas przypominania hasła: {ex.Message}",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         protected virtual void OnLoginSuccessful(LoginEventArgs e)
@@ -201,6 +239,19 @@ namespace EscapeRoom.ViewModels
         {
             Username = username;
             IsAdmin = isAdmin;
+        }
+    }
+
+    // Klasa do przechowywania danych sesji użytkownika
+    public static class UserSession
+    {
+        public static EscapeRoom.Models.User CurrentUser { get; set; }
+        public static bool IsLoggedIn { get; set; } = false;
+
+        public static void Logout()
+        {
+            CurrentUser = null;
+            IsLoggedIn = false;
         }
     }
 }

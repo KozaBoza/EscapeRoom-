@@ -20,21 +20,65 @@ namespace EscapeRoom.Views
 {
     public partial class MainWindow : Window
     {
+        private System.Windows.Threading.DispatcherTimer _userUpdateTimer;
+
         public MainWindow()
         {
             InitializeComponent();
             InitializeNavigation();
+            InitializeUserSessionUpdater();
             //typ homepage
             ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
             this.ResizeMode = ResizeMode.NoResize;
             this.WindowState = WindowState.Maximized;
             this.Topmost = true;
-
         }
 
         private void InitializeNavigation()
         {
             ViewNavigationService.Instance.ViewChanged += OnViewChanged;
+        }
+
+        private void InitializeUserSessionUpdater()
+        {
+            _userUpdateTimer = new System.Windows.Threading.DispatcherTimer();
+            _userUpdateTimer.Interval = TimeSpan.FromSeconds(1);
+            _userUpdateTimer.Tick += UpdateUserInterface;
+            _userUpdateTimer.Start();
+        }
+
+        private void UpdateUserInterface(object sender, EventArgs e)
+        {
+            if (UserSession.IsLoggedIn && UserSession.CurrentUser != null)
+            {
+                var loginButton = this.FindName("LoginButton") as Button;
+                if (loginButton != null)
+                {
+                    loginButton.Content = $"{UserSession.CurrentUser.Imie} {UserSession.CurrentUser.Nazwisko}";
+                }
+
+                //  przycisk wylogowania
+                var logoutButton = this.FindName("LogoutButton") as Button;
+                if (logoutButton != null)
+                {
+                    logoutButton.Visibility = Visibility.Visible;
+                }
+            }
+            else
+            {
+                //  domyślny tekst przycisku logowania
+                var loginButton = this.FindName("LoginButton") as Button;
+                if (loginButton != null)
+                {
+                    loginButton.Content = "Logowanie";
+                }
+
+                var logoutButton = this.FindName("LogoutButton") as Button;
+                if (logoutButton != null)
+                {
+                    logoutButton.Visibility = Visibility.Collapsed;
+                }
+            }
         }
 
         private void OnViewChanged(ViewType newView)
@@ -44,7 +88,7 @@ namespace EscapeRoom.Views
             {
                 case ViewType.Homepage:
                     this.Title = "Escape Room - Strona główna";
-                    
+
                     break;
                 case ViewType.Login:
                     this.Title = "Escape Room - Logowanie";
@@ -56,7 +100,7 @@ namespace EscapeRoom.Views
                     break;
                 case ViewType.ReservationForm:
                     this.Title = "Escape Room - Rezerwacja";
-                    newViewControl = new ReservationFormView(); 
+                    newViewControl = new ReservationFormView();
                     break;
                 case ViewType.Contact:
                     this.Title = "Escape Room - Kontakt";
@@ -98,7 +142,40 @@ namespace EscapeRoom.Views
 
         private void OnLoginButtonClick(object sender, RoutedEventArgs e)
         {
-            ViewNavigationService.Instance.NavigateTo(ViewType.Login);
+            if (UserSession.IsLoggedIn)
+            {
+                // panele użytkownika do zmiany
+                if (UserSession.CurrentUser.Admin)
+                {
+                    ViewNavigationService.Instance.NavigateTo(ViewType.AdminDashboard);
+                }
+                else
+                {
+                    ViewNavigationService.Instance.NavigateTo(ViewType.User);
+                }
+            }
+            else
+            {
+                // jesli nie jest zalogowany, pokaż ekran logowania
+                ViewNavigationService.Instance.NavigateTo(ViewType.Login);
+            }
+        }
+
+        private void OnLogoutButtonClick(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show(
+                "Czy na pewno chcesz się wylogować?",
+                "Wylogowanie",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                UserSession.Logout();
+                ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
+                MessageBox.Show("Wylogowano pomyślnie.", "Informacja",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void OnRoomsButtonClick(object sender, RoutedEventArgs e)
@@ -165,7 +242,7 @@ namespace EscapeRoom.Views
             if (result == MessageBoxResult.Yes)
             {
                 System.Windows.MessageBox.Show(
-                    "Łączenie z obsługą...\n\nTelefon: +48 123 456 789\nEmail: help@escaperoom.pl",
+                    "Łączenie z obsługą...\n\nTelefon: +48 000 000 000\nEmail: help@escaperoom.pl",
                     "Kontakt z obsługą",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
@@ -210,6 +287,7 @@ namespace EscapeRoom.Views
 
         protected override void OnClosed(EventArgs e)
         {
+            _userUpdateTimer?.Stop();
             ViewNavigationService.Instance.ViewChanged -= OnViewChanged;
             base.OnClosed(e);
         }
