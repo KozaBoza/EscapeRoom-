@@ -7,15 +7,16 @@ using System.Runtime.CompilerServices;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Controls; // Potrzebne do UserControl
 using System.Windows.Media;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using EscapeRoom.Views; 
 
 namespace EscapeRoom.ViewModels
-{ //widok główny
+{
     public class MainViewModel : BaseViewModel
     {
         private UserViewModel _currentUser;
@@ -33,30 +34,19 @@ namespace EscapeRoom.ViewModels
 
             LoginCommand = new RelayCommand(Login, CanLogin);
             LogoutCommand = new RelayCommand(Logout, CanLogout);
-            RegisterCommand = new RelayCommand(Register, CanRegister);
+            RegisterCommand = new RelayCommand(Register, CanRegister); 
             NavigateCommand = new RelayCommand(Navigate);
             RefreshDataCommand = new RelayCommand(RefreshData);
 
-            CurrentView = "Rooms";
-            LoadSampleData();
-        }
+            CurrentView = "Rooms"; // domyslny
 
-        public ObservableCollection<RoomViewModel> Rooms { get; }
-        public ObservableCollection<ReservationViewModel> Reservations { get; }
-        public ObservableCollection<ReviewViewModel> Reviews { get; }
-        public ObservableCollection<PaymentViewModel> Payments { get; }
+            //Messenger.Instance.Subscribe<NavigationMessage>(OnNavigationMessageReceived);
+        }
 
         public UserViewModel CurrentUser
         {
             get => _currentUser;
-            set
-            {
-                if (SetProperty(ref _currentUser, value))
-                {
-                    OnPropertyChanged(nameof(IsLoggedIn));
-                    OnPropertyChanged(nameof(CurrentUserName));
-                }
-            }
+            set => SetProperty(ref _currentUser, value);
         }
 
         public RoomViewModel SelectedRoom
@@ -79,29 +69,36 @@ namespace EscapeRoom.ViewModels
 
         public bool IsLoggedIn
         {
-            get => _isLoggedIn && CurrentUser != null;
-            set => SetProperty(ref _isLoggedIn, value);
+            get => _isLoggedIn;
+            set
+            {
+                if (SetProperty(ref _isLoggedIn, value))
+                {
+                    OnPropertyChanged(nameof(CanLogout));
+                    OnPropertyChanged(nameof(CanLogin));
+                    OnPropertyChanged(nameof(CanRegister)); 
+                }
+            }
         }
 
-        public string CurrentUserName => CurrentUser != null ?
-            $"{CurrentUser.Imie} {CurrentUser.Nazwisko}" : "GOŚĆ";
+        public ObservableCollection<RoomViewModel> Rooms { get; set; }
+        public ObservableCollection<ReservationViewModel> Reservations { get; set; }
+        public ObservableCollection<ReviewViewModel> Reviews { get; set; }
+        public ObservableCollection<PaymentViewModel> Payments { get; set; }
 
-        // komendy
+        // Komendy
         public ICommand LoginCommand { get; }
         public ICommand LogoutCommand { get; }
-        public ICommand RegisterCommand { get; }
+        public ICommand RegisterCommand { get; } // Pozostaje tutaj, jeśli używasz go w MainView.xaml
         public ICommand NavigateCommand { get; }
         public ICommand RefreshDataCommand { get; }
 
-        // metody komend
-        private void Login(object parameter)
+        private async void Login(object parameter)
         {
-            // logika logowania - tutaj powinna być integracja z bazą danych
-            if (parameter is UserViewModel loginUser)
+            // Przejście do widoku logowania, jeśli nie jesteś zalogowany
+            if (!IsLoggedIn)
             {
-                CurrentUser = loginUser;
-                IsLoggedIn = true;
-                LoadUserData();
+                CurrentView = "Login"; // Ustawia CurrentView na "Login"
             }
         }
 
@@ -111,36 +108,22 @@ namespace EscapeRoom.ViewModels
         {
             CurrentUser = null;
             IsLoggedIn = false;
-            CurrentView = "Rooms";
+            ClearSessionData();
+            CurrentView = "Login"; // Przejście do widoku logowania po wylogowaniu
         }
 
         private bool CanLogout(object parameter) => IsLoggedIn;
 
-        private bool _isLogoutVisible = true;
-        public bool IsLogoutVisible
-        {
-            get => _isLogoutVisible;
-            set
-            {
-                _isLogoutVisible = value;
-                OnPropertyChanged(nameof(IsLogoutVisible));
-            }
-        }
-
-
         private void Register(object parameter)
         {
-            //logika rejestracji nowego użytkownika
-            if (parameter is UserViewModel newUser && newUser.IsValid)
+            // Przejście do widoku rejestracji
+            if (!IsLoggedIn)
             {
-                //logika zapisu do bazy danych
-                CurrentUser = newUser;
-                IsLoggedIn = true;
+                CurrentView = "Register"; 
             }
         }
 
-        private bool CanRegister(object parameter) =>
-            parameter is UserViewModel user && user.IsValid;
+        private bool CanRegister(object parameter) => !IsLoggedIn;
 
         private void Navigate(object parameter)
         {
@@ -150,33 +133,17 @@ namespace EscapeRoom.ViewModels
             }
         }
 
+        private void OnNavigationMessageReceived(NavigationMessage message)
+        {
+            if (message?.TargetView != null)
+            {
+                CurrentView = message.TargetView;
+            }
+        }
+
         private void RefreshData(object parameter)
         {
-            LoadSampleData();
-            if (IsLoggedIn)
-            {
-                LoadUserData();
-            }
-        }
-
-        // metody pomocnicze
-        private void LoadSampleData()
-        {
-            //zaladowanie przykładowych pokoi
-            Rooms.Clear();
-            //var sampleRooms = new[]
-            // {
-            //przykaldy
-            //};
-
-            //foreach (var room in sampleRooms)
-            {
-            //    Rooms.Add(new RoomViewModel(room));
-            }
-        }
-
-        private void LoadUserData()
-        {
+            //dodac logike odświeżania danych
             if (CurrentUser == null) return;
             Reservations.Clear();
             Payments.Clear();
@@ -184,7 +151,7 @@ namespace EscapeRoom.ViewModels
             //dodac logike
         }
 
-        //metody biznesowe
+        //metody 
         public void CreateReservation(RoomViewModel room, DateTime startTime, byte numberOfPeople)
         {
             if (!IsLoggedIn || room == null) return;
@@ -222,6 +189,11 @@ namespace EscapeRoom.ViewModels
             };
 
             Payments.Add(payment);
+        }
+
+        private void ClearSessionData()
+        {
+            // 
         }
     }
 }

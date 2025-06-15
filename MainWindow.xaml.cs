@@ -130,14 +130,16 @@ namespace EscapeRoom.Views
             }
         }
 
-        private void OnContactButtonClick(object sender, RoutedEventArgs e)
-        {
-            ViewNavigationService.Instance.NavigateTo(ViewType.Contact);
-        }
 
         private void OnReservationButtonClick(object sender, RoutedEventArgs e)
         {
             ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm);
+        }
+
+
+        private void OnUserButtonClick(object sender, RoutedEventArgs e)
+        {
+            ViewNavigationService.Instance.NavigateTo(ViewType.User);
         }
 
         private void OnLoginButtonClick(object sender, RoutedEventArgs e)
@@ -183,9 +185,9 @@ namespace EscapeRoom.Views
             ViewNavigationService.Instance.NavigateTo(ViewType.Room);
         }
 
-        private void OnReviewsButtonClick(object sender, RoutedEventArgs e)
+        private void OnContactButtonClick(object sender, RoutedEventArgs e)
         {
-            ViewNavigationService.Instance.NavigateTo(ViewType.Review);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Contact);
         }
 
         private void OnAboutButtonClick(object sender, RoutedEventArgs e)

@@ -1,0 +1,73 @@
+<UserControl x:Class="EscapeRoom.Views.RegisterView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EscapeRoom.Views"
+             xmlns:viewmodels="clr-namespace:EscapeRoom.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewmodels:RegisterViewModel/>
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Rejestracja nowego u¿ytkownika" 
+                   HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20,0,20"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Nazwa u¿ytkownika:" Margin="10" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" 
+                 Width="200" HorizontalAlignment="Left" Margin="10"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Adres E-mail:" Margin="10" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" 
+                 Width="200" HorizontalAlignment="Left" Margin="10"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Has³o:" Margin="10" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="PasswordInput" Grid.Row="3" Grid.Column="1" Width="200" HorizontalAlignment="Left" Margin="10" 
+                     PasswordChanged="PasswordBox_PasswordChanged"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="PotwierdŸ has³o:" Margin="10" VerticalAlignment="Center"/>
+        <PasswordBox x:Name="ConfirmPasswordInput" Grid.Row="4" Grid.Column="1" Width="200" HorizontalAlignment="Left" Margin="10" 
+                     PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Imiê:" Margin="10" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" 
+                 Width="200" HorizontalAlignment="Left" Margin="10"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Nazwisko:" Margin="10" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}" 
+                 Width="200" HorizontalAlignment="Left" Margin="10"/>
+
+        <TextBlock Grid.Row="7" Grid.ColumnSpan="2" Text="{Binding ErrorMessage}" Foreground="Red" 
+                   HorizontalAlignment="Center" Margin="0,10,0,0"/>
+
+        <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Zarejestruj" Command="{Binding RegisterCommand}" 
+                Width="100" Height="30" Margin="10" HorizontalAlignment="Center"/>
+
+        <Button Grid.Row="9" Grid.ColumnSpan="2" Content="Wróæ do logowania" Command="{Binding GoToLoginCommand}" 
+                Width="150" Height="30" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <ProgressBar Grid.Row="7" Grid.ColumnSpan="2" IsIndeterminate="True" 
+                     Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}" 
+                     Height="10" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>

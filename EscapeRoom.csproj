@@ -134,6 +134,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Data\DataService.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="Views\AdminDashboardView.xaml.cs">
       <DependentUpon>AdminDashboardView.xaml</DependentUpon>
     </Compile>
@@ -151,6 +152,9 @@
     <Compile Include="NavigationService.cs" />
     <Compile Include="Views\PaymentView.xaml.cs">
       <DependentUpon>PaymentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReservationFormView.xaml.cs">
       <DependentUpon>ReservationFormView.xaml</DependentUpon>
@@ -202,6 +206,9 @@
     <Page Include="Views\PaymentView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RegisterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReservationFormView.xaml">
       <Generator>MSBuild:Compile</Generator>

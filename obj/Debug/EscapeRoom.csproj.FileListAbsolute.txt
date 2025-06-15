@@ -266,3 +266,16 @@ C:\Martyna_C\Studia\POIG\Escape_Room_2\obj\Debug\EscapeRoom.pdb
 C:\Martyna_C\Studia\POIG\Escape_Room_2\bin\Debug\BCrypt.Net-Next.dll
 C:\Martyna_C\Studia\POIG\Escape_Room_2\bin\Debug\BCrypt.Net-Next.xml
 C:\Martyna_C\Studia\POIG\Escape_Room_2\obj\Debug\EscapeRoom.exe.config
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\PaymentView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReservationFormView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReviewView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\UserView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\AdminDashboardView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ContactView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\LoginView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\PaymentView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReservationFormView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReviewView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\RoomView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\UserView.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom_Content.g.cs

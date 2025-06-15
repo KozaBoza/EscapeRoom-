@@ -50,13 +50,13 @@
                 <Button Content="REZERWACJE" Click="OnReservationButtonClick" Width="256" BorderBrush="{x:Null}" Background="#FF602DC8" FontFamily="Segoe UI Black" Foreground="#252525" Height="58"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Grid.Column="1" RenderTransformOrigin="0.482,9.153" Margin="93,84,0,10" HorizontalAlignment="Left" Width="544"  >
-                <Button Content="RECENZJE" Click="OnReviewsButtonClick" Width="288" Background="#FFF05541" BorderBrush="{x:Null}" Foreground="#252525" FontFamily="Segoe UI Black" Height="56" />
-                <Button Content="PŁATNOŚCI" Click="OnLoginButtonClick" Margin="0" Width="255" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Foreground="#252525" Background="#FF16A570" Height="56" />
+                <Button Content="KONTAKT" Click="OnContactButtonClick" Width="288" Background="#FFF05541" BorderBrush="{x:Null}" Foreground="#252525" FontFamily="Segoe UI Black" Height="56" />
+                <Button Content="USTAWIENIA KONTA" Click="OnUserButtonClick" Margin="0" Width="255" BorderBrush="{x:Null}" FontFamily="Segoe UI Black" Foreground="#252525" Background="#FF16A570" Height="56" />
             </StackPanel>
            
             <Button Content="LOGOWANIE" Click="OnLoginButtonClick" Margin="637,23,9,71" Grid.Column="1" RenderTransformOrigin="-2.387,2.77"
                     Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FFFBBE53" Foreground="#252525" />
-            <Button Content="WYLOGUJ" Click="OnLogOUTButtonClick" Margin="637,84,9,10" Grid.Column="1" RenderTransformOrigin="-2.387,2.77"
+            <Button Content="WYLOGUJ" Click="OnLogoutButtonClick" Margin="637,84,9,10" Grid.Column="1" RenderTransformOrigin="-2.387,2.77"
                      Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FF6B73" Foreground="#252525" />
 
         </Grid>
