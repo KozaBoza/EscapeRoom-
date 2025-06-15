@@ -175,7 +175,7 @@ namespace EscapeRoom.ViewModels
             try
             {
                 DataService service = new DataService();
-                var user = await service.GetUserByPhoneAsync(phoneNumber);
+                var user = await service.GetUserByPhoneAsync(phoneNumber); //tutaj trzeba z baza dostosować
 
                 if (user == null)
                 {
