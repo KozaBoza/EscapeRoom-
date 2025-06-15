@@ -307,5 +307,10 @@ namespace EscapeRoom.Views
                 e.Cancel = true;
             }
         }
+
+        private void OnAdminButtonClick(object sender, RoutedEventArgs e)
+        {
+            ViewNavigationService.Instance.NavigateTo(ViewType.AdminDashboard);
+        }
     }
 }

@@ -195,5 +195,11 @@ namespace EscapeRoom.ViewModels
         {
             // 
         }
+        private bool _isAdminVisible;
+        public bool IsAdminVisible
+        {
+            get => _isAdminVisible;
+            set => SetProperty(ref _isAdminVisible, value);
+        }
     }
 }
