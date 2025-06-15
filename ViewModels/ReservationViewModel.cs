@@ -2,11 +2,12 @@
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 {
     public class ReservationViewModel : BaseViewModel
-    { //rezerwacja pokoju
+    { //ZEBY BYLO MVVP TRZEBA PRZENIESC TE FUNKCJE TO MODELS
         private Reservation _reservation;
         private UserViewModel _userViewModel;
         private RoomViewModel _roomViewModel;
@@ -157,7 +158,8 @@ namespace EscapeRoom.ViewModels
             if (IsValid)
             {
                 Status = ReservationStatus.zarezerwowana;
-                // logika potwierdzenia
+                ViewNavigationService.Instance.NavigateTo(ViewType.Payment);
+                //przenoszenie
             }
         }
 
