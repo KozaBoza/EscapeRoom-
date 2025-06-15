@@ -83,7 +83,7 @@ namespace EscapeRoom.ViewModels
             try
             {
                 DataService service = new DataService();
-                var user = await service.GetUserByUsernameAsync(Username);
+                var user = await service.GetUserByEmailAsync(Username);
 
                 if (user == null)
                 {

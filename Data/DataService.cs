@@ -42,12 +42,68 @@ namespace EscapeRoom.Data
             return rooms;
         }
 
-        public async Task<User> GetUserByUsernameAsync(string email)
+        public async Task<User> GetUserByEmailAsync(string email)
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
             await conn.OpenAsync();
             MySqlCommand cmd = new MySqlCommand("SELECT uzytkownik_id, email, haslo_hash, imie, nazwisko, telefon, admin FROM uzytkownicy WHERE email = @email", conn);
             cmd.Parameters.AddWithValue("@email", email);
+            MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
+            User user = null;
+            if (await reader.ReadAsync())
+            {
+                user = new User
+                {
+                    UzytkownikId = reader.GetInt32("uzytkownik_id"),
+                    Imie = reader.GetString("imie"),
+                    Nazwisko = reader.GetString("nazwisko"),
+                    Telefon = reader.GetString("telefon"),
+                    Email = reader.GetString("email"),
+                    HasloHash = reader.GetString("haslo_hash"),
+                    Admin = reader.GetBoolean("admin")
+                };
+            }
+            await conn.CloseAsync();
+            return user;
+        }
+
+        public async Task<bool> AddUserAsync(User user)
+        {
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            await conn.OpenAsync();
+
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand(
+                    "INSERT INTO uzytkownicy (email, haslo_hash, imie, nazwisko, telefon, data_rejestracji, admin) " +
+                    "VALUES (@email, @haslo_hash, @imie, @nazwisko, @telefon, @data_rejestracji, @admin)", conn);
+
+                cmd.Parameters.AddWithValue("@email", user.Email);
+                cmd.Parameters.AddWithValue("@haslo_hash", user.HasloHash);
+                cmd.Parameters.AddWithValue("@imie", user.Imie);
+                cmd.Parameters.AddWithValue("@nazwisko", user.Nazwisko);
+                cmd.Parameters.AddWithValue("@telefon", user.Telefon ?? (object)DBNull.Value);
+                cmd.Parameters.AddWithValue("@data_rejestracji", user.DataRejestracji);
+                cmd.Parameters.AddWithValue("@admin", user.Admin);
+
+                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                return rowsAffected > 0;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            finally
+            {
+                await conn.CloseAsync();
+            }
+        }
+        public async Task<User> GetUserByPhoneAsync(string phone)
+        {
+            MySqlConnection conn = new MySqlConnection(connectionString);
+            await conn.OpenAsync();
+            MySqlCommand cmd = new MySqlCommand("SELECT uzytkownik_id, email, haslo_hash, imie, nazwisko, telefon, admin FROM uzytkownicy WHERE telefon = @telefon", conn);
+            cmd.Parameters.AddWithValue("@telefon", phone);
             MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
             User user = null;
             if (await reader.ReadAsync())

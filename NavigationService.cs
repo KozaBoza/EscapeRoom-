@@ -7,6 +7,7 @@ namespace EscapeRoom.Services
     {
         Homepage,
         Login,
+        Register,
         AdminDashboard,
         ReservationForm,
         Contact,

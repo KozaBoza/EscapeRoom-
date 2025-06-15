@@ -8,7 +8,7 @@ namespace EscapeRoom.Views
         public RegisterView()
         {
             InitializeComponent();
-            this.DataContext = new RegisterViewModel();
+            //this.DataContext = new RegisterViewModel();
         }
 
         private void PasswordBox_PasswordChanged(object sender, System.Windows.RoutedEventArgs e)

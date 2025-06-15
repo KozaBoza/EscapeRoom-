@@ -70,8 +70,7 @@ namespace EscapeRoom.Views
 
         private void OnRegisterButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            System.Windows.MessageBox.Show("Funkcja rejestracji zostanie wkrótce zaimplementowana.",
-                "Rejestracja", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+            ViewNavigationService.Instance.NavigateTo(ViewType.Register);
         }
 
         private void OnBackButtonClick(object sender, System.Windows.RoutedEventArgs e)

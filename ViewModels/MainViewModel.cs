@@ -133,13 +133,13 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        private void OnNavigationMessageReceived(NavigationMessage message)
-        {
-            if (message?.TargetView != null)
-            {
-                CurrentView = message.TargetView;
-            }
-        }
+        //private void OnNavigationMessageReceived(NavigationMessage message)
+        //{
+        //    if (message?.TargetView != null)
+        //    {
+        //        CurrentView = message.TargetView;
+        //    }
+        //}
 
         private void RefreshData(object parameter)
         {
