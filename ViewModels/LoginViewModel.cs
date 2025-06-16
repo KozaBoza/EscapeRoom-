@@ -1,16 +1,17 @@
-﻿using System;
+﻿using EscapeRoom.Data;
+using EscapeRoom.Helpers;
+using EscapeRoom.Services;
+using EscapeRoom.Views;
+using Org.BouncyCastle.Crypto.Generators;
+using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using EscapeRoom.Data;
-using EscapeRoom.Helpers;
-using Org.BouncyCastle.Crypto.Generators;
-using System.Security.Cryptography;
-using System.Text;
-using System.Linq;
-using EscapeRoom.Views;
 
 namespace EscapeRoom.ViewModels
 { //obsługa logowania
@@ -156,7 +157,7 @@ namespace EscapeRoom.ViewModels
 
         private void ExecuteRegister(object parameter)
         {
-            //opcja: przekierować do widoku rejestracji
+            ViewNavigationService.Instance.NavigateTo(ViewType.Register);
         }
 
         private async void ExecuteForgotPassword(object parameter)

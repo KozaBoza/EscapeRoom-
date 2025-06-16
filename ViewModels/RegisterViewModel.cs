@@ -105,6 +105,16 @@ namespace EscapeRoom.ViewModels
 
         public RegisterViewModel()
         {
+            // Inicjalizacja pól, aby uniknąć null
+            Username = string.Empty;
+            Email = string.Empty;
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            ErrorMessage = string.Empty;
+
+
             RegisterCommand = new RelayCommand(async (param) => await Register(), (param) => CanRegister);
             GoToLoginCommand = new RelayCommand(GoToLogin);
         }
@@ -162,7 +172,15 @@ namespace EscapeRoom.ViewModels
 
                 if (success)
                 {
-                    GoToLogin(null);
+                    // Informacja o pomyślnym utworzeniu konta
+                    System.Windows.MessageBox.Show(
+                        "Konto zostało pomyślnie utworzone. Możesz teraz się zalogować.",
+                        "Rejestracja zakończona",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Information);
+
+                    // Przekierowanie do widoku logowania
+                    ViewNavigationService.Instance.NavigateTo(ViewType.Login);
                 }
                 else
                 {
@@ -194,14 +212,7 @@ namespace EscapeRoom.ViewModels
 
         private void GoToLogin(object parameter)
         {
-            // Informacja o pomyślnym utworzeniu konta
-            System.Windows.MessageBox.Show(
-                "Konto zostało pomyślnie utworzone. Możesz teraz się zalogować.",
-                "Rejestracja zakończona",
-                System.Windows.MessageBoxButton.OK,
-                System.Windows.MessageBoxImage.Information);
-            
-            // Przekierowanie do widoku logowania
+            // Przekierowanie do widoku logowania bez wyświetlania komunikatu
             ViewNavigationService.Instance.NavigateTo(ViewType.Login);
         }
 

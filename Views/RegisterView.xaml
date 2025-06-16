@@ -12,6 +12,10 @@
         <viewmodels:RegisterViewModel/>
     </UserControl.DataContext>-->
 
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

@@ -57,7 +57,7 @@ namespace EscapeRoom.Data
                     UzytkownikId = reader.GetInt32("uzytkownik_id"),
                     Imie = reader.GetString("imie"),
                     Nazwisko = reader.GetString("nazwisko"),
-                    Telefon = reader.GetString("telefon"),
+                    Telefon = reader.IsDBNull(reader.GetOrdinal("telefon")) ? null : reader.GetString("telefon"),
                     Email = reader.GetString("email"),
                     HasloHash = reader.GetString("haslo_hash"),
                     Admin = reader.GetBoolean("admin")
@@ -113,7 +113,7 @@ namespace EscapeRoom.Data
                     UzytkownikId = reader.GetInt32("uzytkownik_id"),
                     Imie = reader.GetString("imie"),
                     Nazwisko = reader.GetString("nazwisko"),
-                    Telefon = reader.GetString("telefon"),
+                    Telefon = reader.IsDBNull(reader.GetOrdinal("telefon")) ? null : reader.GetString("telefon"),
                     Email = reader.GetString("email"),
                     HasloHash = reader.GetString("haslo_hash"),
                     Admin = reader.GetBoolean("admin")

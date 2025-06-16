@@ -261,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database\escaperoom.sql" />
+    <Content Include="Database\escaperoom_new.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
