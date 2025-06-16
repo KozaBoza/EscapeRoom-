@@ -279,3 +279,4 @@ C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReviewView.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\RoomView.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\UserView.g.cs
 C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\EscapeRoom_Content.g.cs
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\RegisterView.g.cs

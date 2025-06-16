@@ -30,10 +30,10 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Rejestracja nowego u¿ytkownika" 
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Rejestracja nowego uzytkownika" 
                    HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20,0,20"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Nazwa u¿ytkownika:" Margin="10" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Nazwa uzytkownika:" Margin="10" VerticalAlignment="Center"/>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" 
                  Width="200" HorizontalAlignment="Left" Margin="10"/>
 
@@ -41,15 +41,15 @@
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" 
                  Width="200" HorizontalAlignment="Left" Margin="10"/>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Has³o:" Margin="10" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Haslo:" Margin="10" VerticalAlignment="Center"/>
         <PasswordBox x:Name="PasswordInput" Grid.Row="3" Grid.Column="1" Width="200" HorizontalAlignment="Left" Margin="10" 
                      PasswordChanged="PasswordBox_PasswordChanged"/>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="PotwierdŸ has³o:" Margin="10" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="PotwierdÅº hasÅ‚o:" Margin="10" VerticalAlignment="Center"/>
         <PasswordBox x:Name="ConfirmPasswordInput" Grid.Row="4" Grid.Column="1" Width="200" HorizontalAlignment="Left" Margin="10" 
                      PasswordChanged="ConfirmPasswordBox_PasswordChanged"/>
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Imiê:" Margin="10" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="ImiÄ™:" Margin="10" VerticalAlignment="Center"/>
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}" 
                  Width="200" HorizontalAlignment="Left" Margin="10"/>
 
@@ -63,7 +63,7 @@
         <Button Grid.Row="8" Grid.ColumnSpan="2" Content="Zarejestruj" Command="{Binding RegisterCommand}" 
                 Width="100" Height="30" Margin="10" HorizontalAlignment="Center"/>
 
-        <Button Grid.Row="9" Grid.ColumnSpan="2" Content="Wróæ do logowania" Command="{Binding GoToLoginCommand}" 
+        <Button Grid.Row="9" Grid.ColumnSpan="2" Content="WrÃ³Ä‡ do logowania" Command="{Binding GoToLoginCommand}" 
                 Width="150" Height="30" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
         <ProgressBar Grid.Row="7" Grid.ColumnSpan="2" IsIndeterminate="True" 

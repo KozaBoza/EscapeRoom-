@@ -105,7 +105,7 @@ namespace EscapeRoom.ViewModels
         public RegisterViewModel()
         {
             RegisterCommand = new RelayCommand(async (param) => await Register(), (param) => CanRegister);
-            GoToLoginCommand = new RelayCommand(GoToLogin);
+            GoToLoginCommand = new RelayCommand(param => GoToLogin());
         }
 
         private async Task Register()
@@ -149,13 +149,12 @@ namespace EscapeRoom.ViewModels
             {
                 var newUser = new User
                 {
-                    NazwaUzytkownika = Username,
                     Email = Email,
                     Imie = FirstName,
                     Nazwisko = LastName,
                     HasloHash = GeneratePBKDF2Hash(Password),
                     DataRejestracji = DateTime.Now,
-                    IsAdmin = false //domyslnie nie
+                    Admin = false //domyslnie nie
                 };
 
                var success = await dataService.AddUserAsync(newUser);

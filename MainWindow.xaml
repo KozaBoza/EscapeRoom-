@@ -59,7 +59,7 @@
             <Button Content="WYLOGUJ" Click="OnLogoutButtonClick" Margin="637,84,9,10" Grid.Column="1" RenderTransformOrigin="-2.387,2.77"
                      Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FF6B73" Foreground="#252525" />
 
-            <Button Content="ADMIN" Click="OnAdminButtonClick" Margin="637,23,9,71" Grid.Column="1" RenderTransformOrigin="-2.387,2.77"
+            <Button Content="ADMIN" Click="OnAdminButtonClick" Margin="637,23,9,76" Grid.Column="1" RenderTransformOrigin="-2.387,2.77"
         Visibility="{Binding IsAdminVisible, Converter={StaticResource BoolToVisibilityConverter}}" 
         BorderBrush="{x:Null}" Background="#FF6B73" Foreground="#252525" />
         </Grid>
