@@ -157,7 +157,7 @@ namespace EscapeRoom.ViewModels
                     Admin = false //domyslnie nie
                 };
 
-               var success = await dataService.AddUserAsync(newUser);
+               var success = await dataService.AddUserAsync(newUser); //dostować
 
                 if (success)
                 {

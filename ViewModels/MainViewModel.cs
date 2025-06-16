@@ -95,7 +95,7 @@ namespace EscapeRoom.ViewModels
 
         private async void Login(object parameter)
         {
-            // Przejście do widoku logowania, jeśli nie jesteś zalogowany
+            // przejście do widoku logowania, jeśli nie jesteś zalogowany
             if (!IsLoggedIn)
             {
                 CurrentView = "Login"; // Ustawia CurrentView na "Login"
@@ -109,14 +109,14 @@ namespace EscapeRoom.ViewModels
             CurrentUser = null;
             IsLoggedIn = false;
             ClearSessionData();
-            CurrentView = "Login"; // Przejście do widoku logowania po wylogowaniu
+            CurrentView = "Login"; // przejście do widoku logowania po wylogowaniu
         }
 
         private bool CanLogout(object parameter) => IsLoggedIn;
 
         private void Register(object parameter)
         {
-            // Przejście do widoku rejestracji
+            // przejście do widoku rejestracji
             if (!IsLoggedIn)
             {
                 CurrentView = "Register"; 
@@ -133,7 +133,7 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        /*private void OnNavigationMessageReceived(NavigationMessage message)
+        /*private void OnNavigationMessageReceived(NavigationMessage message) idk co zimportować żeby działało xdd
         {
             if (message?.TargetView != null)
             {
@@ -195,6 +195,7 @@ namespace EscapeRoom.ViewModels
         {
             // 
         }
+
         private bool _isAdminVisible;
         public bool IsAdminVisible
         {

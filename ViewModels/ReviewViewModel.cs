@@ -118,12 +118,32 @@ namespace EscapeRoom.ViewModels
 
         private void DeleteReview(object parameter)
         {
-            // logika usuwania recenzji
+            //  logika usuwania recenzji
+            if (Id > 0)
+            {
+                MessageBoxResult result = MessageBox.Show(
+                    "Czy na pewno chcesz usunąć tę recenzję?", //trzeba połączyć z bazą danych
+                    "Potwierdzenie usunięcia",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    Id = 0;
+                    UserId = 0;
+                    RoomId = 0;
+                    Rating = 0;
+                    Comment = string.Empty;
+                    CreatedAt = DateTime.MinValue;
+                    OnPropertyChanged(nameof(IsValid));
+                    MessageBox.Show("Recenzja została usunięta.", "Usunięto", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
 
         private bool CanDeleteReview(object parameter) => Id > 0;
 
-        //metody pomocnicze do pracy z prywatymi polami przez refleksję
+        //metody pomocnicze do pracy z prywatymi polami 
         private T GetFieldValue<T>(string fieldName)
         {
             var field = typeof(Review).GetField(fieldName,

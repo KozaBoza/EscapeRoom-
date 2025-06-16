@@ -157,7 +157,7 @@ namespace EscapeRoom.ViewModels
             if (IsValid)
             {
                 IsEditing = false;
-                // logika zapisu do bazy danych
+                // logika zapisu do bazy danych DODAĆ
             }
         }
 
