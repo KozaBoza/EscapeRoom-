@@ -10,6 +10,7 @@ namespace EscapeRoom.Data
 {
     public class DataService
     {
+
         private string connectionString = "Server=localhost;Database=escaperoom;Uid=poig;Pwd=poig;";
         public async Task<List<Room>> GetRoomsAsync()
         {
@@ -234,6 +235,11 @@ namespace EscapeRoom.Data
 
             await conn.CloseAsync();
             return Convert.ToInt32(result);
+        }
+
+        public string GetConnectionString()
+        {
+            return connectionString;
         }
 
     }
