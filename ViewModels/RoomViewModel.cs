@@ -177,7 +177,9 @@ namespace EscapeRoom.ViewModels
 
         private void BookRoom(object parameter)
         {
-            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, _room);
+            // Utwórz ReservationViewModel i przekaż mu aktualny RoomViewModel
+            var reservationViewModel = new ReservationViewModel(this); // Przekazujemy 'this', czyli RoomViewModel
+            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, reservationViewModel);
         }
         private bool CanBookRoom(object parameter) => true;
     }

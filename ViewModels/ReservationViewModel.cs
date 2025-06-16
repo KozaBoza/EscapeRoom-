@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 using EscapeRoom.Services;
@@ -22,6 +23,32 @@ namespace EscapeRoom.ViewModels
         public ReservationViewModel(Reservation reservation) : this()
         {
             _reservation = reservation ?? new Reservation();
+            LoadAssociatedDataAsync();
+        }
+
+        public ReservationViewModel(RoomViewModel roomViewModel) : this()
+        {
+            RoomViewModel = roomViewModel; // Ustawienie właściwości RoomViewModel
+                                           // Ustaw PokojId z wybranego pokoju
+            _reservation.PokojId = roomViewModel.PokojId;
+            // Tutaj możesz też zainicjować inne dane rezerwacji
+            _reservation.DataUtworzenia = DateTime.Now; // Ustaw domyślną datę utworzenia
+            Status = ReservationStatus.zarezerwowana; // Domyślny status po utworzeniu
+        }
+
+        private async void LoadAssociatedDataAsync()
+        {
+            DataService service = new DataService();
+            if (_reservation.PokojId > 0)
+            {
+                // Pobierz pokój na podstawie PokojId rezerwacji
+                var room = await service.GetRoomByIdAsync(_reservation.PokojId);
+                if (room != null)
+                {
+                    RoomViewModel = new RoomViewModel(room); // Utwórz RoomViewModel z załadowanego pokoju
+                }
+            }
+            // TODO: Analogicznie załaduj UserViewModel jeśli _reservation.UzytkownikId > 0
         }
 
         public int RezerwacjaId
@@ -172,5 +199,6 @@ namespace EscapeRoom.ViewModels
         }
 
         private bool CanCancelReservation(object parameter) => CanBeCancelled;
+
     }
 }

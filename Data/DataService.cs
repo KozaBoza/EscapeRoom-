@@ -206,10 +206,20 @@ namespace EscapeRoom.Data
 
             var cmd = new MySqlCommand(
                 "SELECT COUNT(*) FROM rezerwacje WHERE status = 'zarezerwowana'", conn);
-            var result = await cmd.ExecuteScalarAsync();
-
-            await conn.CloseAsync();
-            return Convert.ToInt32(result);
+            int count = 0;
+            using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+            {
+                if (await reader.ReadAsync())
+                {
+                    // Odczytaj pierwszą (i jedyną) kolumnę (wynik COUNT(*))
+                    // Użyj GetInt32 i sprawdź IsDBNull
+                    if (!reader.IsDBNull(0))
+                    {
+                        count = reader.GetInt32(0);
+                    }
+                }
+            }
+            return count;
         }
 
         public async Task<int> GetConfirmedReservationsCountAsync()
@@ -219,10 +229,19 @@ namespace EscapeRoom.Data
 
             var cmd = new MySqlCommand(
                 "SELECT COUNT(*) FROM rezerwacje WHERE status = 'zrealizowana'", conn);
-            var result = await cmd.ExecuteScalarAsync();
-
-            await conn.CloseAsync();
-            return Convert.ToInt32(result);
+            int count = 0;
+            using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+            {
+                if (await reader.ReadAsync())
+                {
+                    // Odczytaj pierwszą (i jedyną) kolumnę (wynik COUNT(*))
+                    if (!reader.IsDBNull(0))
+                    {
+                        count = reader.GetInt32(0);
+                    }
+                }
+            }
+            return count;
         }
 
         public async Task<int> GetActiveRoomsCountAsync()
@@ -235,6 +254,34 @@ namespace EscapeRoom.Data
 
             await conn.CloseAsync();
             return Convert.ToInt32(result);
+        }
+
+        public async Task<Room> GetRoomByIdAsync(int roomId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand("SELECT * FROM pokoje WHERE pokoj_id = @roomId", conn);
+                cmd.Parameters.AddWithValue("@roomId", roomId);
+
+                using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return new Room
+                        {
+                            PokojId = reader.GetInt32("pokoj_id"),
+                            Nazwa = reader.GetString("nazwa"),
+                            Opis = reader.GetString("opis"),
+                            Trudnosc = reader.GetByte("trudnosc"),
+                            Cena = reader.GetDecimal("cena"),
+                            MaxGraczy = reader.GetByte("max_graczy"),
+                            CzasMinut = reader.GetInt32("czas_minut")
+                        };
+                    }
+                }
+            }
+            return null;
         }
 
         public string GetConnectionString()

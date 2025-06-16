@@ -17,6 +17,9 @@ namespace EscapeRoom.Views
         public AdminDashboardView()
         {
             InitializeComponent();
+            var viewModel = new AdminDashboardViewModel();
+            this.DataContext = viewModel;
+            Task.Run(() => viewModel.LoadDataCommand.Execute(null));
         }
         private void OnAddRoomButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {

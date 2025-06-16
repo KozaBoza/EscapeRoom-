@@ -9,7 +9,7 @@
         <StackPanel Margin="0,98,0,0">
             <TextBlock FontSize="36" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Height="48"><Run Language="pl-pl" Text="REZERWACJE"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
             <TextBlock Text="POKOJ:"/>
-            <TextBlock Text="{Binding RoomViewModel.Name}" FontWeight="Bold"/>
+            <TextBlock Text="{Binding RoomViewModel.Nazwa}" FontWeight="Bold"/>
             <TextBlock Text="DATA:"/>
             <DatePicker SelectedDate="{Binding DataRozpoczecia}" Margin="0,0,0,10"/>
             <TextBlock Text="LICZBA OSOB:"/>
