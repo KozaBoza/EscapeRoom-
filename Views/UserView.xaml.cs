@@ -17,7 +17,8 @@ namespace EscapeRoom.Views
 
         private void LoadUserData()
         {
-            // 
+            // Ustaw DataContext na nowy UserViewModel, który pobierze dane z UserSession
+            this.DataContext = new UserViewModel();
         }
 
         private void OnEditProfileButtonClick(object sender, System.Windows.RoutedEventArgs e)

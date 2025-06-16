@@ -9,5 +9,6 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/escaperoom.sql")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("database/escaperoom_new.sql")]
 
 

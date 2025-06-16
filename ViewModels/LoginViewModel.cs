@@ -1,19 +1,50 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
-using EscapeRoom.Data;
+﻿using EscapeRoom.Data;
 using EscapeRoom.Helpers;
+using EscapeRoom.Services;
+using EscapeRoom.Views;
+using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Crypto.Generators;
+using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
-using System.Linq;
-using EscapeRoom.Views;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 
 namespace EscapeRoom.ViewModels
-{ //obsługa logowania
+{
+    // Klasa do przechowywania danych sesji użytkownika
+    // Przeniesiona na poziom namespace'u
+    public static class UserSession
+    {
+        public static EscapeRoom.Models.User CurrentUser { get; set; }
+        public static bool IsLoggedIn { get; set; } = false;
+
+        public static void Logout()
+        {
+            CurrentUser = null;
+            IsLoggedIn = false;
+        }
+    }
+
+    public class LoginEventArgs : EventArgs
+    {
+        public string Username { get; }
+        public bool IsAdmin { get; }
+
+        public LoginEventArgs(string username, bool isAdmin)
+        {
+            Username = username;
+            IsAdmin = isAdmin;
+        }
+    }
+
+    //obsługa logowania
     public class LoginViewModel : BaseViewModel
     {
         private string _username;
@@ -59,8 +90,8 @@ namespace EscapeRoom.ViewModels
 
         public bool CanLogin =>
             !string.IsNullOrWhiteSpace(Username) &&
-            !string.IsNullOrWhiteSpace(Password); /*&&
-            !IsLoading;*/
+            !string.IsNullOrWhiteSpace(Password) &&
+            !IsLoading;
 
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }
@@ -83,7 +114,7 @@ namespace EscapeRoom.ViewModels
             try
             {
                 DataService service = new DataService();
-                var user = await service.GetUserByUsernameAsync(Username);
+                var user = await service.GetUserByEmailAsync(Username);
 
                 if (user == null)
                 {
@@ -156,47 +187,226 @@ namespace EscapeRoom.ViewModels
 
         private void ExecuteRegister(object parameter)
         {
-            //opcja: przekierować do widoku rejestracji
+            ViewNavigationService.Instance.NavigateTo(ViewType.Register);
         }
 
         private async void ExecuteForgotPassword(object parameter)
         {
-            // pytanie o numer telefonu
-            string phoneNumber = Microsoft.VisualBasic.Interaction.InputBox(
-                "Podaj swój numer telefonu:",
-                "Przypomnienie hasła",
-                "");
-
-            if (string.IsNullOrWhiteSpace(phoneNumber))
-            {
-                return; //  anulowanie
-            }
-
             try
             {
-                DataService service = new DataService();
-                var user = await service.GetUserByPhoneAsync(phoneNumber); //tutaj trzeba z baza dostosować
-
-                if (user == null)
+                // Okno dialogowe do wpisania numeru telefonu
+                var phoneDialog = new Window
                 {
-                    MessageBox.Show("Nie znaleziono użytkownika z podanym numerem telefonu.",
-                        "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
+                    Title = "Przypomnienie hasła",
+                    Width = 300,
+                    Height = 150,
+                    WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                    ResizeMode = ResizeMode.NoResize,
+                    Topmost = true,
+                    WindowStyle = WindowStyle.ToolWindow,
+                    ShowInTaskbar = false
+                };
+
+                var phonePanel = new StackPanel { Margin = new Thickness(10) };
+                phonePanel.Children.Add(new TextBlock
+                {
+                    Text = "Podaj swój numer telefonu:",
+                    Margin = new Thickness(0, 0, 0, 10)
+                });
+
+                var phoneTextBox = new TextBox { Margin = new Thickness(0, 0, 0, 10) };
+                phonePanel.Children.Add(phoneTextBox);
+
+                var phoneButtonPanel = new StackPanel
+                {
+                    Orientation = Orientation.Horizontal,
+                    HorizontalAlignment = HorizontalAlignment.Right
+                };
+
+                var phoneOkButton = new Button
+                {
+                    Content = "OK",
+                    Width = 80,
+                    Margin = new Thickness(0, 0, 10, 0),
+                    IsDefault = true
+                };
+                phoneOkButton.Click += (s, e) => { phoneDialog.DialogResult = true; };
+
+                var phoneCancelButton = new Button
+                {
+                    Content = "Anuluj",
+                    Width = 80,
+                    IsCancel = true
+                };
+                phoneCancelButton.Click += (s, e) => { phoneDialog.DialogResult = false; };
+
+                phoneButtonPanel.Children.Add(phoneOkButton);
+                phoneButtonPanel.Children.Add(phoneCancelButton);
+                phonePanel.Children.Add(phoneButtonPanel);
+
+                phoneDialog.Content = phonePanel;
+
+                bool? phoneResult = phoneDialog.ShowDialog();
+
+                if (phoneResult == true && !string.IsNullOrWhiteSpace(phoneTextBox.Text))
+                {
+                    string phoneNumber = phoneTextBox.Text;
+
+                    DataService service = new DataService();
+                    var user = await service.GetUserByPhoneAsync(phoneNumber);
+
+                    if (user == null)
+                    {
+                        MessageBox.Show("Nie znaleziono użytkownika z podanym numerem telefonu.",
+                            "Błąd", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
+                    // Znaleziono użytkownika, wyświetl okno do zmiany hasła
+                    var passwordDialog = new Window
+                    {
+                        Title = "Zmiana hasła",
+                        Width = 350,
+                        Height = 200,
+                        WindowStartupLocation = WindowStartupLocation.CenterScreen,
+                        ResizeMode = ResizeMode.NoResize,
+                        Topmost = true,
+                        WindowStyle = WindowStyle.ToolWindow,
+                        ShowInTaskbar = false
+                    };
+
+                    var passwordPanel = new StackPanel { Margin = new Thickness(10) };
+                    passwordPanel.Children.Add(new TextBlock
+                    {
+                        Text = $"Użytkownik: {user.Imie} {user.Nazwisko}",
+                        FontWeight = FontWeights.Bold,
+                        Margin = new Thickness(0, 0, 0, 10)
+                    });
+
+                    passwordPanel.Children.Add(new TextBlock
+                    {
+                        Text = "Nowe hasło:",
+                        Margin = new Thickness(0, 0, 0, 5)
+                    });
+
+                    var newPasswordBox = new PasswordBox { Margin = new Thickness(0, 0, 0, 10) };
+                    passwordPanel.Children.Add(newPasswordBox);
+
+                    passwordPanel.Children.Add(new TextBlock
+                    {
+                        Text = "Potwierdź nowe hasło:",
+                        Margin = new Thickness(0, 0, 0, 5)
+                    });
+
+                    var confirmPasswordBox = new PasswordBox { Margin = new Thickness(0, 0, 0, 10) };
+                    passwordPanel.Children.Add(confirmPasswordBox);
+
+                    var passwordErrorText = new TextBlock
+                    {
+                        Foreground = Brushes.Red,
+                        Margin = new Thickness(0, 0, 0, 10),
+                        Visibility = Visibility.Collapsed
+                    };
+                    passwordPanel.Children.Add(passwordErrorText);
+
+                    var passwordButtonPanel = new StackPanel
+                    {
+                        Orientation = Orientation.Horizontal,
+                        HorizontalAlignment = HorizontalAlignment.Right
+                    };
+
+                    var passwordOkButton = new Button
+                    {
+                        Content = "Zmień hasło",
+                        Width = 100,
+                        Margin = new Thickness(0, 0, 10, 0),
+                        IsDefault = true
+                    };
+
+                    passwordOkButton.Click += (s, e) =>
+                    {
+                        if (string.IsNullOrWhiteSpace(newPasswordBox.Password))
+                        {
+                            passwordErrorText.Text = "Hasło nie może być puste.";
+                            passwordErrorText.Visibility = Visibility.Visible;
+                            return;
+                        }
+
+                        if (newPasswordBox.Password != confirmPasswordBox.Password)
+                        {
+                            passwordErrorText.Text = "Hasła nie są zgodne.";
+                            passwordErrorText.Visibility = Visibility.Visible;
+                            return;
+                        }
+
+                        passwordDialog.DialogResult = true;
+                    };
+
+                    var passwordCancelButton = new Button
+                    {
+                        Content = "Anuluj",
+                        Width = 80,
+                        IsCancel = true
+                    };
+                    passwordCancelButton.Click += (s, e) => { passwordDialog.DialogResult = false; };
+
+                    passwordButtonPanel.Children.Add(passwordOkButton);
+                    passwordButtonPanel.Children.Add(passwordCancelButton);
+                    passwordPanel.Children.Add(passwordButtonPanel);
+
+                    passwordDialog.Content = passwordPanel;
+
+                    bool? passwordResult = passwordDialog.ShowDialog();
+
+                    if (passwordResult == true)
+                    {
+                        // Aktualizuj hasło użytkownika w bazie danych
+                        bool updated = await UpdateUserPasswordAsync(service, user.UzytkownikId, newPasswordBox.Password);
+
+                        if (updated)
+                        {
+                            MessageBox.Show("Hasło zostało pomyślnie zmienione. Możesz teraz zalogować się używając nowego hasła.",
+                                "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Wystąpił błąd podczas zmiany hasła. Spróbuj ponownie później.",
+                                "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
                 }
-
-                // Tutaj możesz dodać logikę wysyłania nowego hasła SMS/email
-                MessageBox.Show($"Nowe hasło zostało wysłane na numer {phoneNumber}",
-                    "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // Przykład: wygeneruj tymczasowe hasło i zaktualizuj w bazie
-                // string tempPassword = GenerateTemporaryPassword();
-                // await service.UpdateUserPasswordAsync(user.UzytkownikId, GeneratePBKDF2Hash(tempPassword));
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Błąd podczas przypominania hasła: {ex.Message}",
+                MessageBox.Show($"Błąd podczas zmiany hasła: {ex.Message}",
                     "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        // Metoda do aktualizacji hasła użytkownika w bazie danych
+        private async Task<bool> UpdateUserPasswordAsync(DataService service, int userId, string newPassword)
+        {
+            try
+            {
+                string hashedPassword = GeneratePBKDF2Hash(newPassword);
+
+                using (MySqlConnection conn = new MySqlConnection(service.GetConnectionString()))
+                {
+                    await conn.OpenAsync();
+                    MySqlCommand cmd = new MySqlCommand(
+                        "UPDATE uzytkownicy SET haslo_hash = @haslo_hash WHERE uzytkownik_id = @uzytkownik_id", conn);
+                    cmd.Parameters.AddWithValue("@haslo_hash", hashedPassword);
+                    cmd.Parameters.AddWithValue("@uzytkownik_id", userId);
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas aktualizacji hasła: {ex.Message}",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
         }
 
@@ -228,30 +438,18 @@ namespace EscapeRoom.ViewModels
                 return testKey.SequenceEqual(key);
             }
         }
-    }
 
-    public class LoginEventArgs : EventArgs
-    {
-        public string Username { get; }
-        public bool IsAdmin { get; }
-
-        public LoginEventArgs(string username, bool isAdmin)
+        public class LoginEventArgs : EventArgs
         {
-            Username = username;
-            IsAdmin = isAdmin;
-        }
-    }
+            public string Username { get; }
+            public bool IsAdmin { get; }
 
-    // Klasa do przechowywania danych sesji użytkownika
-    public static class UserSession
-    {
-        public static EscapeRoom.Models.User CurrentUser { get; set; }
-        public static bool IsLoggedIn { get; set; } = false;
-
-        public static void Logout()
-        {
-            CurrentUser = null;
-            IsLoggedIn = false;
+            public LoginEventArgs(string username, bool isAdmin)
+            {
+                Username = username;
+                IsAdmin = isAdmin;
+            }
         }
+
     }
 }
