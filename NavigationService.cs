@@ -40,15 +40,27 @@ namespace EscapeRoom.Services
         public event Action<ViewType> ViewChanged;
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private object _currentParameter;
+        public object GetNavigationParameter()
+        {
+            return _currentParameter;
+        }
+
         public void NavigateTo(ViewType viewType)
         {
-    if (viewType == ViewType.Homepage)
+        if (viewType == ViewType.Homepage)
             {
                 CurrentView = ViewType.Homepage;
                 return;
             }
 
             CurrentView = viewType;
+        }
+
+        public void NavigateTo(ViewType viewType, object parameter)
+        {
+            _currentParameter = parameter;
+            NavigateTo(viewType);
         }
 
         protected virtual void OnPropertyChanged(string propertyName)

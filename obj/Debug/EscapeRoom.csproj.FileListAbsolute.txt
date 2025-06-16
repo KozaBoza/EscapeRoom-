@@ -359,3 +359,7 @@ C:\Martyna_C\Studia\POIG\Escape_Room_4\obj\Debug\EscapeRoom.csproj.CoreCompileIn
 C:\Martyna_C\Studia\POIG\Escape_Room_4\obj\Debug\EscapeRoom.csproj.Up2Date
 C:\Martyna_C\Studia\POIG\Escape_Room_4\obj\Debug\EscapeRoom.exe
 C:\Martyna_C\Studia\POIG\Escape_Room_4\obj\Debug\EscapeRoom.pdb
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\BCrypt.Net-Next.dll
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\BCrypt.Net-Next.xml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\RegisterView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\RegisterView.baml

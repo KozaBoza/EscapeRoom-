@@ -59,8 +59,8 @@ namespace EscapeRoom.ViewModels
 
         public bool CanLogin =>
             !string.IsNullOrWhiteSpace(Username) &&
-            !string.IsNullOrWhiteSpace(Password); /*&&
-            !IsLoading;*/
+            !string.IsNullOrWhiteSpace(Password) &&
+            !IsLoading;
 
         public ICommand LoginCommand { get; }
         public ICommand RegisterCommand { get; }

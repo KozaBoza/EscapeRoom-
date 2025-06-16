@@ -6,6 +6,7 @@ using System.Windows.Input;
 using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 {
@@ -21,6 +22,7 @@ namespace EscapeRoom.ViewModels
         {
             _room = new Room();
             Rooms = new ObservableCollection<Room>();
+            BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
             LoadRoomsAsync();
         }
 
@@ -175,9 +177,8 @@ namespace EscapeRoom.ViewModels
 
         private void BookRoom(object parameter)
         {
-            // rezerwacja
+            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, _room);
         }
-
         private bool CanBookRoom(object parameter) => true;
     }
 }
