@@ -117,7 +117,7 @@ namespace EscapeRoom.ViewModels
 
                 Rooms = new ObservableCollection<Room>(await _dataService.GetRoomsAsync());
                 TotalRooms = Rooms.Count;
-                ActiveRooms = await _dataService.GetActiveRoomsCountAsync();
+                
 
                 RecentReservations = new ObservableCollection<Reservation>(await _dataService.GetRecentReservationsAsync(5));
                 PendingReservations = await _dataService.GetPendingReservationsCountAsync();
