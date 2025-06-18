@@ -1,0 +1,20 @@
+﻿EscapeRoom
+
+
+winexe
+C#
+.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\
+EscapeRoom
+none
+false
+DEBUG;TRACE
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\App.xaml
+111163265218
+21420720209
+40-673732277
+45-181649713
+MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReviewView.xaml;Views\RoomView.xaml;Views\UserView.xaml;
+
+True
+
