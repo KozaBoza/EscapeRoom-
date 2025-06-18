@@ -38,6 +38,10 @@ namespace EscapeRoom.Models
         [Column("czas_minut")]
         public int CzasMinut { get; set; }
 
+        [Column("status_pokoj")]
+        public string StatusPokoj { get; set; } = "wolny";
+        
+
         public virtual ICollection<Reservation> Rezerwacje { get; set; } = new List<Reservation>();
     }
 }

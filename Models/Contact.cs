@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 namespace EscapeRoom.Models
 {
     public class Contact
-    { //dane do kontaktu mailowego etc
-        private int _id;
-        private string _fullName;
-        private string _email;
-        private string _message;
+    {
+        public int Id { get; set; } // Teraz z setterem, dla Id z bazy danych
+        public string Name { get; set; } // Zmieniono na Name, aby pasowało do ContactView
+        public string Email { get; set; }
+        public string Message { get; set; }
+        public DateTime SubmittedAt { get; set; } // Data wysłania wiadomości
+        public bool IsRead { get; set; } // Czy wiadomość została przeczytana przez administratora
 
-        public int Id => _id;
-        public string FullName => _fullName;
-        public string Email => _email;
-        public string Message => _message;
-
-        public Contact(string fullName, string email, string message)
-        {
-            _id = new Random().Next(1000, 9999); // lub ustawiane z zewnątrz
-            _fullName = fullName;
-            _email = email;
-            _message = message;
-        }
-
-        //konstruktor
+        // Konstruktor domyślny (bez parametrów) jest potrzebny do deserializacji danych z bazy/JSON-a
         public Contact() { }
+
+        // Opcjonalny konstruktor do szybkiego tworzenia instancji, np. przy wysyłaniu
+        public Contact(string name, string email, string message)
+        {
+            // Id będzie ustawiane przez bazę danych po zapisie
+            Name = name;
+            Email = email;
+            Message = message;
+            SubmittedAt = DateTime.Now; // Ustaw domyślną datę utworzenia
+            IsRead = false; // Domyślnie nowa wiadomość jest nieprzeczytana
+        }
     }
 }

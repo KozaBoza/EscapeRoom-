@@ -13,7 +13,6 @@ namespace EscapeRoom.Views
         public RoomView()
         {
             InitializeComponent();
-            LoadRooms();
             DataContext = new RoomViewModel();
         }
         private void LoadRooms()

@@ -13,7 +13,7 @@ using System.Windows;
 //obsługa przycisków etc
 namespace EscapeRoom.Views
 {
-    public partial class PaymentView:UserControl
+    public partial class PaymentView : UserControl
     {
         public PaymentView()
         {

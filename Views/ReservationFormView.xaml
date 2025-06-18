@@ -9,13 +9,14 @@
         <StackPanel Margin="0,98,0,0">
             <TextBlock FontSize="36" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Height="48"><Run Language="pl-pl" Text="REZERWACJE"/><LineBreak/><Run Language="pl-pl"/></TextBlock>
             <TextBlock Text="POKOJ:"/>
-            <TextBlock Text="{Binding RoomViewModel.Name}" FontWeight="Bold"/>
+            <TextBlock Text="{Binding RoomViewModel.Nazwa}" FontWeight="Bold"/>
             <TextBlock Text="DATA:"/>
-            <DatePicker SelectedDate="{Binding DataRozpoczecia}" Margin="0,0,0,10"/>
+            <DatePicker SelectedDate="{Binding DataRozpoczecia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
             <TextBlock Text="LICZBA OSOB:"/>
             <TextBox Text="{Binding LiczbaOsob}" Margin="0,0,0,10"/>
             <TextBlock Text="STATUS:"/>
             <TextBlock Text="{Binding StatusText}" Margin="0,0,0,10"/>
+            <TextBlock Text="{Binding RoomAvailabilityMessage}" Margin="0,0,0,10"/>
             <StackPanel Orientation="Horizontal">
                 <Button Content="POTWIERDZ"
                         Command="{Binding ConfirmReservationCommand}"
@@ -26,4 +27,7 @@
             </StackPanel>
         </StackPanel>
     </Grid>
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
 </UserControl>
