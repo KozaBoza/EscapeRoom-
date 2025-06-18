@@ -64,11 +64,6 @@ namespace EscapeRoom.ViewModels
             set => SetProperty(ref _totalRooms, value);
         }
 
-        public int ActiveRooms
-        {
-            get => _activeRooms;
-            set => SetProperty(ref _activeRooms, value);
-        }
 
         public int PendingReservations
         {
