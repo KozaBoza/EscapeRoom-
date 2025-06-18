@@ -123,7 +123,7 @@ CREATE TABLE `rezerwacje` (
   `pokoj_id` int(11) NOT NULL,
   `data_rozpoczecia` datetime NOT NULL,
   `liczba_osob` tinyint(4) NOT NULL,
-  `status` enum('zarezerwowana','odwolana','zrealizowana') NOT NULL,
+  `status` enum('zarezerwowana','odwolana','zrealizowana','oplacony') NOT NULL,
   `data_utworzenia` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`rezerwacja_id`),
   KEY `uzytkownik_id` (`uzytkownik_id`),
