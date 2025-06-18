@@ -397,5 +397,44 @@ namespace EscapeRoom.Data
             }
         }
 
+        public async Task<bool> UpdateReservationStatusAsync(int reservationId, ReservationStatus newStatus)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                try
+                {
+                    var cmd = new MySqlCommand(
+                        "UPDATE rezerwacje SET status = @status WHERE rezerwacja_id = @reservationId", conn);
+                    cmd.Parameters.AddWithValue("@status", newStatus.ToString());
+                    cmd.Parameters.AddWithValue("@reservationId", reservationId);
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Błąd podczas aktualizacji statusu rezerwacji {reservationId} na {newStatus}: {ex.Message}");
+                    System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> AddPaymentAsync(int reservationId, decimal amount, DateTime paymentDate)
+        {
+            // WAŻNE: To jest TYLKO symulacja, dopóki nie stworzysz tabeli `Platnosci` w bazie danych.
+            // Po stworzeniu tabeli, ten kod będzie musiał być zastąpiony rzeczywistym zapytaniem INSERT.
+
+            // Myśl o tym jak o logowaniu informacji o płatności, bez faktycznego jej przechowywania w strukturze bazy.
+            // W prawdziwej aplikacji byłoby tu zapytanie INSERT INTO Platnosci (...) VALUES (...);
+
+            await Task.Delay(100); // Symuluj asynchroniczną operację
+            System.Diagnostics.Debug.WriteLine($"Symulacja dodawania płatności: Rezerwacja ID: {reservationId}, Kwota: {amount:C}, Data: {paymentDate}");
+
+            // Zawsze zwracamy true w symulacji, aby proces szedł dalej.
+            return true;
+        }
+
     }
 }
