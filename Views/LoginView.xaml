@@ -39,7 +39,10 @@
                     IsEnabled="{Binding CanLogin}"
                     Width="143" RenderTransformOrigin="0.525,0.626" Height="29" Foreground="#FF252525" BorderBrush="{x:Null}" Background="#FF16A470"
                     />
-            <Button Content="REJESTRACJA" Command="{Binding RegisterCommand}" Width="143" Height="28" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF019CDF"/>
+            <Button 
+                    Content="REJESTRACJA" 
+                    Command="{Binding RegisterCommand}" 
+                Width="143" Height="28" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF019CDF"/>
             <Button Content="NIE PAMIĘTAM HASŁA" Command="{Binding ForgotPasswordCommand}" Height="31" Width="144" Foreground="#FF252525" Background="#FFF05541" BorderBrush="{x:Null}"/>
 
 

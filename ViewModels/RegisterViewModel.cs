@@ -9,6 +9,7 @@ using EscapeRoom.Models;
 using System.Security.Cryptography;
 using System.Text;
 using System.Linq;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 {
@@ -104,8 +105,18 @@ namespace EscapeRoom.ViewModels
 
         public RegisterViewModel()
         {
+            // Inicjalizacja pól, aby uniknąć null
+            Username = string.Empty;
+            Email = string.Empty;
+            Password = string.Empty;
+            ConfirmPassword = string.Empty;
+            FirstName = string.Empty;
+            LastName = string.Empty;
+            ErrorMessage = string.Empty;
+
+
             RegisterCommand = new RelayCommand(async (param) => await Register(), (param) => CanRegister);
-            GoToLoginCommand = new RelayCommand(param => GoToLogin());
+            GoToLoginCommand = new RelayCommand(GoToLogin);
         }
 
         private async Task Register()
@@ -129,7 +140,7 @@ namespace EscapeRoom.ViewModels
 
             //sprawdzanie
             var dataService = new DataService();
-            var existingUserByUsername = await dataService.GetUserByUsernameAsync(Username);
+            var existingUserByUsername = await dataService.GetUserByEmailAsync(Username);
             if (existingUserByUsername != null)
             {
                 ErrorMessage = "Użytkownik o tej nazwie już istnieje.";
@@ -147,7 +158,7 @@ namespace EscapeRoom.ViewModels
 
             try
             {
-                var newUser = new User
+               var newUser = new User
                 {
                     Email = Email,
                     Imie = FirstName,
@@ -157,11 +168,19 @@ namespace EscapeRoom.ViewModels
                     Admin = false //domyslnie nie
                 };
 
-               var success = await dataService.AddUserAsync(newUser); //dostować
+                var success = await dataService.AddUserAsync(newUser);
 
                 if (success)
                 {
-                    GoToLogin();
+                    // Informacja o pomyślnym utworzeniu konta
+                    System.Windows.MessageBox.Show(
+                        "Konto zostało pomyślnie utworzone. Możesz teraz się zalogować.",
+                        "Rejestracja zakończona",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Information);
+
+                    // Przekierowanie do widoku logowania
+                    ViewNavigationService.Instance.NavigateTo(ViewType.Login);
                 }
                 else
                 {
@@ -175,8 +194,10 @@ namespace EscapeRoom.ViewModels
             finally
             {
                 IsLoading = false;
-            }
+            } 
+
         }
+
 
         private bool CanRegister =>
             !string.IsNullOrWhiteSpace(Username) &&
@@ -189,9 +210,10 @@ namespace EscapeRoom.ViewModels
             IsValidEmail(Email) &&
             !IsLoading;
 
-        private void GoToLogin()
+        private void GoToLogin(object parameter)
         {
-            ///
+            // Przekierowanie do widoku logowania bez wyświetlania komunikatu
+            ViewNavigationService.Instance.NavigateTo(ViewType.Login);
         }
 
         private string GeneratePBKDF2Hash(string password)

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 //using EscapeRoom.Models.Enums;
@@ -26,6 +27,9 @@ namespace EscapeRoom.ViewModels
 
         private bool _isBusy;
         private string _statusMessage;
+
+        private readonly DataService _dataService = new DataService();
+
 
         public AdminDashboardViewModel()
         {
@@ -114,33 +118,19 @@ namespace EscapeRoom.ViewModels
             {
                 IsBusy = true;
                 StatusMessage = "Ładowanie danych...";
-                await Task.Delay(1500);
+                await Task.Delay(300); // opcjonalne opóźnienie wizualne
 
-                //przykładowe dane:
-
-                Rooms = new ObservableCollection<Room>
-                {
-                    new Room { PokojId = 1, Nazwa = "Pokój 1", MaxGraczy = 6 },
-                    new Room { PokojId = 2, Nazwa = "Pokój 2", MaxGraczy = 4 }
-                };
+                Rooms = new ObservableCollection<Room>(await _dataService.GetRoomsAsync());
                 TotalRooms = Rooms.Count;
-                ActiveRooms = 2;
+                ActiveRooms = await _dataService.GetActiveRoomsCountAsync();
 
-                RecentReservations = new ObservableCollection<Reservation>
-                {
-                    new Reservation { RezerwacjaId = 101, Status = ReservationStatus.zarezerwowana, LiczbaOsob = 4 },
-                    new Reservation { RezerwacjaId = 102, Status = ReservationStatus.zrealizowana, LiczbaOsob = 5 }
-                };
-                PendingReservations = 1;
-                ConfirmedReservations = 1;
+                RecentReservations = new ObservableCollection<Reservation>(await _dataService.GetRecentReservationsAsync(5));
+                PendingReservations = await _dataService.GetPendingReservationsCountAsync();
+                ConfirmedReservations = await _dataService.GetConfirmedReservationsCountAsync();
 
-                RecentUsers = new ObservableCollection<User>
-                {
-                    new User { UzytkownikId = 1, Imie = "Jan", Nazwisko = "Kowalski" },
-                    new User { UzytkownikId = 2, Imie = "Anna", Nazwisko = "Nowak" }
-                };
-                TotalUsers = 50;
-                TotalRevenue = 12345.67m;
+                RecentUsers = new ObservableCollection<User>(await _dataService.GetRecentUsersAsync(5));
+                TotalUsers = await _dataService.GetTotalUsersAsync();
+                TotalRevenue = await _dataService.GetTotalRevenueAsync();
 
                 StatusMessage = "Dane załadowane pomyślnie.";
             }

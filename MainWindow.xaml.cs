@@ -122,6 +122,10 @@ namespace EscapeRoom.Views
                     this.Title = "Escape Room - Panel użytkownika";
                     newViewControl = new UserView();
                     break;
+                case ViewType.Register:
+                    this.Title = "Escape Room - Rejestracja";
+                    newViewControl = new RegisterView();
+                    break;
             }
 
             if (newViewControl != null)

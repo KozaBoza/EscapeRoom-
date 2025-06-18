@@ -17,6 +17,34 @@
 /*M!100616 SET @OLD_NOTE_VERBOSITY=@@NOTE_VERBOSITY, NOTE_VERBOSITY=0 */;
 
 --
+-- Table structure for table `kontakt`
+--
+
+DROP TABLE IF EXISTS `kontakt`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `kontakt` (
+  `kontakt_id` int(11) NOT NULL AUTO_INCREMENT,
+  `uzytkownik_id` int(11) NOT NULL,
+  `wiadomosc` text NOT NULL,
+  PRIMARY KEY (`kontakt_id`),
+  KEY `uzytkownik_id` (`uzytkownik_id`),
+  CONSTRAINT `kontakt_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kontakt`
+--
+
+LOCK TABLES `kontakt` WRITE;
+/*!40000 ALTER TABLE `kontakt` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `kontakt` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
+
+--
 -- Table structure for table `pokoje`
 --
 
@@ -196,4 +224,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-06-14 17:58:15
+-- Dump completed on 2025-06-16 20:17:31
