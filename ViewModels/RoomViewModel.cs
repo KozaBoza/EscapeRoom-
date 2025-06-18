@@ -7,6 +7,7 @@ using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 using EscapeRoom.Services;
+using System.ComponentModel;
 
 namespace EscapeRoom.ViewModels
 {
@@ -17,6 +18,8 @@ namespace EscapeRoom.ViewModels
         private bool _isSelected;
 
         public ObservableCollection<Room> Rooms { get; set; }
+
+        public bool IsLoggedIn => UserSession.IsLoggedIn;
 
         public RoomViewModel()
         {
@@ -29,7 +32,13 @@ namespace EscapeRoom.ViewModels
         public RoomViewModel(Room room) : this()
         {
             _room = room ?? new Room();
-            }
+            OnPropertyChanged(nameof(Nazwa));
+            OnPropertyChanged(nameof(Opis));
+            OnPropertyChanged(nameof(Trudnosc));
+            OnPropertyChanged(nameof(Cena));
+            OnPropertyChanged(nameof(MaxGraczy));
+            OnPropertyChanged(nameof(CzasMinut));
+        }
 
         private async void LoadRoomsAsync()
         {
@@ -57,6 +66,8 @@ namespace EscapeRoom.ViewModels
                 OnPropertyChanged(nameof(Cena));
                 OnPropertyChanged(nameof(MaxGraczy));
                 OnPropertyChanged(nameof(CzasMinut));
+
+                ((RelayCommand)BookRoomCommand).RaiseCanExecuteChanged();
             }
             catch (Exception ex)
             {
@@ -177,8 +188,22 @@ namespace EscapeRoom.ViewModels
 
         private void BookRoom(object parameter)
         {
-            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, _room);
+            // Dodaj tutaj warunek sprawdzający IsLoggedIn ponownie, dla pewności (choć CanBookRoom już to robi)
+            if (!IsLoggedIn)
+            {
+                MessageBox.Show("Aby zarezerwować pokój, musisz być zalogowany.", "Wymagane logowanie", MessageBoxButton.OK, MessageBoxImage.Information);
+                ViewNavigationService.Instance.NavigateTo(ViewType.Login); // Przekieruj do logowania
+                return;
+            }
+
+            // Utwórz ReservationViewModel i przekaż mu aktualny RoomViewModel
+            var reservationViewModel = new ReservationViewModel(this); // Przekazujemy 'this', czyli RoomViewModel
+            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, reservationViewModel);
         }
-        private bool CanBookRoom(object parameter) => true;
+        private bool CanBookRoom(object parameter)
+        {
+            // Przycisk "Zarezerwuj" jest aktywny tylko, jeśli użytkownik jest zalogowany
+            return IsLoggedIn;
+        }
     }
 }

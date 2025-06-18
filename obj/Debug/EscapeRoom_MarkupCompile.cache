@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Martyna_C\Studia\POIG\Escape_Room_4\obj\Debug\
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\
 EscapeRoom
 none
 false
 DEBUG;TRACE
-C:\Martyna_C\Studia\POIG\Escape_Room_4\App.xaml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\App.xaml
 111163265218
 21420720209
-391699456898
-45951019314
+40-2047041379
+45-181649713
 MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReviewView.xaml;Views\RoomView.xaml;Views\UserView.xaml;
 
 False

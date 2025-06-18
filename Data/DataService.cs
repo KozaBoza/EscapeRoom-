@@ -206,10 +206,20 @@ namespace EscapeRoom.Data
 
             var cmd = new MySqlCommand(
                 "SELECT COUNT(*) FROM rezerwacje WHERE status = 'zarezerwowana'", conn);
-            var result = await cmd.ExecuteScalarAsync();
-
-            await conn.CloseAsync();
-            return Convert.ToInt32(result);
+            int count = 0;
+            using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+            {
+                if (await reader.ReadAsync())
+                {
+                    // Odczytaj pierwszą (i jedyną) kolumnę (wynik COUNT(*))
+                    // Użyj GetInt32 i sprawdź IsDBNull
+                    if (!reader.IsDBNull(0))
+                    {
+                        count = reader.GetInt32(0);
+                    }
+                }
+            }
+            return count;
         }
 
         public async Task<int> GetConfirmedReservationsCountAsync()
@@ -219,10 +229,19 @@ namespace EscapeRoom.Data
 
             var cmd = new MySqlCommand(
                 "SELECT COUNT(*) FROM rezerwacje WHERE status = 'zrealizowana'", conn);
-            var result = await cmd.ExecuteScalarAsync();
-
-            await conn.CloseAsync();
-            return Convert.ToInt32(result);
+            int count = 0;
+            using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+            {
+                if (await reader.ReadAsync())
+                {
+                    // Odczytaj pierwszą (i jedyną) kolumnę (wynik COUNT(*))
+                    if (!reader.IsDBNull(0))
+                    {
+                        count = reader.GetInt32(0);
+                    }
+                }
+            }
+            return count;
         }
 
         public async Task<int> GetActiveRoomsCountAsync()
@@ -237,9 +256,184 @@ namespace EscapeRoom.Data
             return Convert.ToInt32(result);
         }
 
+        public async Task<Room> GetRoomByIdAsync(int roomId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand("SELECT * FROM pokoje WHERE pokoj_id = @roomId", conn);
+                cmd.Parameters.AddWithValue("@roomId", roomId);
+
+                using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
+                {
+                    if (await reader.ReadAsync())
+                    {
+                        return new Room
+                        {
+                            PokojId = reader.GetInt32("pokoj_id"),
+                            Nazwa = reader.GetString("nazwa"),
+                            Opis = reader.GetString("opis"),
+                            Trudnosc = reader.GetByte("trudnosc"),
+                            Cena = reader.GetDecimal("cena"),
+                            MaxGraczy = reader.GetByte("max_graczy"),
+                            CzasMinut = reader.GetInt32("czas_minut")
+                        };
+                    }
+                }
+            }
+            return null;
+        }
+
         public string GetConnectionString()
         {
             return connectionString;
+        }
+
+        public async Task<bool> IsRoomAvailableAsync(int roomId, DateTime date)
+        {
+            try
+            {
+                using (var conn = new MySqlConnection(connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    // Sprawdź, czy istnieją aktywne rezerwacje dla tego pokoju na tę datę
+                    var cmd = new MySqlCommand(
+                        @"SELECT COUNT(*) FROM rezerwacje 
+                WHERE pokoj_id = @roomId 
+                AND DATE(data_rozpoczecia) = DATE(@date) 
+                AND status = 'zarezerwowana'", conn);
+
+                    cmd.Parameters.AddWithValue("@roomId", roomId);
+                    cmd.Parameters.AddWithValue("@date", date.Date);
+
+                    int count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                    // Logowanie do debugowania
+                    System.Diagnostics.Debug.WriteLine($"Znaleziono {count} rezerwacji dla pokoju {roomId} na datę {date.Date}");
+
+                    // Jeśli istnieją rezerwacje na ten dzień, pokój jest niedostępny
+                    return count == 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Logowanie błędu do debugowania
+                System.Diagnostics.Debug.WriteLine($"Błąd w IsRoomAvailableAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+
+                // W przypadku błędu zakładamy, że pokój jest niedostępny
+                return false;
+            }
+        }
+
+        public async Task<string> GetRoomStatusAsync(int roomId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand("SELECT status_pokoj FROM pokoje WHERE pokoj_id = @roomId", conn);
+                cmd.Parameters.AddWithValue("@roomId", roomId);
+
+                var result = await cmd.ExecuteScalarAsync();
+                return result?.ToString() ?? "wolny";
+            }
+        }
+
+        public async Task UpdateRoomStatusAsync(int roomId, string status)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand("UPDATE pokoje SET status_pokoj = @status WHERE pokoj_id = @roomId", conn);
+                cmd.Parameters.AddWithValue("@status", status);
+                cmd.Parameters.AddWithValue("@roomId", roomId);
+
+                await cmd.ExecuteNonQueryAsync();
+            }
+        }
+
+        public async Task<bool> AddReservationAsync(Reservation reservation)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+
+                try
+                {
+                    var cmd = new MySqlCommand(
+                        @"INSERT INTO rezerwacje 
+                  (uzytkownik_id, pokoj_id, data_rozpoczecia, liczba_osob, status, data_utworzenia) 
+                  VALUES 
+                  (@uzytkownikId, @pokojId, @dataRozpoczecia, @liczbaOsob, @status, @dataUtworzenia)", conn);
+
+                    cmd.Parameters.AddWithValue("@uzytkownikId", reservation.UzytkownikId);
+                    cmd.Parameters.AddWithValue("@pokojId", reservation.PokojId);
+                    cmd.Parameters.AddWithValue("@dataRozpoczecia", reservation.DataRozpoczecia);
+                    cmd.Parameters.AddWithValue("@liczbaOsob", reservation.LiczbaOsob);
+                    cmd.Parameters.AddWithValue("@status", reservation.Status.ToString());
+                    cmd.Parameters.AddWithValue("@dataUtworzenia", reservation.DataUtworzenia);
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+
+                    if (rowsAffected > 0)
+                    {
+                        // Pobierz ID nowo utworzonej rezerwacji
+                        cmd = new MySqlCommand("SELECT LAST_INSERT_ID()", conn);
+                        reservation.RezerwacjaId = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                        // Aktualizuj status pokoju na "zarezerwowany"
+                        await UpdateRoomStatusAsync(reservation.PokojId, "zarezerwowany");
+
+                        return true;
+                    }
+
+                    return false;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> UpdateReservationStatusAsync(int reservationId, ReservationStatus newStatus)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                try
+                {
+                    var cmd = new MySqlCommand(
+                        "UPDATE rezerwacje SET status = @status WHERE rezerwacja_id = @reservationId", conn);
+                    cmd.Parameters.AddWithValue("@status", newStatus.ToString());
+                    cmd.Parameters.AddWithValue("@reservationId", reservationId);
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Błąd podczas aktualizacji statusu rezerwacji {reservationId} na {newStatus}: {ex.Message}");
+                    System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+                    return false;
+                }
+            }
+        }
+
+        public async Task<bool> AddPaymentAsync(int reservationId, decimal amount, DateTime paymentDate)
+        {
+            // WAŻNE: To jest TYLKO symulacja, dopóki nie stworzysz tabeli `Platnosci` w bazie danych.
+            // Po stworzeniu tabeli, ten kod będzie musiał być zastąpiony rzeczywistym zapytaniem INSERT.
+
+            // Myśl o tym jak o logowaniu informacji o płatności, bez faktycznego jej przechowywania w strukturze bazy.
+            // W prawdziwej aplikacji byłoby tu zapytanie INSERT INTO Platnosci (...) VALUES (...);
+
+            await Task.Delay(100); // Symuluj asynchroniczną operację
+            System.Diagnostics.Debug.WriteLine($"Symulacja dodawania płatności: Rezerwacja ID: {reservationId}, Kwota: {amount:C}, Data: {paymentDate}");
+
+            // Zawsze zwracamy true w symulacji, aby proces szedł dalej.
+            return true;
         }
 
     }

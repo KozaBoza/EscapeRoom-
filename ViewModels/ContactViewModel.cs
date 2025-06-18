@@ -3,6 +3,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+using System.Windows;
 
 
 
@@ -11,6 +12,9 @@ namespace EscapeRoom.ViewModels
     public class ContactViewModel : BaseViewModel
     {
         private Contact _contact;
+        private string _errorMessage;
+        private string _statusMessage;
+        private bool _canSend;
 
         public ContactViewModel()
         {

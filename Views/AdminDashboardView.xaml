@@ -44,7 +44,11 @@
             <ListBox ItemsSource="{Binding RecentReservations}" Height="68" Width="292" Background="#FF1D1D1E" BorderBrush="{x:Null}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Description}" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding RezerwacjaId, StringFormat='ID: {0}'}" Margin="0,0,5,0" Foreground="White"/>
+                            <TextBlock Text="{Binding Status, StringFormat='Status: {0}'}" Margin="0,0,5,0" Foreground="White"/>
+                            <TextBlock Text="{Binding LiczbaOsob, StringFormat='Osób: {0}'}" Foreground="White"/>
+                        </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
