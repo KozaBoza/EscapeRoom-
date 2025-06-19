@@ -112,18 +112,6 @@ namespace EscapeRoom.ViewModels
         }
 
 
-        public bool Admin
-        {
-            get => _user.Admin;
-            set
-            {
-                if (_user.Admin != value)
-                {
-                    _user.Admin = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
 
         public string PasswordConfirm
         {
@@ -193,9 +181,7 @@ namespace EscapeRoom.ViewModels
 
         private async Task<bool> UpdateUserInDatabase()
         {
-            // Przykładowa implementacja - do uzupełnienia zgodnie z logiką DataService
-            // Ta metoda powinna wywołać odpowiednią metodę z DataService, która zaktualizuje
-            // dane użytkownika w bazie danych
+            // ZMIENIC W ZALEŻNOŚCI OD BINDINGU
             try
             {
                 using (var conn = new MySql.Data.MySqlClient.MySqlConnection(_dataService.GetConnectionString()))
@@ -209,7 +195,6 @@ namespace EscapeRoom.ViewModels
                     cmd.Parameters.AddWithValue("@imie", Imie);
                     cmd.Parameters.AddWithValue("@nazwisko", Nazwisko);
                     cmd.Parameters.AddWithValue("@telefon", Telefon ?? (object)DBNull.Value);
-                    cmd.Parameters.AddWithValue("@admin", Admin);
                     cmd.Parameters.AddWithValue("@id", UzytkownikId);
 
                     int rowsAffected = await cmd.ExecuteNonQueryAsync();
@@ -226,7 +211,7 @@ namespace EscapeRoom.ViewModels
 
         private void Cancel(object parameter)
         {
-            // Przywróć oryginalne dane użytkownika
+            //oryginalne dane
             if (UserSession.CurrentUser != null)
             {
                 _user = new User
@@ -241,13 +226,12 @@ namespace EscapeRoom.ViewModels
                     DataRejestracji = UserSession.CurrentUser.DataRejestracji
                 };
 
-                // Powiadom widok o zmianach
+                
                 OnPropertyChanged(nameof(UzytkownikId));
                 OnPropertyChanged(nameof(Email));
                 OnPropertyChanged(nameof(Imie));
                 OnPropertyChanged(nameof(Nazwisko));
                 OnPropertyChanged(nameof(Telefon));
-                OnPropertyChanged(nameof(Admin));
             }
 
             IsEditing = false;

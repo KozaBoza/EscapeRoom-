@@ -105,7 +105,7 @@ namespace EscapeRoom.ViewModels
 
         public RegisterViewModel()
         {
-            // Inicjalizacja pól, aby uniknąć null
+            // inicjalizacja pól, aby uniknąć null
             Username = string.Empty;
             Email = string.Empty;
             Password = string.Empty;
@@ -172,14 +172,14 @@ namespace EscapeRoom.ViewModels
 
                 if (success)
                 {
-                    // Informacja o pomyślnym utworzeniu konta
+                    //informacja o pomyślnym utworzeniu konta
                     System.Windows.MessageBox.Show(
                         "Konto zostało pomyślnie utworzone. Możesz teraz się zalogować.",
                         "Rejestracja zakończona",
                         System.Windows.MessageBoxButton.OK,
                         System.Windows.MessageBoxImage.Information);
 
-                    // Przekierowanie do widoku logowania
+                    //przekierowanie do widoku logowania
                     ViewNavigationService.Instance.NavigateTo(ViewType.Login);
                 }
                 else

@@ -24,6 +24,9 @@ namespace EscapeRoom.ViewModels
         private ReservationViewModel _currentReservation;
         private string _currentView;
         private bool _isLoggedIn;
+        private string _currentUserName; // email
+        private bool _isLogoutVisible;
+
 
         public MainViewModel()
         {
@@ -39,14 +42,23 @@ namespace EscapeRoom.ViewModels
             RefreshDataCommand = new RelayCommand(RefreshData);
 
             CurrentView = "Rooms"; // domyslny
-
+            IsLoggedIn = false; // Na początku wylogowany
+            IsLogoutVisible = true; //
             //Messenger.Instance.Subscribe<NavigationMessage>(OnNavigationMessageReceived);
         }
 
         public UserViewModel CurrentUser
         {
             get => _currentUser;
-            set => SetProperty(ref _currentUser, value);
+            set
+            {
+                if (SetProperty(ref _currentUser, value))
+                {
+                    
+                    CurrentUserName = value?.Email; //email
+                    IsLoggedIn = (value != null);
+                }
+            }
         }
 
         public RoomViewModel SelectedRoom
@@ -76,7 +88,8 @@ namespace EscapeRoom.ViewModels
                 {
                     OnPropertyChanged(nameof(CanLogout));
                     OnPropertyChanged(nameof(CanLogin));
-                    OnPropertyChanged(nameof(CanRegister)); 
+                    OnPropertyChanged(nameof(CanRegister));
+                    IsLogoutVisible = !value;
                 }
             }
         }
@@ -93,6 +106,14 @@ namespace EscapeRoom.ViewModels
         public ICommand NavigateCommand { get; }
         public ICommand RefreshDataCommand { get; }
 
+
+
+        public string CurrentUserName
+        {
+            get => _currentUserName;
+            set => SetProperty(ref _currentUserName, value);
+        }
+
         private async void Login(object parameter)
         {
             // Przejście do widoku logowania, jeśli nie jesteś zalogowany
@@ -103,6 +124,12 @@ namespace EscapeRoom.ViewModels
         }
 
         private bool CanLogin(object parameter) => !IsLoggedIn;
+
+        public bool IsLogoutVisible // Ta właściwość kontroluje widoczność zarówno przycisków logowania, jak i wylogowania
+        {
+            get => _isLogoutVisible;
+            set => SetProperty(ref _isLogoutVisible, value);
+        }
 
         private void Logout(object parameter)
         {
@@ -116,7 +143,7 @@ namespace EscapeRoom.ViewModels
 
         private void Register(object parameter)
         {
-            // Przejście do widoku rejestracji
+            // przejscie do widoku rejestracji
             if (!IsLoggedIn)
             {
                 CurrentView = "Register"; 
@@ -143,12 +170,12 @@ namespace EscapeRoom.ViewModels
 
         private void RefreshData(object parameter)
         {
-            //dodac logike odświeżania danych
+            
             if (CurrentUser == null) return;
             Reservations.Clear();
             Payments.Clear();
             Reviews.Clear();
-            //dodac logike
+           
         }
 
         //metody 
@@ -195,12 +222,7 @@ namespace EscapeRoom.ViewModels
         {
             // 
         }
-        private bool _isAdminVisible;
-        public bool IsAdminVisible
-        {
-            get => _isAdminVisible;
-            set => SetProperty(ref _isAdminVisible, value);
-        }
+      
     }
 }
 

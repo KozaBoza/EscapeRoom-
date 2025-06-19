@@ -20,7 +20,7 @@ namespace EscapeRoom.ViewModels
         public PaymentViewModel()
         {
             ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
-            RefundPaymentCommand = new RelayCommand(RefundPayment, CanRefundPayment);
+            CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment); 
         }
 
         public int Id
@@ -54,7 +54,11 @@ namespace EscapeRoom.ViewModels
             set
             {
                 if (SetProperty(ref _status, value))
+                {
                     OnPropertyChanged(nameof(StatusText));
+                    ((RelayCommand)ProcessPaymentCommand).RaiseCanExecuteChanged();
+                    ((RelayCommand)CancelPaymentCommand).RaiseCanExecuteChanged(); 
+                }
             }
         }
 
@@ -101,7 +105,8 @@ namespace EscapeRoom.ViewModels
                     case PaymentStatus.Pending: return "Oczekująca";
                     case PaymentStatus.Completed: return "Zakończona";
                     case PaymentStatus.Failed: return "Nieudana";
-                    case PaymentStatus.Refunded: return "Zwrócona";
+                    //case PaymentStatus.Refunded: return "Zwrócona";
+                    case PaymentStatus.Canceled: return "Anulowana"; //  nowy status
                     default: return "Nieznany";
                 }
             }
@@ -126,11 +131,11 @@ namespace EscapeRoom.ViewModels
 
         public bool IsValid => Amount > 0 && ReservationId > 0;
 
-        public bool CanBeRefunded => Status == PaymentStatus.Completed;
         public bool CanBeProcessed => Status == PaymentStatus.Pending;
+        public bool CanBeCanceled => Status == PaymentStatus.Pending; 
 
         public ICommand ProcessPaymentCommand { get; }
-        public ICommand RefundPaymentCommand { get; }
+        public ICommand CancelPaymentCommand { get; } // z RefundPaymentCommand
 
         private void ProcessPayment(object parameter)
         {
@@ -141,13 +146,13 @@ namespace EscapeRoom.ViewModels
 
         private bool CanProcessPayment(object parameter) => CanBeProcessed && IsValid;
 
-        private void RefundPayment(object parameter)
+        private void CancelPayment(object parameter) // Zmieniono nazwę 
         {
-            Status = PaymentStatus.Refunded;
-            Notes = $"Zwrot wykonany {DateTime.Now:dd.MM.yyyy HH:mm}";
+            Status = PaymentStatus.Canceled; 
+            Notes = $"Płatność anulowana {DateTime.Now:dd.MM.yyyy HH:mm}"; // Zmieniono 
         }
 
-        private bool CanRefundPayment(object parameter) => CanBeRefunded;
+        private bool CanCancelPayment(object parameter) => CanBeCanceled; 
 
         public Payment GetPayment()
         {

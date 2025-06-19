@@ -423,16 +423,9 @@ namespace EscapeRoom.Data
 
         public async Task<bool> AddPaymentAsync(int reservationId, decimal amount, DateTime paymentDate)
         {
-            // WAŻNE: To jest TYLKO symulacja, dopóki nie stworzysz tabeli `Platnosci` w bazie danych.
-            // Po stworzeniu tabeli, ten kod będzie musiał być zastąpiony rzeczywistym zapytaniem INSERT.
-
-            // Myśl o tym jak o logowaniu informacji o płatności, bez faktycznego jej przechowywania w strukturze bazy.
-            // W prawdziwej aplikacji byłoby tu zapytanie INSERT INTO Platnosci (...) VALUES (...);
-
+          
             await Task.Delay(100); // Symuluj asynchroniczną operację
             System.Diagnostics.Debug.WriteLine($"Symulacja dodawania płatności: Rezerwacja ID: {reservationId}, Kwota: {amount:C}, Data: {paymentDate}");
-
-            // Zawsze zwracamy true w symulacji, aby proces szedł dalej.
             return true;
         }
 

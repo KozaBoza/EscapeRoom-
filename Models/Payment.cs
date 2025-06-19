@@ -8,7 +8,7 @@ namespace EscapeRoom.Models
         Pending,
         Completed,
         Failed,
-        Refunded
+        Canceled
     }
 
     public enum PaymentMethod

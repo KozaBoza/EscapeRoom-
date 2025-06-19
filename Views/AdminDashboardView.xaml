@@ -5,8 +5,7 @@
              xmlns:local="clr-namespace:EscapeRoom.Helpers"
              Width="600" Height="400" Foreground="White"
              Background="#252525"
-             FontFamily="Segoe UI Black"
-             >
+             FontFamily="Segoe UI Black">
     <UserControl.Resources>
         <controls:BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>
@@ -18,27 +17,31 @@
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="  LICZBA POKOI: " FontWeight="Bold" Width="117"/>
                 <TextBlock Text="{Binding TotalRooms}" Margin="5,0,20,0"/>
-     
-                
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="2,0,0,10" Width="320" Background="#FF1D1D1E">
-                <TextBlock Text="REZERWACJE: "  Margin="5,8,6,8" Width="84"/>
+                <TextBlock Text="REZERWACJE: " Margin="5,8,6,8" Width="84"/>
                 <TextBlock Text="OCZEKUJĄCE: " Margin="8,8,6,8" Width="88"/>
                 <TextBlock Text="{Binding PendingReservations}" Margin="2,0"/>
                 <TextBlock Text="ZATWIERDZONE: " Margin="0,8,20,8" Width="111" />
                 <TextBlock Text="{Binding ConfirmedReservations}" Margin="2,0"/>
             </StackPanel>
 
+            <Button Content="ZATWIERDŹ REZERWACJE" Command="{Binding ApprovePendingReservationsCommand}"
+                    Visibility="{Binding HasPendingReservations, Converter={StaticResource BoolToVisibilityConverter}}"
+                    Margin="0,5,0,10" HorizontalAlignment="Center" Background="#FF16A570" Foreground="#252525" BorderBrush="{x:Null}" Width="250" Height="30"/>
+
+
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10" Width="463">
-                <TextBlock Text="   UŻYTKOWNICY: " FontWeight="Bold" Width="116"/>
+                <TextBlock Text="    UŻYTKOWNICY: " FontWeight="Bold" Width="116"/>
                 <TextBlock Text="{Binding TotalUsers}" Margin="0,0"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
-                <TextBlock Text="   PRZYCHÓD: " FontWeight="Bold" Width="105"/>
+                <TextBlock Text="    PRZYCHÓD: " FontWeight="Bold" Width="105"/>
                 <TextBlock Text="{Binding TotalRevenue, StringFormat=C}" Margin="0,0"/>
             </StackPanel>
+
             <TextBlock Text=" OSTATNIE REZERWACJE:" FontWeight="Bold" Margin="5" Width="302" Height="14"/>
             <ListBox ItemsSource="{Binding RecentReservations}" Height="68" Width="292" Background="#FF1D1D1E" BorderBrush="{x:Null}">
                 <ListBox.ItemTemplate>
@@ -52,7 +55,19 @@
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <TextBlock Text="{Binding StatusMessage}"  Margin="0,10,0,0" Width="356"/>
+            <TextBlock Text=" OSTATNIE WIADOMOŚCI:" FontWeight="Bold" Margin="5,10,5,5" Width="302" Height="14"/>
+            <ListBox ItemsSource="{Binding RecentMessages}" Height="68" Width="292" Background="#FF1D1D1E" BorderBrush="{x:Null}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding Email, StringFormat='Od: {0}'}" Foreground="White" FontWeight="Bold"/>
+                            <TextBlock Text="{Binding Message, StringFormat='Wiadomość: {0}'}" Foreground="White" TextTrimming="CharacterEllipsis"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <TextBlock Text="{Binding StatusMessage}" Margin="0,10,0,0" Width="356"/>
             <ProgressBar IsIndeterminate="True"
                          Visibility="{Binding IsBusy, Converter={StaticResource BoolToVisibilityConverter}}"
                          Height="24" Margin="0,10,0,0" Width="316"/>
