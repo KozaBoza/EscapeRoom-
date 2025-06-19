@@ -17,30 +17,37 @@
 /*M!100616 SET @OLD_NOTE_VERBOSITY=@@NOTE_VERBOSITY, NOTE_VERBOSITY=0 */;
 
 --
--- Table structure for table `kontakt`
+-- Table structure for table `platnosci`
 --
 
-DROP TABLE IF EXISTS `kontakt`;
+DROP TABLE IF EXISTS `platnosci`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `kontakt` (
-  `kontakt_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `platnosci` (
+  `platnosc_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rezerwacja_id` int(11) NOT NULL,
   `uzytkownik_id` int(11) NOT NULL,
-  `wiadomosc` text NOT NULL,
-  PRIMARY KEY (`kontakt_id`),
+  `pokoj_id` int(11) NOT NULL,
+  `metoda_platnosci` enum('karta','gotowka') NOT NULL,
+  `numer_transakcji` int(11) NOT NULL,
+  PRIMARY KEY (`platnosc_id`),
+  KEY `rezerwacja_id` (`rezerwacja_id`),
   KEY `uzytkownik_id` (`uzytkownik_id`),
-  CONSTRAINT `kontakt_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `pokoj_id` (`pokoj_id`),
+  CONSTRAINT `platnosci_ibfk_1` FOREIGN KEY (`rezerwacja_id`) REFERENCES `rezerwacje` (`rezerwacja_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `platnosci_ibfk_2` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `platnosci_ibfk_3` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `kontakt`
+-- Dumping data for table `platnosci`
 --
 
-LOCK TABLES `kontakt` WRITE;
-/*!40000 ALTER TABLE `kontakt` DISABLE KEYS */;
+LOCK TABLES `platnosci` WRITE;
+/*!40000 ALTER TABLE `platnosci` DISABLE KEYS */;
 set autocommit=0;
-/*!40000 ALTER TABLE `kontakt` ENABLE KEYS */;
+/*!40000 ALTER TABLE `platnosci` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
 
@@ -224,4 +231,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-06-16 20:17:31
+-- Dump completed on 2025-06-18 22:39:41
