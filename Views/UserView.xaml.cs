@@ -73,51 +73,6 @@ namespace EscapeRoom.Views
                 ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
             }
         }
-
-        private void CheckBox_Checked(object sender, System.Windows.RoutedEventArgs e)
-        {
-            var checkBox = sender as CheckBox;
-            if (checkBox != null)
-            {
-                //???newsletter
-                string checkBoxName = checkBox.Name;
-                bool isChecked = checkBox.IsChecked == true;
-
-                switch (checkBoxName)
-                {
-                    case "NewsletterCheckBox":
-                        HandleNewsletterSubscription(isChecked);
-                        break;
-                    case "NotificationsCheckBox":
-                        HandleNotificationPreference(isChecked);
-                        break;
-                    default:
-                        //checkboxy
-                        break;
-                }
-            }
-        }
-
-        private void HandleNewsletterSubscription(bool subscribe)
-        {
-            string message = subscribe ?
-                "Zostałeś zapisany do newslettera." :
-                "Zostałeś wypisany z newslettera.";
-
-            System.Windows.MessageBox.Show(message, "Newsletter",
-                System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-        }
-
-        private void HandleNotificationPreference(bool enable)
-        {
-            string message = enable ?
-                "Powiadomienia zostały włączone." :
-                "Powiadomienia zostały wyłączone.";
-
-            System.Windows.MessageBox.Show(message, "Powiadomienia",
-                System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-        }
-
         private void EnableProfileEditing(bool enable)
         {
             (this.FindName("NameTextBox") as TextBox)?.SetValue(TextBox.IsReadOnlyProperty, !enable);

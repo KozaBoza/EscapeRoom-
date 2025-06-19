@@ -17,14 +17,14 @@
             <TextBlock Text="{Binding PaymentDateText}"/>
             <TextBlock Text="NUMER TRANSAKCJI:"/>
             <TextBlock Text="{Binding TransactionId}"/>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Width="331">
                 <Button Content="PRZETWORZENIE"
                         Command="{Binding ProcessPaymentCommand}"
                         IsEnabled="{Binding CanBeProcessed}"
-                        Margin="0,0,10,0" Width="159" Height="39" BorderBrush="{x:Null}" Background="#FF019CDF"/>
-                <Button Content="ZWROT"
+                        Margin="0,0,10,0" Width="161" Height="39" BorderBrush="{x:Null}" Background="#FF019CDF"/>
+                <Button Content="ANULUJ"
                         Command="{Binding RefundPaymentCommand}"
-                        IsEnabled="{Binding CanBeRefunded}" Width="208" Background="#FFFBBE53"/>
+                        IsEnabled="{Binding CanBeRefunded}" Width="164" Background="#FFFBBE53"/>
             </StackPanel>
             <TextBlock Text="{Binding Notes}" Foreground="Gray" Margin="0,10,0,0"/>
         </StackPanel>

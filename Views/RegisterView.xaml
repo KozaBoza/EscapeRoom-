@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:EscapeRoom.Views"
              xmlns:viewmodels="clr-namespace:EscapeRoom.ViewModels"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+			 Foreground="#">
 
     <!--<UserControl.DataContext>
         <viewmodels:RegisterViewModel/>
@@ -34,8 +35,8 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="Rejestracja nowego użytkownika" 
-                   HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20,0,20"/>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="REJESTRACJA" 
+                   HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,20,0,20" Foreground="#FFDFDCDC"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Nazwa użytkownika:" Margin="10" VerticalAlignment="Center"/>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" 
