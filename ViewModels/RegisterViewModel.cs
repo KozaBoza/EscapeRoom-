@@ -15,7 +15,7 @@ namespace EscapeRoom.ViewModels
 {
     public class RegisterViewModel : BaseViewModel
     {
-        private string _username;
+        private string _telefon;
         private string _email;
         private string _password;
         private string _confirmPassword;
@@ -26,10 +26,10 @@ namespace EscapeRoom.ViewModels
 
         public string Username
         {
-            get => _username;
+            get => _telefon;
             set
             {
-                if (SetProperty(ref _username, value))
+                if (SetProperty(ref _telefon, value))
                     OnPropertyChanged(nameof(CanRegister));
             }
         }
