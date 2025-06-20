@@ -6,9 +6,6 @@ using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Threading.Tasks;
-using Org.BouncyCastle.Utilities;
-using System.Transactions;
 
 namespace EscapeRoom.ViewModels
 {
@@ -21,10 +18,9 @@ namespace EscapeRoom.ViewModels
         private string _roomAvailabilityMessage = string.Empty;
         private readonly DataService _dataService;
 
-        // Nowe właściwości dla PaymentView
         private string _amountText;
         private string _methodText;
-        private string _paymentStatusText; // Zmieniona nazwa, aby nie kolidować z Reservation.Status
+        private string _paymentStatusText;
         private string _paymentDateText;
         private string _transactionId;
         private string _notes;
@@ -36,66 +32,62 @@ namespace EscapeRoom.ViewModels
             _dataService = new DataService();
             _reservation = new Reservation();
             _reservation.DataRozpoczecia = DateTime.Today;
+            _reservation.DataUtworzenia = DateTime.Now;
+            _reservation.Status = ReservationStatus.zarezerwowana;
+
             ConfirmReservationCommand = new RelayCommand(ConfirmReservation, CanConfirmReservation);
             CancelReservationCommand = new RelayCommand(CancelReservation, CanCancelReservation);
+            ProcessPaymentCommand = new RelayCommand(async param => await ProcessPayment(), CanProcessPayment);
+            RefundPaymentCommand = new RelayCommand(async param => await RefundPayment(), CanRefundPayment);
+            CheckRoomAvailabilityCommand = new RelayCommand(async param => await CheckRoomAvailabilityAsync());
+
+            InitializePaymentDetails();
         }
 
         public ReservationViewModel(Reservation reservation) : this()
         {
             _reservation = reservation ?? new Reservation();
-            // Jeśli data nie jest ustawiona, ustaw na dzisiaj
             if (_reservation.DataRozpoczecia == default(DateTime))
             {
                 _reservation.DataRozpoczecia = DateTime.Today;
             }
             LoadAssociatedDataAsync();
-            InitializePaymentDetails();
         }
 
         public ReservationViewModel(RoomViewModel roomViewModel) : this()
         {
-            RoomViewModel = roomViewModel; // Ustawienie właściwości RoomViewModel
-            // Ustaw PokojId z wybranego pokoju
+            RoomViewModel = roomViewModel;
             _reservation.PokojId = roomViewModel.PokojId;
-            // Tutaj możesz też zainicjować inne dane rezerwacji
-            _reservation.DataUtworzenia = DateTime.Now; // Ustaw domyślną datę utworzenia
-            _reservation.DataRozpoczecia = DateTime.Today; // Ustaw domyślną datę rezerwacji na dzisiaj
-            _reservation.Status = ReservationStatus.zarezerwowana; // Domyślny status po utworzeniu
-
-            // Ustaw UzytkownikId z sesji w momencie tworzenia ViewModelu, jeśli użytkownik jest zalogowany
             _reservation.UzytkownikId = UserSession.CurrentUser?.UzytkownikId ?? 0;
-
-            // Sprawdź dostępność pokoju na dzisiaj
             CheckRoomAvailabilityAsync();
             InitializePaymentDetails();
         }
 
         private async void LoadAssociatedDataAsync()
         {
-            DataService service = new DataService();
             if (_reservation.PokojId > 0)
             {
-                // Pobierz pokój na podstawie PokojId rezerwacji
-                var room = await service.GetRoomByIdAsync(_reservation.PokojId);
+                var room = await _dataService.GetRoomByIdAsync(_reservation.PokojId);
                 if (room != null)
                 {
-                    RoomViewModel = new RoomViewModel(room); // Utwórz RoomViewModel z załadowanego pokoju
+                    RoomViewModel = new RoomViewModel(room);
                 }
             }
-            // TODO: Analogicznie załaduj UserViewModel jeśli _reservation.UzytkownikId > 0
+
             InitializePaymentDetails();
+            OnPropertyChanged(nameof(IsValid));
         }
 
         private void InitializePaymentDetails()
         {
-            AmountText = RoomViewModel?.Cena.ToString("C") ?? "N/A"; // Formatowanie jako waluta
-            MethodText = "Karta kredytowa (symulacja)"; // Przykładowa metoda
-            PaymentStatusText = "Oczekuje na płatność"; // Początkowy status płatności
+            AmountText = RoomViewModel?.Cena.ToString("C") ?? "N/A";
+            MethodText = "Karta kredytowa (symulacja)";
+            PaymentStatusText = "Oczekuje na płatność";
             PaymentDateText = "Nieopłacono";
             TransactionId = "N/A";
             Notes = "Kliknij 'PRZETWORZENIE' aby zasymulować płatność.";
-            CanBeProcessed = true; // Na początku płatność może być przetworzona
-            CanBeRefunded = false; // Na początku nie można zwrócić płatności
+            CanBeProcessed = true;
+            CanBeRefunded = false;
         }
 
         public int RezerwacjaId
@@ -162,6 +154,9 @@ namespace EscapeRoom.ViewModels
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(StatusText));
                     OnPropertyChanged(nameof(CanBeCancelled));
+                    ((RelayCommand)CancelReservationCommand).RaiseCanExecuteChanged();
+                    ((RelayCommand)ProcessPaymentCommand).RaiseCanExecuteChanged();
+                    ((RelayCommand)RefundPaymentCommand).RaiseCanExecuteChanged();
                 }
             }
         }
@@ -177,7 +172,6 @@ namespace EscapeRoom.ViewModels
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
 
-                    // Sprawdź dostępność pokoju po zmianie daty
                     CheckRoomAvailabilityAsync();
                 }
             }
@@ -210,6 +204,7 @@ namespace EscapeRoom.ViewModels
                 if (SetProperty(ref _roomViewModel, value))
                 {
                     OnPropertyChanged(nameof(IsValid));
+                    InitializePaymentDetails();
                 }
             }
         }
@@ -219,10 +214,12 @@ namespace EscapeRoom.ViewModels
             get => _isRoomAvailable;
             set
             {
+                // TUTAJ BYŁ BŁĄD: Znak '=' po nameof(IsValid)
                 if (SetProperty(ref _isRoomAvailable, value))
                 {
                     OnPropertyChanged(nameof(IsValid));
                     OnPropertyChanged(nameof(RoomAvailabilityMessage));
+                    ((RelayCommand)ConfirmReservationCommand).RaiseCanExecuteChanged();
                 }
             }
         }
@@ -233,11 +230,12 @@ namespace EscapeRoom.ViewModels
             set => SetProperty(ref _roomAvailabilityMessage, value);
         }
 
-        // Obliczone właściwości
         public bool IsValid =>
             LiczbaOsob > 0 &&
             (RoomViewModel?.MaxGraczy ?? 0) >= LiczbaOsob &&
-            DataRozpoczecia >= DateTime.Today;
+            DataRozpoczecia >= DateTime.Today &&
+            RoomViewModel != null &&
+            IsRoomAvailable;
 
         public string StatusText
         {
@@ -262,21 +260,14 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        public bool CanBeCancelled => Status == ReservationStatus.zarezerwowana;
+        public bool CanBeCancelled => Status == ReservationStatus.zarezerwowana || Status == ReservationStatus.zrealizowana;
         public Reservation GetReservation() => _reservation;
-
-        //komendy
         public ICommand ConfirmReservationCommand { get; }
         public ICommand CancelReservationCommand { get; }
-        public ICommand CheckRoomAvailabilityCommand { get; }
         public ICommand ProcessPaymentCommand { get; }
+        public ICommand RefundPaymentCommand { get; }
+        public ICommand CheckRoomAvailabilityCommand { get; }
 
-        private void CheckRoomAvailability(object parameter)
-        {
-            CheckRoomAvailabilityAsync();
-        }
-
-        // Nowe właściwości dla PaymentView
         public string AmountText
         {
             get => _amountText;
@@ -289,7 +280,7 @@ namespace EscapeRoom.ViewModels
             set => SetProperty(ref _methodText, value);
         }
 
-        public string PaymentStatusText // Zmieniona nazwa, aby uniknąć kolizji
+        public string PaymentStatusText
         {
             get => _paymentStatusText;
             set => SetProperty(ref _paymentStatusText, value);
@@ -325,31 +316,29 @@ namespace EscapeRoom.ViewModels
             set => SetProperty(ref _canBeRefunded, value);
         }
 
-
-        private async System.Threading.Tasks.Task CheckRoomAvailabilityAsync()
+        private async Task CheckRoomAvailabilityAsync()
         {
-            if (PokojId <= 0 || DataRozpoczecia == default(DateTime))
+            if (PokojId <= 0 || DataRozpoczecia == default(DateTime) || RoomViewModel == null)
             {
                 IsRoomAvailable = false;
-                RoomAvailabilityMessage = "Nie wybrano pokoju lub daty";
+                RoomAvailabilityMessage = "Wybierz pokój i datę, aby sprawdzić dostępność.";
                 return;
             }
 
             try
             {
-                // Dodaj logowanie do debugowania
                 System.Diagnostics.Debug.WriteLine($"Sprawdzanie dostępności pokoju: {PokojId} na datę: {DataRozpoczecia}");
 
                 IsRoomAvailable = await _dataService.IsRoomAvailableAsync(PokojId, DataRozpoczecia);
 
                 if (IsRoomAvailable)
                 {
-                    RoomAvailabilityMessage = "Pokój dostępny w wybranym terminie";
+                    RoomAvailabilityMessage = "Pokój dostępny w wybranym terminie.";
                     System.Diagnostics.Debug.WriteLine("Pokój dostępny");
                 }
                 else
                 {
-                    RoomAvailabilityMessage = "Pokój niedostępny w wybranym terminie - wybierz inną datę";
+                    RoomAvailabilityMessage = "Pokój niedostępny w wybranym terminie - wybierz inną datę.";
                     System.Diagnostics.Debug.WriteLine("Pokój niedostępny");
                 }
 
@@ -358,10 +347,10 @@ namespace EscapeRoom.ViewModels
             catch (Exception ex)
             {
                 IsRoomAvailable = false;
-                RoomAvailabilityMessage = "Błąd sprawdzania dostępności";
+                RoomAvailabilityMessage = $"Błąd sprawdzania dostępności: {ex.Message}";
                 System.Diagnostics.Debug.WriteLine($"Błąd sprawdzania dostępności: {ex.Message}");
-                // Zapisz pełny stack trace do debugowania
                 System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+                MessageBox.Show($"Wystąpił błąd podczas sprawdzania dostępności: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -377,7 +366,7 @@ namespace EscapeRoom.ViewModels
 
             if (!IsValid)
             {
-                MessageBox.Show("Proszę wypełnić wszystkie wymagane pola poprawnie i upewnić się, że pokój jest dostępny.",
+                MessageBox.Show("Proszę wypełnić wszystkie wymagane pola poprawnie i upewnić się, że pokój jest dostępny. Max liczba osób to: " + (RoomViewModel?.MaxGraczy ?? 0) + ", a data musi być z dzisiaj lub przyszłości.",
                    "Błąd walidacji", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -385,9 +374,10 @@ namespace EscapeRoom.ViewModels
             try
             {
                 _reservation.UzytkownikId = UserSession.CurrentUser.UzytkownikId;
+                _reservation.DataUtworzenia = DateTime.Now;
 
-                bool isAvailable = await _dataService.IsRoomAvailableAsync(PokojId, DataRozpoczecia);
-                if (!isAvailable)
+                bool isAvailableNow = await _dataService.IsRoomAvailableAsync(PokojId, DataRozpoczecia);
+                if (!isAvailableNow)
                 {
                     MessageBox.Show("Ten pokój został właśnie zarezerwowany przez kogoś innego lub jest niedostępny. Wybierz inną datę.",
                         "Pokój niedostępny", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -401,8 +391,6 @@ namespace EscapeRoom.ViewModels
                 {
                     MessageBox.Show("Rezerwacja wstępnie utworzona. Przekierowanie do płatności.",
                         "Przejdź do płatności", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                    // Poniższa linia jest kluczowa: przekazujemy ten sam ViewModel do PaymentView
                     ViewNavigationService.Instance.NavigateTo(ViewType.Payment, this);
                 }
                 else
@@ -420,14 +408,13 @@ namespace EscapeRoom.ViewModels
 
         private bool CanConfirmReservation(object parameter) => IsValid;
 
-        // ZMODYFIKOWANA METODA: ProcessPayment
-        public async Task ProcessPayment()
+        private async Task ProcessPayment() // Brakowało "{}" po sygnaturze metody
         {
             try
             {
                 if (_reservation.RezerwacjaId == 0)
                 {
-                    MessageBox.Show("Błąd: ID rezerwacji nie zostało przypisane. Nie można przetworzyć płatności.", "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Rezerwacja nie została jeszcze zapisana. Spróbuj najpierw potwierdzić rezerwację.", "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
@@ -437,37 +424,31 @@ namespace EscapeRoom.ViewModels
                     MessageBox.Show("Błąd: Nie można określić kwoty do zapłaty.", "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-
-                // Symulacja zapisania danych płatności (bez faktycznej tabeli)
                 bool paymentSuccess = await _dataService.AddPaymentAsync(_reservation.RezerwacjaId, amountToPay, DateTime.Now);
 
                 if (paymentSuccess)
                 {
-                    // Zmiana statusu rezerwacji w bazie na "zrealizowana"
+                    // Brakowało tutaj nawiasu klamrowego zamykającego if (paymentSuccess)
                     bool statusUpdateSuccess = await _dataService.UpdateReservationStatusAsync(_reservation.RezerwacjaId, ReservationStatus.zrealizowana);
 
                     if (statusUpdateSuccess)
                     {
-                        // Zmiana statusu pokoju na "zarezerwowany" (lub "zajęty", "zrealizowany" - jakakolwiek konwencja)
-                        // Używamy "zarezerwowany" aby wskazać, że pokój jest zajęty przez opłaconą rezerwację.
-                        await _dataService.UpdateRoomStatusAsync(_reservation.PokojId, "zarezerwowany"); // Przykładowy status
-
-                        Status = ReservationStatus.zrealizowana; // Aktualizacja w ViewModelu
-                        PaymentStatusText = "Zrealizowana"; // Aktualizacja statusu płatności w PaymentView
+                        Status = ReservationStatus.zrealizowana;
+                        PaymentStatusText = "Zrealizowana";
                         PaymentDateText = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
-                        TransactionId = Guid.NewGuid().ToString().Substring(0, 8).ToUpper(); // Generowanie prostego ID transakcji
+                        TransactionId = Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
                         Notes = "Płatność zakończona sukcesem. Dziękujemy!";
-                        CanBeProcessed = false; // Płatność już przetworzona
-                        CanBeRefunded = true; // Teraz można zwrócić
+                        CanBeProcessed = false;
+                        CanBeRefunded = true;
 
                         MessageBox.Show("Płatność i rezerwacja zostały pomyślnie zrealizowane!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                        ViewNavigationService.Instance.NavigateTo(ViewType.User); // Przejście do panelu użytkownika
+                        ViewNavigationService.Instance.NavigateTo(ViewType.User);
                     }
                     else
                     {
                         MessageBox.Show("Płatność została przetworzona, ale nie udało się zaktualizować statusu rezerwacji.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
-                }
+                } // Ten nawias był wcześniej brakujący i źle umieszczony
                 else
                 {
                     MessageBox.Show("Nie udało się przetworzyć płatności. Spróbuj ponownie.", "Błąd Płatności", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -477,17 +458,15 @@ namespace EscapeRoom.ViewModels
             {
                 MessageBox.Show($"Wystąpił błąd podczas przetwarzania płatności: {ex.Message}", "Błąd Płatności", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-        }
+        } // Ten nawias zamykał metodę
 
         private bool CanProcessPayment(object parameter)
         {
-            // Płatność możliwa, jeśli rezerwacja jest wstępnie utworzona, walidacja jest poprawna,
-            // i jeszcze nie została przetworzona.
-            return _reservation.RezerwacjaId > 0 && IsValid && CanBeProcessed;
+            return _reservation.RezerwacjaId > 0 && IsValid && CanBeProcessed && RoomViewModel != null &&
+                   Status != ReservationStatus.zrealizowana && Status != ReservationStatus.odwolana;
         }
 
-        // NOWA METODA: RefundPayment
-        private async void RefundPayment(object parameter)
+        private async Task RefundPayment()
         {
             try
             {
@@ -497,25 +476,27 @@ namespace EscapeRoom.ViewModels
                     return;
                 }
 
-                // Symulacja procesu zwrotu (bez faktycznego zwrotu pieniędzy)
-                // W prawdziwej aplikacji byłaby tu integracja z bramką płatności.
-                bool refundSuccess = await _dataService.UpdateReservationStatusAsync(_reservation.RezerwacjaId, ReservationStatus.odwolana); // Zmieniamy status na anulowany
+                if (MessageBox.Show("Czy na pewno chcesz dokonać zwrotu płatności i anulować rezerwację?", "Potwierdź zwrot", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+                {
+                    return;
+                }
+
+                bool refundSuccess = await _dataService.UpdateReservationStatusAsync(_reservation.RezerwacjaId, ReservationStatus.odwolana);
 
                 if (refundSuccess)
                 {
-                    // Ustaw status pokoju z powrotem na "wolny"
                     await _dataService.UpdateRoomStatusAsync(_reservation.PokojId, "wolny");
 
-                    Status = ReservationStatus.odwolana; // Aktualizacja w ViewModelu
+                    Status = ReservationStatus.odwolana;
                     PaymentStatusText = "Zwrócona";
                     PaymentDateText = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
-                    TransactionId = "ZWRÓCONO: " + TransactionId; // Zmiana ID na oznaczenie zwrotu
+                    TransactionId = "ZWRÓCONO: " + TransactionId;
                     Notes = "Płatność została zwrócona, rezerwacja anulowana.";
                     CanBeProcessed = false;
-                    CanBeRefunded = false; // Nie można zwrócić drugi raz
+                    CanBeRefunded = false;
 
                     MessageBox.Show("Zwrot płatności i anulowanie rezerwacji zakończone pomyślnie.", "Zwrot", MessageBoxButton.OK, MessageBoxImage.Information);
-                    ViewNavigationService.Instance.NavigateTo(ViewType.User); // Przejście do panelu użytkownika
+                    ViewNavigationService.Instance.NavigateTo(ViewType.User);
                 }
                 else
                 {
@@ -530,35 +511,36 @@ namespace EscapeRoom.ViewModels
 
         private bool CanRefundPayment(object parameter)
         {
-            // Zwrot możliwy, jeśli płatność została przetworzona i nie jest już zwrócona/anulowana
             return Status == ReservationStatus.zrealizowana && CanBeRefunded;
         }
 
-
-        private void CancelReservation(object parameter)
+        private async void CancelReservation(object parameter)
         {
-            // Możesz zapytać użytkownika o potwierdzenie
             if (MessageBox.Show("Czy na pewno chcesz anulować tę rezerwację? Spowoduje to również anulowanie ewentualnej płatności.", "Potwierdź anulowanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    // Opcjonalnie: Jeśli płatność została przetworzona, spróbuj ją zwrócić
                     if (Status == ReservationStatus.zrealizowana)
                     {
-                        RefundPayment(null); // Wywołaj funkcję zwrotu
-                        return; // RefundPayment zajmie się nawigacją
+                        await RefundPayment();
+                        return;
                     }
                     else
                     {
-                        // Jeśli nie ma płatności, tylko anuluj rezerwację w bazie
-                        _dataService.UpdateReservationStatusAsync(_reservation.RezerwacjaId, ReservationStatus.odwolana);
-                        // Ustaw status pokoju z powrotem na "wolny" (jeśli był zarezerwowany)
-                        _dataService.UpdateRoomStatusAsync(_reservation.PokojId, "wolny");
-                    }
+                        bool success = await _dataService.UpdateReservationStatusAsync(_reservation.RezerwacjaId, ReservationStatus.odwolana);
+                        if (success)
+                        {
+                            await _dataService.UpdateRoomStatusAsync(_reservation.PokojId, "wolny");
 
-                    Status = ReservationStatus.odwolana;
-                    MessageBox.Show("Rezerwacja została anulowana.", "Anulowano", MessageBoxButton.OK, MessageBoxImage.Information);
-                    ViewNavigationService.Instance.NavigateTo(ViewType.Room); // Możesz nawigować do innej strony, np. listy rezerwacji użytkownika
+                            Status = ReservationStatus.odwolana;
+                            MessageBox.Show("Rezerwacja została anulowana.", "Anulowano", MessageBoxButton.OK, MessageBoxImage.Information);
+                            ViewNavigationService.Instance.NavigateTo(ViewType.Room);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nie udało się anulować rezerwacji. Spróbuj ponownie.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -568,6 +550,5 @@ namespace EscapeRoom.ViewModels
         }
 
         private bool CanCancelReservation(object parameter) => CanBeCancelled;
-
     }
 }
