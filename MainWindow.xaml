@@ -60,7 +60,7 @@
                      Visibility="{Binding IsLogoutVisible, Converter={StaticResource BoolToVisibilityConverter}}" BorderBrush="{x:Null}" Background="#FF6B73" Foreground="#252525" />
 
             <Button Content="ADMIN" Click="OnAdminButtonClick" Margin="637,23,9,76" Grid.Column="1" RenderTransformOrigin="-2.387,2.77"
-        Visibility="{Binding IsAdminVisible, Converter={StaticResource BoolToVisibilityConverter}}" 
+        Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVisibilityConverter}}" 
         BorderBrush="{x:Null}" Background="#FF6B73" Foreground="#252525" />
         </Grid>
     </DockPanel>

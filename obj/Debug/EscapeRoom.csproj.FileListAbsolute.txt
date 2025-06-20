@@ -363,3 +363,4 @@ C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoo
 C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\bin\Debug\BCrypt.Net-Next.xml
 C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\RegisterView.g.cs
 C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\RegisterView.baml
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\RegisterView.g.cs

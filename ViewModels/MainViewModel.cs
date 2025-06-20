@@ -26,7 +26,7 @@ namespace EscapeRoom.ViewModels
         private bool _isLoggedIn;
         private string _currentUserName; // email
         private bool _isLogoutVisible;
-
+        private bool _isAdmin;
 
         public MainViewModel()
         {
@@ -44,6 +44,7 @@ namespace EscapeRoom.ViewModels
             CurrentView = "Rooms"; // domyslny
             IsLoggedIn = false; // Na początku wylogowany
             IsLogoutVisible = true; //
+            IsAdmin = false;
             //Messenger.Instance.Subscribe<NavigationMessage>(OnNavigationMessageReceived);
         }
 
@@ -57,8 +58,15 @@ namespace EscapeRoom.ViewModels
                     
                     CurrentUserName = value?.Email; //email
                     IsLoggedIn = (value != null);
+                    IsAdmin = (value != null && value.Admin);
                 }
             }
+        }
+
+        public bool IsAdmin
+        {
+            get => _isAdmin;
+            set => SetProperty(ref _isAdmin, value);
         }
 
         public RoomViewModel SelectedRoom

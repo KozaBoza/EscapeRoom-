@@ -8,36 +8,34 @@ using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 using EscapeRoom.Services;
 using System.ComponentModel;
+using System.Threading.Tasks; // Added for async operations
 
 namespace EscapeRoom.ViewModels
 {
-    // podstrona dot. pojedynczego pokoju
+    // podstrona dot. listy pokojów
     public class RoomViewModel : BaseViewModel
     {
-        private Room _room;
-        private bool _isSelected;
+     
+        private RoomViewModel _selectedRoom;
 
-        public ObservableCollection<Room> Rooms { get; set; }
+      
+        public ObservableCollection<RoomViewModel> Rooms { get; set; }
 
         public bool IsLoggedIn => UserSession.IsLoggedIn;
 
         public RoomViewModel()
         {
-            _room = new Room();
-            Rooms = new ObservableCollection<Room>();
+            Rooms = new ObservableCollection<RoomViewModel>();
             BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
+            ShowReviewsCommand = new RelayCommand(ShowReviews); 
             LoadRoomsAsync();
         }
 
-        public RoomViewModel(Room room) : this()
+
+        public RoomViewModel SelectedRoom
         {
-            _room = room ?? new Room();
-            OnPropertyChanged(nameof(Nazwa));
-            OnPropertyChanged(nameof(Opis));
-            OnPropertyChanged(nameof(Trudnosc));
-            OnPropertyChanged(nameof(Cena));
-            OnPropertyChanged(nameof(MaxGraczy));
-            OnPropertyChanged(nameof(CzasMinut));
+            get => _selectedRoom;
+            set => SetProperty(ref _selectedRoom, value);
         }
 
         private async void LoadRoomsAsync()
@@ -45,27 +43,20 @@ namespace EscapeRoom.ViewModels
             try
             {
                 DataService service = new DataService();
-                var rooms = await service.GetRoomsAsync();
+                var roomsFromDb = await service.GetRoomsAsync();
 
-                if (rooms == null || rooms.Count == 0)
+                if (roomsFromDb == null || roomsFromDb.Count == 0)
                 {
                     MessageBox.Show("Nie wczytano danych z bazy!", "Błąd!", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
-                foreach (var room in rooms)
+                foreach (var room in roomsFromDb)
                 {
-                    Rooms.Add(room);
+                    Rooms.Add(new RoomViewModel(room));
                 }
 
-                _room = Rooms.FirstOrDefault(r => r.PokojId == 1) ?? new Room();
-
-                OnPropertyChanged(nameof(Nazwa));
-                OnPropertyChanged(nameof(Opis));
-                OnPropertyChanged(nameof(Trudnosc));
-                OnPropertyChanged(nameof(Cena));
-                OnPropertyChanged(nameof(MaxGraczy));
-                OnPropertyChanged(nameof(CzasMinut));
+            
 
                 ((RelayCommand)BookRoomCommand).RaiseCanExecuteChanged();
             }
@@ -76,134 +67,67 @@ namespace EscapeRoom.ViewModels
         }
 
 
-        public int PokojId
+        private Room _currentRoomData;
+
+        public RoomViewModel(Room room)
         {
-            get => _room.PokojId;
-            set
-            {
-                if (_room.PokojId != value)
-                {
-                    _room.PokojId = value;
-                    OnPropertyChanged();
-                }
-            }
+            _currentRoomData = room;
+          
+            BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom); 
+            ShowReviewsCommand = new RelayCommand(ShowReviews); 
         }
 
-        public string Nazwa
-        {
-            get => _room.Nazwa;
-            set
-            {
-                if (_room.Nazwa != value)
-                {
-                    _room.Nazwa = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public string Opis
-        {
-            get => _room.Opis;
-            set
-            {
-                if (_room.Opis != value)
-                {
-                    _room.Opis = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public byte Trudnosc
-        {
-            get => _room.Trudnosc;
-            set
-            {
-                if (_room.Trudnosc != value)
-                {
-                    _room.Trudnosc = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged(nameof(TrudnoscText));
-                }
-            }
-        }
-
-        public decimal Cena
-        {
-            get => _room.Cena;
-            set
-            {
-                if (_room.Cena != value)
-                {
-                    _room.Cena = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged(nameof(CenaText));
-                }
-            }
-        }
-
-        public byte MaxGraczy
-        {
-            get => _room.MaxGraczy;
-            set
-            {
-                if (_room.MaxGraczy != value)
-                {
-                    _room.MaxGraczy = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged(nameof(MaxGraczyText));
-                }
-            }
-        }
-
-        public int CzasMinut
-        {
-            get => _room.CzasMinut;
-            set
-            {
-                if (_room.CzasMinut != value)
-                {
-                    _room.CzasMinut = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged(nameof(CzasText));
-                }
-            }
-        }
-
-        public bool IsSelected
-        {
-            get => _isSelected;
-            set => SetProperty(ref _isSelected, value);
-        }
+        // cechy
+        public int PokojId => _currentRoomData?.PokojId ?? 0;
+        public string Nazwa => _currentRoomData?.Nazwa;
+        public string Opis => _currentRoomData?.Opis;
+        public byte Trudnosc => _currentRoomData?.Trudnosc ?? 0;
+        public decimal Cena => _currentRoomData?.Cena ?? 0m;
+        public byte MaxGraczy => _currentRoomData?.MaxGraczy ?? 0;
+        public int CzasMinut => _currentRoomData?.CzasMinut ?? 0;
 
         public string TrudnoscText => $"Poziom trudności: {Trudnosc}/5";
         public string CenaText => $"{Cena:C}";
         public string CzasText => $"{CzasMinut} minut";
         public string MaxGraczyText => $"Maksymalnie {MaxGraczy} graczy";
 
-        public Room GetRoom() => _room;
+       
 
         public ICommand BookRoomCommand { get; }
+        public ICommand ShowReviewsCommand { get; } 
 
         private void BookRoom(object parameter)
         {
-            // Dodaj tutaj warunek sprawdzający IsLoggedIn ponownie, dla pewności (choć CanBookRoom już to robi)
             if (!IsLoggedIn)
             {
                 MessageBox.Show("Aby zarezerwować pokój, musisz być zalogowany.", "Wymagane logowanie", MessageBoxButton.OK, MessageBoxImage.Information);
-                ViewNavigationService.Instance.NavigateTo(ViewType.Login); // Przekieruj do logowania
+                ViewNavigationService.Instance.NavigateTo(ViewType.Login);
                 return;
             }
 
-            // Utwórz ReservationViewModel i przekaż mu aktualny RoomViewModel
-            var reservationViewModel = new ReservationViewModel(this); // Przekazujemy 'this', czyli RoomViewModel
-            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, reservationViewModel);
+            
+            if (parameter is RoomViewModel roomToBook)
+            {
+                
+                var reservationViewModel = new ReservationViewModel(roomToBook._currentRoomData); 
+                ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, reservationViewModel);
+            }
         }
+
         private bool CanBookRoom(object parameter)
         {
-            // Przycisk "Zarezerwuj" jest aktywny tylko, jeśli użytkownik jest zalogowany
+            
             return IsLoggedIn;
+        }
+
+        private void ShowReviews(object parameter)
+        {
+            if (parameter is RoomViewModel roomToShowReviews)
+            {
+                MessageBox.Show($"Wyświetlam opinie dla pokoju: {roomToShowReviews.Nazwa}", "Opinie o pokoju", MessageBoxButton.OK, MessageBoxImage.Information);
+              
+                // ex: ViewNavigationService.Instance.NavigateTo(ViewType.RoomReviews, roomToShowReviews);
+            }
         }
     }
 }
