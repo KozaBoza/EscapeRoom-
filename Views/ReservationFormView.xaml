@@ -15,11 +15,11 @@
             <TextBlock FontSize="36" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Height="48">
                 <Run Language="pl-pl" Text="REZERWACJE"/>
             </TextBlock>
-            <TextBlock Text="POKÓJ:"/>
+            <TextBlock Text="POKOJ:"/>
             <TextBlock Text="{Binding RoomViewModel.Nazwa}" FontWeight="Bold"/>
             <TextBlock Text="DATA:"/>
             <DatePicker SelectedDate="{Binding DataRozpoczecia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
-            <TextBlock Text="LICZBA OSÓB:"/>
+            <TextBlock Text="LICZBA OSOB:"/>
             <TextBox Text="{Binding LiczbaOsob}" Margin="0,0,0,10"/>
             <TextBlock Text="STATUS:"/>
             <TextBlock Text="{Binding StatusText}" Margin="0,0,0,10"/>

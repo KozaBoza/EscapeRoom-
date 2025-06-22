@@ -10,6 +10,7 @@ using EscapeRoom.Services;
 using System.ComponentModel;
 using System.Threading.Tasks; // Added for async operations
 
+
 namespace EscapeRoom.ViewModels
 {
     // podstrona dot. listy pokojów
@@ -67,7 +68,7 @@ namespace EscapeRoom.ViewModels
         }
 
 
-        private Room _currentRoomData;
+        private readonly Room _currentRoomData;
 
         public RoomViewModel(Room room)
         {
@@ -94,7 +95,7 @@ namespace EscapeRoom.ViewModels
        
 
         public ICommand BookRoomCommand { get; }
-        public ICommand ShowReviewsCommand { get; } 
+        public ICommand ShowReviewsCommand { get; }
 
         private void BookRoom(object parameter)
         {
@@ -105,14 +106,20 @@ namespace EscapeRoom.ViewModels
                 return;
             }
 
-            
             if (parameter is RoomViewModel roomToBook)
             {
-                
-                var reservationViewModel = new ReservationViewModel(roomToBook._currentRoomData); 
+                // Corrected: Pass the Room object directly to ReservationViewModel
+                var reservationViewModel = new ReservationViewModel(new Reservation
+                {
+                    PokojId = roomToBook.PokojId,
+                    DataRozpoczecia = DateTime.Now, // Example initialization, adjust as needed
+                    LiczbaOsob = 1 // Example initialization, adjust as needed
+                });
                 ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, reservationViewModel);
             }
         }
+
+        
 
         private bool CanBookRoom(object parameter)
         {

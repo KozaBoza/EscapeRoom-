@@ -5,6 +5,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using EscapeRoom.Helpers;
+using EscapeRoom.Services;
+using EscapeRoom.ViewModels;
+
 
 namespace EscapeRoom
 {
