@@ -16,6 +16,7 @@ namespace EscapeRoom.Views
         public ContactView()
         {
             InitializeComponent();
+            this.DataContext = new ContactViewModel();
         }
         private void OnSendButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {

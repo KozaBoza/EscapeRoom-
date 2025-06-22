@@ -11,13 +11,13 @@
 			<TextBlock Text="KONTAKT" FontSize="20" FontWeight="Bold" Margin="0,0,0,5" TextAlignment="Center" Background="#FFECDA3C" Foreground="#FF252525"/>
 
 			<TextBlock Text="IMIĘ I NAZWISKO"/>
-			<TextBox Text="{Binding Name}" Margin="0,0,0,5" Background="#FF1A1A1A" BorderBrush="{x:Null}"/>
+            <TextBox Text="{Binding Name}" Margin="0,0,0,5" Background="#FF1A1A1A" Foreground="White" BorderBrush="{x:Null}" IsEnabled="{Binding IsUserLoggedIn}"/>
 
 			<TextBlock Text="E-MAIL"/>
-			<TextBox Text="{Binding Email}" Margin="0,0,0,5" BorderBrush="{x:Null}" Background="#FF1A1A1A"/>
+            <TextBox Text="{Binding Email}" Margin="0,0,0,5" BorderBrush="{x:Null}" Foreground="White" Background="#FF1A1A1A" IsEnabled="{Binding IsUserLoggedIn}"/>
 
 			<TextBlock Text="WIADOMOŚĆ"/>
-			<TextBox Text="{Binding Message}" AcceptsReturn="True" Height="100" Margin="0,0,0,10" Width="248" Background="#FF1A1A1A" BorderBrush="{x:Null}"/>
+			<TextBox Text="{Binding Message}" AcceptsReturn="True" Height="100" Margin="0,0,0,10" Width="248" Background="#FF1A1A1A" Foreground="White" BorderBrush="{x:Null}"/>
 
 			<TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,0,0,10"/>
 			<Button Content="Wyślij"
