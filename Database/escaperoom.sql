@@ -221,6 +221,34 @@ INSERT INTO `uzytkownicy` VALUES
 /*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
+
+--
+-- Table structure for table `wiadomosci`
+--
+
+DROP TABLE IF EXISTS `wiadomosci`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8mb4 */;
+CREATE TABLE `wiadomosci` (
+  `id_wiadomosci` int(11) NOT NULL AUTO_INCREMENT,
+  `wiadomosc` varchar(500) NOT NULL,
+  `uzytkownik_id` int(11) NOT NULL,
+  PRIMARY KEY (`id_wiadomosci`),
+  KEY `uzytkownik_id` (`uzytkownik_id`),
+  CONSTRAINT `wiadomosci_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wiadomosci`
+--
+
+LOCK TABLES `wiadomosci` WRITE;
+/*!40000 ALTER TABLE `wiadomosci` DISABLE KEYS */;
+set autocommit=0;
+/*!40000 ALTER TABLE `wiadomosci` ENABLE KEYS */;
+UNLOCK TABLES;
+commit;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -231,4 +259,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-06-18 22:39:41
+-- Dump completed on 2025-06-22 12:02:39
