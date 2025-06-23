@@ -41,15 +41,15 @@
             <TextBlock Text="SZCZEGӣY POKOJU" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
             <TextBlock>
                 <Run Text="POZIOM: "/>
-                <Run Text="{Binding RoomViewModel.PoziomTrudnosci}" FontWeight="Bold"/>
+                <Run Text="{Binding RoomViewModel.PoziomTrudnosci, Mode=OneWay}" FontWeight="Bold"/>
             </TextBlock>
             <TextBlock>
                 <Run Text="MAX: "/>
-                <Run Text="{Binding RoomViewModel.MaxGraczy}" FontWeight="Bold"/>
+                <Run Text="{Binding RoomViewModel.MaxGraczy, Mode=OneWay}" FontWeight="Bold"/>
             </TextBlock>
             <TextBlock>
                 <Run Text="CENA: "/>
-                <Run Text="{Binding RoomViewModel.Cena, StringFormat=C}" FontWeight="Bold"/></TextBlock>
+                <Run Text="{Binding RoomViewModel.Cena, StringFormat=C, Mode=OneWay}" FontWeight="Bold"/></TextBlock>
         </StackPanel>
 
     </Grid>
