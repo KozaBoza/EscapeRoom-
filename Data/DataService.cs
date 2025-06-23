@@ -435,7 +435,7 @@ namespace EscapeRoom.Data
             using (var conn = new MySqlConnection(connectionString))
             {
                 await conn.OpenAsync();
-                var cmd = new MySqlCommand("SELECT * FROM wiadomosci ORDER BY data_wyslania DESC LIMIT @limit", conn);
+                var cmd = new MySqlCommand("SELECT w.id_wiadomosci, w.wiadomosc, w.uzytkownik_id, u.email FROM wiadomosci as w JOIN uzytkownicy as u ON w.uzytkownik_id = u.uzytkownik_id ORDER BY id_wiadomosci DESC LIMIT @limit", conn);
                 cmd.Parameters.AddWithValue("@limit", limit);
 
                 using (var reader = await cmd.ExecuteReaderAsync())
@@ -444,10 +444,10 @@ namespace EscapeRoom.Data
                     {
                         messages.Add(new Message
                         {
-                            WiadomoscId = reader.GetInt32(reader.GetOrdinal("wiadomosc_id")),
-                            NadawcaId = reader.GetInt32(reader.GetOrdinal("nadawca_id")),
-                            Tresc = reader.GetString(reader.GetOrdinal("tresc")),
-                            DataWyslania = reader.GetDateTime(reader.GetOrdinal("data_wyslania"))
+                            WiadomoscId = reader.GetInt32(reader.GetOrdinal("id_wiadomosci")),
+                            NadawcaId = reader.GetInt32(reader.GetOrdinal("uzytkownik_id")),
+                            Tresc = reader.GetString(reader.GetOrdinal("wiadomosc")),
+                            Email = reader.GetString(reader.GetOrdinal("email"))
 
                         });
                     }
@@ -469,6 +469,24 @@ namespace EscapeRoom.Data
             }
         }
 
+        public async Task<bool> SaveContactMessageAsync(string message, int? userId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            try
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand("INSERT INTO wiadomosci (wiadomosc, uzytkownik_id) VALUES (@message, @userId)", conn);
+                cmd.Parameters.AddWithValue("@message", message);
+                cmd.Parameters.AddWithValue("@userId", userId.HasValue ? userId.Value : (object)DBNull.Value);
+                await cmd.ExecuteNonQueryAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error saving message: " + ex.Message);
+                return false;
+            }
+        }
 
     }
 }

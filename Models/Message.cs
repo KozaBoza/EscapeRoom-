@@ -16,13 +16,13 @@ namespace EscapeRoom.Models
         public int NadawcaId { get; set; }
 
         [Required]
+        [Column("email")]
+        public string Email { get; set; }
+
+        [Required]
         [StringLength(500)]
         [Column("tresc")]
         public string Tresc { get; set; }
-
-        [Required]
-        [Column("data_wyslania")]
-        public DateTime DataWyslania { get; set; }
 
         [ForeignKey("NadawcaId")]
         public virtual User Nadawca { get; set; }
