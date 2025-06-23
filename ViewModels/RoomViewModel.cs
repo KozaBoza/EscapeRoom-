@@ -18,11 +18,7 @@ namespace EscapeRoom.ViewModels
     {
      
         private RoomViewModel _selectedRoom;
-
-
         public ObservableCollection<Room> Rooms { get; set; }
-
-
         public bool IsLoggedIn => UserSession.IsLoggedIn;
 
         public RoomViewModel()
