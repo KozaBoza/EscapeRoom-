@@ -16,7 +16,7 @@ namespace EscapeRoom.ViewModels
         private string _errorMessage;
         private string _statusMessage;
         private bool _canSend;
-        public bool IsUserLoggedIn => UserSession.CurrentUser == null;
+        public bool IsUserNotLoggedIn => UserSession.CurrentUser == null;
 
         private DataService _dataService;
 
@@ -122,7 +122,8 @@ namespace EscapeRoom.ViewModels
         public bool CanSubmit =>
             !string.IsNullOrWhiteSpace(Name) &&
             IsValidEmail(Email) &&
-            !string.IsNullOrWhiteSpace(Message);
+            !string.IsNullOrWhiteSpace(Message) &&
+            !IsUserNotLoggedIn;
 
         public ICommand SubmitCommand { get; }
 
