@@ -425,7 +425,8 @@ namespace EscapeRoom.ViewModels
                     MessageBox.Show("Błąd: Nie można określić kwoty do zapłaty.", "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                bool paymentSuccess = await _dataService.AddPaymentAsync(_reservation.RezerwacjaId, amountToPay, DateTime.Now);
+                bool paymentSuccess = await _dataService.AddPaymentAsync(_reservation.RezerwacjaId, UserSession.CurrentUser.UzytkownikId);
+
 
                 if (paymentSuccess)
                 {

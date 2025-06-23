@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 {
@@ -21,11 +22,12 @@ namespace EscapeRoom.ViewModels
         {
             // Pobierz cenę z wybranego pokoju
             Amount = reservationViewModel?.RoomViewModel?.Cena ?? 0;
+            ReservationId = reservationViewModel?.RezerwacjaId ?? 0; // <-- TO JEST KLUCZOWE
             PaymentDate = DateTime.Now;
             Status = PaymentStatus.Pending;
             TransactionId = "2137419" + GetRandomTransactionSuffix();
 
-            ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
+            ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
             CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
         }
 
@@ -35,7 +37,7 @@ namespace EscapeRoom.ViewModels
             Status = PaymentStatus.Pending;
             TransactionId = "2137419" + GetRandomTransactionSuffix();
 
-            ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
+            ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
             CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
         }
 
@@ -50,21 +52,38 @@ namespace EscapeRoom.ViewModels
         public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
         public string TransactionIdText => $"Nr transakcji: {TransactionId}";
 
-        private void ProcessPayment(object parameter)
+        private void ProcessPayment()
         {
-            Status = PaymentStatus.Completed;
-            PaymentDate = DateTime.Now;
-            // Nie generujemy nowego TransactionId, bo już mamy go z konstruktora
-            Notes = $"Płatność zatwierdzona {PaymentDate:dd.MM.yyyy HH:mm}";
+            System.Threading.Thread.Sleep(2000);
             SavePaymentToDatabase();
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
-        private void SavePaymentToDatabase()
+        private async void SavePaymentToDatabase()
         {
-            var payment = GetPayment();
-            // Tu dodaj kod zapisujący do bazy danych
-            // Przykład: await _dataService.SavePaymentAsync(payment);
+            var dataService = new EscapeRoom.Data.DataService();
+            bool result = await dataService.AddPaymentAsync(ReservationId, UserSession.CurrentUser.UzytkownikId);
+
+            if (result)
+            {
+                System.Windows.MessageBox.Show(
+                    "Płatność została przetworzona pomyślnie!\nTwoja rezerwacja została potwierdzona.",
+                    "Sukces",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Information);
+
+                EscapeRoom.Services.ViewNavigationService.Instance.NavigateTo(EscapeRoom.Services.ViewType.User);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show(
+                    "Nie udało się przetworzyć płatności. Spróbuj ponownie.",
+                    "Błąd",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Error);
+            }
         }
+
 
         public int Id
         {
