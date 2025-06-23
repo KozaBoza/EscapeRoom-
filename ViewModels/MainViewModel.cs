@@ -223,6 +223,8 @@ namespace EscapeRoom.ViewModels
                 PaymentDate = DateTime.Now
             };
 
+
+
             Payments.Add(payment);
         }
 

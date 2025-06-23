@@ -423,10 +423,32 @@ namespace EscapeRoom.Data
 
         public async Task<bool> AddPaymentAsync(int reservationId, decimal amount, DateTime paymentDate)
         {
-          
-            await Task.Delay(100); // Symuluj asynchroniczną operację
-            System.Diagnostics.Debug.WriteLine($"Symulacja dodawania płatności: Rezerwacja ID: {reservationId}, Kwota: {amount:C}, Data: {paymentDate}");
-            return true;
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                try
+                {
+                    var cmd = new MySqlCommand(
+                        @"INSERT INTO platnosci (rezerwacja_id, kwota, status, metoda, data_platnosci, nr_transakcji, notatki) 
+                VALUES (@reservationId, @amount, @status, @method, @paymentDate, @transactionId, @notes)", conn);
+
+                    cmd.Parameters.AddWithValue("@reservationId", reservationId);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.Parameters.AddWithValue("@status", "zrealizowana");
+                    cmd.Parameters.AddWithValue("@method", "karta"); // lub inna metoda płatności
+                    cmd.Parameters.AddWithValue("@paymentDate", paymentDate);
+                    cmd.Parameters.AddWithValue("@transactionId", "2137419" + new Random().Next(1000, 9999).ToString());
+                    cmd.Parameters.AddWithValue("@notes", "Płatność zrealizowana");
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Błąd podczas dodawania płatności: {ex.Message}");
+                    return false;
+                }
+            }
         }
 
         public async Task<List<Message>> GetRecentMessagesAsync(int limit)

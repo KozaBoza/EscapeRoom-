@@ -19,8 +19,19 @@ namespace EscapeRoom.ViewModels
 
         public PaymentViewModel(ReservationViewModel reservationViewModel)
         {
-            // Pobierz cenę z wybranego pokoju
-            Amount = reservationViewModel?.RoomViewModel?.Cena ?? 0;
+            if (reservationViewModel == null)
+            {
+                throw new ArgumentNullException(nameof(reservationViewModel), "Rezerwacja nie może być null");
+            }
+
+            // Dodaj debugowanie
+            System.Diagnostics.Debug.WriteLine($"PaymentViewModel - Otrzymane dane:" +
+                $"\nReservationId: {reservationViewModel.RezerwacjaId}" +
+                $"\nAmount: {reservationViewModel.RoomViewModel?.Cena ?? 0}");
+
+            ReservationId = reservationViewModel.RezerwacjaId;
+            Amount = reservationViewModel.RoomViewModel?.Cena ?? 0;
+            Method = PaymentMethod.CreditCard; // Dodaj domyślną metodę płatności
             PaymentDate = DateTime.Now;
             Status = PaymentStatus.Pending;
             TransactionId = "2137419" + GetRandomTransactionSuffix();
@@ -54,16 +65,66 @@ namespace EscapeRoom.ViewModels
         {
             Status = PaymentStatus.Completed;
             PaymentDate = DateTime.Now;
-            // Nie generujemy nowego TransactionId, bo już mamy go z konstruktora
             Notes = $"Płatność zatwierdzona {PaymentDate:dd.MM.yyyy HH:mm}";
-            SavePaymentToDatabase();
+            SavePaymentToDatabase(); // Teraz jest async void, więc można wywołać bez await
         }
 
-        private void SavePaymentToDatabase()
+        private async void SavePaymentToDatabase()
         {
-            var payment = GetPayment();
-            // Tu dodaj kod zapisujący do bazy danych
-            // Przykład: await _dataService.SavePaymentAsync(payment);
+            try
+            {
+                // Dodaj debugowanie
+                System.Diagnostics.Debug.WriteLine($"Próba zapisu płatności:" +
+                    $"\nReservationId: {ReservationId}" +
+                    $"\nAmount: {Amount}" +
+                    $"\nStatus: {Status}" +
+                    $"\nMethod: {Method}");
+
+                if (ReservationId <= 0)
+                {
+                    System.Windows.MessageBox.Show(
+                        "Błąd: Nieprawidłowe ID rezerwacji",
+                        "Błąd",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Error);
+                    return;
+                }
+
+                var dataService = new EscapeRoom.Data.DataService();
+                bool result = await dataService.AddPaymentAsync(
+                    ReservationId,
+                    Amount,
+                    DateTime.Now);
+
+                if (result)
+                {
+                    System.Windows.MessageBox.Show(
+                        "Płatność została przetworzona pomyślnie!\nTwoja rezerwacja została potwierdzona.",
+                        "Sukces",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Information);
+
+                    EscapeRoom.Services.ViewNavigationService.Instance.NavigateTo(
+                        EscapeRoom.Services.ViewType.User);
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show(
+                        "Nie udało się przetworzyć płatności. Spróbuj ponownie.",
+                        "Błąd",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Błąd podczas zapisywania płatności: {ex.Message}");
+                System.Windows.MessageBox.Show(
+                    $"Wystąpił błąd podczas przetwarzania płatności: {ex.Message}",
+                    "Błąd",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Error);
+            }
         }
 
         public int Id
