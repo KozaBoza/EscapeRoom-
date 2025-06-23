@@ -38,7 +38,7 @@
         </Grid.ColumnDefinitions>
 
         <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="REJESTRACJA" 
-                   HorizontalAlignment="Center" FontSize="24" FontWeight="Bold" Margin="0,21,0,10" Foreground="#FF252525" Background="#FFD27F41" Width="249" TextAlignment="Center"/>
+                   HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,24,0,10" Foreground="#FF252525" Background="#FF5FEE5B" Width="408" TextAlignment="Center"/>
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="TELEFON:" Margin="10" VerticalAlignment="Center"/>
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Telefon, UpdateSourceTrigger=PropertyChanged}" 
@@ -74,9 +74,9 @@
 
 
 
-        <Button Grid.Row="8" Content="ZAREJESTRUJ" Command="{Binding RegisterCommand}" Height="30" Margin="10,20,325,85" Grid.Column="1" Grid.RowSpan="2" BorderBrush="{x:Null}" Background="#FF7498E8" Foreground="#FF252525" />
+        <Button Grid.Row="8" Content="ZAREJESTRUJ" Command="{Binding RegisterCommand}" Margin="141,0,325,74" Grid.RowSpan="2" BorderBrush="{x:Null}" Background="#FF7498E8" Foreground="#FF252525" Grid.ColumnSpan="2" />
 
-        <Button Grid.Row="8" Content="ANULUJ" Command="{Binding GoToLoginCommand}" Height="30" Margin="169,20,181,0"  VerticalAlignment="Top" Grid.Column="1" Grid.RowSpan="2" Foreground="#FF252525" Background="#FFDDC77F" BorderBrush="{x:Null}"/>
+        <Button Grid.Row="8" Content="ANULUJ" Command="{Binding GoToLoginCommand}" Height="50" Margin="144,0,181,0"  VerticalAlignment="Top" Grid.Column="1" Grid.RowSpan="2" Foreground="#FF252525" Background="#FFDDC77F" BorderBrush="{x:Null}"/>
 
 
     </Grid>

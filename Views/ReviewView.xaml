@@ -6,20 +6,20 @@
              FontFamily="Segoe UI Black"
              Foreground="White" >
     <Border   Padding="12" Margin="8">
-        <StackPanel Margin="0,85,-3,0">
-            <TextBlock Text="OPINIA" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="46" Width="232" Foreground="#FF1F1F1F" Background="#FFF8F5F1" />
+        <StackPanel Margin="0,24,-3,0">
+            <TextBlock Text="OPINIA" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="46" Width="297" Foreground="#FF1F1F1F" Background="#FFF8F5F1" />
             <TextBlock Text="{Binding UserViewModel.Imie}" FontWeight="Bold" />
             <TextBlock Text="{Binding RatingText}" Foreground="Goldenrod" Margin="0,2,0,0"/>
-            <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="129" Width="225" Background="#FF1E1D1D"/>
+            <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="139" Width="316" Background="#FF1E1D1D"/>
             <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
                 <Button Content="WYSLIJ"
                         Command="{Binding SubmitReviewCommand}"
                         IsEnabled="{Binding IsValid}"
-                        Margin="0,0,8,0" Width="115" Height="38" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF16A570"/>
+                        Margin="0,0,8,0" Width="142" Height="54" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF16A570"/>
                 <Button Content="USUN"
                         Command="{Binding DeleteReviewCommand}"
-                        IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}" Width="106" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFF05541"/>
+                        IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}" Width="132" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFF05541"/>
             </StackPanel>
         </StackPanel>
     </Border>

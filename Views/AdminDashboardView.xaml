@@ -12,14 +12,14 @@
 
     <Grid Margin="20,20,32,20">
         <StackPanel Margin="82,0,49,0">
-            <TextBlock Text="PANEL ADMINISTRATORA" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Background="#FFFBBE53" Width="309" Foreground="#FF252525" Height="29"/>
+            <TextBlock Text="PANEL ADMINISTRATORA" FontSize="30" FontWeight="Bold" Margin="0,0,0,10" TextAlignment="Center" Background="#FFFBBE53" Width="398" Foreground="#FF252525" Height="41"/>
 
             <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBlock Text="  LICZBA POKOI: " FontWeight="Bold" Width="117"/>
                 <TextBlock Text="{Binding TotalRooms}" Margin="5,0,20,0"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="2,0,0,10" Width="320" Background="#FF1D1D1E">
+            <StackPanel Orientation="Horizontal" Margin="2,0,0,10" Width="359" Background="#FF1D1D1E">
                 <TextBlock Text="REZERWACJE: " Margin="5,8,6,8" Width="84"/>
                 <TextBlock Text="OCZEKUJĄCE: " Margin="8,8,6,8" Width="88"/>
                 <TextBlock Text="{Binding PendingReservations}" Margin="2,0"/>
@@ -43,7 +43,7 @@
             </StackPanel>
 
             <TextBlock Text=" OSTATNIE REZERWACJE:" FontWeight="Bold" Margin="5" Width="302" Height="14"/>
-            <ListBox ItemsSource="{Binding RecentReservations}" Height="68" Width="292" Background="#FF1D1D1E" BorderBrush="{x:Null}">
+            <ListBox ItemsSource="{Binding RecentReservations}" Height="43" Width="292" Background="#FF1D1D1E" BorderBrush="{x:Null}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
