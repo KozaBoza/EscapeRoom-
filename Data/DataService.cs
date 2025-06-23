@@ -339,7 +339,7 @@ namespace EscapeRoom.Data
                 return result?.ToString() ?? "wolny";
             }
         }
-
+        //
         public async Task UpdateRoomStatusAsync(int roomId, string status)
         {
             using (var conn = new MySqlConnection(connectionString))
