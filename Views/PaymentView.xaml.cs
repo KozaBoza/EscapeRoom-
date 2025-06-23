@@ -18,6 +18,17 @@ namespace EscapeRoom.Views
         public PaymentView()
         {
             InitializeComponent();
+
+            // Pobierz parametr nawigacji
+            var parameter = ViewNavigationService.Instance.GetNavigationParameter();
+            if (parameter is ReservationViewModel reservationViewModel)
+            {
+                this.DataContext = new PaymentViewModel(reservationViewModel);
+            }
+            else
+            {
+                this.DataContext = new PaymentViewModel();
+            }
         }
 
         private void OnPayButtonClick(object sender, System.Windows.RoutedEventArgs e)

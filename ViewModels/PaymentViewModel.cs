@@ -17,10 +17,53 @@ namespace EscapeRoom.ViewModels
         private string _transactionId;
         private string _notes;
 
+        public PaymentViewModel(ReservationViewModel reservationViewModel)
+        {
+            // Pobierz cenę z wybranego pokoju
+            Amount = reservationViewModel?.RoomViewModel?.Cena ?? 0;
+            PaymentDate = DateTime.Now;
+            Status = PaymentStatus.Pending;
+            TransactionId = "2137419" + GetRandomTransactionSuffix();
+
+            ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
+            CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
+        }
+
         public PaymentViewModel()
         {
+            PaymentDate = DateTime.Now;
+            Status = PaymentStatus.Pending;
+            TransactionId = "2137419" + GetRandomTransactionSuffix();
+
             ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
-            CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment); 
+            CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
+        }
+
+        // Nowa metoda generująca unikalny sufiks dla numeru transakcji
+        private string GetRandomTransactionSuffix()
+        {
+            return new Random().Next(1000, 9999).ToString();
+        }
+
+        // Modyfikacja właściwości do wyświetlania
+        public string AmountText => Amount.ToString("C");
+        public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
+        public string TransactionIdText => $"Nr transakcji: {TransactionId}";
+
+        private void ProcessPayment(object parameter)
+        {
+            Status = PaymentStatus.Completed;
+            PaymentDate = DateTime.Now;
+            // Nie generujemy nowego TransactionId, bo już mamy go z konstruktora
+            Notes = $"Płatność zatwierdzona {PaymentDate:dd.MM.yyyy HH:mm}";
+            SavePaymentToDatabase();
+        }
+
+        private void SavePaymentToDatabase()
+        {
+            var payment = GetPayment();
+            // Tu dodaj kod zapisujący do bazy danych
+            // Przykład: await _dataService.SavePaymentAsync(payment);
         }
 
         public int Id
@@ -94,7 +137,6 @@ namespace EscapeRoom.ViewModels
             set => SetProperty(ref _notes, value);
         }
 
-        public string AmountText => Amount.ToString("C");
 
         public string StatusText
         {
@@ -127,7 +169,6 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
 
         public bool IsValid => Amount > 0 && ReservationId > 0;
 
@@ -136,13 +177,6 @@ namespace EscapeRoom.ViewModels
 
         public ICommand ProcessPaymentCommand { get; }
         public ICommand CancelPaymentCommand { get; } // z RefundPaymentCommand
-
-        private void ProcessPayment(object parameter)
-        {
-            Status = PaymentStatus.Completed;
-            PaymentDate = DateTime.Now;
-            TransactionId = Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
-        }
 
         private bool CanProcessPayment(object parameter) => CanBeProcessed && IsValid;
 

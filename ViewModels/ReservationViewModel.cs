@@ -390,7 +390,8 @@ namespace EscapeRoom.ViewModels
                 if (success)
                 {
                     MessageBox.Show("Rezerwacja wstępnie utworzona. Przekierowanie do płatności.",
-                        "Przejdź do płatności", MessageBoxButton.OK, MessageBoxImage.Information);
+                           "Przejdź do płatności", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Przekaż this (ReservationViewModel) jako parametr
                     ViewNavigationService.Instance.NavigateTo(ViewType.Payment, this);
                 }
                 else
