@@ -1,9 +1,10 @@
-﻿using System.Windows.Controls;
-using EscapeRoom.ViewModels;
+﻿using EscapeRoom.Data;
 using EscapeRoom.Models;
 using EscapeRoom.Services;
-using System.Windows;
+using EscapeRoom.ViewModels;
 using System;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace EscapeRoom.Views
 { //obsługa przycisków 
@@ -107,9 +108,43 @@ namespace EscapeRoom.Views
             return true;
         }
 
-        private void SaveProfileChanges()
+        private async void SaveProfileChanges()
         {
-           //symulacja poki co
+            try
+            {
+                var viewModel = (UserViewModel)DataContext;
+                var dataService = new DataService();
+
+                var success = await dataService.UpdateUserAsync(viewModel.GetUser());
+
+                if (success)
+                {
+                    // Aktualizuj dane w sesji
+                    UserSession.CurrentUser = viewModel.GetUser();
+
+                    System.Windows.MessageBox.Show(
+                        "Dane zostały pomyślnie zaktualizowane.",
+                        "Sukces",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Information);
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show(
+                        "Nie udało się zaktualizować danych. Spróbuj ponownie.",
+                        "Błąd",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(
+                    $"Wystąpił błąd podczas aktualizacji danych: {ex.Message}",
+                    "Błąd",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Error);
+            }
         }
 
         private bool IsValidEmail(string email)

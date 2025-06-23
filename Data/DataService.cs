@@ -488,5 +488,32 @@ namespace EscapeRoom.Data
             }
         }
 
+        public async Task<bool> UpdateUserAsync(User user)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                try
+                {
+                    var cmd = new MySqlCommand(
+                        "UPDATE uzytkownicy SET email = @email, imie = @imie, nazwisko = @nazwisko, " +
+                        "telefon = @telefon WHERE uzytkownik_id = @id", conn);
+
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@imie", user.Imie);
+                    cmd.Parameters.AddWithValue("@nazwisko", user.Nazwisko);
+                    cmd.Parameters.AddWithValue("@telefon", user.Telefon ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id", user.UzytkownikId);
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
     }
 }
