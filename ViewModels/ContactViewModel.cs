@@ -15,11 +15,18 @@ namespace EscapeRoom.ViewModels
         private string _errorMessage;
         private string _statusMessage;
         private bool _canSend;
+        public bool IsUserLoggedIn => UserSession.CurrentUser == null;
+
 
         public ContactViewModel()
         {
             _contact = new Contact();
             SubmitCommand = new RelayCommand(SubmitContact, CanSubmitContact);
+            if (UserSession.CurrentUser != null)
+            {
+                Name = $"{UserSession.CurrentUser.Imie} {UserSession.CurrentUser.Nazwisko}";
+                Email = UserSession.CurrentUser.Email;
+            }
         }
 
         public ContactViewModel(Contact contact) : this()
@@ -27,35 +34,48 @@ namespace EscapeRoom.ViewModels
             _contact = contact ?? new Contact();
         }
 
-        public string FullName
+        public string Name
         {
-            get => GetFieldValue<string>("_fullName");
+            get => _contact.Name;
             set
             {
-                if (SetFieldValue(value, "_fullName"))
+                if (_contact.Name != value)
+                {
+                    _contact.Name = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(CanSubmit));
+                }
             }
         }
 
         public string Email
         {
-            get => GetFieldValue<string>("_email");
+            get => _contact.Email;
             set
             {
-                if (SetFieldValue(value, "_email"))
+                if (_contact.Email != value)
+                {
+                    _contact.Email = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(CanSubmit));
+                }
             }
         }
 
         public string Message
         {
-            get => GetFieldValue<string>("_message");
+            get => _contact.Message;
             set
             {
-                if (SetFieldValue(value, "_message"))
+                if (_contact.Message != value)
+                {
+                    _contact.Message = value;
+                    OnPropertyChanged();
                     OnPropertyChanged(nameof(CanSubmit));
+                }
             }
         }
+
 
         public DateTime SubmittedAt
         {
@@ -64,7 +84,7 @@ namespace EscapeRoom.ViewModels
         }
 
         public bool CanSubmit =>
-            !string.IsNullOrWhiteSpace(FullName) &&
+            !string.IsNullOrWhiteSpace(Name) &&
             IsValidEmail(Email) &&
             !string.IsNullOrWhiteSpace(Message);
 

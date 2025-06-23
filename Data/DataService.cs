@@ -429,5 +429,46 @@ namespace EscapeRoom.Data
             return true;
         }
 
+        public async Task<List<Message>> GetRecentMessagesAsync(int limit)
+        {
+            var messages = new List<Message>();
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand("SELECT * FROM wiadomosci ORDER BY data_wyslania DESC LIMIT @limit", conn);
+                cmd.Parameters.AddWithValue("@limit", limit);
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        messages.Add(new Message
+                        {
+                            WiadomoscId = reader.GetInt32(reader.GetOrdinal("wiadomosc_id")),
+                            NadawcaId = reader.GetInt32(reader.GetOrdinal("nadawca_id")),
+                            Tresc = reader.GetString(reader.GetOrdinal("tresc")),
+                            DataWyslania = reader.GetDateTime(reader.GetOrdinal("data_wyslania"))
+
+                        });
+                    }
+                }
+            }
+            return messages;
+        }
+
+        public async Task<int> ApproveAllPendingReservationsAsync()
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand(
+                    "UPDATE rezerwacje SET status = 'zrealizowana' WHERE status = 'zarezerwowana'", conn);
+
+                int affectedRows = await cmd.ExecuteNonQueryAsync();
+                return affectedRows; // liczba zaktualizowanych rezerwacji
+            }
+        }
+
+
     }
 }

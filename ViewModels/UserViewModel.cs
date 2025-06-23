@@ -9,6 +9,7 @@ namespace EscapeRoom.ViewModels
 { // podstrona dot. pojedynczego użytkownika
     public class UserViewModel : BaseViewModel
     {
+
         private User _user;
         private string _passwordConfirm;
         private bool _isEditing;
@@ -111,7 +112,18 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-
+        public bool Admin
+        {
+            get => _user.Admin;
+            set
+            {
+                if (_user.Admin != value)
+                {
+                    _user.Admin = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public string PasswordConfirm
         {

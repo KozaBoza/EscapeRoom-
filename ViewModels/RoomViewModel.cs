@@ -19,14 +19,15 @@ namespace EscapeRoom.ViewModels
      
         private RoomViewModel _selectedRoom;
 
-      
-        public ObservableCollection<RoomViewModel> Rooms { get; set; }
+
+        public ObservableCollection<Room> Rooms { get; set; }
+
 
         public bool IsLoggedIn => UserSession.IsLoggedIn;
 
         public RoomViewModel()
         {
-            Rooms = new ObservableCollection<RoomViewModel>();
+            Rooms = new ObservableCollection<Room>();
             BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
             ShowReviewsCommand = new RelayCommand(ShowReviews); 
             LoadRoomsAsync();
@@ -54,7 +55,7 @@ namespace EscapeRoom.ViewModels
 
                 foreach (var room in roomsFromDb)
                 {
-                    Rooms.Add(new RoomViewModel(room));
+                    Rooms.Add(room);
                 }
 
             
@@ -106,20 +107,20 @@ namespace EscapeRoom.ViewModels
                 return;
             }
 
-            if (parameter is RoomViewModel roomToBook)
+            if (parameter is Room roomToBook)
             {
-                // Corrected: Pass the Room object directly to ReservationViewModel
                 var reservationViewModel = new ReservationViewModel(new Reservation
                 {
                     PokojId = roomToBook.PokojId,
-                    DataRozpoczecia = DateTime.Now, // Example initialization, adjust as needed
-                    LiczbaOsob = 1 // Example initialization, adjust as needed
+                    DataRozpoczecia = DateTime.Now,
+                    LiczbaOsob = 1
                 });
                 ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, reservationViewModel);
             }
         }
 
-        
+
+
 
         private bool CanBookRoom(object parameter)
         {
