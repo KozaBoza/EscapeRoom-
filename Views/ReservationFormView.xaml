@@ -22,7 +22,6 @@
             <TextBlock Text="LICZBA OSOB:"/>
             <TextBox Text="{Binding LiczbaOsob}" Margin="0,0,0,10"/>
             <TextBlock Text="STATUS:"/>
-            <TextBlock Text="{Binding StatusText}" Margin="0,0,0,10"/>
             <TextBlock Text="{Binding RoomAvailabilityMessage}" Margin="0,0,0,10"/>
 
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Height="54">
@@ -38,7 +37,7 @@
         <StackPanel Grid.Column="1"
                     HorizontalAlignment="Right" VerticalAlignment="Bottom"
                     Margin="10,0,0,0">
-            <TextBlock Text="SZCZEGӣY POKOJU" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
+            <TextBlock Text="SZCZEGOLY POKOJU" FontSize="14" FontWeight="Bold" Margin="0,0,0,5"/>
             <TextBlock>
                 <Run Text="POZIOM: "/>
                 <Run Text="{Binding RoomViewModel.PoziomTrudnosci, Mode=OneWay}" FontWeight="Bold"/>

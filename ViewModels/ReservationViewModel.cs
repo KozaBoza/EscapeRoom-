@@ -261,6 +261,11 @@ namespace EscapeRoom.ViewModels
                 {
                     return "Pokój niedostępny w wybranym terminie";
                 }
+                // Jeśli pokój jest wolny, nie wyświetlaj nic
+                if (IsRoomAvailable && RezerwacjaId == 0)
+                {
+                    return string.Empty;
+                }
 
                 switch (Status)
                 {
@@ -570,38 +575,17 @@ namespace EscapeRoom.ViewModels
             return Status == ReservationStatus.zrealizowana && CanBeRefunded;
         }
 
-        private async void CancelReservation(object parameter)
+        private void CancelReservation(object parameter)
         {
-            if (MessageBox.Show("Czy na pewno chcesz anulować tę rezerwację? Spowoduje to również anulowanie ewentualnej płatności.", "Potwierdź anulowanie", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-            {
-                try
-                {
-                    if (Status == ReservationStatus.zrealizowana)
-                    {
-                        await RefundPayment();
-                        return;
-                    }
-                    else
-                    {
-                        bool success = await _dataService.UpdateReservationStatusAsync(_reservation.RezerwacjaId, ReservationStatus.odwolana);
-                        if (success)
-                        {
-                            await _dataService.UpdateRoomStatusAsync(_reservation.PokojId, "wolny");
+            var result = MessageBox.Show(
+                "Czy na pewno chcesz anulować rezerwację?",
+                "Anulowanie rezerwacji",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
 
-                            Status = ReservationStatus.odwolana;
-                            MessageBox.Show("Rezerwacja została anulowana.", "Anulowano", MessageBoxButton.OK, MessageBoxImage.Information);
-                            ViewNavigationService.Instance.NavigateTo(ViewType.Room);
-                        }
-                        else
-                        {
-                            MessageBox.Show("Nie udało się anulować rezerwacji. Spróbuj ponownie.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Wystąpił błąd podczas anulowania rezerwacji: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+            if (result == MessageBoxResult.Yes)
+            {
+                ViewNavigationService.Instance.NavigateTo(ViewType.Room);
             }
         }
 

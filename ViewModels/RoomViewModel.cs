@@ -17,7 +17,9 @@ namespace EscapeRoom.ViewModels
     // podstrona dot. listy pokojów
     public class RoomViewModel : BaseViewModel
     {
-     
+        public string PoziomTrudnosci => Trudnosc > 0 ? $"{Trudnosc}/5" : "Brak danych";
+
+
         private RoomViewModel _selectedRoom;
 
 
