@@ -76,7 +76,8 @@
                         Background="#FF602DC8" 
                         FontFamily="Segoe UI Black" 
                         Foreground="#252525" 
-                        Height="58"/>
+                        Height="58"
+                        Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVisibilityConverter}}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" 

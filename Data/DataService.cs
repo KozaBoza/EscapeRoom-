@@ -608,11 +608,9 @@ namespace EscapeRoom.Data
 
                 var cmd = new MySqlCommand(@"
             SELECT r.rezerwacja_id, r.data_rozpoczecia, r.liczba_osob, r.status,
-                   p.pokoj_id, p.nazwa as nazwa_pokoju, p.opis, p.trudnosc, p.cena, p.max_graczy, p.czas_minut,
-                   u.uzytkownik_id, u.email, u.imie, u.nazwisko
+                   p.pokoj_id, p.nazwa as nazwa_pokoju, p.opis, p.trudnosc, p.cena, p.max_graczy, p.czas_minut
             FROM rezerwacje r
             JOIN pokoje p ON r.pokoj_id = p.pokoj_id
-            JOIN uzytkownicy u ON r.uzytkownik_id = u.uzytkownik_id
             WHERE r.uzytkownik_id = @userId
             ORDER BY r.data_rozpoczecia DESC", conn);
 
@@ -633,24 +631,15 @@ namespace EscapeRoom.Data
                             CzasMinut = reader.GetInt32(reader.GetOrdinal("czas_minut"))
                         };
 
-                        var user = new User
-                        {
-                            UzytkownikId = reader.GetInt32(reader.GetOrdinal("uzytkownik_id")),
-                            Email = reader.GetString(reader.GetOrdinal("email")),
-                            Imie = reader.GetString(reader.GetOrdinal("imie")),
-                            Nazwisko = reader.GetString(reader.GetOrdinal("nazwisko"))
-                        };
-
                         var reservation = new Reservation
                         {
                             RezerwacjaId = reader.GetInt32(reader.GetOrdinal("rezerwacja_id")),
-                            UzytkownikId = user.UzytkownikId,
-                            PokojId = room.PokojId,
                             DataRozpoczecia = reader.GetDateTime(reader.GetOrdinal("data_rozpoczecia")),
                             LiczbaOsob = reader.GetByte(reader.GetOrdinal("liczba_osob")),
-                            Status = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), reader.GetString(reader.GetOrdinal("status"))),
+                            Status = (ReservationStatus)Enum.Parse(typeof(ReservationStatus),
+                                    reader.GetString(reader.GetOrdinal("status"))),
                             Pokoj = room,
-                            Uzytkownik = user
+                            PokojId = room.PokojId
                         };
 
                         reservations.Add(reservation);
