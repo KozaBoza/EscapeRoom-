@@ -599,5 +599,9 @@ namespace EscapeRoom.Data
             }
         }
 
+        public async Task<List<Reservation>> GetAllReservationsAsync()
+        {
+            return null;
+        }
     }
 }

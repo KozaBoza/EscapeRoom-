@@ -140,6 +140,10 @@
     <Compile Include="Helpers\BoolToColorConverter.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\ReservationHistoryView.xaml.cs">
+      <DependentUpon>ReservationHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ReservationHistoryViewModel.cs" />
     <Compile Include="Views\AdminDashboardView.xaml.cs">
       <DependentUpon>AdminDashboardView.xaml</DependentUpon>
     </Compile>
@@ -198,6 +202,10 @@
     </Compile>
     <Page Include="Resources\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewModels\ReservationHistoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\AdminDashboardView.xaml">
       <Generator>MSBuild:Compile</Generator>

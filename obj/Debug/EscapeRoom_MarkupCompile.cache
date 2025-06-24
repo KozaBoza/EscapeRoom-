@@ -4,29 +4,17 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
-C:\Matyna_C\Studia\POIG\Escape_Room_6\obj\Debug\
-=======
-C:\Users\talia\source\repos\EscapeRoom-\obj\Debug\
->>>>>>> parent of b6a0112 (dodano ReservationHistory)
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\
 EscapeRoom
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-C:\Matyna_C\Studia\POIG\Escape_Room_6\App.xaml
-111351540024
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\App.xaml
+12-304697948
 21420720209
-41746133532
-46-521745661
-=======
-C:\Users\talia\source\repos\EscapeRoom-\App.xaml
-111351540024
-21420720209
-41746133532
-461225850313
->>>>>>> parent of b6a0112 (dodano ReservationHistory)
-MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReviewView.xaml;RoomView.xaml;Views\UserView.xaml;
+43166021395
+46-1316208459
+MainWindow.xaml;Resources\Styles.xaml;ViewModels\ReservationHistoryView.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReviewView.xaml;RoomView.xaml;Views\UserView.xaml;
 
 False
 

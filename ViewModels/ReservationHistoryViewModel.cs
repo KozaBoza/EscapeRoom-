@@ -31,7 +31,7 @@ namespace EscapeRoom.ViewModels
             var allReservations = await dataService.GetAllReservationsAsync(); //baza danych
             var userReservations = allReservations
                 .Where(r => r.Uzytkownik?.Email == UserSession.CurrentUser.Email)
-                .OrderByDescending(r => r.Data)
+                .OrderByDescending(r => r.DataUtworzenia)
                 .ToList();
 
             var reservationVMs = new ObservableCollection<ReservationViewModel>();
