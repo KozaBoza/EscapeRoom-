@@ -7,7 +7,7 @@ public class Review
     public int UzytkownikId { get; set; }
     public int PokojId { get; set; }
     public byte Ocena { get; set; }
-    public string Komentarz { get; set; }
+    public string Opinia { get; set; }
     public DateTime DataUtworzenia { get; set; }
 
     // Navigation properties

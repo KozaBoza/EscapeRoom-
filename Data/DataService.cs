@@ -205,7 +205,7 @@ namespace EscapeRoom.Data
             await conn.OpenAsync();
 
             var cmd = new MySqlCommand(
-                "SELECT COUNT(*) FROM rezerwacje WHERE status = 'zarezerwowana'", conn);
+                "SELECT COUNT(*) FROM rezerwacje WHERE status = 'oplacona'", conn);
             int count = 0;
             using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
             {
@@ -515,7 +515,7 @@ namespace EscapeRoom.Data
 
                         // Aktualizuj status rezerwacji
                         var updateCmd = new MySqlCommand(
-                            "UPDATE rezerwacje SET status = 'zrealizowana' WHERE rezerwacja_id = @reservationId", conn);
+                            "UPDATE rezerwacje SET status = 'oplacona' WHERE rezerwacja_id = @reservationId", conn);
                         updateCmd.Parameters.AddWithValue("@reservationId", reservationId);
                         updateCmd.Transaction = transaction;
 
@@ -568,7 +568,7 @@ namespace EscapeRoom.Data
             {
                 await conn.OpenAsync();
                 var cmd = new MySqlCommand(
-                    "UPDATE rezerwacje SET status = 'zrealizowana' WHERE status = 'zarezerwowana'", conn);
+                    "UPDATE rezerwacje SET status = 'zrealizowana' WHERE status = 'oplacona'", conn);
 
                 int affectedRows = await cmd.ExecuteNonQueryAsync();
                 return affectedRows; // liczba zaktualizowanych rezerwacji
@@ -676,41 +676,90 @@ namespace EscapeRoom.Data
         // Dodaj metody asynchroniczne
         public async Task<bool> AddReviewAsync(Review review)
         {
-            try
+            using (var conn = new MySqlConnection(connectionString))
             {
-                // implementacja
-                return true;
-            }
-            catch
-            {
-                return false;
+                await conn.OpenAsync();
+
+                var cmd = new MySqlCommand(@"
+            INSERT INTO recenzje (uzytkownik_id, pokoj_id, opinia, data_dodania)
+            VALUES (@userId, @roomId, @opinia, @dataDodania)", conn);
+
+                cmd.Parameters.AddWithValue("@userId", review.UzytkownikId);
+                cmd.Parameters.AddWithValue("@roomId", review.PokojId);
+                cmd.Parameters.AddWithValue("@opinia", review.Opinia);
+                cmd.Parameters.AddWithValue("@dataDodania", review.DataUtworzenia);
+
+                int result = await cmd.ExecuteNonQueryAsync();
+                return result > 0;
             }
         }
 
         public async Task<bool> DeleteReviewAsync(int reviewId)
         {
-            try
+            using (var conn = new MySqlConnection(connectionString))
             {
-                // implementacja
-                return true;
-            }
-            catch
-            {
-                return false;
+                await conn.OpenAsync();
+
+                var cmd = new MySqlCommand(
+                    "DELETE FROM recenzje WHERE recenzja_id = @reviewId", conn);
+
+                cmd.Parameters.AddWithValue("@reviewId", reviewId);
+
+                int result = await cmd.ExecuteNonQueryAsync();
+                return result > 0;
             }
         }
 
         public async Task<List<Review>> GetReviewsForRoomAsync(int roomId)
         {
+            var reviews = new List<Review>();
+
             try
             {
-                // implementacja
-                return new List<Review>();
+                using (var conn = new MySqlConnection(connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    var cmd = new MySqlCommand(@"
+                SELECT r.recenzja_id, r.uzytkownik_id, r.pokoj_id, r.opinia, r.data_dodania,
+                       u.imie, u.nazwisko
+                FROM recenzje r
+                JOIN uzytkownicy u ON r.uzytkownik_id = u.uzytkownik_id
+                WHERE r.pokoj_id = @roomId
+                ORDER BY r.data_dodania DESC", conn);
+
+                    cmd.Parameters.AddWithValue("@roomId", roomId);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            var review = new Review
+                            {
+                                RecenzjaId = reader.GetInt32(reader.GetOrdinal("recenzja_id")),
+                                UzytkownikId = reader.GetInt32(reader.GetOrdinal("uzytkownik_id")),
+                                PokojId = reader.GetInt32(reader.GetOrdinal("pokoj_id")),
+                                Opinia = reader.GetString(reader.GetOrdinal("opinia")),
+                                DataUtworzenia = reader.GetDateTime(reader.GetOrdinal("data_dodania")),
+                                User = new User
+                                {
+                                    Imie = reader.GetString(reader.GetOrdinal("imie")),
+                                    Nazwisko = reader.GetString(reader.GetOrdinal("nazwisko"))
+                                }
+                            };
+                            reviews.Add(review);
+                        }
+                    }
+                }
             }
-            catch
+            catch (Exception ex)
             {
-                return new List<Review>();
+                System.Diagnostics.Debug.WriteLine($"Error in GetReviewsForRoomAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                throw;
             }
+
+            return reviews;
         }
 
         public async Task<User> GetUserByIdAsync(int userId)

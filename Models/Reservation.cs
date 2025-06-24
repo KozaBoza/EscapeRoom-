@@ -11,7 +11,8 @@ namespace EscapeRoom.Models
     {
         zarezerwowana,
         odwolana,
-        zrealizowana
+        zrealizowana,
+        oplacona
     }
 
     [Table("Rezerwacje")]

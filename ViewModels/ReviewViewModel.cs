@@ -1,12 +1,11 @@
-﻿using EscapeRoom.Helpers;
-using EscapeRoom.Models;
-using EscapeRoom.ViewModels;
+﻿using System;
 using System.Collections.ObjectModel;
-using System;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Windows;
+using System.Windows.Input;
 using EscapeRoom.Data;
+using EscapeRoom.Helpers;
+using EscapeRoom.Models;
 
 namespace EscapeRoom.ViewModels
 {
@@ -18,10 +17,14 @@ namespace EscapeRoom.ViewModels
         private UserViewModel _userViewModel;
         private ObservableCollection<ReviewViewModel> _reviewsForRoom;
         private readonly DataService _dataService;
+        private ReviewViewModel _selectedReview;
 
         public ReviewViewModel()
         {
-            _review = new Review();
+            _review = new Review
+            {
+                DataUtworzenia = DateTime.Now  // Set current date in constructor
+            };
             _dataService = new DataService();
             ReviewsForRoom = new ObservableCollection<ReviewViewModel>();
             SubmitReviewCommand = new RelayCommand(SubmitReview, CanSubmitReview);
@@ -97,12 +100,12 @@ namespace EscapeRoom.ViewModels
 
         public string Komentarz
         {
-            get => _review?.Komentarz ?? "";
+            get => _review?.Opinia ?? "";
             set
             {
                 if (_review != null)
                 {
-                    _review.Komentarz = value;
+                    _review.Opinia = value;
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(IsValid));
                 }
@@ -111,7 +114,7 @@ namespace EscapeRoom.ViewModels
 
         public DateTime DataUtworzenia
         {
-            get => _review?.DataUtworzenia ?? DateTime.MinValue;
+            get => _review?.DataUtworzenia ?? DateTime.Now;  // Return current date if null
             set
             {
                 if (_review != null)
@@ -119,6 +122,23 @@ namespace EscapeRoom.ViewModels
                     _review.DataUtworzenia = value;
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(CreatedAtText));
+                }
+            }
+        }
+
+        public ReviewViewModel SelectedReview
+        {
+            get => _selectedReview;
+            set
+            {
+                if (SetProperty(ref _selectedReview, value))
+                {
+                    OnPropertyChanged(nameof(CanDeleteReview));
+                    if (value != null)
+                    {
+                        Komentarz = value.Komentarz;
+                        DataUtworzenia = value.DataUtworzenia;
+                    }
                 }
             }
         }
@@ -152,14 +172,21 @@ namespace EscapeRoom.ViewModels
 
         public string RatingText => $"Ocena: {Ocena}/5";
         public string CreatedAtText => DataUtworzenia.ToString("dd.MM.yyyy HH:mm");
-        public bool IsValid => !string.IsNullOrWhiteSpace(Komentarz);
+        public bool IsValid => !string.IsNullOrWhiteSpace(Komentarz) &&
+                              CurrentRoom != null &&
+                              UserSession.IsLoggedIn;
         public bool HasRoomSelected => CurrentRoom != null;
         public string UserName => UserViewModel?.FullName ?? "Użytkownik";
+
+        public bool IsLoggedIn => UserSession.IsLoggedIn;
+
+        public bool IsAdmin => UserSession.IsLoggedIn && UserSession.CurrentUser?.Admin == true;
 
         public bool CanDeleteReview
         {
             get => UserSession.IsLoggedIn &&
-                (UserSession.CurrentUser?.Admin == true || UzytkownikId == UserSession.CurrentUser?.UzytkownikId);
+                   UserSession.CurrentUser?.Admin == true && // Only admin can delete
+                   SelectedReview != null; // Must have a review selected
         }
 
         private void UpdateDeletePermissions()
@@ -178,66 +205,107 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        private void SubmitReview(object parameter)
+        private async void SubmitReview(object parameter)
         {
             try
             {
-                if (!IsValid || !HasRoomSelected)
-                {
-                    MessageBox.Show("Proszę wprowadzić treść recenzji.", "Walidacja", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    return;
-                }
-
                 if (!UserSession.IsLoggedIn)
                 {
-                    MessageBox.Show("Musisz być zalogowany, aby dodać recenzję.", "Logowanie wymagane", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Musisz być zalogowany, aby dodać recenzję.",
+                        "Logowanie wymagane", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                _review.DataUtworzenia = DateTime.Now;
-                _review.UzytkownikId = UserSession.CurrentUser.UzytkownikId;
-                _review.PokojId = CurrentRoom.PokojId;
+                if (string.IsNullOrWhiteSpace(Komentarz))
+                {
+                    MessageBox.Show("Proszę wprowadzić treść recenzji.",
+                        "Walidacja", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
 
-                // Here you would typically save to database
-                // await _dataService.AddReviewAsync(_review);
+                var review = new Review
+                {
+                    UzytkownikId = UserSession.CurrentUser.UzytkownikId,
+                    PokojId = CurrentRoom.PokojId,
+                    Opinia = Komentarz,
+                    DataUtworzenia = DateTime.Now
+                };
 
-                MessageBox.Show("Recenzja została dodana pomyślnie.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                LoadReviewsForRoomAsync(); // Refresh the reviews list
+                bool success = await _dataService.AddReviewAsync(review);
+
+                if (success)
+                {
+                    MessageBox.Show("Recenzja została dodana pomyślnie.",
+                        "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Komentarz = "";
+                    await LoadReviewsForRoomAsync();
+                }
+                else
+                {
+                    MessageBox.Show("Nie udało się dodać recenzji.",
+                        "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd podczas dodawania recenzji: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Wystąpił błąd podczas dodawania recenzji: {ex.Message}",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private bool CanSubmitReview(object parameter)
         {
-            return IsValid && HasRoomSelected && UserSession.IsLoggedIn;
+            return IsValid;
         }
 
         private async void DeleteReview(object parameter)
         {
             try
             {
-                if (!CanDeleteReview)
+                if (!UserSession.IsLoggedIn || !UserSession.CurrentUser.Admin)
                 {
-                    MessageBox.Show("Nie masz uprawnień do usunięcia tej recenzji.", "Brak uprawnień", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Tylko administrator może usuwać opinie.",
+                        "Brak uprawnień", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
-                var result = MessageBox.Show("Czy na pewno chcesz usunąć tę recenzję?", "Potwierdzenie", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (SelectedReview == null)
+                {
+                    MessageBox.Show("Wybierz opinię do usunięcia.",
+                        "Walidacja", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                var result = MessageBox.Show(
+                    "Czy na pewno chcesz usunąć tę opinię?",
+                    "Potwierdzenie",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
                 if (result == MessageBoxResult.Yes)
                 {
-                    // Here you would typically delete from database
-                    // await _dataService.DeleteReviewAsync(RecenzjaId);
+                    bool success = await _dataService.DeleteReviewAsync(SelectedReview.RecenzjaId);
 
-                    MessageBox.Show("Recenzja została usunięta.", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
-                    LoadReviewsForRoomAsync(); // Refresh the reviews list
+                    if (success)
+                    {
+                        MessageBox.Show("Opinia została usunięta.",
+                            "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Komentarz = "";
+                        DataUtworzenia = DateTime.Now;
+                        SelectedReview = null;
+                        await LoadReviewsForRoomAsync(); // Refresh the list
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nie udało się usunąć opinii.",
+                            "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd podczas usuwania recenzji: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Wystąpił błąd podczas usuwania opinii: {ex.Message}",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -247,17 +315,25 @@ namespace EscapeRoom.ViewModels
             {
                 if (CurrentRoom == null) return;
 
-                // Here you would typically load reviews from database
-                // var reviews = await _dataService.GetReviewsForRoomAsync(CurrentRoom.PokojId);
+                var reviews = await _dataService.GetReviewsForRoomAsync(CurrentRoom.PokojId);
                 ReviewsForRoom.Clear();
-                // foreach (var review in reviews)
-                // {
-                //     ReviewsForRoom.Add(new ReviewViewModel(review));
-                // }
+
+                foreach (var review in reviews)
+                {
+                    var reviewVM = new ReviewViewModel(review)
+                    {
+                        UserViewModel = new UserViewModel(review.User),
+                        RoomName = CurrentRoom.Nazwa
+                    };
+                    ReviewsForRoom.Add(reviewVM);
+                }
+
+                RoomName = CurrentRoom.Nazwa;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd podczas ładowania recenzji: {ex.Message}", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Wystąpił błąd podczas ładowania recenzji: {ex.Message}",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

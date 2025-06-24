@@ -449,11 +449,11 @@ namespace EscapeRoom.ViewModels
                 {
                     bool statusUpdateSuccess = await _dataService.UpdateReservationStatusAsync(
                         _reservation.RezerwacjaId,
-                        ReservationStatus.zrealizowana);
+                        ReservationStatus.oplacona);
 
                     if (statusUpdateSuccess)
                     {
-                        Status = ReservationStatus.zrealizowana;
+                        Status = ReservationStatus.oplacona;
                         PaymentDateText = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
                         TransactionId = $"TR{DateTime.Now:yyyyMMdd}{new Random().Next(1000, 9999)}";
                         PaymentStatusText = "Opłacono";
