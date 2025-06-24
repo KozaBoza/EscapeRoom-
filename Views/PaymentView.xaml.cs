@@ -112,7 +112,7 @@ namespace EscapeRoom.Views
 
         private void ShowErrorMessage(string message)
         {
-            System.Windows.MessageBox.Show(message, "Błąd płatności",
+            System.Windows.MessageBox.Show(message, "Błąd",
                 System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
         }
         private void OnProcessPaymentButtonClick(object sender, RoutedEventArgs e)

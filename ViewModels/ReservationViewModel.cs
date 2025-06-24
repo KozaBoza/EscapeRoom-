@@ -434,6 +434,8 @@ namespace EscapeRoom.ViewModels
                         "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
+                bool paymentSuccess = await _dataService.AddPaymentAsync(_reservation.RezerwacjaId, UserSession.CurrentUser.UzytkownikId);
+
 
                 // Potwierdzenie płatności od użytkownika
                 if (MessageBox.Show($"Czy chcesz potwierdzić płatność na kwotę {amountToPay:C}?",
