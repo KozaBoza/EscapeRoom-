@@ -421,32 +421,94 @@ namespace EscapeRoom.Data
             }
         }
 
-        public async Task<bool> AddPaymentAsync(int reservationId, decimal amount, DateTime paymentDate)
+        public async Task<bool> AddPaymentAsync(int reservationId, int userId)
         {
             using (var conn = new MySqlConnection(connectionString))
             {
                 await conn.OpenAsync();
-                try
+                using (var transaction = await conn.BeginTransactionAsync())
                 {
-                    var cmd = new MySqlCommand(
-                        @"INSERT INTO platnosci (rezerwacja_id, kwota, status, metoda, data_platnosci, nr_transakcji, notatki) 
-                VALUES (@reservationId, @amount, @status, @method, @paymentDate, @transactionId, @notes)", conn);
+                    try
+                    {
+                        // Pobierz pokoj_id na podstawie reservationId
+                        var reservationCmd = new MySqlCommand(
+                            "SELECT pokoj_id FROM rezerwacje WHERE rezerwacja_id = @reservationId", conn);
+                        reservationCmd.Parameters.AddWithValue("@reservationId", reservationId);
+                        reservationCmd.Transaction = transaction;
 
-                    cmd.Parameters.AddWithValue("@reservationId", reservationId);
-                    cmd.Parameters.AddWithValue("@amount", amount);
-                    cmd.Parameters.AddWithValue("@status", "zrealizowana");
-                    cmd.Parameters.AddWithValue("@method", "karta"); // lub inna metoda płatności
-                    cmd.Parameters.AddWithValue("@paymentDate", paymentDate);
-                    cmd.Parameters.AddWithValue("@transactionId", "2137419" + new Random().Next(1000, 9999).ToString());
-                    cmd.Parameters.AddWithValue("@notes", "Płatność zrealizowana");
+                        int roomId = 0;
+                        using (var reader = await reservationCmd.ExecuteReaderAsync())
+                        {
+                            if (!await reader.ReadAsync())
+                            {
+                                System.Diagnostics.Debug.WriteLine($"Nie znaleziono rezerwacji {reservationId}");
+                                return false;
+                            }
+                            int roomIdIndex = reader.GetOrdinal("pokoj_id");
+                            if (reader.IsDBNull(roomIdIndex))
+                            {
+                                System.Diagnostics.Debug.WriteLine($"ID pokoju jest null dla rezerwacji {reservationId}");
+                                return false;
+                            }
+                            roomId = reader.GetInt32(roomIdIndex);
+                            reader.Close();
+                        }
 
-                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
-                    return rowsAffected > 0;
-                }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.WriteLine($"Błąd podczas dodawania płatności: {ex.Message}");
-                    return false;
+                        // Dodaj płatność
+                        var paymentCmd = new MySqlCommand(
+                            @"INSERT INTO platnosci (
+                        rezerwacja_id,
+                        uzytkownik_id,
+                        pokoj_id,
+                        metoda_platnosci,
+                        numer_transakcji
+                    ) VALUES (
+                        @reservationId,
+                        @userId,
+                        @roomId,
+                        'gotowka',
+                        @transactionNumber
+                    )", conn);
+
+                        paymentCmd.Parameters.AddWithValue("@reservationId", reservationId);
+                        paymentCmd.Parameters.AddWithValue("@userId", userId);
+                        paymentCmd.Parameters.AddWithValue("@roomId", roomId);
+
+                        int year = DateTime.Now.Year % 100;
+                        int month = DateTime.Now.Month;
+                        int day = DateTime.Now.Day;
+                        int transactionNumber = (year * 10000000) + (month * 100000) + (day * 1000) + reservationId;
+                        paymentCmd.Parameters.AddWithValue("@transactionNumber", transactionNumber);
+
+                        paymentCmd.Transaction = transaction;
+
+                        int rowsAffected = await paymentCmd.ExecuteNonQueryAsync();
+
+                        if (rowsAffected <= 0)
+                        {
+                            await transaction.RollbackAsync();
+                            System.Diagnostics.Debug.WriteLine("Nie dodano wiersza płatności");
+                            return false;
+                        }
+
+                        // Aktualizuj status rezerwacji
+                        var updateCmd = new MySqlCommand(
+                            "UPDATE rezerwacje SET status = 'zrealizowana' WHERE rezerwacja_id = @reservationId", conn);
+                        updateCmd.Parameters.AddWithValue("@reservationId", reservationId);
+                        updateCmd.Transaction = transaction;
+
+                        await updateCmd.ExecuteNonQueryAsync();
+
+                        await transaction.CommitAsync();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Błąd w AddPaymentAsync: {ex.Message}");
+                        System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+                        await transaction.RollbackAsync();
+                        return false;
+                    }
                 }
             }
         }

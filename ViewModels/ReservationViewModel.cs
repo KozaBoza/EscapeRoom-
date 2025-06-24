@@ -27,6 +27,7 @@ namespace EscapeRoom.ViewModels
         private bool _canBeProcessed;
         private bool _canBeRefunded;
 
+
         public ReservationViewModel()
         {
             _dataService = new DataService();
@@ -434,6 +435,7 @@ namespace EscapeRoom.ViewModels
                         "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
+                
 
                 // Potwierdzenie płatności od użytkownika
                 if (MessageBox.Show($"Czy chcesz potwierdzić płatność na kwotę {amountToPay:C}?",
@@ -445,8 +447,7 @@ namespace EscapeRoom.ViewModels
                 // Dodaj płatność do bazy danych
                 bool paymentSuccess = await _dataService.AddPaymentAsync(
                     _reservation.RezerwacjaId,
-                    amountToPay,
-                    DateTime.Now);
+                    UserSession.CurrentUser.UzytkownikId);
 
                 if (paymentSuccess)
                 {

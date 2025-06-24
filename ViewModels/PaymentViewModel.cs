@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 {
@@ -19,24 +20,14 @@ namespace EscapeRoom.ViewModels
 
         public PaymentViewModel(ReservationViewModel reservationViewModel)
         {
-            if (reservationViewModel == null)
-            {
-                throw new ArgumentNullException(nameof(reservationViewModel), "Rezerwacja nie może być null");
-            }
-
-            // Dodaj debugowanie
-            System.Diagnostics.Debug.WriteLine($"PaymentViewModel - Otrzymane dane:" +
-                $"\nReservationId: {reservationViewModel.RezerwacjaId}" +
-                $"\nAmount: {reservationViewModel.RoomViewModel?.Cena ?? 0}");
-
-            ReservationId = reservationViewModel.RezerwacjaId;
-            Amount = reservationViewModel.RoomViewModel?.Cena ?? 0;
-            Method = PaymentMethod.CreditCard; // Dodaj domyślną metodę płatności
+            // Pobierz cenę z wybranego pokoju
+            Amount = reservationViewModel?.RoomViewModel?.Cena ?? 0;
+            ReservationId = reservationViewModel?.RezerwacjaId ?? 0; // <-- TO JEST KLUCZOWE
             PaymentDate = DateTime.Now;
             Status = PaymentStatus.Pending;
             TransactionId = "2137419" + GetRandomTransactionSuffix();
 
-            ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
+            ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
             CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
         }
 
@@ -46,7 +37,7 @@ namespace EscapeRoom.ViewModels
             Status = PaymentStatus.Pending;
             TransactionId = "2137419" + GetRandomTransactionSuffix();
 
-            ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
+            ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
             CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
         }
 
@@ -61,71 +52,38 @@ namespace EscapeRoom.ViewModels
         public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
         public string TransactionIdText => $"Nr transakcji: {TransactionId}";
 
-        private void ProcessPayment(object parameter)
+        private void ProcessPayment()
         {
-            Status = PaymentStatus.Completed;
-            PaymentDate = DateTime.Now;
-            Notes = $"Płatność zatwierdzona {PaymentDate:dd.MM.yyyy HH:mm}";
-            SavePaymentToDatabase(); // Teraz jest async void, więc można wywołać bez await
+            System.Threading.Thread.Sleep(2000);
+            SavePaymentToDatabase();
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
         }
 
         private async void SavePaymentToDatabase()
         {
-            try
+            var dataService = new EscapeRoom.Data.DataService();
+            bool result = await dataService.AddPaymentAsync(ReservationId, UserSession.CurrentUser.UzytkownikId);
+
+            if (result)
             {
-                // Dodaj debugowanie
-                System.Diagnostics.Debug.WriteLine($"Próba zapisu płatności:" +
-                    $"\nReservationId: {ReservationId}" +
-                    $"\nAmount: {Amount}" +
-                    $"\nStatus: {Status}" +
-                    $"\nMethod: {Method}");
-
-                if (ReservationId <= 0)
-                {
-                    System.Windows.MessageBox.Show(
-                        "Błąd: Nieprawidłowe ID rezerwacji",
-                        "Błąd",
-                        System.Windows.MessageBoxButton.OK,
-                        System.Windows.MessageBoxImage.Error);
-                    return;
-                }
-
-                var dataService = new EscapeRoom.Data.DataService();
-                bool result = await dataService.AddPaymentAsync(
-                    ReservationId,
-                    Amount,
-                    DateTime.Now);
-
-                if (result)
-                {
-                    System.Windows.MessageBox.Show(
-                        "Płatność została przetworzona pomyślnie!\nTwoja rezerwacja została potwierdzona.",
-                        "Sukces",
-                        System.Windows.MessageBoxButton.OK,
-                        System.Windows.MessageBoxImage.Information);
-
-                    EscapeRoom.Services.ViewNavigationService.Instance.NavigateTo(
-                        EscapeRoom.Services.ViewType.User);
-                }
-                else
-                {
-                    System.Windows.MessageBox.Show(
-                        "Nie udało się przetworzyć płatności. Spróbuj ponownie.",
-                        "Błąd",
-                        System.Windows.MessageBoxButton.OK,
-                        System.Windows.MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Błąd podczas zapisywania płatności: {ex.Message}");
                 System.Windows.MessageBox.Show(
-                    $"Wystąpił błąd podczas przetwarzania płatności: {ex.Message}",
+                    "Płatność została przetworzona pomyślnie!\nTwoja rezerwacja została potwierdzona.",
+                    "Sukces",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Information);
+
+                EscapeRoom.Services.ViewNavigationService.Instance.NavigateTo(EscapeRoom.Services.ViewType.User);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show(
+                    "Nie udało się przetworzyć płatności. Spróbuj ponownie.",
                     "Błąd",
                     System.Windows.MessageBoxButton.OK,
                     System.Windows.MessageBoxImage.Error);
             }
         }
+
 
         public int Id
         {
@@ -161,7 +119,7 @@ namespace EscapeRoom.ViewModels
                 {
                     OnPropertyChanged(nameof(StatusText));
                     ((RelayCommand)ProcessPaymentCommand).RaiseCanExecuteChanged();
-                    ((RelayCommand)CancelPaymentCommand).RaiseCanExecuteChanged(); 
+                    ((RelayCommand)CancelPaymentCommand).RaiseCanExecuteChanged();
                 }
             }
         }
@@ -234,7 +192,7 @@ namespace EscapeRoom.ViewModels
         public bool IsValid => Amount > 0 && ReservationId > 0;
 
         public bool CanBeProcessed => Status == PaymentStatus.Pending;
-        public bool CanBeCanceled => Status == PaymentStatus.Pending; 
+        public bool CanBeCanceled => Status == PaymentStatus.Pending;
 
         public ICommand ProcessPaymentCommand { get; }
         public ICommand CancelPaymentCommand { get; } // z RefundPaymentCommand
@@ -243,11 +201,11 @@ namespace EscapeRoom.ViewModels
 
         private void CancelPayment(object parameter) // Zmieniono nazwę 
         {
-            Status = PaymentStatus.Canceled; 
+            Status = PaymentStatus.Canceled;
             Notes = $"Płatność anulowana {DateTime.Now:dd.MM.yyyy HH:mm}"; // Zmieniono 
         }
 
-        private bool CanCancelPayment(object parameter) => CanBeCanceled; 
+        private bool CanCancelPayment(object parameter) => CanBeCanceled;
 
         public Payment GetPayment()
         {
