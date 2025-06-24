@@ -40,7 +40,7 @@
 							<TextBlock Text="{Binding DataRezerwacji, StringFormat='Data: {0:dd.MM.yyyy HH:mm}'}"
                                        Foreground="White"
                                        FontSize="14" />
-							<TextBlock Text="{Binding Pokoj.Nazwa, StringFormat='Pokój: {0}'}"
+							<TextBlock Text="{Binding Pokoj.Nazwa, StringFormat='Pokoj: {0}'}"
                                        Foreground="White"
                                        FontSize="14" />
 							<TextBlock Text="{Binding Cena, StringFormat='Cena: {0:C}'}"

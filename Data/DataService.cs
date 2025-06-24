@@ -648,5 +648,60 @@ namespace EscapeRoom.Data
             }
             return reservations;
         }
+
+        //Opinie
+
+        // Dodaj metody asynchroniczne
+        public async Task<bool> AddReviewAsync(Review review)
+        {
+            try
+            {
+                // implementacja
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteReviewAsync(int reviewId)
+        {
+            try
+            {
+                // implementacja
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<List<Review>> GetReviewsForRoomAsync(int roomId)
+        {
+            try
+            {
+                // implementacja
+                return new List<Review>();
+            }
+            catch
+            {
+                return new List<Review>();
+            }
+        }
+
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            try
+            {
+                // implementacja
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

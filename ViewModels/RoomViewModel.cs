@@ -6,6 +6,7 @@ using System.Windows.Input;
 using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+using EscapeRoom.Views;
 using EscapeRoom.Services;
 using System.ComponentModel;
 using System.Threading.Tasks; // Added for async operations
@@ -58,8 +59,6 @@ namespace EscapeRoom.ViewModels
                     Rooms.Add(room);
                 }
 
-            
-
                 ((RelayCommand)BookRoomCommand).RaiseCanExecuteChanged();
             }
             catch (Exception ex)
@@ -74,10 +73,11 @@ namespace EscapeRoom.ViewModels
         public RoomViewModel(Room room)
         {
             _currentRoomData = room;
-          
+
+            Rooms = new ObservableCollection<Room>();
             BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom); 
             ShowReviewsCommand = new RelayCommand(ShowReviews);
-            LoadRooms();
+            LoadRoomsAsync();
         }
 
         // cechy
@@ -136,7 +136,7 @@ namespace EscapeRoom.ViewModels
                 var reviewVM = new ReviewViewModel(selectedRoom);
                 var reviewView = new ReviewView { DataContext = reviewVM };
 
-                NavigationService.NavigateTo(reviewView);
+                ViewNavigationService.Instance.NavigateTo(ViewType.Review, reviewVM);
             }
         }
     }

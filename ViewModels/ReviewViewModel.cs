@@ -22,8 +22,14 @@ namespace EscapeRoom.ViewModels
         {
             _review = new Review();
             ReviewsForRoom = new ObservableCollection<ReviewViewModel>();
-            SubmitReviewCommand = new RelayCommand(SubmitReview, CanSubmitReview);
-            DeleteReviewCommand = new RelayCommand(DeleteReview, CanDeleteReview);
+            SubmitReviewCommand = new RelayCommand(
+                param => SubmitReview(param),
+                param => CanSubmitReview(param)
+            );
+            DeleteReviewCommand = new RelayCommand(
+                DeleteReview,
+                param => SCanDeleteReview(param)  // Używamy metody zamiast właściwości
+            );
         }
 
         public ReviewViewModel(Room room) : this()
@@ -137,7 +143,7 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        private bool CanDeleteReview(object parameter) => CanDeleteReview && Id > 0;
+        private bool SCanDeleteReview(object parameter) => CanDeleteReview && Id > 0;
 
         private async Task LoadReviewsForRoomAsync()
         {
@@ -177,5 +183,6 @@ namespace EscapeRoom.ViewModels
         {
             CurrentRoom = room;
         }
+
     }
 }
