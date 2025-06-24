@@ -126,6 +126,10 @@ namespace EscapeRoom.Views
                     this.Title = "Escape Room - Rejestracja";
                     newViewControl = new RegisterView();
                     break;
+                case ViewType.ReservationHistory:
+                    this.Title = "Escape Room - Historia Rezerwacji";
+                    newViewControl = new ReservationHistoryView();
+                    break;
             }
 
             if (newViewControl != null)
@@ -137,7 +141,7 @@ namespace EscapeRoom.Views
 
         private void OnReservationButtonClick(object sender, RoutedEventArgs e)
         {
-            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm);
+            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationHistory);
         }
 
 

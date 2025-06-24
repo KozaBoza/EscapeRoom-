@@ -599,9 +599,65 @@ namespace EscapeRoom.Data
             }
         }
 
-        public async Task<List<Reservation>> GetAllReservationsAsync()
+        public async Task<List<Reservation>> GetUserReservationsAsync(int userId)
         {
-            return null;
+            var reservations = new List<Reservation>();
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+
+                var cmd = new MySqlCommand(@"
+            SELECT r.rezerwacja_id, r.data_rozpoczecia, r.liczba_osob, r.status,
+                   p.pokoj_id, p.nazwa as nazwa_pokoju, p.opis, p.trudnosc, p.cena, p.max_graczy, p.czas_minut,
+                   u.uzytkownik_id, u.email, u.imie, u.nazwisko
+            FROM rezerwacje r
+            JOIN pokoje p ON r.pokoj_id = p.pokoj_id
+            JOIN uzytkownicy u ON r.uzytkownik_id = u.uzytkownik_id
+            WHERE r.uzytkownik_id = @userId
+            ORDER BY r.data_rozpoczecia DESC", conn);
+
+                cmd.Parameters.AddWithValue("@userId", userId);
+
+                using (var reader = await cmd.ExecuteReaderAsync())
+                {
+                    while (await reader.ReadAsync())
+                    {
+                        var room = new Room
+                        {
+                            PokojId = reader.GetInt32(reader.GetOrdinal("pokoj_id")),
+                            Nazwa = reader.GetString(reader.GetOrdinal("nazwa_pokoju")),
+                            Opis = reader.GetString(reader.GetOrdinal("opis")),
+                            Trudnosc = reader.GetByte(reader.GetOrdinal("trudnosc")),
+                            Cena = reader.GetDecimal(reader.GetOrdinal("cena")),
+                            MaxGraczy = reader.GetByte(reader.GetOrdinal("max_graczy")),
+                            CzasMinut = reader.GetInt32(reader.GetOrdinal("czas_minut"))
+                        };
+
+                        var user = new User
+                        {
+                            UzytkownikId = reader.GetInt32(reader.GetOrdinal("uzytkownik_id")),
+                            Email = reader.GetString(reader.GetOrdinal("email")),
+                            Imie = reader.GetString(reader.GetOrdinal("imie")),
+                            Nazwisko = reader.GetString(reader.GetOrdinal("nazwisko"))
+                        };
+
+                        var reservation = new Reservation
+                        {
+                            RezerwacjaId = reader.GetInt32(reader.GetOrdinal("rezerwacja_id")),
+                            UzytkownikId = user.UzytkownikId,
+                            PokojId = room.PokojId,
+                            DataRozpoczecia = reader.GetDateTime(reader.GetOrdinal("data_rozpoczecia")),
+                            LiczbaOsob = reader.GetByte(reader.GetOrdinal("liczba_osob")),
+                            Status = (ReservationStatus)Enum.Parse(typeof(ReservationStatus), reader.GetString(reader.GetOrdinal("status"))),
+                            Pokoj = room,
+                            Uzytkownik = user
+                        };
+
+                        reservations.Add(reservation);
+                    }
+                }
+            }
+            return reservations;
         }
     }
 }

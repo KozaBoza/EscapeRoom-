@@ -485,5 +485,5 @@ C:\Matyna_C\Studia\POIG\Escape_Room_6\obj\Debug\EscapeRoom.Properties.Resources.
 C:\Matyna_C\Studia\POIG\Escape_Room_6\obj\Debug\EscapeRoom.csproj.GenerateResource.cache
 C:\Matyna_C\Studia\POIG\Escape_Room_6\obj\Debug\EscapeRoom.csproj.CoreCompileInputs.cache
 C:\Matyna_C\Studia\POIG\Escape_Room_6\obj\Debug\EscapeRoom.csproj.Up2Date
-C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\ViewModels\ReservationHistoryView.g.cs
-C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\ViewModels\ReservationHistoryView.baml
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ReservationHistoryView.g.cs
+C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\obj\Debug\Views\ReservationHistoryView.baml
