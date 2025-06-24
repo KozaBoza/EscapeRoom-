@@ -18,7 +18,7 @@
             <TextBlock Text="POKOJ:"/>
             <TextBlock Text="{Binding RoomViewModel.Nazwa}" FontWeight="Bold"/>
             <TextBlock Text="DATA:"/>
-            <DatePicker SelectedDate="{Binding DataRozpoczecia, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
+            <DatePicker SelectedDate="{Binding DataRozpoczecia, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,10"/>
             <TextBlock Text="LICZBA OSOB:"/>
             <TextBox Text="{Binding LiczbaOsob}" Margin="0,0,0,10"/>
             <TextBlock Text="STATUS:"/>

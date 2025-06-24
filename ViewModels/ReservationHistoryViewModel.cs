@@ -1,5 +1,4 @@
-﻿// File: ViewModels/ReservationHistoryViewModel.cs
-using System;
+﻿using System;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.Windows;
