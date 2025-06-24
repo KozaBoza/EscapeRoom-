@@ -4,50 +4,60 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:EscapeRoom.ViewModels"
-             mc:Ignorable="d">
-    <UserControl.DataContext>
-        <vm:ReservationHistoryViewModel />
-    </UserControl.DataContext>
+             mc:Ignorable="d"
+             Width="600" Height="452"
+             Background="#252525"
+             FontFamily="Segoe UI Black"
+             Foreground="White">
+	<UserControl.DataContext>
+		<vm:ReservationHistoryViewModel />
+	</UserControl.DataContext>
 
-    <Grid Background="#252525">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+	<Grid Background="#252525">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 
-        <TextBlock Text="TWOJE REZERWACJE" 
-                   FontSize="24" 
-                   FontWeight="Bold" 
-                   Margin="20,20,20,10" 
+		<TextBlock Text="TWOJE REZERWACJE"
+                   FontSize="30"
+                   FontWeight="Bold"
+                   Margin="0,31,0,10"
                    Foreground="White"
-                   HorizontalAlignment="Center"/>
+                   HorizontalAlignment="Center"
+                   Width="314"/>
 
-        <ListView Grid.Row="1" 
-                  ItemsSource="{Binding UserReservations}" 
+		<ListView Grid.Row="1"
+                  ItemsSource="{Binding UserReservations}"
                   Margin="20"
                   Background="Transparent"
                   BorderThickness="1"
                   BorderBrush="Gray">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                            </StackPanel>
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<Border BorderBrush="White" BorderThickness="1" Padding="10">
+						<StackPanel>
+							<TextBlock Text="{Binding DataRezerwacji, StringFormat='Data: {0:dd.MM.yyyy HH:mm}'}"
+                                       Foreground="White"
+                                       FontSize="14" />
+							<TextBlock Text="{Binding Pokoj.Nazwa, StringFormat='Pokój: {0}'}"
+                                       Foreground="White"
+                                       FontSize="14" />
+							<TextBlock Text="{Binding Cena, StringFormat='Cena: {0:C}'}"
+                                       Foreground="White"
+                                       FontSize="14" />
+						</StackPanel>
+					</Border>
+				</DataTemplate>
+			</ListView.ItemTemplate>
 
-                            <!-- Price - Changed binding -->
-                            <TextBlock Grid.Row="3" Grid.Column="1"
-                                     Text="{Binding Cena, StringFormat='{}{0:C}'}"
-                                     Foreground="White"
-                                     HorizontalAlignment="Right"/>
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Background" Value="Transparent"/>
-                    <Setter Property="Margin" Value="0,5"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
-    </Grid>
+			<ListView.ItemContainerStyle>
+				<Style TargetType="ListViewItem">
+					<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+					<Setter Property="Background" Value="Transparent"/>
+					<Setter Property="Margin" Value="0,5"/>
+				</Style>
+			</ListView.ItemContainerStyle>
+		</ListView>
+	</Grid>
 </UserControl>

@@ -5,23 +5,49 @@
              Background="#252525"
              FontFamily="Segoe UI Black"
              Foreground="White" >
-    <Border   Padding="12" Margin="8">
-        <StackPanel Margin="0,24,-3,0">
-            <TextBlock Text="OPINIA" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="46" Width="297" Foreground="#FF1F1F1F" Background="#FFF8F5F1" />
-            <TextBlock Text="{Binding UserViewModel.Imie}" FontWeight="Bold" />
-            <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="139" Width="316" Background="#FF1E1D1D"/>
-            <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
-                <Button Content="WYSLIJ"
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"  Margin="8,8,54,8" Grid.ColumnSpan="2">
+            <StackPanel Margin="0,24,263,0">
+                <TextBlock Text="OPINIA" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="46" Width="297" Foreground="#FF1F1F1F" Background="#FFF8F5F1" />
+                <TextBlock Text="{Binding UserViewModel.Imie}" FontWeight="Bold" />
+                <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="139" Width="316" Background="#FF1E1D1D"/>
+                <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
+                    <Button Content="WYSLIJ"
                         Command="{Binding SubmitReviewCommand}"
                         IsEnabled="{Binding IsValid}"
                         Margin="0,0,8,0" Width="142" Height="54" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF16A570"/>
-                <Button Content="USUN"
+                    <Button Content="USUN"
                         Command="{Binding DeleteReviewCommand}"
                         IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}" Width="132" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFF05541"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-    </Border>
+        </Border>
+        <Border Grid.Column="1" Padding="12" Margin="38,8,8,8">
+                <StackPanel Margin="59,0,0,0">
+                    <TextBlock Text="RECENZJE DLA: " FontSize="16" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding RoomName}" FontSize="14" FontStyle="Italic" Margin="0,0,0,10"/>
+                    <ItemsControl ItemsSource="{Binding ReviewsForRoom}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="8" Margin="0,5,0,5" CornerRadius="5">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding UserName}" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                                        <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,2,0,0"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+        </Grid>
 </UserControl>
 
     

@@ -76,7 +76,8 @@ namespace EscapeRoom.ViewModels
             _currentRoomData = room;
           
             BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom); 
-            ShowReviewsCommand = new RelayCommand(ShowReviews); 
+            ShowReviewsCommand = new RelayCommand(ShowReviews);
+            LoadRooms();
         }
 
         // cechy
@@ -130,11 +131,12 @@ namespace EscapeRoom.ViewModels
 
         private void ShowReviews(object parameter)
         {
-            if (parameter is RoomViewModel roomToShowReviews)
+            if (parameter is Room selectedRoom)
             {
-                MessageBox.Show($"Wyświetlam opinie dla pokoju: {roomToShowReviews.Nazwa}", "Opinie o pokoju", MessageBoxButton.OK, MessageBoxImage.Information);
-              
-                // ex: ViewNavigationService.Instance.NavigateTo(ViewType.RoomReviews, roomToShowReviews);
+                var reviewVM = new ReviewViewModel(selectedRoom);
+                var reviewView = new ReviewView { DataContext = reviewVM };
+
+                NavigationService.NavigateTo(reviewView);
             }
         }
     }
