@@ -289,7 +289,7 @@ namespace EscapeRoom.Data
             return connectionString;
         }
 
-        public async Task<bool> IsRoomAvailableAsync(int roomId, DateTime date)
+        public async Task<bool> IsRoomAvailableAsync(int roomId, DateTime date, int? currentUserId = null)
         {
             try
             {
@@ -302,18 +302,40 @@ namespace EscapeRoom.Data
                         @"SELECT COUNT(*) FROM rezerwacje 
                 WHERE pokoj_id = @roomId 
                 AND DATE(data_rozpoczecia) = DATE(@date) 
-                AND status = 'zarezerwowana'", conn);
+                AND (status = 'zarezerwowana' OR status = 'zrealizowana')", conn);
 
                     cmd.Parameters.AddWithValue("@roomId", roomId);
                     cmd.Parameters.AddWithValue("@date", date.Date);
 
                     int count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
 
-                    // Logowanie do debugowania
-                    System.Diagnostics.Debug.WriteLine($"Znaleziono {count} rezerwacji dla pokoju {roomId} na datę {date.Date}");
-
                     // Jeśli istnieją rezerwacje na ten dzień, pokój jest niedostępny
-                    return count == 0;
+                    if (count > 0)
+                        return false;
+
+                    // Jeśli podano ID użytkownika, sprawdź czy nie ma już rezerwacji na ten dzień
+                    if (currentUserId.HasValue)
+                    {
+                        cmd = new MySqlCommand(
+                            @"SELECT COUNT(*) FROM rezerwacje 
+                    WHERE uzytkownik_id = @userId 
+                    AND DATE(data_rozpoczecia) = DATE(@date) 
+                    AND (status = 'zarezerwowana' OR status = 'zrealizowana')", conn);
+
+                        cmd.Parameters.AddWithValue("@userId", currentUserId.Value);
+                        cmd.Parameters.AddWithValue("@date", date.Date);
+
+                        int userReservationsCount = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                        // Jeśli użytkownik ma już rezerwację na ten dzień, nie pozwól na kolejną
+                        if (userReservationsCount > 0)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Użytkownik {currentUserId} ma już rezerwację na datę {date.Date}");
+                            return false;
+                        }
+                    }
+
+                    return true;
                 }
             }
             catch (Exception ex)

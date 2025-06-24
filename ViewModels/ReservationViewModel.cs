@@ -81,7 +81,7 @@ namespace EscapeRoom.ViewModels
 
         private void InitializePaymentDetails()
         {
-            AmountText = RoomViewModel?.Cena.ToString("C") ?? "N/A";
+            AmountText = RoomViewModel?.Cena.ToString("C", new System.Globalization.CultureInfo("en-US")) ?? "N/A";
             MethodText = "Karta kredytowa (symulacja)";
             PaymentStatusText = "Oczekuje na płatność";
             PaymentDateText = "Nieopłacono";
@@ -350,7 +350,11 @@ namespace EscapeRoom.ViewModels
             {
                 System.Diagnostics.Debug.WriteLine($"Sprawdzanie dostępności pokoju: {PokojId} na datę: {DataRozpoczecia}");
 
-                IsRoomAvailable = await _dataService.IsRoomAvailableAsync(PokojId, DataRozpoczecia);
+                // Przekazujemy ID bieżącego użytkownika
+                IsRoomAvailable = await _dataService.IsRoomAvailableAsync(
+                    PokojId,
+                    DataRozpoczecia,
+                    UserSession.CurrentUser?.UzytkownikId);
 
                 if (IsRoomAvailable)
                 {
@@ -359,7 +363,7 @@ namespace EscapeRoom.ViewModels
                 }
                 else
                 {
-                    RoomAvailabilityMessage = "Pokój niedostępny w wybranym terminie - wybierz inną datę.";
+                    RoomAvailabilityMessage = "Pokój niedostępny w wybranym terminie - wybierz inną datę lub pokój.";
                     System.Diagnostics.Debug.WriteLine("Pokój niedostępny");
                 }
 

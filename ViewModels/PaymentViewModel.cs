@@ -48,7 +48,9 @@ namespace EscapeRoom.ViewModels
         }
 
         // Modyfikacja właściwości do wyświetlania
-        public string AmountText => Amount.ToString("C");
+        // Zamiast
+        public string AmountText => Amount.ToString("C", new System.Globalization.CultureInfo("en-US"));
+
         public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
         public string TransactionIdText => $"Nr transakcji: {TransactionId}";
 
@@ -179,7 +181,7 @@ namespace EscapeRoom.ViewModels
             {
                 switch (Method)
                 {
-                    case PaymentMethod.CreditCard: return "Karta kredytowa";
+                    case PaymentMethod.CreditCard: return "Gotowka";
                     case PaymentMethod.BankTransfer: return "Przelew bankowy";
                     case PaymentMethod.Cash: return "Gotówka";
                     case PaymentMethod.OnlinePayment: return "Płatność online";

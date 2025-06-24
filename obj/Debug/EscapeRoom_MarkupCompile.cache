@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Matyna_C\Studia\POIG\Escape_Room_8\obj\Debug\
+C:\Matyna_C\Studia\POIG\Escape_Room_10\obj\Debug\
 EscapeRoom
 none
 false
 DEBUG;TRACE
-C:\Matyna_C\Studia\POIG\Escape_Room_8\App.xaml
+C:\Matyna_C\Studia\POIG\Escape_Room_10\App.xaml
 1235969347
 21420720209
 4345546244
-46572005635
+46-1526579443
 MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReservationHistoryView.xaml;Views\ReviewView.xaml;RoomView.xaml;Views\UserView.xaml;
 
 False
