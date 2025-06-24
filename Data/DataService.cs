@@ -339,7 +339,7 @@ namespace EscapeRoom.Data
                 return result?.ToString() ?? "wolny";
             }
         }
-
+        //
         public async Task UpdateRoomStatusAsync(int roomId, string status)
         {
             using (var conn = new MySqlConnection(connectionString))
@@ -423,10 +423,32 @@ namespace EscapeRoom.Data
 
         public async Task<bool> AddPaymentAsync(int reservationId, decimal amount, DateTime paymentDate)
         {
-          
-            await Task.Delay(100); // Symuluj asynchroniczną operację
-            System.Diagnostics.Debug.WriteLine($"Symulacja dodawania płatności: Rezerwacja ID: {reservationId}, Kwota: {amount:C}, Data: {paymentDate}");
-            return true;
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                try
+                {
+                    var cmd = new MySqlCommand(
+                        @"INSERT INTO platnosci (rezerwacja_id, kwota, status, metoda, data_platnosci, nr_transakcji, notatki) 
+                VALUES (@reservationId, @amount, @status, @method, @paymentDate, @transactionId, @notes)", conn);
+
+                    cmd.Parameters.AddWithValue("@reservationId", reservationId);
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.Parameters.AddWithValue("@status", "zrealizowana");
+                    cmd.Parameters.AddWithValue("@method", "karta"); // lub inna metoda płatności
+                    cmd.Parameters.AddWithValue("@paymentDate", paymentDate);
+                    cmd.Parameters.AddWithValue("@transactionId", "2137419" + new Random().Next(1000, 9999).ToString());
+                    cmd.Parameters.AddWithValue("@notes", "Płatność zrealizowana");
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Błąd podczas dodawania płatności: {ex.Message}");
+                    return false;
+                }
+            }
         }
 
         public async Task<List<Message>> GetRecentMessagesAsync(int limit)
@@ -435,7 +457,7 @@ namespace EscapeRoom.Data
             using (var conn = new MySqlConnection(connectionString))
             {
                 await conn.OpenAsync();
-                var cmd = new MySqlCommand("SELECT * FROM wiadomosci ORDER BY data_wyslania DESC LIMIT @limit", conn);
+                var cmd = new MySqlCommand("SELECT w.id_wiadomosci, w.wiadomosc, w.uzytkownik_id, u.email FROM wiadomosci as w JOIN uzytkownicy as u ON w.uzytkownik_id = u.uzytkownik_id ORDER BY id_wiadomosci DESC LIMIT @limit", conn);
                 cmd.Parameters.AddWithValue("@limit", limit);
 
                 using (var reader = await cmd.ExecuteReaderAsync())
@@ -444,10 +466,10 @@ namespace EscapeRoom.Data
                     {
                         messages.Add(new Message
                         {
-                            WiadomoscId = reader.GetInt32(reader.GetOrdinal("wiadomosc_id")),
-                            NadawcaId = reader.GetInt32(reader.GetOrdinal("nadawca_id")),
-                            Tresc = reader.GetString(reader.GetOrdinal("tresc")),
-                            DataWyslania = reader.GetDateTime(reader.GetOrdinal("data_wyslania"))
+                            WiadomoscId = reader.GetInt32(reader.GetOrdinal("id_wiadomosci")),
+                            NadawcaId = reader.GetInt32(reader.GetOrdinal("uzytkownik_id")),
+                            Tresc = reader.GetString(reader.GetOrdinal("wiadomosc")),
+                            Email = reader.GetString(reader.GetOrdinal("email"))
 
                         });
                     }
@@ -469,6 +491,51 @@ namespace EscapeRoom.Data
             }
         }
 
+        public async Task<bool> SaveContactMessageAsync(string message, int? userId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            try
+            {
+                await conn.OpenAsync();
+                var cmd = new MySqlCommand("INSERT INTO wiadomosci (wiadomosc, uzytkownik_id) VALUES (@message, @userId)", conn);
+                cmd.Parameters.AddWithValue("@message", message);
+                cmd.Parameters.AddWithValue("@userId", userId.HasValue ? userId.Value : (object)DBNull.Value);
+                await cmd.ExecuteNonQueryAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error saving message: " + ex.Message);
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateUserAsync(User user)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+                try
+                {
+                    var cmd = new MySqlCommand(
+                        "UPDATE uzytkownicy SET email = @email, imie = @imie, nazwisko = @nazwisko, " +
+                        "telefon = @telefon WHERE uzytkownik_id = @id", conn);
+
+                    cmd.Parameters.AddWithValue("@email", user.Email);
+                    cmd.Parameters.AddWithValue("@imie", user.Imie);
+                    cmd.Parameters.AddWithValue("@nazwisko", user.Nazwisko);
+                    cmd.Parameters.AddWithValue("@telefon", user.Telefon ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@id", user.UzytkownikId);
+
+                    int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                    return rowsAffected > 0;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
 
     }
 }

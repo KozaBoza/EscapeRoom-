@@ -356,6 +356,11 @@ namespace EscapeRoom.ViewModels
 
         private async void ConfirmReservation(object parameter)
         {
+            var canProcess = _reservation.RezerwacjaId > 0 &&
+                     IsValid &&
+                     CanBeProcessed &&
+                     RoomViewModel != null;
+
             if (UserSession.CurrentUser?.UzytkownikId == 0)
             {
                 MessageBox.Show("Musisz być zalogowany, aby dokonać rezerwacji.",
@@ -390,7 +395,8 @@ namespace EscapeRoom.ViewModels
                 if (success)
                 {
                     MessageBox.Show("Rezerwacja wstępnie utworzona. Przekierowanie do płatności.",
-                        "Przejdź do płatności", MessageBoxButton.OK, MessageBoxImage.Information);
+                           "Przejdź do płatności", MessageBoxButton.OK, MessageBoxImage.Information);
+                    // Przekaż this (ReservationViewModel) jako parametr
                     ViewNavigationService.Instance.NavigateTo(ViewType.Payment, this);
                 }
                 else
@@ -404,66 +410,100 @@ namespace EscapeRoom.ViewModels
                 MessageBox.Show($"Wystąpił błąd podczas tworzenia rezerwacji: {ex.Message}",
                     "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            return;
         }
 
         private bool CanConfirmReservation(object parameter) => IsValid;
 
-        private async Task ProcessPayment() // Brakowało "{}" po sygnaturze metody
+        private async Task ProcessPayment()
         {
             try
             {
                 if (_reservation.RezerwacjaId == 0)
                 {
-                    MessageBox.Show("Rezerwacja nie została jeszcze zapisana. Spróbuj najpierw potwierdzić rezerwację.", "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Rezerwacja nie została jeszcze zapisana.",
+                        "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 
                 decimal amountToPay = RoomViewModel?.Cena ?? 0;
                 if (amountToPay <= 0)
                 {
-                    MessageBox.Show("Błąd: Nie można określić kwoty do zapłaty.", "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Błąd: Nie można określić kwoty do zapłaty.",
+                        "Błąd płatności", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                bool paymentSuccess = await _dataService.AddPaymentAsync(_reservation.RezerwacjaId, amountToPay, DateTime.Now);
+
+                // Potwierdzenie płatności od użytkownika
+                if (MessageBox.Show($"Czy chcesz potwierdzić płatność na kwotę {amountToPay:C}?",
+                    "Potwierdzenie płatności", MessageBoxButton.YesNo, MessageBoxImage.Question) != MessageBoxResult.Yes)
+                {
+                    return;
+                }
+
+                // Dodaj płatność do bazy danych
+                bool paymentSuccess = await _dataService.AddPaymentAsync(
+                    _reservation.RezerwacjaId,
+                    amountToPay,
+                    DateTime.Now);
 
                 if (paymentSuccess)
                 {
-                    // Brakowało tutaj nawiasu klamrowego zamykającego if (paymentSuccess)
-                    bool statusUpdateSuccess = await _dataService.UpdateReservationStatusAsync(_reservation.RezerwacjaId, ReservationStatus.zrealizowana);
+                    // Aktualizuj status rezerwacji
+                    bool statusUpdateSuccess = await _dataService.UpdateReservationStatusAsync(
+                        _reservation.RezerwacjaId,
+                        ReservationStatus.zrealizowana);
 
                     if (statusUpdateSuccess)
                     {
+                        // Aktualizacja widoku
                         Status = ReservationStatus.zrealizowana;
-                        PaymentStatusText = "Zrealizowana";
                         PaymentDateText = DateTime.Now.ToString("dd.MM.yyyy HH:mm");
-                        TransactionId = Guid.NewGuid().ToString().Substring(0, 8).ToUpper();
-                        Notes = "Płatność zakończona sukcesem. Dziękujemy!";
+                        TransactionId = $"TR{DateTime.Now:yyyyMMdd}{new Random().Next(1000, 9999)}";
+                        PaymentStatusText = "Opłacono";
+                        Notes = "Płatność zatwierdzona pomyślnie";
                         CanBeProcessed = false;
                         CanBeRefunded = true;
 
-                        MessageBox.Show("Płatność i rezerwacja zostały pomyślnie zrealizowane!", "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("Płatność została zrealizowana pomyślnie!",
+                            "Sukces", MessageBoxButton.OK, MessageBoxImage.Information);
                         ViewNavigationService.Instance.NavigateTo(ViewType.User);
                     }
                     else
                     {
-                        MessageBox.Show("Płatność została przetworzona, ale nie udało się zaktualizować statusu rezerwacji.", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show("Płatność została przetworzona, ale nie udało się zaktualizować statusu rezerwacji.",
+                            "Ostrzeżenie", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
-                } // Ten nawias był wcześniej brakujący i źle umieszczony
+                }
                 else
                 {
-                    MessageBox.Show("Nie udało się przetworzyć płatności. Spróbuj ponownie.", "Błąd Płatności", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Nie udało się przetworzyć płatności. Spróbuj ponownie.",
+                        "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Wystąpił błąd podczas przetwarzania płatności: {ex.Message}", "Błąd Płatności", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Wystąpił błąd podczas przetwarzania płatności: {ex.Message}",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         } // Ten nawias zamykał metodę
 
         private bool CanProcessPayment(object parameter)
         {
-            return _reservation.RezerwacjaId > 0 && IsValid && CanBeProcessed && RoomViewModel != null &&
-                   Status != ReservationStatus.zrealizowana && Status != ReservationStatus.odwolana;
+            var canProcess = _reservation.RezerwacjaId > 0 &&
+                            IsValid &&
+                            CanBeProcessed &&
+                            RoomViewModel != null;
+
+            System.Diagnostics.Debug.WriteLine($"CanProcessPayment: " +
+                $"\nRezerwacjaId > 0: {_reservation.RezerwacjaId > 0}" +
+                $"\nIsValid: {IsValid}" +
+                $"\nCanBeProcessed: {CanBeProcessed}" +
+                $"\nRoomViewModel != null: {RoomViewModel != null}" +
+                $"\nFinal result: {canProcess}");
+
+            return canProcess;
         }
 
         private async Task RefundPayment()
@@ -548,6 +588,8 @@ namespace EscapeRoom.ViewModels
                 }
             }
         }
+
+
 
         private bool CanCancelReservation(object parameter) => CanBeCancelled;
     }

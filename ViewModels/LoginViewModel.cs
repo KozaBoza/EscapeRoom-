@@ -15,6 +15,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using EscapeRoom.Models;
 
 namespace EscapeRoom.ViewModels
 {
@@ -22,13 +23,69 @@ namespace EscapeRoom.ViewModels
     // Przeniesiona na poziom namespace'u
     public static class UserSession
     {
-        public static EscapeRoom.Models.User CurrentUser { get; set; }
-        public static bool IsLoggedIn { get; set; } = false;
+        private static bool _isLoggedIn;
+        private static User _currentUser;
+        private static bool _isAdmin;
+
+        public static event EventHandler UserSessionChanged;
+
+        public static User CurrentUser
+        {
+            get => _currentUser;
+            set
+            {
+                _currentUser = value;
+                IsAdmin = value?.Admin ?? false; // Update admin status when user changes
+                OnUserSessionChanged();
+            }
+        }
+
+        public static bool IsLoggedIn
+        {
+            get => _isLoggedIn;
+            set
+            {
+                if (_isLoggedIn != value)
+                {
+                    _isLoggedIn = value;
+                    if (!value) IsAdmin = false; // Reset admin status on logout
+                    OnUserSessionChanged();
+                }
+            }
+        }
+
+        public static bool IsAdmin
+        {
+            get => _isAdmin;
+            private set
+            {
+                if (_isAdmin != value)
+                {
+                    _isAdmin = value;
+                    OnUserSessionChanged();
+                }
+            }
+        }
+
+        private static void OnUserSessionChanged()
+        {
+            UserSessionChanged?.Invoke(null, EventArgs.Empty);
+        }
 
         public static void Logout()
         {
             CurrentUser = null;
             IsLoggedIn = false;
+            IsAdmin = false;
+            OnUserSessionChanged();
+        }
+
+        public static void Login(User user)
+        {
+            CurrentUser = user;
+            IsLoggedIn = true;
+            IsAdmin = user?.Admin ?? false;
+            OnUserSessionChanged();
         }
     }
 
