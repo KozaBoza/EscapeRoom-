@@ -17,7 +17,7 @@
             <TextBox Text="{Binding Email}" Margin="0,0,0,5" BorderBrush="{x:Null}" Foreground="White" Background="#FF1A1A1A" IsEnabled="{Binding IsUserLoggedIn}"/>
 
             <TextBlock Text="WIADOMOŚĆ"/>
-            <TextBox Text="{Binding Message}" AcceptsReturn="True" Height="47" Width="280" Background="#FF1A1A1A" Foreground="White" BorderBrush="{x:Null}"/>
+            <TextBox Text="{Binding Message, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" Height="47" Width="280" Background="#FF1A1A1A" Foreground="White" BorderBrush="{x:Null}"/>
 
             <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" Margin="0,0,0,10" Height="1" RenderTransformOrigin="0.5,0.5">
                 <TextBlock.RenderTransform>
@@ -30,8 +30,8 @@
                 </TextBlock.RenderTransform>
             </TextBlock>
             <Button Content="WYSLIJ"
-                    Command="{Binding SendCommand}"
-                    IsEnabled="{Binding CanSend}" RenderTransformOrigin="0.511,-1.705" Height="44" Width="134" Background="#FFD82828" BorderBrush="{x:Null}" FontSize="20">
+                    Command="{Binding SubmitCommand}"
+                    IsEnabled="{Binding CanSubmit}" RenderTransformOrigin="0.511,-1.705" Height="44" Width="134" Background="#FFD82828" BorderBrush="{x:Null}" FontSize="20">
                 <Button.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

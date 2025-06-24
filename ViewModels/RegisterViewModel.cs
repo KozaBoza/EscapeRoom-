@@ -24,7 +24,7 @@ namespace EscapeRoom.ViewModels
         private string _errorMessage;
         private bool _isLoading;
 
-        public string Username
+        public string Telefon
         {
             get => _telefon;
             set
@@ -106,7 +106,7 @@ namespace EscapeRoom.ViewModels
         public RegisterViewModel()
         {
             // inicjalizacja pól, aby uniknąć null
-            Username = string.Empty;
+            Telefon = string.Empty;
             Email = string.Empty;
             Password = string.Empty;
             ConfirmPassword = string.Empty;
@@ -140,7 +140,7 @@ namespace EscapeRoom.ViewModels
 
             //sprawdzanie
             var dataService = new DataService();
-            var existingUserByUsername = await dataService.GetUserByEmailAsync(Username);
+            var existingUserByUsername = await dataService.GetUserByEmailAsync(Email);
             if (existingUserByUsername != null)
             {
                 ErrorMessage = "Użytkownik o tej nazwie już istnieje.";
@@ -163,7 +163,8 @@ namespace EscapeRoom.ViewModels
                     Email = Email,
                     Imie = FirstName,
                     Nazwisko = LastName,
-                    HasloHash = GeneratePBKDF2Hash(Password),
+                    Telefon = Telefon,
+                   HasloHash = GeneratePBKDF2Hash(Password),
                     DataRejestracji = DateTime.Now,
                     Admin = false //domyslnie nie
                 };
@@ -200,7 +201,7 @@ namespace EscapeRoom.ViewModels
 
 
         private bool CanRegister =>
-            !string.IsNullOrWhiteSpace(Username) &&
+            !string.IsNullOrWhiteSpace(Telefon) &&
             !string.IsNullOrWhiteSpace(Email) &&
             !string.IsNullOrWhiteSpace(Password) &&
             !string.IsNullOrWhiteSpace(ConfirmPassword) &&

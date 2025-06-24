@@ -18,6 +18,17 @@ namespace EscapeRoom.Views
         public PaymentView()
         {
             InitializeComponent();
+
+            // Pobierz parametr nawigacji
+            var parameter = ViewNavigationService.Instance.GetNavigationParameter();
+            if (parameter is ReservationViewModel reservationViewModel)
+            {
+                this.DataContext = new PaymentViewModel(reservationViewModel);
+            }
+            else
+            {
+                this.DataContext = new PaymentViewModel();
+            }
         }
 
         private void OnPayButtonClick(object sender, System.Windows.RoutedEventArgs e)
@@ -104,5 +115,18 @@ namespace EscapeRoom.Views
             System.Windows.MessageBox.Show(message, "Błąd płatności",
                 System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
         }
+        private void OnProcessPaymentButtonClick(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as ReservationViewModel;
+            if (vm != null && vm.ProcessPaymentCommand.CanExecute(null))
+            {
+                vm.ProcessPaymentCommand.Execute(null);
+            }
+        }
+
+
+
     }
+
+
 }

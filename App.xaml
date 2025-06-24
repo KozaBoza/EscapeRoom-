@@ -30,8 +30,5 @@
         <DataTemplate DataType="{x:Type vm:UserViewModel}">
             <views:UserView />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:ReservationHistoryViewModel}">
-            <views:UserView />
-        </DataTemplate>
     </Application.Resources>
 </Application>

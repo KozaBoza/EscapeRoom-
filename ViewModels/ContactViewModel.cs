@@ -4,6 +4,7 @@ using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 using System.Windows;
+using EscapeRoom.Data;
 
 
 
@@ -15,12 +16,16 @@ namespace EscapeRoom.ViewModels
         private string _errorMessage;
         private string _statusMessage;
         private bool _canSend;
-        public bool IsUserLoggedIn => UserSession.CurrentUser == null;
+        public bool IsUserNotLoggedIn => UserSession.CurrentUser == null;
+
+        private DataService _dataService;
 
 
         public ContactViewModel()
         {
             _contact = new Contact();
+            _dataService = new DataService();
+
             SubmitCommand = new RelayCommand(SubmitContact, CanSubmitContact);
             if (UserSession.CurrentUser != null)
             {
@@ -76,6 +81,37 @@ namespace EscapeRoom.ViewModels
             }
         }
 
+        public string ErrorMessage
+        {
+            get => _errorMessage;
+            set
+            {
+                _errorMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string StatusMessage
+        {
+            get => _statusMessage;
+            set
+            {
+                _statusMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool CanSend
+        {
+            get => _canSend;
+            set
+            {
+                _canSend = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public DateTime SubmittedAt
         {
@@ -86,15 +122,47 @@ namespace EscapeRoom.ViewModels
         public bool CanSubmit =>
             !string.IsNullOrWhiteSpace(Name) &&
             IsValidEmail(Email) &&
-            !string.IsNullOrWhiteSpace(Message);
+            !string.IsNullOrWhiteSpace(Message) &&
+            !IsUserNotLoggedIn;
 
         public ICommand SubmitCommand { get; }
 
-        private void SubmitContact(object parameter)
+        private async void SubmitContact(object parameter)
         {
-            SubmittedAt = DateTime.Now;
-            // tutaj można dodać logikę: zapis do bazy, wysyłanie maila...
+            if (!CanSubmit)
+            {
+                ErrorMessage = "Uzupełnij wszystkie pola poprawnie.";
+                return;
+            }
+
+            try
+            {
+                SubmittedAt = DateTime.Now;
+
+                int? userId = UserSession.CurrentUser?.UzytkownikId;
+
+                bool result = await _dataService.SaveContactMessageAsync(_contact.Message, userId);
+
+                if (result)
+                {
+                    StatusMessage = "Wiadomość została pomyślnie wysłana.";
+                    ErrorMessage = string.Empty;
+                    CanSend = false;
+                }
+                else
+                {
+                    ErrorMessage = "Nie udało się zapisać wiadomości.";
+                    StatusMessage = string.Empty;
+                }
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = "Wystąpił błąd podczas wysyłania wiadomości.";
+                StatusMessage = string.Empty;
+                Console.WriteLine(ex.Message); // ewentualnie logowanie
+            }
         }
+
 
         private bool CanSubmitContact(object parameter) => CanSubmit;
 

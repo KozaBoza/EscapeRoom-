@@ -61,7 +61,7 @@
                     <DataTemplate>
                         <StackPanel>
                             <TextBlock Text="{Binding Email, StringFormat='Od: {0}'}" Foreground="White" FontWeight="Bold"/>
-                            <TextBlock Text="{Binding Message, StringFormat='Wiadomość: {0}'}" Foreground="White" TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Text="{Binding Tresc, StringFormat='Wiadomość: {0}'}" Foreground="White" TextTrimming="CharacterEllipsis"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

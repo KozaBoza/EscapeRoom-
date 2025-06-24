@@ -13,7 +13,7 @@ namespace EscapeRoom.ViewModels
         private User _user;
         private string _passwordConfirm;
         private bool _isEditing;
-        private DataService _dataService;
+        private readonly DataService _dataService;
 
         public UserViewModel()
         {
@@ -21,7 +21,7 @@ namespace EscapeRoom.ViewModels
             _user = UserSession.CurrentUser ?? new User();
             _dataService = new DataService();
 
-            SaveCommand = new RelayCommand(SaveAsync, CanSave);
+            SaveCommand = new RelayCommand(async (param) => await SaveAsync(param), (param) => CanSave);
             CancelCommand = new RelayCommand(Cancel);
             EditCommand = new RelayCommand(Edit);
         }
@@ -108,6 +108,7 @@ namespace EscapeRoom.ViewModels
                 {
                     _user.Telefon = value;
                     OnPropertyChanged();
+                    OnPropertyChanged(nameof(CanSave));
                 }
             }
         }
@@ -142,7 +143,12 @@ namespace EscapeRoom.ViewModels
         public bool IsEditing
         {
             get => _isEditing;
-            set => SetProperty(ref _isEditing, value);
+            set
+            {
+                _isEditing = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(CanSave));
+            }
         }
 
         public bool IsValid =>
@@ -151,43 +157,78 @@ namespace EscapeRoom.ViewModels
             !string.IsNullOrWhiteSpace(Nazwisko) &&
             Email.Contains("@");
 
-        public User GetUser() => _user;
+        public User GetUser()
+        {
+            return new User
+            {
+                UzytkownikId = _user.UzytkownikId,
+                Email = Email,
+                Imie = Imie,
+                Nazwisko = Nazwisko,
+                Telefon = Telefon,
+                HasloHash = _user.HasloHash,
+                Admin = _user.Admin,
+                DataRejestracji = _user.DataRejestracji
+            };
+        }
 
         // komendy
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
         public ICommand EditCommand { get; }
 
-        private async void SaveAsync(object parameter)
+        
+        private bool CanSave => IsEditing && !string.IsNullOrWhiteSpace(Email) &&
+                           !string.IsNullOrWhiteSpace(Imie) &&
+                           !string.IsNullOrWhiteSpace(Nazwisko);
+
+        private void StartEditing(object parameter)
         {
-            if (IsValid)
+            IsEditing = true;
+        }
+
+        private void CancelEditing(object parameter)
+        {
+            // Przywróć oryginalne wartości
+            _user = UserSession.CurrentUser;
+            OnPropertyChanged(nameof(Email));
+            OnPropertyChanged(nameof(Imie));
+            OnPropertyChanged(nameof(Nazwisko));
+            OnPropertyChanged(nameof(Telefon));
+            IsEditing = false;
+        }
+
+        private async Task SaveAsync(object parameter)
+        {
+            try
             {
-                try
+                var success = await _dataService.UpdateUserAsync(_user);
+                if (success)
                 {
-                    // Implementacja zapisu do bazy danych
-                    // Przykład, jak można to zrobić:
-                    bool success = await UpdateUserInDatabase();
-
-                    if (success)
-                    {
-                        // Aktualizuj UserSession, aby odzwierciedlał zmiany
-                        UserSession.CurrentUser = _user;
-
-                        IsEditing = false;
-                        System.Windows.MessageBox.Show("Dane zostały pomyślnie zaktualizowane.",
-                            "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-                    }
-                    else
-                    {
-                        System.Windows.MessageBox.Show("Nie udało się zaktualizować danych. Spróbuj ponownie.",
-                            "Błąd", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
-                    }
+                    UserSession.CurrentUser = _user; // Aktualizuj dane w sesji
+                    System.Windows.MessageBox.Show(
+                        "Dane zostały pomyślnie zaktualizowane.",
+                        "Sukces",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Information);
+                    IsEditing = false;
                 }
-                catch (Exception ex)
+                else
                 {
-                    System.Windows.MessageBox.Show($"Wystąpił błąd: {ex.Message}",
-                        "Błąd", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show(
+                        "Nie udało się zaktualizować danych. Spróbuj ponownie.",
+                        "Błąd",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Error);
                 }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(
+                    $"Wystąpił błąd podczas aktualizacji danych: {ex.Message}",
+                    "Błąd",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Error);
             }
         }
 
@@ -219,7 +260,7 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        private bool CanSave(object parameter) => IsValid && IsEditing;
+        
 
         private void Cancel(object parameter)
         {

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
+using EscapeRoom.Services;
 
 namespace EscapeRoom.ViewModels
 {
@@ -17,11 +18,72 @@ namespace EscapeRoom.ViewModels
         private string _transactionId;
         private string _notes;
 
+        public PaymentViewModel(ReservationViewModel reservationViewModel)
+        {
+            // Pobierz cenę z wybranego pokoju
+            Amount = reservationViewModel?.RoomViewModel?.Cena ?? 0;
+            ReservationId = reservationViewModel?.RezerwacjaId ?? 0; // <-- TO JEST KLUCZOWE
+            PaymentDate = DateTime.Now;
+            Status = PaymentStatus.Pending;
+            TransactionId = "2137419" + GetRandomTransactionSuffix();
+
+            ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
+            CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
+        }
+
         public PaymentViewModel()
         {
-            ProcessPaymentCommand = new RelayCommand(ProcessPayment, CanProcessPayment);
-            CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment); 
+            PaymentDate = DateTime.Now;
+            Status = PaymentStatus.Pending;
+            TransactionId = "2137419" + GetRandomTransactionSuffix();
+
+            ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
+            CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
         }
+
+        // Nowa metoda generująca unikalny sufiks dla numeru transakcji
+        private string GetRandomTransactionSuffix()
+        {
+            return new Random().Next(1000, 9999).ToString();
+        }
+
+        // Modyfikacja właściwości do wyświetlania
+        public string AmountText => Amount.ToString("C");
+        public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
+        public string TransactionIdText => $"Nr transakcji: {TransactionId}";
+
+        private void ProcessPayment()
+        {
+            System.Threading.Thread.Sleep(2000);
+            SavePaymentToDatabase();
+            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
+        }
+
+        private async void SavePaymentToDatabase()
+        {
+            var dataService = new EscapeRoom.Data.DataService();
+            bool result = await dataService.AddPaymentAsync(ReservationId, UserSession.CurrentUser.UzytkownikId);
+
+            if (result)
+            {
+                System.Windows.MessageBox.Show(
+                    "Płatność została przetworzona pomyślnie!\nTwoja rezerwacja została potwierdzona.",
+                    "Sukces",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Information);
+
+                EscapeRoom.Services.ViewNavigationService.Instance.NavigateTo(EscapeRoom.Services.ViewType.User);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show(
+                    "Nie udało się przetworzyć płatności. Spróbuj ponownie.",
+                    "Błąd",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Error);
+            }
+        }
+
 
         public int Id
         {
@@ -57,7 +119,7 @@ namespace EscapeRoom.ViewModels
                 {
                     OnPropertyChanged(nameof(StatusText));
                     ((RelayCommand)ProcessPaymentCommand).RaiseCanExecuteChanged();
-                    ((RelayCommand)CancelPaymentCommand).RaiseCanExecuteChanged(); 
+                    ((RelayCommand)CancelPaymentCommand).RaiseCanExecuteChanged();
                 }
             }
         }
@@ -94,7 +156,6 @@ namespace EscapeRoom.ViewModels
             set => SetProperty(ref _notes, value);
         }
 
-        public string AmountText => Amount.ToString("C");
 
         public string StatusText
         {
@@ -127,32 +188,24 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-        public string PaymentDateText => PaymentDate.ToString("dd.MM.yyyy HH:mm");
 
         public bool IsValid => Amount > 0 && ReservationId > 0;
 
         public bool CanBeProcessed => Status == PaymentStatus.Pending;
-        public bool CanBeCanceled => Status == PaymentStatus.Pending; 
+        public bool CanBeCanceled => Status == PaymentStatus.Pending;
 
         public ICommand ProcessPaymentCommand { get; }
         public ICommand CancelPaymentCommand { get; } // z RefundPaymentCommand
-
-        private void ProcessPayment(object parameter)
-        {
-            Status = PaymentStatus.Completed;
-            PaymentDate = DateTime.Now;
-            TransactionId = Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
-        }
 
         private bool CanProcessPayment(object parameter) => CanBeProcessed && IsValid;
 
         private void CancelPayment(object parameter) // Zmieniono nazwę 
         {
-            Status = PaymentStatus.Canceled; 
+            Status = PaymentStatus.Canceled;
             Notes = $"Płatność anulowana {DateTime.Now:dd.MM.yyyy HH:mm}"; // Zmieniono 
         }
 
-        private bool CanCancelPayment(object parameter) => CanBeCanceled; 
+        private bool CanCancelPayment(object parameter) => CanBeCanceled;
 
         public Payment GetPayment()
         {
