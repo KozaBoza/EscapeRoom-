@@ -10,19 +10,44 @@
     </UserControl.DataContext>
 
     <Grid Background="#252525">
-        <TextBlock Text="Twoje rezerwacje" FontSize="20" FontWeight="Bold" Margin="0,0,0,10" Foreground="White"/>
-        <ListView ItemsSource="{Binding UserReservations}" Margin="0,30,0,0" Foreground="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="TWOJE REZERWACJE" 
+                   FontSize="24" 
+                   FontWeight="Bold" 
+                   Margin="20,20,20,10" 
+                   Foreground="White"
+                   HorizontalAlignment="Center"/>
+
+        <ListView Grid.Row="1" 
+                  ItemsSource="{Binding UserReservations}" 
+                  Margin="20"
+                  Background="Transparent"
+                  BorderThickness="1"
+                  BorderBrush="Gray">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderThickness="0 0 0 1" BorderBrush="#CCC" Padding="5">
-                        <StackPanel>
-                            <TextBlock Text="{Binding RoomName}" FontWeight="Bold" FontSize="16"/>
-                            <TextBlock Text="{Binding DateText}" FontSize="12"/>
-                            <TextBlock Text="{Binding TimeText}" FontSize="12"/>
-                        </StackPanel>
+                            </StackPanel>
+
+                            <!-- Price - Changed binding -->
+                            <TextBlock Grid.Row="3" Grid.Column="1"
+                                     Text="{Binding Cena, StringFormat='{}{0:C}'}"
+                                     Foreground="White"
+                                     HorizontalAlignment="Right"/>
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Margin" Value="0,5"/>
+                </Style>
+            </ListView.ItemContainerStyle>
         </ListView>
     </Grid>
 </UserControl>

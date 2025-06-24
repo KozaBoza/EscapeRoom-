@@ -238,6 +238,11 @@ namespace EscapeRoom.ViewModels
             RoomViewModel != null &&
             IsRoomAvailable;
 
+        public Room Pokoj => _reservation.Pokoj;
+        public string NazwaPokoju => _reservation.Pokoj?.Nazwa ?? "Brak nazwy";
+        public byte Trudnosc => _reservation.Pokoj?.Trudnosc ?? 0;
+        public decimal Cena => _reservation.Pokoj?.Cena ?? 0m;
+
         public string StatusText
         {
             get

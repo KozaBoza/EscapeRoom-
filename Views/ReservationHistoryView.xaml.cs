@@ -7,6 +7,7 @@ namespace EscapeRoom.Views
         public ReservationHistoryView()
         {
             InitializeComponent();
+            DataContext = new ViewModels.ReservationHistoryViewModel();
         }
     }
 }

@@ -10,6 +10,7 @@ namespace EscapeRoom.Services
         Register,
         AdminDashboard,
         ReservationForm,
+        ReservationHistory,
         Contact,
         Payment,
         Room,

@@ -1,15 +1,18 @@
-﻿using EscapeRoom.Helpers;
+﻿// File: ViewModels/ReservationHistoryViewModel.cs
+using System;
+using System.Linq;
+using System.Collections.ObjectModel;
+using System.Windows;
 using EscapeRoom.Models;
 using EscapeRoom.Data;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+using EscapeRoom.Helpers;
 
 namespace EscapeRoom.ViewModels
 {
     public class ReservationHistoryViewModel : BaseViewModel
     {
         private ObservableCollection<ReservationViewModel> _userReservations;
+        private readonly DataService _dataService;
 
         public ObservableCollection<ReservationViewModel> UserReservations
         {
@@ -19,29 +22,41 @@ namespace EscapeRoom.ViewModels
 
         public ReservationHistoryViewModel()
         {
+            _dataService = new DataService();
+            UserReservations = new ObservableCollection<ReservationViewModel>();
             LoadUserReservationsAsync();
         }
 
         private async void LoadUserReservationsAsync()
         {
-            if (!UserSession.IsLoggedIn || string.IsNullOrEmpty(UserSession.CurrentUser.Email))
-                return;
-
-            var dataService = new DataService();
-            var allReservations = await dataService.GetAllReservationsAsync(); //baza danych
-            var userReservations = allReservations
-                .Where(r => r.Uzytkownik?.Email == UserSession.CurrentUser.Email)
-                .OrderByDescending(r => r.Data)
-                .ToList();
-
-            var reservationVMs = new ObservableCollection<ReservationViewModel>();
-            foreach (var res in userReservations)
+            try
             {
-                var vm = new ReservationViewModel(res);
-                reservationVMs.Add(vm);
-            }
+                if (!UserSession.IsLoggedIn || UserSession.CurrentUser == null)
+                {
+                    MessageBox.Show("Musisz być zalogowany, aby zobaczyć swoje rezerwacje.",
+                        "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
 
-            UserReservations = reservationVMs;
+                var userReservations = await _dataService.GetUserReservationsAsync(UserSession.CurrentUser.UzytkownikId);
+
+                UserReservations.Clear();
+                foreach (var reservation in userReservations)
+                {
+                    UserReservations.Add(new ReservationViewModel(reservation));
+                }
+
+                if (!UserReservations.Any())
+                {
+                    MessageBox.Show("Nie masz jeszcze żadnych rezerwacji.",
+                        "Informacja", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Błąd podczas ładowania rezerwacji: {ex.Message}",
+                    "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }
