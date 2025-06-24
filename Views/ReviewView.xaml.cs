@@ -5,21 +5,40 @@ using System.Windows.Media;
 using EscapeRoom.Services;
 using System.Windows;
 using System;
+using System.Collections.ObjectModel;
 
 namespace EscapeRoom.Views
 {
     public partial class ReviewView : UserControl
     {
+        private ReviewViewModel _viewModel;
         public ReviewView()
         {
             InitializeComponent();
-            LoadReviews();
+            _viewModel = new ReviewViewModel();
+            this.DataContext = _viewModel;
+            LoadReviewsForCurrentRoom();
 
         }
-        private void LoadReviews()
+
+        public ReviewView(Room selectedRoom)
         {
-            // Tutaj możesz załadować opinie z bazy danych
-            // Na razie symulacja danych
+            InitializeComponent();
+            _viewModel = new ReviewViewModel(selectedRoom);
+            this.DataContext = _viewModel;
+            LoadReviewsForCurrentRoom();
+        }
+
+        private async void LoadReviewsForCurrentRoom()
+        {
+            try
+            {
+                await _viewModel.LoadReviewsForRoomAsync(); //baza danych
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"Błąd podczas ładowania recenzji: {ex.Message}");
+            }
         }
 
         private void OnAddReviewButtonClick(object sender, System.Windows.RoutedEventArgs e)
@@ -32,6 +51,9 @@ namespace EscapeRoom.Views
                     ClearReviewForm();
                     System.Windows.MessageBox.Show("Dziękujemy za opinię!",
                         "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+
+                    // Odśwież listę recenzji po dodaniu nowej
+                    LoadReviewsForCurrentRoom();
                 }
             }
             catch (Exception ex)
@@ -47,10 +69,10 @@ namespace EscapeRoom.Views
 
         private bool ValidateReviewForm()
         {
-            string reviewerName = GetTextBoxValue("ReviewerNameTextBox");
-            if (string.IsNullOrWhiteSpace(reviewerName))
+            // Sprawdź czy użytkownik jest zalogowany
+            if (!UserSession.IsLoggedIn)
             {
-                ShowErrorMessage("Proszę podać swoje imię.");
+                ShowErrorMessage("Musisz być zalogowany, aby dodać opinię.");
                 return false;
             }
 
@@ -61,28 +83,33 @@ namespace EscapeRoom.Views
                 return false;
             }
 
-            // Sprawdzenie czy wybrano ocenę
-            var ratingComboBox = this.FindName("RatingComboBox") as ComboBox;
-            if (ratingComboBox?.SelectedItem == null)
-            {
-                ShowErrorMessage("Proszę wybrać ocenę.");
-                return false;
-            }
-
             return true;
         }
 
-        private void SaveReview()
+        private async void SaveReview()
         {
-            // Tutaj zapisałbyś opinię do bazy danych
-            // Na razie tylko symulacja
+            try
+            {
+                var newReview = new Review
+                {
+                    UzytkownikId = UserSession.CurrentUser.UzytkownikId,
+                    PokojId = _viewModel.CurrentRoom.PokojId,
+                    Komentarz = GetTextBoxValue("ReviewTextBox"),
+                    DataUtworzenia = DateTime.Now
+                };
+
+                await _viewModel.AddReviewAsync(newReview);
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"Błąd podczas zapisywania opinii: {ex.Message}");
+            }
         }
 
         private void ClearReviewForm()
         {
             (this.FindName("ReviewerNameTextBox") as TextBox)?.Clear();
             (this.FindName("ReviewTextBox") as TextBox)?.Clear();
-            (this.FindName("RatingComboBox") as ComboBox)?.ClearValue(ComboBox.SelectedItemProperty);
         }
 
         private string GetTextBoxValue(string textBoxName)
@@ -96,5 +123,36 @@ namespace EscapeRoom.Views
             System.Windows.MessageBox.Show(message, "Błąd",
                 System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
         }
+
+
+        private async void OnDeleteReviewClick(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var button = sender as Button;
+                var review = button?.DataContext as ReviewViewModel;
+
+                if (review != null)
+                {
+                    var result = MessageBox.Show(
+                        "Czy na pewno chcesz usunąć tę recenzję?",
+                        "Potwierdzenie",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Question);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        await _viewModel.DeleteReviewAsync(review.Id); //baza danych
+                        LoadReviewsForCurrentRoom(); // Odśwież listę
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowErrorMessage($"Błąd podczas usuwania recenzji: {ex.Message}");
+            }
+        }
+
+
     }
 }
