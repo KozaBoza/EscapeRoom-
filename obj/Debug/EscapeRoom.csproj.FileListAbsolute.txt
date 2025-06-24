@@ -241,3 +241,4 @@ C:\Users\talia\source\repos\EscapeRoom-\obj\Debug\EscapeRoom.csproj.CoreCompileI
 C:\Users\talia\source\repos\EscapeRoom-\obj\Debug\EscapeRoom.csproj.Up2Date
 C:\Users\talia\source\repos\EscapeRoom-\obj\Debug\EscapeRoom.exe
 C:\Users\talia\source\repos\EscapeRoom-\obj\Debug\EscapeRoom.pdb
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\Views\ReservationHistoryView.g.cs
