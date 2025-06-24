@@ -9,7 +9,6 @@
         <StackPanel Margin="0,24,-3,0">
             <TextBlock Text="OPINIA" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="46" Width="297" Foreground="#FF1F1F1F" Background="#FFF8F5F1" />
             <TextBlock Text="{Binding UserViewModel.Imie}" FontWeight="Bold" />
-            <TextBlock Text="{Binding RatingText}" Foreground="Goldenrod" Margin="0,2,0,0"/>
             <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="139" Width="316" Background="#FF1E1D1D"/>
             <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
