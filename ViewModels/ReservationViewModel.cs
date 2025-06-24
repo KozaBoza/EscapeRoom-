@@ -162,6 +162,16 @@ namespace EscapeRoom.ViewModels
             }
         }
 
+        public string StatusDisplay
+        {
+            get
+            {
+                if (_reservation.DataRozpoczecia.Date < DateTime.Now.Date)
+                    return "Odbyte";
+                return _reservation.Status.ToString();
+            }
+        }
+
         public DateTime DataRozpoczecia
         {
             get => _reservation.DataRozpoczecia;

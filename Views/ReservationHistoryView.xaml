@@ -4,14 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:EscapeRoom.ViewModels"
-             mc:Ignorable="d"
-             Width="600" Height="452"
-             Background="#252525"
-             FontFamily="Segoe UI Black"
-             Foreground="White">
-	<UserControl.DataContext>
-		<vm:ReservationHistoryViewModel />
-	</UserControl.DataContext>
+             mc:Ignorable="d">
 
 	<Grid Background="#252525">
 		<Grid.RowDefinitions>
@@ -33,31 +26,26 @@
                   Background="Transparent"
                   BorderThickness="1"
                   BorderBrush="Gray">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<Border BorderBrush="White" BorderThickness="1" Padding="10">
-						<StackPanel>
-							<TextBlock Text="{Binding DataRezerwacji, StringFormat='Data: {0:dd.MM.yyyy HH:mm}'}"
-                                       Foreground="White"
-                                       FontSize="14" />
-							<TextBlock Text="{Binding Pokoj.Nazwa, StringFormat='Pokój: {0}'}"
-                                       Foreground="White"
-                                       FontSize="14" />
-							<TextBlock Text="{Binding Cena, StringFormat='Cena: {0:C}'}"
-                                       Foreground="White"
-                                       FontSize="14" />
-						</StackPanel>
-					</Border>
-				</DataTemplate>
-			</ListView.ItemTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                            </StackPanel>
 
-			<ListView.ItemContainerStyle>
-				<Style TargetType="ListViewItem">
-					<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-					<Setter Property="Background" Value="Transparent"/>
-					<Setter Property="Margin" Value="0,5"/>
-				</Style>
-			</ListView.ItemContainerStyle>
-		</ListView>
-	</Grid>
+                            <!-- Price - Changed binding -->
+                            <TextBlock Grid.Row="3" Grid.Column="1"
+                                     Text="{Binding Cena, StringFormat='{}{0:C}'}"
+                                     Foreground="White"
+                                     HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Margin" Value="0,5"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </Grid>
 </UserControl>
