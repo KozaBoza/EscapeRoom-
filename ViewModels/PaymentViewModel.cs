@@ -25,7 +25,7 @@ namespace EscapeRoom.ViewModels
             ReservationId = reservationViewModel?.RezerwacjaId ?? 0; // <-- TO JEST KLUCZOWE
             PaymentDate = DateTime.Now;
             Status = PaymentStatus.Pending;
-            TransactionId = "2137419" + GetRandomTransactionSuffix();
+            TransactionId = "2137420" + GetRandomTransactionSuffix();
 
             ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
             CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
@@ -35,7 +35,7 @@ namespace EscapeRoom.ViewModels
         {
             PaymentDate = DateTime.Now;
             Status = PaymentStatus.Pending;
-            TransactionId = "2137419" + GetRandomTransactionSuffix();
+            TransactionId = "2137420" + GetRandomTransactionSuffix();
 
             ProcessPaymentCommand = new RelayCommand(param => ProcessPayment(), CanProcessPayment);
             CancelPaymentCommand = new RelayCommand(CancelPayment, CanCancelPayment);
@@ -69,7 +69,7 @@ namespace EscapeRoom.ViewModels
             if (result)
             {
                 System.Windows.MessageBox.Show(
-                    "Płatność została przetworzona pomyślnie!\nTwoja rezerwacja została potwierdzona.",
+                    "Pokój zarezerwowano pomyślnie!\nTwoja rezerwacja zostanie wkrótce zatwierdzona przez administratora.",
                     "Sukces",
                     System.Windows.MessageBoxButton.OK,
                     System.Windows.MessageBoxImage.Information);
@@ -201,10 +201,64 @@ namespace EscapeRoom.ViewModels
 
         private bool CanProcessPayment(object parameter) => CanBeProcessed && IsValid;
 
-        private void CancelPayment(object parameter) // Zmieniono nazwę 
+        private async void CancelPayment(object parameter)
         {
-            Status = PaymentStatus.Canceled;
-            Notes = $"Płatność anulowana {DateTime.Now:dd.MM.yyyy HH:mm}"; // Zmieniono 
+            // Wyświetl okno dialogowe z potwierdzeniem
+            var result = System.Windows.MessageBox.Show(
+                "Czy chcesz anulować?",
+                "Potwierdzenie anulowania",
+                System.Windows.MessageBoxButton.YesNo,
+                System.Windows.MessageBoxImage.Question);
+                // Opóźnienie chwili
+                System.Threading.Thread.Sleep(200);
+
+            if (result == System.Windows.MessageBoxResult.Yes)
+            {
+                // Zmień status płatności
+                Status = PaymentStatus.Canceled;
+                Notes = $"Płatność anulowana {DateTime.Now:dd.MM.yyyy HH:mm}";
+
+                // Wyświetl okno z informacją o anulowaniu
+                System.Windows.MessageBox.Show(
+                    "Anulowano rezerwwacje.",
+                    "Anulowanie",
+                    System.Windows.MessageBoxButton.OK,
+                    System.Windows.MessageBoxImage.Information);
+
+                
+
+                // Usuń rezerwację z bazy danych
+                var dataService = new EscapeRoom.Data.DataService();
+                try
+                {
+                    // Najpierw zmień status rezerwacji na anulowaną
+                    bool statusChanged = await dataService.UpdateReservationStatusAsync(
+                        ReservationId,
+                        ReservationStatus.odwolana);
+
+                    if (statusChanged)
+                    {
+                        // Następnie przenieś użytkownika do listy pokoi
+                        ViewNavigationService.Instance.NavigateTo(ViewType.Room);
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show(
+                            "Wystąpił błąd podczas anulowania rezerwacji.",
+                            "Błąd",
+                            System.Windows.MessageBoxButton.OK,
+                            System.Windows.MessageBoxImage.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show(
+                        $"Wystąpił błąd: {ex.Message}",
+                        "Błąd",
+                        System.Windows.MessageBoxButton.OK,
+                        System.Windows.MessageBoxImage.Error);
+                }
+            }
         }
 
         private bool CanCancelPayment(object parameter) => CanBeCanceled;
