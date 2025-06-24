@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Paweł\Desktop\Semestr IV\Programowanie_Obiektowe_I_Graficzne\EscapeRoom\App.xaml
-12-304697948
+1235969347
 21420720209
-442087799516
+441967324365
 46-1316208459
-MainWindow.xaml;Resources\Styles.xaml;ViewModels\ReservationHistoryView.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReviewView.xaml;RoomView.xaml;Views\UserView.xaml;
+MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReservationHistoryView.xaml;Views\ReviewView.xaml;RoomView.xaml;Views\UserView.xaml;
 
 False
 
