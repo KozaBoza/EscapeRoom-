@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\talia\source\repos\EscapeRoom-\obj\Debug\
+C:\Users\talia\Source\Repos\EscapeRoom-\obj\Debug\
 EscapeRoom
 none
 false
 DEBUG;TRACE
-C:\Users\talia\source\repos\EscapeRoom-\App.xaml
-111351540024
+C:\Users\talia\Source\Repos\EscapeRoom-\App.xaml
+1235969347
 21420720209
-42-1627055643
-461225850313
-MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReviewView.xaml;RoomView.xaml;Views\UserView.xaml;
+441967324365
+46-533384695
+MainWindow.xaml;Resources\Styles.xaml;Views\AdminDashboardView.xaml;Views\ContactView.xaml;Views\LoginView.xaml;Views\PaymentView.xaml;Views\RegisterView.xaml;Views\ReservationFormView.xaml;Views\ReservationHistoryView.xaml;Views\ReviewView.xaml;RoomView.xaml;Views\UserView.xaml;
 
 True
 

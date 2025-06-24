@@ -135,12 +135,6 @@ namespace EscapeRoom.Views
         }
 
 
-        private void OnReservationButtonClick(object sender, RoutedEventArgs e)
-        {
-            ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm);
-        }
-
-
         private void OnUserButtonClick(object sender, RoutedEventArgs e)
         {
             ViewNavigationService.Instance.NavigateTo(ViewType.User);
@@ -315,6 +309,11 @@ namespace EscapeRoom.Views
         private void OnAdminButtonClick(object sender, RoutedEventArgs e)
         {
             ViewNavigationService.Instance.NavigateTo(ViewType.AdminDashboard);
+        }
+
+        private void OnReservationButtonClick(object sender, RoutedEventArgs e)
+        {
+            MainContentControl.Content = new EscapeRoom.Views.ReservationHistoryView();
         }
     }
 }
