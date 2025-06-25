@@ -68,7 +68,7 @@ CREATE TABLE `pokoje` (
   `czas_minut` int(11) NOT NULL,
   `status_pokoj` enum('wolny','zarezerwowany') DEFAULT NULL,
   PRIMARY KEY (`pokoj_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +80,12 @@ LOCK TABLES `pokoje` WRITE;
 set autocommit=0;
 INSERT INTO `pokoje` VALUES
 (1,'2 krasnale i 2 mutanty','Odkryj jaka tajemnice skrywaja krasnale przed mutatantami. Czy dawane sekrety wyjda na jaw? Co skrywa mroczna jaskinia tych istot',3,200.00,4,60,'wolny'),
-(2,'Straszny szpital','Pudzisz w pouszczonym szpitalu. NIe pamietasz niczego. Nie ma masz przy sobie nic, nawet butów. Czy dolasz okdryc co sie stalo?',4,450.00,6,90,'wolny');
+(2,'Straszny szpital','Pudzisz w pouszczonym szpitalu. NIe pamietasz niczego. Nie ma masz przy sobie nic, nawet butów. Czy dolasz okdryc co sie stalo?',4,450.00,6,90,'wolny'),
+(4,'Zaginiony Skarb','Przygoda w stylu Indiany Jonesa z zagadkami i pulapkami.',3,120.00,5,60,'wolny'),
+(5,'Laboratorium Szalonego Naukowca','Eksperymenty, wybuchy i niebezpieczne substancje.',4,140.00,4,75,'wolny'),
+(6,'Tajemnice Wiktorianskiego Dworu','Mroczna historia rodzinna pelna sekretow.',2,100.00,6,60,'wolny'),
+(7,'Ucieczka z Wiezienia','Realistyczny pokoj z celami, kratami i straznikami.',5,150.00,4,90,'wolny'),
+(8,'Kosmiczna Misja','Pokoj w stylu sci-fi z efektami swietlnymi i dzwiekowymi.',3,130.00,5,70,'wolny');
 /*!40000 ALTER TABLE `pokoje` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
@@ -103,7 +108,7 @@ CREATE TABLE `recenzje` (
   KEY `pokoj_id` (`pokoj_id`),
   CONSTRAINT `Recenzje_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`),
   CONSTRAINT `Recenzje_ibfk_2` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,39 +156,6 @@ INSERT INTO `rezerwacje` VALUES
 (1,2,2,'2025-05-29 21:00:00',3,'zrealizowana','2025-05-29 18:00:00'),
 (2,2,1,'2025-06-13 10:00:00',4,'zarezerwowana','2025-06-07 17:00:00');
 /*!40000 ALTER TABLE `rezerwacje` ENABLE KEYS */;
-UNLOCK TABLES;
-commit;
-
---
--- Table structure for table `sesje`
---
-
-DROP TABLE IF EXISTS `sesje`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `sesje` (
-  `sesja_id` int(11) NOT NULL AUTO_INCREMENT,
-  `rezerwacja_id` int(11) NOT NULL,
-  `data_start` datetime NOT NULL,
-  `data_koniec` datetime DEFAULT NULL,
-  `czas_zwiazania` int(11) DEFAULT NULL,
-  `czy_ukonczone` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`sesja_id`),
-  KEY `rezerwacja_id` (`rezerwacja_id`),
-  CONSTRAINT `Sesje_ibfk_1` FOREIGN KEY (`rezerwacja_id`) REFERENCES `rezerwacje` (`rezerwacja_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `sesje`
---
-
-LOCK TABLES `sesje` WRITE;
-/*!40000 ALTER TABLE `sesje` DISABLE KEYS */;
-set autocommit=0;
-INSERT INTO `sesje` VALUES
-(1,1,'2025-05-29 21:00:00','2025-05-29 22:30:00',70,1);
-/*!40000 ALTER TABLE `sesje` ENABLE KEYS */;
 UNLOCK TABLES;
 commit;
 
@@ -259,4 +231,4 @@ commit;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
 
--- Dump completed on 2025-06-22 12:02:39
+-- Dump completed on 2025-06-25 16:29:36
