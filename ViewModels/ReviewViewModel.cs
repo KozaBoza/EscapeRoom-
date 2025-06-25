@@ -134,11 +134,6 @@ namespace EscapeRoom.ViewModels
                 if (SetProperty(ref _selectedReview, value))
                 {
                     OnPropertyChanged(nameof(CanDeleteReview));
-                    if (value != null)
-                    {
-                        Komentarz = value.Komentarz;
-                        DataUtworzenia = value.DataUtworzenia;
-                    }
                 }
             }
         }

@@ -98,7 +98,7 @@ namespace EscapeRoom.ViewModels
                 var reservationViewModel = new ReservationViewModel(new Reservation
                 {
                     PokojId = roomToBook.PokojId,
-                    DataRozpoczecia = DateTime.Now,
+                    DataRozpoczecia = DateTime.Today,
                     LiczbaOsob = 1
                 });
                 ViewNavigationService.Instance.NavigateTo(ViewType.ReservationForm, reservationViewModel);
