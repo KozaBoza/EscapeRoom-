@@ -16,7 +16,7 @@
             <TextBlock Text="{Binding MethodText}"/>
             <TextBlock Text="STATUS:"/>
             <TextBlock Text="{Binding StatusText}"/>
-            <TextBlock Text="DATA PLATNOSCI:"/>
+            <TextBlock Text="DATA REZERWACJI:"/>
             <TextBlock Text="{Binding PaymentDateText}"/>
             <TextBlock Text="NUMER TRANSAKCJI:"/>
             <TextBlock Text="{Binding TransactionIdText}"/>

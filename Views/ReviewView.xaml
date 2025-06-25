@@ -15,7 +15,13 @@
             <StackPanel Margin="0,24,263,0">
                 <TextBlock Text="OPINIA" FontWeight="Bold" FontSize="30" TextAlignment="Center" Height="46" Width="297" Foreground="#FF1F1F1F" Background="#FFF8F5F1" />
                 <TextBlock Text="{Binding UserViewModel.Imie}" FontWeight="Bold" />
-                <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0" Height="139" Width="316" Background="#FF1E1D1D"/>
+<TextBox Text="{Binding Komentarz, UpdateSourceTrigger=PropertyChanged}" 
+         TextWrapping="Wrap" 
+         Margin="0,4,0,0" 
+         Height="139" 
+         Width="216" 
+         Background="#FF1E1D1D" 
+         Foreground="#FFF8F5F1"/>
                 <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,4,0,0"/>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,8,0,0">
                     <Button Content="WYSLIJ"
@@ -24,30 +30,62 @@
                         Margin="0,0,8,0" Width="142" Height="54" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FF16A570"/>
                     <Button Content="USUN"
                         Command="{Binding DeleteReviewCommand}"
-                        IsEnabled="{Binding Id, Converter={StaticResource GreaterThanZeroConverter}}" Width="132" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFF05541"/>
+                        IsEnabled="{Binding CanDeleteReview}" Width="132" BorderBrush="{x:Null}" Foreground="#FF252525" Background="#FFF05541"/>
                 </StackPanel>
             </StackPanel>
         </Border>
         <Border Grid.Column="1" Padding="12" Margin="38,8,8,8">
-                <StackPanel Margin="59,0,0,0">
-                    <TextBlock Text="RECENZJE DLA: " FontSize="16" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding RoomName}" FontSize="14" FontStyle="Italic" Margin="0,0,0,10"/>
-                    <ItemsControl ItemsSource="{Binding ReviewsForRoom}">
-                        <ItemsControl.ItemTemplate>
+            <StackPanel Margin="59,0,0,0">
+                <TextBlock Text="RECENZJE DLA: " FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="{Binding RoomName}" 
+                   FontSize="14" 
+                   FontStyle="Italic" 
+                   Margin="0,0,0,10"
+                   Foreground="#FF8BC34A"/>
+                <ScrollViewer MaxHeight="300" VerticalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding ReviewsForRoom}"
+              SelectedItem="{Binding SelectedReview}"
+              Background="Transparent"
+              BorderThickness="0">
+                        <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="8" Margin="0,5,0,5" CornerRadius="5">
+                                <Border BorderBrush="Gray"
+                        BorderThickness="1"
+                        Padding="8"
+                        Margin="0,5,0,5"
+                        CornerRadius="5"
+                        Background="#FF333333">
                                     <StackPanel>
-                                        <TextBlock Text="{Binding UserName}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0"/>
-                                        <TextBlock Text="{Binding CreatedAtText}" FontStyle="Italic" Foreground="Gray" FontSize="10" Margin="0,2,0,0"/>
+                                        <DockPanel>
+                                            <TextBlock Text="{Binding UserViewModel.FullName}"
+                                     FontWeight="Bold"
+                                     Foreground="#FF8BC34A"/>
+                                            <TextBlock Text="{Binding DataUtworzenia, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}"
+                                     FontStyle="Italic"
+                                     Foreground="Gray"
+                                     FontSize="10"
+                                     HorizontalAlignment="Right"/>
+                                        </DockPanel>
+                                        <TextBlock Text="{Binding Komentarz}"
+                                 TextWrapping="Wrap"
+                                 Margin="0,4,0,0"
+                                 Foreground="White"/>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </StackPanel>
-            </Border>
-        </Grid>
+                        </ListView.ItemTemplate>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Margin" Value="0,5"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+    </Grid>
 </UserControl>
 
     

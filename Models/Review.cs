@@ -1,21 +1,16 @@
-﻿using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using EscapeRoom.Models;
+using System;
 
-namespace EscapeRoom.Models
+public class Review
 {
-    public class Review 
-    {
-       // private int _id;
-       // private int _userId;
-       // private int _roomId;
-       // private int _rating; // 1-5
-        //private string _comment;
-        //private DateTime _createdAt;
+    public int RecenzjaId { get; set; }
+    public int UzytkownikId { get; set; }
+    public int PokojId { get; set; }
+    public byte Ocena { get; set; }
+    public string Opinia { get; set; }
+    public DateTime DataUtworzenia { get; set; }
 
-        //referencje
-        //private User _user;
-        //private Room _room;
-
-    }
+    // Navigation properties
+    public virtual User User { get; set; }
+    public virtual Room Room { get; set; }
 }

@@ -31,6 +31,7 @@ namespace EscapeRoom.ViewModels
             _user = user ?? new User();
         }
 
+
         public int UzytkownikId
         {
             get => _user.UzytkownikId;
@@ -112,6 +113,9 @@ namespace EscapeRoom.ViewModels
                 }
             }
         }
+
+        // Dodaj właściwość FullName
+        public string FullName => $"{Imie} {Nazwisko}";
 
         public bool Admin
         {

@@ -1,10 +1,7 @@
-﻿using System.Windows.Controls;
+﻿using EscapeRoom.Services;
 using EscapeRoom.ViewModels;
-using EscapeRoom.Models;
-using System.Windows.Media;
-using EscapeRoom.Services;
 using System.Windows;
-using System;
+using System.Windows.Controls;
 
 namespace EscapeRoom.Views
 {
@@ -13,88 +10,38 @@ namespace EscapeRoom.Views
         public ReviewView()
         {
             InitializeComponent();
-            LoadReviews();
-
-        }
-        private void LoadReviews()
-        {
-            // Tutaj możesz załadować opinie z bazy danych
-            // Na razie symulacja danych
+            this.Loaded += ReviewView_Loaded;
         }
 
-        private void OnAddReviewButtonClick(object sender, System.Windows.RoutedEventArgs e)
+        private void ReviewView_Loaded(object sender, RoutedEventArgs e)
         {
-            try
+            if (DataContext == null)
             {
-                if (ValidateReviewForm())
+                var parameter = ViewNavigationService.Instance.GetNavigationParameter();
+                if (parameter is ReviewViewModel viewModel)
                 {
-                    SaveReview();
-                    ClearReviewForm();
-                    System.Windows.MessageBox.Show("Dziękujemy za opinię!",
-                        "Sukces", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
+                    DataContext = viewModel;
                 }
             }
-            catch (Exception ex)
+        }
+
+        private void OnSubmitClick(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as ReviewViewModel;
+            if (vm != null)
             {
-                ShowErrorMessage($"Błąd podczas dodawania opinii: {ex.Message}");
+                MessageBox.Show(
+                    $"Submit clicked!\n" +
+                    $"IsValid: {vm.IsValid}\n" +
+                    $"HasRoomSelected: {vm.HasRoomSelected}\n" +
+                    $"IsLoggedIn: {UserSession.IsLoggedIn}\n" +
+                    $"Komentarz: {vm.Komentarz}\n" +
+                    $"RoomName: {vm.RoomName}");
             }
-        }
-
-        private void OnBackButtonClick(object sender, System.Windows.RoutedEventArgs e)
-        {
-            ViewNavigationService.Instance.NavigateTo(ViewType.Homepage);
-        }
-
-        private bool ValidateReviewForm()
-        {
-            string reviewerName = GetTextBoxValue("ReviewerNameTextBox");
-            if (string.IsNullOrWhiteSpace(reviewerName))
+            else
             {
-                ShowErrorMessage("Proszę podać swoje imię.");
-                return false;
+                MessageBox.Show("ViewModel is null!");
             }
-
-            string reviewText = GetTextBoxValue("ReviewTextBox");
-            if (string.IsNullOrWhiteSpace(reviewText))
-            {
-                ShowErrorMessage("Proszę napisać opinię.");
-                return false;
-            }
-
-            // Sprawdzenie czy wybrano ocenę
-            var ratingComboBox = this.FindName("RatingComboBox") as ComboBox;
-            if (ratingComboBox?.SelectedItem == null)
-            {
-                ShowErrorMessage("Proszę wybrać ocenę.");
-                return false;
-            }
-
-            return true;
-        }
-
-        private void SaveReview()
-        {
-            // Tutaj zapisałbyś opinię do bazy danych
-            // Na razie tylko symulacja
-        }
-
-        private void ClearReviewForm()
-        {
-            (this.FindName("ReviewerNameTextBox") as TextBox)?.Clear();
-            (this.FindName("ReviewTextBox") as TextBox)?.Clear();
-            (this.FindName("RatingComboBox") as ComboBox)?.ClearValue(ComboBox.SelectedItemProperty);
-        }
-
-        private string GetTextBoxValue(string textBoxName)
-        {
-            var textBox = this.FindName(textBoxName) as TextBox;
-            return textBox?.Text ?? string.Empty;
-        }
-
-        private void ShowErrorMessage(string message)
-        {
-            System.Windows.MessageBox.Show(message, "Błąd",
-                System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Warning);
         }
     }
 }

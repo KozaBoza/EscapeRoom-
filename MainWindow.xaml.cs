@@ -116,7 +116,9 @@ namespace EscapeRoom.Views
                     break;
                 case ViewType.Review:
                     this.Title = "Escape Room - Opinie";
+                    var reviewViewModel = ViewNavigationService.Instance.GetNavigationParameter() as ReviewViewModel;
                     newViewControl = new ReviewView();
+                    newViewControl.DataContext = reviewViewModel;
                     break;
                 case ViewType.User:
                     this.Title = "Escape Room - Panel użytkownika";

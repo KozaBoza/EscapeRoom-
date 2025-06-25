@@ -5,6 +5,7 @@
              xmlns:views="clr-namespace:EscapeRoom.Views"
              xmlns:vm="clr-namespace:EscapeRoom.ViewModels"
              xmlns:local="clr-namespace:EscapeRoom.Helpers"
+             xmlns:services="clr-namespace:EscapeRoom.Services"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:packages="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd"

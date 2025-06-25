@@ -205,7 +205,7 @@ namespace EscapeRoom.Data
             await conn.OpenAsync();
 
             var cmd = new MySqlCommand(
-                "SELECT COUNT(*) FROM rezerwacje WHERE status = 'zarezerwowana'", conn);
+                "SELECT COUNT(*) FROM rezerwacje WHERE status = 'oplacona'", conn);
             int count = 0;
             using (var reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
             {
@@ -289,7 +289,7 @@ namespace EscapeRoom.Data
             return connectionString;
         }
 
-        public async Task<bool> IsRoomAvailableAsync(int roomId, DateTime date)
+        public async Task<bool> IsRoomAvailableAsync(int roomId, DateTime date, int? currentUserId = null)
         {
             try
             {
@@ -302,18 +302,40 @@ namespace EscapeRoom.Data
                         @"SELECT COUNT(*) FROM rezerwacje 
                 WHERE pokoj_id = @roomId 
                 AND DATE(data_rozpoczecia) = DATE(@date) 
-                AND status = 'zarezerwowana'", conn);
+                AND (status = 'zarezerwowana' OR status = 'zrealizowana')", conn);
 
                     cmd.Parameters.AddWithValue("@roomId", roomId);
                     cmd.Parameters.AddWithValue("@date", date.Date);
 
                     int count = Convert.ToInt32(await cmd.ExecuteScalarAsync());
 
-                    // Logowanie do debugowania
-                    System.Diagnostics.Debug.WriteLine($"Znaleziono {count} rezerwacji dla pokoju {roomId} na datę {date.Date}");
-
                     // Jeśli istnieją rezerwacje na ten dzień, pokój jest niedostępny
-                    return count == 0;
+                    if (count > 0)
+                        return false;
+
+                    // Jeśli podano ID użytkownika, sprawdź czy nie ma już rezerwacji na ten dzień
+                    if (currentUserId.HasValue)
+                    {
+                        cmd = new MySqlCommand(
+                            @"SELECT COUNT(*) FROM rezerwacje 
+                    WHERE uzytkownik_id = @userId 
+                    AND DATE(data_rozpoczecia) = DATE(@date) 
+                    AND (status = 'zarezerwowana' OR status = 'zrealizowana')", conn);
+
+                        cmd.Parameters.AddWithValue("@userId", currentUserId.Value);
+                        cmd.Parameters.AddWithValue("@date", date.Date);
+
+                        int userReservationsCount = Convert.ToInt32(await cmd.ExecuteScalarAsync());
+
+                        // Jeśli użytkownik ma już rezerwację na ten dzień, nie pozwól na kolejną
+                        if (userReservationsCount > 0)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Użytkownik {currentUserId} ma już rezerwację na datę {date.Date}");
+                            return false;
+                        }
+                    }
+
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -493,7 +515,7 @@ namespace EscapeRoom.Data
 
                         // Aktualizuj status rezerwacji
                         var updateCmd = new MySqlCommand(
-                            "UPDATE rezerwacje SET status = 'zrealizowana' WHERE rezerwacja_id = @reservationId", conn);
+                            "UPDATE rezerwacje SET status = 'oplacona' WHERE rezerwacja_id = @reservationId", conn);
                         updateCmd.Parameters.AddWithValue("@reservationId", reservationId);
                         updateCmd.Transaction = transaction;
 
@@ -546,7 +568,7 @@ namespace EscapeRoom.Data
             {
                 await conn.OpenAsync();
                 var cmd = new MySqlCommand(
-                    "UPDATE rezerwacje SET status = 'zrealizowana' WHERE status = 'zarezerwowana'", conn);
+                    "UPDATE rezerwacje SET status = 'zrealizowana' WHERE status = 'oplacona'", conn);
 
                 int affectedRows = await cmd.ExecuteNonQueryAsync();
                 return affectedRows; // liczba zaktualizowanych rezerwacji
@@ -647,6 +669,110 @@ namespace EscapeRoom.Data
                 }
             }
             return reservations;
+        }
+
+        //Opinie
+
+        // Dodaj metody asynchroniczne
+        public async Task<bool> AddReviewAsync(Review review)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+
+                var cmd = new MySqlCommand(@"
+            INSERT INTO recenzje (uzytkownik_id, pokoj_id, opinia, data_dodania)
+            VALUES (@userId, @roomId, @opinia, @dataDodania)", conn);
+
+                cmd.Parameters.AddWithValue("@userId", review.UzytkownikId);
+                cmd.Parameters.AddWithValue("@roomId", review.PokojId);
+                cmd.Parameters.AddWithValue("@opinia", review.Opinia);
+                cmd.Parameters.AddWithValue("@dataDodania", review.DataUtworzenia);
+
+                int result = await cmd.ExecuteNonQueryAsync();
+                return result > 0;
+            }
+        }
+
+        public async Task<bool> DeleteReviewAsync(int reviewId)
+        {
+            using (var conn = new MySqlConnection(connectionString))
+            {
+                await conn.OpenAsync();
+
+                var cmd = new MySqlCommand(
+                    "DELETE FROM recenzje WHERE recenzja_id = @reviewId", conn);
+
+                cmd.Parameters.AddWithValue("@reviewId", reviewId);
+
+                int result = await cmd.ExecuteNonQueryAsync();
+                return result > 0;
+            }
+        }
+
+        public async Task<List<Review>> GetReviewsForRoomAsync(int roomId)
+        {
+            var reviews = new List<Review>();
+
+            try
+            {
+                using (var conn = new MySqlConnection(connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    var cmd = new MySqlCommand(@"
+                SELECT r.recenzja_id, r.uzytkownik_id, r.pokoj_id, r.opinia, r.data_dodania,
+                       u.imie, u.nazwisko
+                FROM recenzje r
+                JOIN uzytkownicy u ON r.uzytkownik_id = u.uzytkownik_id
+                WHERE r.pokoj_id = @roomId
+                ORDER BY r.data_dodania DESC", conn);
+
+                    cmd.Parameters.AddWithValue("@roomId", roomId);
+
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            var review = new Review
+                            {
+                                RecenzjaId = reader.GetInt32(reader.GetOrdinal("recenzja_id")),
+                                UzytkownikId = reader.GetInt32(reader.GetOrdinal("uzytkownik_id")),
+                                PokojId = reader.GetInt32(reader.GetOrdinal("pokoj_id")),
+                                Opinia = reader.GetString(reader.GetOrdinal("opinia")),
+                                DataUtworzenia = reader.GetDateTime(reader.GetOrdinal("data_dodania")),
+                                User = new User
+                                {
+                                    Imie = reader.GetString(reader.GetOrdinal("imie")),
+                                    Nazwisko = reader.GetString(reader.GetOrdinal("nazwisko"))
+                                }
+                            };
+                            reviews.Add(review);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error in GetReviewsForRoomAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                throw;
+            }
+
+            return reviews;
+        }
+
+        public async Task<User> GetUserByIdAsync(int userId)
+        {
+            try
+            {
+                // implementacja
+                return null;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

@@ -1,38 +1,29 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using EscapeRoom.Data;
 using EscapeRoom.Helpers;
 using EscapeRoom.Models;
 using EscapeRoom.Services;
-using System.ComponentModel;
-using System.Threading.Tasks; // Added for async operations
-
+using System.Threading.Tasks;
 
 namespace EscapeRoom.ViewModels
 {
-    // podstrona dot. listy pokojów
     public class RoomViewModel : BaseViewModel
     {
-     
+        public string PoziomTrudnosci => Trudnosc > 0 ? $"{Trudnosc}/5" : "Brak danych";
         private RoomViewModel _selectedRoom;
-
-
         public ObservableCollection<Room> Rooms { get; set; }
-
-
         public bool IsLoggedIn => UserSession.IsLoggedIn;
 
         public RoomViewModel()
         {
             Rooms = new ObservableCollection<Room>();
             BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
-            ShowReviewsCommand = new RelayCommand(ShowReviews); 
+            ShowReviewsCommand = new RelayCommand(ShowReviews);
             LoadRoomsAsync();
         }
-
 
         public RoomViewModel SelectedRoom
         {
@@ -58,8 +49,6 @@ namespace EscapeRoom.ViewModels
                     Rooms.Add(room);
                 }
 
-            
-
                 ((RelayCommand)BookRoomCommand).RaiseCanExecuteChanged();
             }
             catch (Exception ex)
@@ -68,19 +57,17 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-
         private readonly Room _currentRoomData;
 
         public RoomViewModel(Room room)
         {
             _currentRoomData = room;
-          
-            BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom); 
+            Rooms = new ObservableCollection<Room>();
+            BookRoomCommand = new RelayCommand(BookRoom, CanBookRoom);
             ShowReviewsCommand = new RelayCommand(ShowReviews);
-            LoadRooms();
+            LoadRoomsAsync();
         }
 
-        // cechy
         public int PokojId => _currentRoomData?.PokojId ?? 0;
         public string Nazwa => _currentRoomData?.Nazwa;
         public string Opis => _currentRoomData?.Opis;
@@ -93,8 +80,6 @@ namespace EscapeRoom.ViewModels
         public string CenaText => $"{Cena:C}";
         public string CzasText => $"{CzasMinut} minut";
         public string MaxGraczyText => $"Maksymalnie {MaxGraczy} graczy";
-
-       
 
         public ICommand BookRoomCommand { get; }
         public ICommand ShowReviewsCommand { get; }
@@ -120,12 +105,8 @@ namespace EscapeRoom.ViewModels
             }
         }
 
-
-
-
         private bool CanBookRoom(object parameter)
         {
-            
             return IsLoggedIn;
         }
 
@@ -133,10 +114,8 @@ namespace EscapeRoom.ViewModels
         {
             if (parameter is Room selectedRoom)
             {
-                var reviewVM = new ReviewViewModel(selectedRoom);
-                var reviewView = new ReviewView { DataContext = reviewVM };
-
-                NavigationService.NavigateTo(reviewView);
+                var reviewViewModel = new ReviewViewModel(selectedRoom);
+                ViewNavigationService.Instance.NavigateTo(ViewType.Review, reviewViewModel);
             }
         }
     }
