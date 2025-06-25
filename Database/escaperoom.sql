@@ -21,6 +21,10 @@ SET time_zone = "+00:00";
 -- Database: `escaperoom`
 --
 
+DROP DATABASE IF EXISTS escaperoom;
+CREATE DATABASE escaperoom;
+USE escaperoom;
+
 -- --------------------------------------------------------
 
 --
