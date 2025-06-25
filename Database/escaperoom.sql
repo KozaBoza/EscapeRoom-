@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Cze 25, 2025 at 08:06 PM
+-- Generation Time: Cze 25, 2025 at 08:17 PM
 -- Wersja serwera: 10.4.32-MariaDB
 -- Wersja PHP: 8.2.12
 
@@ -126,9 +126,15 @@ CREATE TABLE `uzytkownicy` (
 --
 
 INSERT INTO `uzytkownicy` (`uzytkownik_id`, `email`, `haslo_hash`, `imie`, `nazwisko`, `telefon`, `data_rejestracji`, `admin`) VALUES
-(1, 'admin@er.pl', '*4ACFE3202A5FF5CF467898FC58AAB1D615029441', 'Tomasz', 'Witoldzin', '420692137', '2025-06-07 16:28:50', 1),
-(2, 'user@hmail.pl', '*D5D9F81F5542DE067FFF5FF7A4CA4BDD322C578F', 'Wodzislaw', 'Adamczyk', '213742069', '2025-06-07 16:30:47', 0),
-(3, 'g.zr@kaermorhen.com', 'EhOWANrUG6l4vzreeM481Q==:6Y1dTC/RO9f+UVgw79taW7S5S+cBOIJRfzpybgyTJX8=', 'Geralt', 'z Rivii', '123456789', '2025-06-25 20:05:35', 0);
+(1, 'admin@er.pl', '*4ACFE3202A5FF5CF467898FC58AAB1D615029441RG2ByvLxSgzE8jpxGvUwDA==:plRI5cXHchswtso04i5CBJmRTbRn4yJcv+5ODCYkLxo=', 'Tomasz', 'Witoldzin', '420692137', '2025-06-07 16:28:50', 1),
+(2, 'user@hmail.pl', 'xrNGm4Kmi1wdBTLAThR4zQ==:5/d3G5WKWhAnlAaBKox0JKV2lz6+CBTvF98KJ/5EiTw=', 'Wodzislaw', 'Adamczyk', '213742069', '2025-06-07 16:30:47', 0),
+(3, 'g.zr@kaermorhen.com', 'EhOWANrUG6l4vzreeM481Q==:6Y1dTC/RO9f+UVgw79taW7S5S+cBOIJRfzpybgyTJX8=', 'Geralt', 'z Rivii', '123456789', '2025-06-25 20:05:35', 0),
+(4, 'yen.vengerberg@aretuza.mag', 'NNdqxUZ94ohDo7J0wAiRAQ==:zlSacQ7GbIqs5wextYLneCCoZQMTmOY1U+1vNwkovQo=', 'Yennefer', 'z Vengerbergu', '234567890', '2025-06-25 20:13:20', 0),
+(5, 'jaskier.bard@oxenfurt.edu', '/iNMFlG+Yd1cl64om8Dz7g==:d+quy5LzsV4sZwqGH9w5skYzV2Ej79sygNCmbE2e6TU=', 'Jaskier', 'Pankratz', '456789012', '2025-06-25 20:13:52', 0),
+(6, 'ciri.jaskolka@zireael.pl', '+oLsqvZ1NNWEU3vRN/z1DA==:TqFSzzg8QIIDBEbqHQTgfmiiIAncsyOBTlQvg3e+3rE=', 'Cirilla', 'z Cintry', '345678901', '2025-06-25 20:14:21', 0),
+(7, 'triss.czarodziejka@temeria.gov', '/wB/d4o+3iaL9wkUVevJ4g==:5NFozj4I/LlaINoiYWlsHUo2I+YdOOfwDtt6V/YJUF4=', 'Triss', 'Merigold', '567890123', '2025-06-25 20:14:59', 0),
+(8, 'zoltan.krasnolud@mahakam.pl', '7gMZzFGUmjHyn3J4hRc3YQ==:L/eXIoqjlQuv8UfV8l6sNv61iIfhvPwshY/OzfZ/1BU=', 'Zoltan', 'Chivay', '901234567', '2025-06-25 20:16:40', 0),
+(9, 'emiel.regis@tesham-mutna.vamp', 'lSrpncWftK60vpgnkzFUPw==:uhe4nago0bW+LJNZlm/aEUpT02WTLcmwhhbUtyVAjt4=', 'Emiel', 'Regis', '112233445', '2025-06-25 20:17:09', 0);
 
 -- --------------------------------------------------------
 
@@ -223,7 +229,7 @@ ALTER TABLE `rezerwacje`
 -- AUTO_INCREMENT for table `uzytkownicy`
 --
 ALTER TABLE `uzytkownicy`
-  MODIFY `uzytkownik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uzytkownik_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `wiadomosci`
