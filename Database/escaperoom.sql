@@ -1,29 +1,36 @@
-/*M!999999\- enable the sandbox mode */ 
--- MariaDB dump 10.19-11.8.2-MariaDB, for Linux (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: escaperoom
--- ------------------------------------------------------
--- Server version	11.8.2-MariaDB
+-- Host: 127.0.0.1
+-- Generation Time: Cze 25, 2025 at 04:55 PM
+-- Wersja serwera: 10.4.32-MariaDB
+-- Wersja PHP: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*M!100616 SET @OLD_NOTE_VERBOSITY=@@NOTE_VERBOSITY, NOTE_VERBOSITY=0 */;
 
 --
--- Table structure for table `platnosci`
+-- Database: `escaperoom`
+--
+CREATE DATABASE IF NOT EXISTS `escaperoom` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `escaperoom`;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `platnosci`
 --
 
 DROP TABLE IF EXISTS `platnosci`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `platnosci` (
+CREATE TABLE IF NOT EXISTS `platnosci` (
   `platnosc_id` int(11) NOT NULL AUTO_INCREMENT,
   `rezerwacja_id` int(11) NOT NULL,
   `uzytkownik_id` int(11) NOT NULL,
@@ -33,32 +40,22 @@ CREATE TABLE `platnosci` (
   PRIMARY KEY (`platnosc_id`),
   KEY `rezerwacja_id` (`rezerwacja_id`),
   KEY `uzytkownik_id` (`uzytkownik_id`),
-  KEY `pokoj_id` (`pokoj_id`),
-  CONSTRAINT `platnosci_ibfk_1` FOREIGN KEY (`rezerwacja_id`) REFERENCES `rezerwacje` (`rezerwacja_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `platnosci_ibfk_2` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `platnosci_ibfk_3` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `pokoj_id` (`pokoj_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `platnosci`
+-- Tabela Truncate przed wstawieniem `platnosci`
 --
 
-LOCK TABLES `platnosci` WRITE;
-/*!40000 ALTER TABLE `platnosci` DISABLE KEYS */;
-set autocommit=0;
-/*!40000 ALTER TABLE `platnosci` ENABLE KEYS */;
-UNLOCK TABLES;
-commit;
+TRUNCATE TABLE `platnosci`;
+-- --------------------------------------------------------
 
 --
--- Table structure for table `pokoje`
+-- Struktura tabeli dla tabeli `pokoje`
 --
 
 DROP TABLE IF EXISTS `pokoje`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `pokoje` (
+CREATE TABLE IF NOT EXISTS `pokoje` (
   `pokoj_id` int(11) NOT NULL AUTO_INCREMENT,
   `nazwa` varchar(150) NOT NULL,
   `opis` text DEFAULT NULL,
@@ -69,35 +66,33 @@ CREATE TABLE `pokoje` (
   `status_pokoj` enum('wolny','zarezerwowany') DEFAULT NULL,
   PRIMARY KEY (`pokoj_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Tabela Truncate przed wstawieniem `pokoje`
+--
+
+TRUNCATE TABLE `pokoje`;
 --
 -- Dumping data for table `pokoje`
 --
 
-LOCK TABLES `pokoje` WRITE;
-/*!40000 ALTER TABLE `pokoje` DISABLE KEYS */;
-set autocommit=0;
-INSERT INTO `pokoje` VALUES
-(1,'2 krasnale i 2 mutanty','Odkryj jaka tajemnice skrywaja krasnale przed mutatantami. Czy dawane sekrety wyjda na jaw? Co skrywa mroczna jaskinia tych istot',3,200.00,4,60,'wolny'),
-(2,'Straszny szpital','Pudzisz w pouszczonym szpitalu. NIe pamietasz niczego. Nie ma masz przy sobie nic, nawet butów. Czy dolasz okdryc co sie stalo?',4,450.00,6,90,'wolny'),
-(4,'Zaginiony Skarb','Przygoda w stylu Indiany Jonesa z zagadkami i pulapkami.',3,120.00,5,60,'wolny'),
-(5,'Laboratorium Szalonego Naukowca','Eksperymenty, wybuchy i niebezpieczne substancje.',4,140.00,4,75,'wolny'),
-(6,'Tajemnice Wiktorianskiego Dworu','Mroczna historia rodzinna pelna sekretow.',2,100.00,6,60,'wolny'),
-(7,'Ucieczka z Wiezienia','Realistyczny pokoj z celami, kratami i straznikami.',5,150.00,4,90,'wolny'),
-(8,'Kosmiczna Misja','Pokoj w stylu sci-fi z efektami swietlnymi i dzwiekowymi.',3,130.00,5,70,'wolny');
-/*!40000 ALTER TABLE `pokoje` ENABLE KEYS */;
-UNLOCK TABLES;
-commit;
+INSERT DELAYED IGNORE INTO `pokoje` (`pokoj_id`, `nazwa`, `opis`, `trudnosc`, `cena`, `max_graczy`, `czas_minut`, `status_pokoj`) VALUES
+(1, '2 krasnale i 2 mutanty', 'Odkryj jaka tajemnice skrywaja krasnale przed mutatantami. Czy dawane sekrety wyjda na jaw? Co skrywa mroczna jaskinia tych istot', 3, 200.00, 4, 60, 'wolny'),
+(2, 'Straszny szpital', 'Pudzisz w pouszczonym szpitalu. NIe pamietasz niczego. Nie ma masz przy sobie nic, nawet butów. Czy dolasz okdryc co sie stalo?', 4, 450.00, 6, 90, 'wolny'),
+(4, 'Zaginiony Skarb', 'Przygoda w stylu Indiany Jonesa z zagadkami i pulapkami.', 3, 120.00, 5, 60, 'wolny'),
+(5, 'Laboratorium Szalonego Naukowca', 'Eksperymenty, wybuchy i niebezpieczne substancje.', 4, 140.00, 4, 75, 'wolny'),
+(6, 'Tajemnice Wiktorianskiego Dworu', 'Mroczna historia rodzinna pelna sekretow.', 2, 100.00, 6, 60, 'wolny'),
+(7, 'Ucieczka z Wiezienia', 'Realistyczny pokoj z celami, kratami i straznikami.', 5, 150.00, 4, 90, 'wolny'),
+(8, 'Kosmiczna Misja', 'Pokoj w stylu sci-fi z efektami swietlnymi i dzwiekowymi.', 3, 130.00, 5, 70, 'wolny');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `recenzje`
+-- Struktura tabeli dla tabeli `recenzje`
 --
 
 DROP TABLE IF EXISTS `recenzje`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `recenzje` (
+CREATE TABLE IF NOT EXISTS `recenzje` (
   `recenzja_id` int(11) NOT NULL AUTO_INCREMENT,
   `uzytkownik_id` int(11) NOT NULL,
   `pokoj_id` int(11) NOT NULL,
@@ -105,31 +100,22 @@ CREATE TABLE `recenzje` (
   `data_dodania` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`recenzja_id`),
   KEY `uzytkownik_id` (`uzytkownik_id`),
-  KEY `pokoj_id` (`pokoj_id`),
-  CONSTRAINT `Recenzje_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`),
-  CONSTRAINT `Recenzje_ibfk_2` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`)
+  KEY `pokoj_id` (`pokoj_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `recenzje`
+-- Tabela Truncate przed wstawieniem `recenzje`
 --
 
-LOCK TABLES `recenzje` WRITE;
-/*!40000 ALTER TABLE `recenzje` DISABLE KEYS */;
-set autocommit=0;
-/*!40000 ALTER TABLE `recenzje` ENABLE KEYS */;
-UNLOCK TABLES;
-commit;
+TRUNCATE TABLE `recenzje`;
+-- --------------------------------------------------------
 
 --
--- Table structure for table `rezerwacje`
+-- Struktura tabeli dla tabeli `rezerwacje`
 --
 
 DROP TABLE IF EXISTS `rezerwacje`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `rezerwacje` (
+CREATE TABLE IF NOT EXISTS `rezerwacje` (
   `rezerwacja_id` int(11) NOT NULL AUTO_INCREMENT,
   `uzytkownik_id` int(11) NOT NULL,
   `pokoj_id` int(11) NOT NULL,
@@ -139,34 +125,60 @@ CREATE TABLE `rezerwacje` (
   `data_utworzenia` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`rezerwacja_id`),
   KEY `uzytkownik_id` (`uzytkownik_id`),
-  KEY `pokoj_id` (`pokoj_id`),
-  CONSTRAINT `Rezerwacje_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`),
-  CONSTRAINT `Rezerwacje_ibfk_2` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`)
+  KEY `pokoj_id` (`pokoj_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Tabela Truncate przed wstawieniem `rezerwacje`
+--
+
+TRUNCATE TABLE `rezerwacje`;
 --
 -- Dumping data for table `rezerwacje`
 --
 
-LOCK TABLES `rezerwacje` WRITE;
-/*!40000 ALTER TABLE `rezerwacje` DISABLE KEYS */;
-set autocommit=0;
-INSERT INTO `rezerwacje` VALUES
-(1,2,2,'2025-05-29 21:00:00',3,'zrealizowana','2025-05-29 18:00:00'),
-(2,2,1,'2025-06-13 10:00:00',4,'zarezerwowana','2025-06-07 17:00:00');
-/*!40000 ALTER TABLE `rezerwacje` ENABLE KEYS */;
-UNLOCK TABLES;
-commit;
+INSERT DELAYED IGNORE INTO `rezerwacje` (`rezerwacja_id`, `uzytkownik_id`, `pokoj_id`, `data_rozpoczecia`, `liczba_osob`, `status`, `data_utworzenia`) VALUES
+(1, 2, 2, '2025-05-29 21:00:00', 3, 'zrealizowana', '2025-05-29 18:00:00'),
+(2, 2, 1, '2025-06-13 10:00:00', 4, 'zarezerwowana', '2025-06-07 17:00:00');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `uzytkownicy`
+-- Struktura tabeli dla tabeli `sesje`
+--
+
+DROP TABLE IF EXISTS `sesje`;
+CREATE TABLE IF NOT EXISTS `sesje` (
+  `sesja_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rezerwacja_id` int(11) NOT NULL,
+  `data_start` datetime NOT NULL,
+  `data_koniec` datetime DEFAULT NULL,
+  `czas_zwiazania` int(11) DEFAULT NULL,
+  `czy_ukonczone` tinyint(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`sesja_id`),
+  KEY `rezerwacja_id` (`rezerwacja_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Tabela Truncate przed wstawieniem `sesje`
+--
+
+TRUNCATE TABLE `sesje`;
+--
+-- Dumping data for table `sesje`
+--
+
+INSERT DELAYED IGNORE INTO `sesje` (`sesja_id`, `rezerwacja_id`, `data_start`, `data_koniec`, `czas_zwiazania`, `czy_ukonczone`) VALUES
+(1, 1, '2025-05-29 21:00:00', '2025-05-29 22:30:00', 70, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `uzytkownicy`
 --
 
 DROP TABLE IF EXISTS `uzytkownicy`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `uzytkownicy` (
+CREATE TABLE IF NOT EXISTS `uzytkownicy` (
   `uzytkownik_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) NOT NULL,
   `haslo_hash` varchar(255) NOT NULL,
@@ -177,58 +189,85 @@ CREATE TABLE `uzytkownicy` (
   `admin` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`uzytkownik_id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+--
+-- Tabela Truncate przed wstawieniem `uzytkownicy`
+--
+
+TRUNCATE TABLE `uzytkownicy`;
 --
 -- Dumping data for table `uzytkownicy`
 --
 
-LOCK TABLES `uzytkownicy` WRITE;
-/*!40000 ALTER TABLE `uzytkownicy` DISABLE KEYS */;
-set autocommit=0;
-INSERT INTO `uzytkownicy` VALUES
-(1,'admin@er.pl','*4ACFE3202A5FF5CF467898FC58AAB1D615029441','Tomasz','Witoldzin','420692137','2025-06-07 16:28:50',1),
-(2,'user@hmail.pl','*D5D9F81F5542DE067FFF5FF7A4CA4BDD322C578F','Wodzislaw','Adamczyk','213742069','2025-06-07 16:30:47',0);
-/*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;
-UNLOCK TABLES;
-commit;
+INSERT DELAYED IGNORE INTO `uzytkownicy` (`uzytkownik_id`, `email`, `haslo_hash`, `imie`, `nazwisko`, `telefon`, `data_rejestracji`, `admin`) VALUES
+(1, 'admin@er.pl', 'RG2ByvLxSgzE8jpxGvUwDA==:plRI5cXHchswtso04i5CBJmRTbRn4yJcv+5ODCYkLxo=', 'Tomasz', 'Witoldzin', '420692137', '2025-06-07 16:28:50', 1),
+(2, 'user@hmail.pl', 'xrNGm4Kmi1wdBTLAThR4zQ==:5/d3G5WKWhAnlAaBKox0JKV2lz6+CBTvF98KJ/5EiTw=', 'Wodzislaw', 'Adamczyk', '213742069', '2025-06-07 16:30:47', 0),
+(3, 'pawelzambrzycki03@gmail.com', '82Xp2nh4cCXt2xSG1J0WJw==:bMO/zumRVzJTu8PBlMatoNlKv7Sz0DSWLgXUPt6y/CE=', 'Pawel', 'Zambrzycki', '606978989', '2025-06-25 16:45:35', 0),
+(4, 'mszandala2@gmail.com', 'OWWpclF4u1NcbWDUAZUnOA==:em6tHUxUMnB9xI33Eip0mfMRJg08R4EmdE1+DvNZRVc=', 'Martyna', 'Szandala', '500582796', '2025-06-25 16:47:53', 0),
+(5, 'niskizgred@onet.pl', '2FEHtz44b3BFRdLR3kq5qg==:0lTkuD2nIw2y5qWUQxV2RN7licX9gNb3h/2nmClnOMs=', 'Jakub', 'Jaromin', '911328514', '2025-06-25 16:48:29', 0),
+(6, 'r.brociek@polsl.pl', 'g7P4E+XqJSjRevc0gKTkqw==:9dTYp0lWORAF7mWFzasRs0mlrAIOfZ/ACRG8pTUT/2E=', 'Rafa?', 'Brociek', '713517841', '2025-06-25 16:50:27', 0),
+(7, 'kozaboza@o2.pl', 'lRGOwTjAFD70ofaQh28sbA==:cXn/Be1lrTvyAheAzPyUXDCfBpcJpLM+MmXyLiCVbCY=', 'Natalia', 'Tomala', '831317581', '2025-06-25 16:51:02', 0);
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `wiadomosci`
+-- Struktura tabeli dla tabeli `wiadomosci`
 --
 
 DROP TABLE IF EXISTS `wiadomosci`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8mb4 */;
-CREATE TABLE `wiadomosci` (
+CREATE TABLE IF NOT EXISTS `wiadomosci` (
   `id_wiadomosci` int(11) NOT NULL AUTO_INCREMENT,
   `wiadomosc` varchar(500) NOT NULL,
   `uzytkownik_id` int(11) NOT NULL,
   PRIMARY KEY (`id_wiadomosci`),
-  KEY `uzytkownik_id` (`uzytkownik_id`),
-  CONSTRAINT `wiadomosci_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`)
+  KEY `uzytkownik_id` (`uzytkownik_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `wiadomosci`
+-- Tabela Truncate przed wstawieniem `wiadomosci`
 --
 
-LOCK TABLES `wiadomosci` WRITE;
-/*!40000 ALTER TABLE `wiadomosci` DISABLE KEYS */;
-set autocommit=0;
-/*!40000 ALTER TABLE `wiadomosci` ENABLE KEYS */;
-UNLOCK TABLES;
-commit;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+TRUNCATE TABLE `wiadomosci`;
+--
+-- Constraints for dumped tables
+--
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Constraints for table `platnosci`
+--
+ALTER TABLE `platnosci`
+  ADD CONSTRAINT `platnosci_ibfk_1` FOREIGN KEY (`rezerwacja_id`) REFERENCES `rezerwacje` (`rezerwacja_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `platnosci_ibfk_2` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `platnosci_ibfk_3` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `recenzje`
+--
+ALTER TABLE `recenzje`
+  ADD CONSTRAINT `Recenzje_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`),
+  ADD CONSTRAINT `Recenzje_ibfk_2` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`);
+
+--
+-- Constraints for table `rezerwacje`
+--
+ALTER TABLE `rezerwacje`
+  ADD CONSTRAINT `Rezerwacje_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`),
+  ADD CONSTRAINT `Rezerwacje_ibfk_2` FOREIGN KEY (`pokoj_id`) REFERENCES `pokoje` (`pokoj_id`);
+
+--
+-- Constraints for table `sesje`
+--
+ALTER TABLE `sesje`
+  ADD CONSTRAINT `Sesje_ibfk_1` FOREIGN KEY (`rezerwacja_id`) REFERENCES `rezerwacje` (`rezerwacja_id`);
+
+--
+-- Constraints for table `wiadomosci`
+--
+ALTER TABLE `wiadomosci`
+  ADD CONSTRAINT `wiadomosci_ibfk_1` FOREIGN KEY (`uzytkownik_id`) REFERENCES `uzytkownicy` (`uzytkownik_id`);
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*M!100616 SET NOTE_VERBOSITY=@OLD_NOTE_VERBOSITY */;
-
--- Dump completed on 2025-06-25 16:29:36
